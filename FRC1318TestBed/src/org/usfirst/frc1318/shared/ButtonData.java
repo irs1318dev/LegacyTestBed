@@ -2,7 +2,7 @@ package org.usfirst.frc1318.shared;
 
 import org.usfirst.frc1318.shared.constants.TBButtonRef;
 
-public class ButtonData implements DataStructure{
+public class ButtonData {
 
 	boolean[] buttons;
 	boolean[] lastPressed;
@@ -13,7 +13,7 @@ public class ButtonData implements DataStructure{
 		lastPressed = new boolean[numberOfButtons];
 		type = new int[numberOfButtons];
 		for (int i = 0; i < numberOfButtons; i++) {
-			type[i] = ButtonRef.PRESS_AND_HOLD;
+			type[i] = TBButtonRef.PRESS_AND_HOLD;
 		}
 	}
 	
@@ -57,10 +57,10 @@ public class ButtonData implements DataStructure{
 	 * @param state
 	 */
 	public void isPressed(int buttonNumber, boolean state) {
-		if(type[buttonNumber]==ButtonRef.PRESS_AND_HOLD) {
+		if(type[buttonNumber]==TBButtonRef.PRESS_AND_HOLD) {
 			buttons[buttonNumber] = state;
 		} else {
-			if(type[buttonNumber]==ButtonRef.TOGGLE) {
+			if(type[buttonNumber]==TBButtonRef.TOGGLE) {
 				if(state) { //if the button is pressed
 					if(!lastPressed[buttonNumber]) { //if the button was not pressed last time this was run
 						buttons[buttonNumber] = !buttons[buttonNumber]; //toggle the state
@@ -94,7 +94,7 @@ public class ButtonData implements DataStructure{
 		return true;
 	}
 
-	public boolean copyTo(DataStructure otherData) {
+	public boolean copyTo(ButtonData otherData) {
 		if(otherData==null) {
 			return false;
 		} else if(!otherData.getClass().equals(ButtonData.class)) {
