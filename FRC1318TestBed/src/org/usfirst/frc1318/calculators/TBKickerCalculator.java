@@ -1,10 +1,11 @@
 package org.usfirst.frc1318.calculators;
 
-import org.usfirst.frc1318.data.TBGamepadData;
-import org.usfirst.frc1318.runners.Runner;
+import org.usfirst.frc1318.shared.TBGamepadData;
+import org.usfirst.frc1318.shared.TBThroughBeamData;
+import org.usfirst.frc1318.shared.TBSolenoidData;
+import org.usfirst.frc1318.components.RobotComponentBase;
 
-
-public class TBKickerCalculator extends Runner
+public class TBKickerCalculator extends RobotComponentBase
 {
 	boolean isAutomated;
 	int timer;
@@ -19,17 +20,17 @@ public class TBKickerCalculator extends Runner
 	{
 		if(isAutomated)
 		{
-			if(true)//insert beam sensor boolean here
+			if(TBThroughBeamData.get())//insert beam sensor boolean here
 			{
 				//kickKicker();
-				isKicked = true;
+				TBSolenoidData.setIfKicked(true);
 				timer = timeout;
 			}
 		}
 		if(TBGamepadData.isKickButton())//insert button pressed boolean here
 		{
 			//kickKicker();
-			isKicked=true;
+			TBSolenoidData.setIfKicked(true);
 			timer = timeout;
 		}
 	}
@@ -39,14 +40,14 @@ public class TBKickerCalculator extends Runner
 		timer -=1;
 		if(timer <= 0)
 		{
-			isKicked = false;
+			TBSolenoidData.setIfKicked(false);
 			//retractKicker();
 		}
 	}
 	
 	public void doLogic()
 	{
-		if(isKicked)
+		if(TBSolenoidData.kicked())
 			checkShouldNotKick();
 		else
 			checkShouldKick();
