@@ -1,6 +1,8 @@
 package org.usfirst.frc1318.components;
 
 import org.usfirst.frc1318.shared.constants.PortRef;
+import org.usfirst.frc1318.shared.*;
+import org.usfirst.frc1318.reference.*;
 
 public class GamePadRunner extends RobotComponentBase {
 	TBGamePadReader reader;

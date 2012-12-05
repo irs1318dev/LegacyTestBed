@@ -1,8 +1,5 @@
 package org.usfirst.frc1318.shared.constants;
 
-import org.usfirst.frc1318.reference.GamePad;
-import org.usfirst.frc1318.reference.GamePadReader;
-import org.usfirst.frc1318.reference.PS2Controller.PS2ButtonMap;
 
 public interface TBButtonRef 
 {
