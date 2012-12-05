@@ -1,22 +1,10 @@
-package org.usfirst.frc1318.reference;
+package org.usfirst.frc1318.components;
 
-import org.usfirst.frc1318.data.AimingInputs;
-import org.usfirst.frc1318.data.ButtonData;
-import org.usfirst.frc1318.data.JoystickData;
-import org.usfirst.frc1318.data.JoystickSetData;
-import org.usfirst.frc1318.data.LoaderBeltSpeeds;
-import org.usfirst.frc1318.data.ShotHistory;
-import org.usfirst.frc1318.kinematics.AimingSetpointKinematics;
-import org.usfirst.frc1318.reference.GamePad.DPad;
-import org.usfirst.frc1318.reference.PS2Controller.PS2ButtonMap;
-import org.usfirst.frc1318.shared.constants.ButtonRef;
+import org.usfirst.frc1318.shared.KinematicData;
+import org.usfirst.frc1318.shared.ReferenceData;
+import org.usfirst.frc1318.shared.TBGamepadData;
 import org.usfirst.frc1318.shared.constants.PortRef;
-import org.usfirst.frc1318.shared.constants.SensorConst;
 import org.usfirst.frc1318.shared.constants.TBButtonRef;
-import org.usfirst.frc1318.shared.constants.TableKeys;
-import org.usfirst.frc1318.shared.data.KinematicData;
-import org.usfirst.frc1318.shared.data.ReferenceData;
-import org.usfirst.frc1318.shared.data.Sensors;
 
 import com.sun.squawk.util.MathUtils;
 
@@ -95,26 +83,22 @@ public class TBGamePadReader {
 			writeLowerConveyors(KinematicData.getInstance().getLoaderBeltSpeeds());
 			writeTipperSpeed(KinematicData.getInstance());
 		}
-		NetworkTable.getTable(TableKeys.TABLE).beginTransaction();
-		NetworkTable.getTable(TableKeys.TABLE).putBoolean(TableKeys.MOVIE_MODE, 
-				buttons[ButtonMap.MOVIE_MODE_PAD].getButton(ButtonMap.MOVIE_MODE_BUTTON));
-		NetworkTable.getTable(TableKeys.TABLE).endTransaction();
-		
+	
 	}
 	private void copyVals(JoystickSetData joystickSetData) {
 			buttons[PILOT_JS].copyTo(joystickSetData.getJoystickData(PILOT_JS).getButtons());
 			buttons[COPILOT_JS].copyTo(joystickSetData.getJoystickData(COPILOT_JS).getButtons());		
 	}
 	
-	private void writeMode(TBGamePadData gpData) {
+	private void writeMode(TBGamepadData gpData) {
 		
 	}
 	
-	private void writeKick(TBGamePadData gpData) {
+	private void writeKick(TBGamepadData gpData) {
 		
 	}
 	
-	private void writeCompressor(TBGamePadData gpData) {
+	private void writeCompressor(TBGamepadData gpData) {
 		
 	}
 }
