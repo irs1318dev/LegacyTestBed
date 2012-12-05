@@ -52,11 +52,4 @@ public class TBKickerCalculator extends RobotComponentBase
 		else
 			checkShouldKick();
 	}
-
-	
-	public boolean calculate(boolean buttonPressed) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

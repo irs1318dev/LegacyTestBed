@@ -1,5 +1,8 @@
 package org.usfirst.frc1318.components;
 
+import org.usfirst.frc1318.reference.*;
+import org.usfirst.frc1318.reference.PS2Controller.PS2ButtonMap;
+import org.usfirst.frc1318.shared.ButtonData;
 import org.usfirst.frc1318.shared.KinematicData;
 import org.usfirst.frc1318.shared.ReferenceData;
 import org.usfirst.frc1318.shared.TBGamepadData;
