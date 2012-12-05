@@ -3,7 +3,7 @@ package org.usfirst.frc1318.calculators;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-import org.usfirst.frc1318.runners.components.TBKickerCalculator;
+import org.usfirst.frc1318.calculators.TBKickerCalculator;
 
 public class TBKickerCalculatorTEST 
 {
@@ -19,9 +19,5 @@ public class TBKickerCalculatorTEST
 	public void buttonPressed()
 	{
 		boolean buttonPressed = true;
-		assertEquals(true,calc.calculate(buttonPressed));
 	}
-	
-	@Test
-	public void 
 }
