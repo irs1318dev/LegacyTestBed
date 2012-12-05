@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.data;
+package org.usfirst.frc1318.shared;
 
 public class TBGamepadData 
 {
