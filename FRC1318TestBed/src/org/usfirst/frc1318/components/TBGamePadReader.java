@@ -31,8 +31,8 @@ public class TBGamePadReader {
 	 * Buttons default to be press and hold. This method sets buttons that are toggles as such.
 	 */
 	private void setToggles() {
-		buttons[ButtonMap.COMPRESSOR_TOGGLE].setButtonType(TBButtonRef.COMPRESSOR_TOGGLE, ButtonRef.TOGGLE);
-		buttons[ButtonMap.MODE_TOGGLE].setButtonType(TBButtonRef.MODE_TOGGLE, ButtonRef.TOGGLE);
+		buttons[ButtonMap.COMPRESSOR_TOGGLE].setButtonType(TBButtonRef.COMPRESSOR_TOGGLE, TBButtonRef.TOGGLE);
+		buttons[ButtonMap.MODE_TOGGLE].setButtonType(TBButtonRef.MODE_TOGGLE, TBButtonRef.TOGGLE);
 	}
 	
 	public void read() {
