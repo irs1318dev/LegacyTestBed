@@ -7,7 +7,7 @@ import org.usfirst.frc1318.shared.KinematicData;
 import org.usfirst.frc1318.shared.ReferenceData;
 import org.usfirst.frc1318.shared.Sensors;
 import org.usfirst.frc1318.shared.TBGamepadData;
-import org.usfirst.frc1318.shared.constants.PortRef;
+import org.usfirst.frc1318.shared.constants.TBPortRef;
 import org.usfirst.frc1318.shared.constants.TBButtonRef;
 
 import com.sun.squawk.util.MathUtils;

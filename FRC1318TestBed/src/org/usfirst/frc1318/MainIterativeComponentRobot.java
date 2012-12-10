@@ -1,7 +1,6 @@
 package org.usfirst.frc1318;
 
 import org.usfirst.frc1318.calculators.TBKickerCalculator;
-import org.usfirst.frc1318.components.GamePadRunner;
 import org.usfirst.frc1318.components.TBGamePadReader;
 import org.usfirst.frc1318.components.TBSolenoidRunner;
 import org.usfirst.frc1318.components.TBThroughBeamReader;
