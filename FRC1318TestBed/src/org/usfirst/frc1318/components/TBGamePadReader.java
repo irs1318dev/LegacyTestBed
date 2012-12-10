@@ -51,10 +51,15 @@ public class TBGamePadReader extends RobotComponentBase {
 //		this.scale = scale;
 //	}
 
-	public void init() {
+	public void robotInit() {
 		GamePad pilotGamePad = GamePad.create(0); //TODO figure out how to initialize gamepad
 		Sensors.getInstance().setPilotGamePad(pilotGamePad);
 		setToggles();
+	}
+	
+	
+	public void teleopPeriodic() {
+		read();
 	}
 	
 	/**
