@@ -3,19 +3,24 @@ package org.usfirst.frc1318.calculators;
 import org.usfirst.frc1318.shared.TBGamepadData;
 import org.usfirst.frc1318.shared.TBThroughBeamData;
 import org.usfirst.frc1318.shared.TBSolenoidData;
+import org.usfirst.frc1318.utils.DriverStationPrint;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
 public class TBKickerCalculator extends RobotComponentBase
 {
+	DriverStationPrint driverStationPrint;
 	boolean isAutomated;
 	long timer;
 	final long timeout = 500;
 	
 	public TBKickerCalculator()
 	{
-		
 	}
 
+	public void robotInit() {
+		driverStationPrint = new DriverStationPrint();
+	}
+	
 	//TODO review logic
 	/*
 	 * checkToKick()
@@ -34,18 +39,18 @@ public class TBKickerCalculator extends RobotComponentBase
 	
 	private void checkShouldKick()
 	{
+		//TODO keep track of old automated value, print out changes
 		if(isAutomated) //TODO read the mode button
 		{
 			if(TBThroughBeamData.get())//insert beam sensor boolean here
 			{
-				//kickKicker();
+				
 				TBSolenoidData.setIfKicked(true);
 				timer = System.currentTimeMillis()+ timeout;
 			}
 		}
 		if(TBGamepadData.isKickButton())//insert button pressed boolean here
 		{
-			//kickKicker();
 			TBSolenoidData.setIfKicked(true);
 			timer = System.currentTimeMillis()+ timeout;
 		}
