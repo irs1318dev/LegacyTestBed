@@ -52,6 +52,8 @@ public class TBGamePadReader extends RobotComponentBase {
 //	}
 
 	public void init() {
+		GamePad pilotGamePad = GamePad.create(0); //TODO figure out how to initialize gamepad
+		Sensors.getInstance().setPilotGamePad(pilotGamePad);
 		setToggles();
 	}
 	
