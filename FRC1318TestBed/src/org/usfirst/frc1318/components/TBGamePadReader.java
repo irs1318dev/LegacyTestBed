@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
  */
 
 
-public class TBGamePadReader {
+public class TBGamePadReader extends RobotComponentBase {
 	public static final int NUM_GAME_PADS = 1;
 	private ButtonData[] buttons = new ButtonData[NUM_GAME_PADS + 1];
 	
@@ -45,11 +45,11 @@ public class TBGamePadReader {
 	}
 	
 	
-	public TBGamePadReader(double value, Scale scale)
-	{
-		//TODO do something with double value. I can't tell what it's supposed to be for
-		this.scale = scale;
-	}
+//	public TBGamePadReader(double value, Scale scale)
+//	{
+//		//TODO do something with double value. I can't tell what it's supposed to be for
+//		this.scale = scale;
+//	}
 
 	public void init() {
 		setToggles();
