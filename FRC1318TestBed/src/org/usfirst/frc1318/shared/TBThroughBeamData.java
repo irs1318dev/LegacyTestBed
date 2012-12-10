@@ -11,5 +11,4 @@ public class TBThroughBeamData {
 	public static void set(boolean broken){
 		isBroken = broken;
 	}
-
 }

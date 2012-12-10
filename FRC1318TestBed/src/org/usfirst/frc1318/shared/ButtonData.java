@@ -110,6 +110,4 @@ public class ButtonData {
 		}
 		return true;
 	}
-	
-	
 }

@@ -5,5 +5,4 @@ public class SensorNotInitializedException extends RuntimeException {
 	public SensorNotInitializedException(String msg) {
 		super(msg);
 	}
-
 }

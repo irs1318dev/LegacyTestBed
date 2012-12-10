@@ -18,5 +18,4 @@ public class TBGamepadData
 	public static void setModeToggle(boolean _modeToggle) {
 		modeToggle = _modeToggle;
 	}
-	
 }

@@ -11,5 +11,4 @@ public class TBSolenoidData {
 	public static void setIfKicked(boolean ifKicked){
 		isKicked = ifKicked;
 	}
-
 }

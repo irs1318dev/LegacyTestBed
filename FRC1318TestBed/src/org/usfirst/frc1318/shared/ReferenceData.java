@@ -15,7 +15,4 @@ public class ReferenceData {
 	public void clear() {
 		instance = new ReferenceData();
 	}
-	
-
-
 }

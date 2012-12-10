@@ -89,7 +89,4 @@ public abstract class IterativeComponentRobot extends IterativeRobot {
     		components.get(iterator).teleopContinuous();
     	}
 	}
-    
-    
-    
 }

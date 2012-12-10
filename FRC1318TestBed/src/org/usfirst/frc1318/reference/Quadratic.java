@@ -7,5 +7,4 @@ public class Quadratic implements Scale {
 			return -x*x;
 		return x*x;
 	}
-
 }
