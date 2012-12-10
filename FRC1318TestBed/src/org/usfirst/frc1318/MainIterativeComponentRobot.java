@@ -8,15 +8,15 @@ import org.usfirst.frc1318.components.TBThroughBeamReader;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return helloBot();
+		return pneumaticTestBed();
 	}
 
-	private static BotVector helloBot() {
+	protected static BotVector helloBot() {
 		BotVector botVector = new BotVector();
 		return botVector;
 	}
 	
-	private static BotVector pneumaticTestBed() {
+	protected static BotVector pneumaticTestBed() {
 		BotVector botVector = new BotVector();
 		botVector.add(new TBGamePadReader());
 		botVector.add(new TBKickerCalculator());
