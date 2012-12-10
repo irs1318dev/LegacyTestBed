@@ -8,8 +8,8 @@ import org.usfirst.frc1318.components.RobotComponentBase;
 public class TBKickerCalculator extends RobotComponentBase
 {
 	boolean isAutomated;
-	int timer;
-	final int timeout = 50;
+	long timer;
+	final long timeout = 500;
 	
 	public TBKickerCalculator()
 	{
@@ -40,24 +40,22 @@ public class TBKickerCalculator extends RobotComponentBase
 			{
 				//kickKicker();
 				TBSolenoidData.setIfKicked(true);
-				timer = timeout;
+				timer = System.currentTimeMillis()+ timeout;
 			}
 		}
 		if(TBGamepadData.isKickButton())//insert button pressed boolean here
 		{
 			//kickKicker();
 			TBSolenoidData.setIfKicked(true);
-			timer = timeout;
+			timer = System.currentTimeMillis()+ timeout;
 		}
 	}
 	
 	private void checkShouldNotKick()
 	{
-		timer -=1; //TODO reset to 0
-		if(timer <= 0)
+		if(timer <= System.currentTimeMillis())
 		{
 			TBSolenoidData.setIfKicked(false);
-			//retractKicker();
 		}
 	}
 	
