@@ -74,44 +74,12 @@ public class TBGamePadReader extends RobotComponentBase {
 		synchronized (Sensors.getInstance().getPilotGamePad()) {
 			GamePad pilot = Sensors.getInstance().getPilotGamePad();
 			
-			/*
-			 * irrelevant for kicker
-			 * 	also, most of these references are not real things
-			 * 
-			 * 
-			axisVals[PILOT_JS][GamePad.AXIS_X1] = scale.scale(accountForDeadZone(pilot.getXLeft()));
-			axisVals[PILOT_JS][GamePad.AXIS_X2] = scale.scale(accountForDeadZone(pilot.getXRight()));
-			axisVals[PILOT_JS][GamePad.AXIS_Y1] = scale.scale(accountForDeadZone(pilot.getYLeft()));
-			axisVals[PILOT_JS][GamePad.AXIS_Y2] = scale.scale(accountForDeadZone(pilot.getYRight()));
-			if(previousPilotDPad != pilotDPad) {
-				previousPilotDPad = pilotDPad;
-				
-			}
-			pilotDPad = pilot.getDPad();
-		
-			*/
 			for(int i = 1; i <= GamePad.NUM_BUTTONS; i++) {
 				buttons[PILOT_JS].isPressed(i, pilot.getRawButton(i));
 			}
 		}
 		synchronized (Sensors.getInstance().getCopilotGamePad()) {
 			
-			/*
-			 * irrelevant for kicker
-			 * 
-			 *
-			GamePad copilot = Sensors.getInstance().getCopilotGamePad();
-			axisVals[COPILOT_JS][GamePad.AXIS_X1] = scale.scale(accountForDeadZone(copilot.getXLeft()));
-			axisVals[COPILOT_JS][GamePad.AXIS_X2] = cubic.scale(copilot.getXRight());//turret
-			axisVals[COPILOT_JS][GamePad.AXIS_Y1] = scale.scale(accountForDeadZone(copilot.getYLeft()));
-			axisVals[COPILOT_JS][GamePad.AXIS_Y2] = scale.scale(accountForDeadZone(copilot.getYRight()));
-			
-			if(previousCopilotDPad != copilotDPad) {
-				previousCopilotDPad = copilotDPad;
-			}
-			copilotDPad = copilot.getDPad();
-
-			*/
 			
 			for(int i = 1; i <= GamePad.NUM_BUTTONS; i++) {
 				buttons[COPILOT_JS].isPressed(i, Sensors.getInstance().getCopilotGamePad().getRawButton(i));
@@ -124,38 +92,10 @@ public class TBGamePadReader extends RobotComponentBase {
 		
 		//TODO none of this methods are implemented
 		//TODO these arguments should be a TBGamePadData object, not null
-		writeMode(null);
-		writeKick(null);
-		writeCompressor(null);
+
+		TBGamepadData.setKickButton(false);
+		TBGamepadData.setModeToggle(true);
 		
-		
-		/*
-		 *The class ReferenceData doesn't do any of this stuff 
-		 *	Also we don't need to do any of this for the kicker
-		 *
-		 *
-		synchronized (ReferenceData.getInstance()) {
-			JoystickSetData joystickSetData = ReferenceData.getInstance().getJoystickSetData();
-			copyVals(joystickSetData);
-			writeConveyors(joystickSetData);
-			writeShooter(joystickSetData, ReferenceData.getInstance().getAimingInputs());	
-			writeTurret(joystickSetData, ReferenceData.getInstance().getAimingInputs());
-			writeGyro(joystickSetData);
-			writeMecanumDrive(joystickSetData.getJoystickData(ButtonRef.MECANUM_V_JS));
-			writeShotHistory(ReferenceData.getInstance().getShotHistory());
-			writeRangeOverride(ReferenceData.getInstance());
-		}
-		*/
-		
-		/*
-		 * This is for a different robot
-		 * 
-		 *
-		synchronized (KinematicData.getInstance()) {
-			writeLowerConveyors(KinematicData.getInstance().getLoaderBeltSpeeds());
-			writeTipperSpeed(KinematicData.getInstance());
-		}
-		*/
 	}
 	
 	/*

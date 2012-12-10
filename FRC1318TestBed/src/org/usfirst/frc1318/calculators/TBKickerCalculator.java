@@ -15,10 +15,26 @@ public class TBKickerCalculator extends RobotComponentBase
 	{
 		
 	}
+
+	//TODO review logic
+	/*
+	 * checkToKick()
+	 * if manual mode, and kick button is pressed, then kick
+	 * else if automated mode, and through beam sensor is trippred, then kick
+	 * else if automated mode, and kicker button is pressed, then kick
+	 * 
+	 * kick()
+	 * if kicked, and timer>0, return
+	 * else setKicked(true)
+	 * 
+	 * checkToRetract()
+	 * decrement the timer
+	 * if timer <=0 set kicker false
+	 */
 	
 	private void checkShouldKick()
 	{
-		if(isAutomated)
+		if(isAutomated) //TODO read the mode button
 		{
 			if(TBThroughBeamData.get())//insert beam sensor boolean here
 			{
@@ -37,7 +53,7 @@ public class TBKickerCalculator extends RobotComponentBase
 	
 	private void checkShouldNotKick()
 	{
-		timer -=1;
+		timer -=1; //TODO reset to 0
 		if(timer <= 0)
 		{
 			TBSolenoidData.setIfKicked(false);
@@ -45,7 +61,7 @@ public class TBKickerCalculator extends RobotComponentBase
 		}
 	}
 	
-	public void doLogic()
+	public void teleopPeriodic()
 	{
 		if(TBSolenoidData.kicked())
 			checkShouldNotKick();
