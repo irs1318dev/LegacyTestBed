@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="var" path="TESTBED/libs/classes.jar"/>
-	<classpathentry kind="var" path="TESTBED/libs/squawk_device.jar"/>
 	<classpathentry kind="var" path="TESTBED"/>
+	<classpathentry kind="var" path="TESTBED/libs/networktables-crio.jar"/>
+	<classpathentry kind="var" path="TESTBED/libs/squawk.jar"/>
+	<classpathentry kind="var" path="TESTBED/libs/wpilibj.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

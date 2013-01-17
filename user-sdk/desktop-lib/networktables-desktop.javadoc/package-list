@@ -1,0 +1,10 @@
+edu.wpi.first.wpilibj.networktables
+edu.wpi.first.wpilibj.networktables2
+edu.wpi.first.wpilibj.networktables2.client
+edu.wpi.first.wpilibj.networktables2.connection
+edu.wpi.first.wpilibj.networktables2.server
+edu.wpi.first.wpilibj.networktables2.stream
+edu.wpi.first.wpilibj.networktables2.thread
+edu.wpi.first.wpilibj.networktables2.type
+edu.wpi.first.wpilibj.networktables2.util
+edu.wpi.first.wpilibj.tables
