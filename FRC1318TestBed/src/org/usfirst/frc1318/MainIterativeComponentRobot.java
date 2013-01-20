@@ -32,4 +32,14 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new TBHelloWorldRunner());
 		return botVector;
 	}
+	
+	protected static BotVector MiniMikeVector()
+	{
+		BotVector bv = new BotVector();
+		bv.add(new TBGamePadReader());
+		
+		//TODO add more components
+		
+		return bv;
+	}
 }
