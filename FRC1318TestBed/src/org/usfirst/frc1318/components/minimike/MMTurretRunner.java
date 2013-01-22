@@ -1,5 +1,9 @@
 package org.usfirst.frc1318.components.minimike;
 
-public class MMTurretRunner {
-	//TODO this should extend something
+import org.usfirst.frc1318.components.RobotComponentBase;
+
+import edu.wpi.first.wpilibj.Jaguar;
+
+public class MMTurretRunner extends RobotComponentBase {
+	private Jaguar turret;//Initialize this
 }
