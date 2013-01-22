@@ -1,5 +1,6 @@
 package org.usfirst.frc1318.shared.minimike;
 
+import org.usfirst.frc1318.reference.GamePad;
 import org.usfirst.frc1318.reference.PS2Controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -10,11 +11,11 @@ public class MMSensors {
 	} //ensure singelton
 	
 	private static MMSensors self;
-	private PS2Controller gamePad;
+	private GamePad gamePad;
 	private DigitalInput leftLimitSwitch;
 	private DigitalInput rightLimitSwitch;
 	
-	public MMSensors getInstance(){
+	public static MMSensors getInstance(){
 		if(self == null)
 		{
 			self = new MMSensors();
@@ -23,13 +24,13 @@ public class MMSensors {
 	}
 	
 	//set gamepad
-	public void setGamePad(PS2Controller gamePad)
+	public void setGamePad(GamePad gamePad)
 	{
 		this.gamePad = gamePad;
 	}
 	
 	//get controller if initialized, else throw exception
-	public PS2Controller getGamePad() throws Exception
+	public GamePad getGamePad() throws Exception
 	{
 		if(null != gamePad)
 		{
