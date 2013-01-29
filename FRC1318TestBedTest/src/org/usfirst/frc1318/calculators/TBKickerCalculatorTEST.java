@@ -3,7 +3,7 @@ package org.usfirst.frc1318.calculators;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-import org.usfirst.frc1318.calculators.TBKickerCalculator;
+import org.usfirst.frc1318.testbed.calculators.TBKickerCalculator;
 
 public class TBKickerCalculatorTEST 
 {

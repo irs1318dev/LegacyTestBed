@@ -1,11 +1,12 @@
-package org.usfirst.frc1318.runners.components;
+package org.usfirst.frc1318.testbed.components;
 
-import org.usfirst.frc1318.reference.TBThroughBeamData;
-import org.usfirst.frc1318.runners.Runner;
+import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.testbed.shared.TBThroughBeamData;
 import org.usfirst.frc1318.testbed.shared.constants.TBPortRef;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 
-public class TBThroughBeamReader extends Runner{
+public class TBThroughBeamReader extends RobotComponentBase{
 	
 	final int PORT = TBPortRef.THROUGH_BEAM_SENSOR;
 	

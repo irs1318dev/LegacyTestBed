@@ -12,7 +12,7 @@ import org.usfirst.frc1318.reference.PS2Controller.PS2ButtonMap;
 import org.usfirst.frc1318.shared.constants.ButtonRef;
 import org.usfirst.frc1318.shared.constants.PortRef;
 import org.usfirst.frc1318.shared.constants.SensorConst;
-import org.usfirst.frc1318.shared.constants.TBButtonRef;
+import org.usfirst.frc1318.testbed.shared.constants.TBButtonRef;
 import org.usfirst.frc1318.shared.constants.TableKeys;
 import org.usfirst.frc1318.shared.data.KinematicData;
 import org.usfirst.frc1318.shared.data.ReferenceData;

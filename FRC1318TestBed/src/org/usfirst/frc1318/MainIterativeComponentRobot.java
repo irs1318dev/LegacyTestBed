@@ -1,10 +1,10 @@
 package org.usfirst.frc1318;
 
-import org.usfirst.frc1318.calculators.TBKickerCalculator;
-import org.usfirst.frc1318.components.TBGamePadReader;
-import org.usfirst.frc1318.components.TBHelloWorldRunner;
-import org.usfirst.frc1318.components.TBSolenoidRunner;
-import org.usfirst.frc1318.components.TBThroughBeamReader;
+import org.usfirst.frc1318.testbed.calculators.TBKickerCalculator;
+import org.usfirst.frc1318.testbed.components.TBGamePadReader;
+import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
+import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
+import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 

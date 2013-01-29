@@ -2,8 +2,8 @@ package org.usfirst.frc1318.components;
 
 import org.junit.After;
 import org.junit.Before;
-import org.usfirst.frc1318.shared.KinematicData;
-import org.usfirst.frc1318.shared.ReferenceData;
+import org.usfirst.frc1318.generic.shared.KinematicData;
+import org.usfirst.frc1318.generic.shared.ReferenceData;
 
 /**
  * Extend this class if you are writing a test for a robot component that reads or writes
