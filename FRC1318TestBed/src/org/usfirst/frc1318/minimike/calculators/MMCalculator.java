@@ -1,9 +1,8 @@
 package org.usfirst.frc1318.minimike.calculators;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.components.minimike.MMGamePadReader;
-import org.usfirst.frc1318.shared.minimike.MMGamePadData;
-import org.usfirst.frc1318.shared.minimike.MMLimitSwitchData;
+import org.usfirst.frc1318.minimike.shared.MMGamePadData;
+import org.usfirst.frc1318.minimike.shared.MMLimitSwitchData;
 import org.usfirst.frc1318.shared.minimike.MMTurretData;
 import org.usfirst.frc1318.utils.DriverStationPrint;
 
