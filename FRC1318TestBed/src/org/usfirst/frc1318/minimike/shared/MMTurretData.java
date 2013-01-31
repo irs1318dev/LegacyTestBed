@@ -1,14 +1,28 @@
 package org.usfirst.frc1318.minimike.shared;
 
 public class MMTurretData {
-	static double turnSpeed = 0;
+	private double turnSpeed = 0;
 	
 	//speed must have a value between 1 and -1
-	public static void setTurnSpeed(double speed){
+	
+	public static MMTurretData instance;
+	
+	private MMTurretData(){
+		
+	}
+	
+	public static MMTurretData getInstance(){
+		if(instance == null){
+			instance = new MMTurretData();
+		}
+		return instance;
+	}
+	
+	public void setTurnSpeed(double speed){
 		turnSpeed = speed;
 	}
 	
-	public static double getTurnSpeed(){
+	public double getTurnSpeed(){
 		return turnSpeed;
 	}
 	

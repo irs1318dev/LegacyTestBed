@@ -2,7 +2,8 @@ package org.usfirst.frc1318.minimike.shared;
 
 public class MMLimitSwitchData {
 	
-	static Object lock_right, lock_left;
+	static Object lock_right = new Object();
+	static Object lock_left = new Object();
 	
 	public static MMLimitSwitchData instance;
 	

@@ -4,31 +4,23 @@ import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.minimike.shared.MMTurretData;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
 
-import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
+import edu.wpi.first.wpilibj.Victor;
 
 public class MMTurretRunner extends RobotComponentBase {
-	private CANJaguar turret;
+	private Victor turret;
 	
 	public void robotInit() {
 		
 		//this should make a new jaguar in percent mode
-		try {
-			turret = new CANJaguar(MMPortRef.TURRET, 
-					CANJaguar.ControlMode.kPercentVbus);
-		} catch (CANTimeoutException e) {
-			e.printStackTrace();
-		}
+			turret = new Victor(MMPortRef.SIDECAR_PORT, MMPortRef.TURRET);
 		
 	}
 	
 	public void teleopPeriodic() {
 		
 		//This should set the speed of the motor controlled by the jaguar
-		try {
-			turret.setX(MMTurretData.getTurnSpeed());
-		} catch (CANTimeoutException e) {
-			e.printStackTrace();
-		}
+			turret.set(MMTurretData.getInstance().getTurnSpeed());
+			System.out.println("turret is moving" + MMTurretData.getInstance().getTurnSpeed());
+			//System.out.println(MMTurretData.getTurnSpeed());
 	}
 }

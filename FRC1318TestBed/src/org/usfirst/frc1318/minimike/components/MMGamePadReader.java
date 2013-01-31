@@ -9,6 +9,7 @@ import org.usfirst.frc1318.minimike.shared.constants.MMButtonRef;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
 import org.usfirst.frc1318.testbed.shared.TBSolenoidData;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Solenoid;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
@@ -31,6 +32,8 @@ public class MMGamePadReader extends RobotComponentBase{
 		//update right button
 		if(gamepad.getRawButton(MMButtonRef.ROTATE_RIGHT)){
 			MMGamePadData.getInstance().setRightButton(true);
+			System.out.println("Right Button");
+
 		}else{
 			MMGamePadData.getInstance().setRightButton(false);
 		}
@@ -38,6 +41,7 @@ public class MMGamePadReader extends RobotComponentBase{
 		//update left button
 		if(gamepad.getRawButton(MMButtonRef.ROTATE_LEFT)){
 			MMGamePadData.getInstance().setLeftButton(true);
+			System.out.println("Left Button");
 		}else{
 			MMGamePadData.getInstance().setLeftButton(false);
 		}

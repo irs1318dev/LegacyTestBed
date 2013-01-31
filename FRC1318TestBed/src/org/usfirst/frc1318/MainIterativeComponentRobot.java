@@ -13,7 +13,7 @@ import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return MiniMikeNetworkTableTest();
+		return MiniMikeVector2();
 	}
 
 	protected static BotVector helloBot() {

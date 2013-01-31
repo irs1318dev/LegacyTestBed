@@ -1,7 +1,9 @@
 package org.usfirst.frc1318.minimike.shared;
 
 public class MMGamePadData {
-	static Object lock_left, lock_right, lock_autonomous;
+	static Object lock_left = new Object();
+	static Object lock_right = new Object();
+	static Object lock_autonomous = new Object();
 	
 	private static MMGamePadData instance;
 	
