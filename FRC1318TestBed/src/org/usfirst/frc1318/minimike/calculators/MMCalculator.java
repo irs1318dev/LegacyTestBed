@@ -9,11 +9,8 @@ import org.usfirst.frc1318.utils.DriverStationPrint;
 public class MMCalculator extends RobotComponentBase {
 	
 	DriverStationPrint driverStationPrint;
-	boolean useGamePad;
-	long timmer = 0;
-	long distanceTime = timmer / 2;
-	long movementTimmer = 0;
-	int lastSwitchHit = 0; // left = 1; right = 2; none = 0
+	
+	public static final double SPEED = 1;
 	
 	public MMCalculator(){
 	}
@@ -23,37 +20,31 @@ public class MMCalculator extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		
+		if(MMGamePadData.getInstance().getRightButton() && canMoveRight()){
+			MMTurretData.setTurnSpeed(SPEED);
+		}else if(MMGamePadData.getInstance().getLeftButton() && canMoveLeft()){
+			MMTurretData.setTurnSpeed(-SPEED);
+		}else{
+			MMTurretData.setTurnSpeed(0);
+		}
 	}
 	
-	public void setUseGamePad(boolean newValue){
-		this.useGamePad = newValue;
-	}
-	
-	public boolean getUseGamePad(){
-		return useGamePad;
-	}
-	
-	public boolean canMove(){
-		if(MMGamePadData.getLeftButton()&& MMGamePadData.getRightButton()){
-			return false;
-		}else if(!MMGamePadData.getLeftButton() && !MMGamePadData.getRightButton()){
-			return false;
-		}else if(MMLimitSwitchData.getData() == MMLimitSwitchData.ERROR){
+	public static boolean canMove(){
+		if(MMLimitSwitchData.getInstance().getLeftState() && MMLimitSwitchData.getInstance().getRightState()){
 			return false;
 		}
 		return true;
 	}
 	
-	public boolean canMoveRight(){
-		if(MMLimitSwitchData.getData() == MMLimitSwitchData.HIT_RIGHT && this.canMove()){
+	public static boolean canMoveRight(){
+		if(MMLimitSwitchData.getInstance().getRightState() && canMove()){
 			return false;
 		}
 		return true;
 	}
 	
-	public boolean canMoveLeft(){
-		if(MMLimitSwitchData.getData() == MMLimitSwitchData.HIT_LEFT && this.canMove()){
+	public static boolean canMoveLeft(){
+		if(MMLimitSwitchData.getInstance().getLeftState() && canMove()){
 			return false;
 		}
 		return true;

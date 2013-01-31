@@ -2,18 +2,46 @@ package org.usfirst.frc1318.minimike.shared;
 
 public class MMLimitSwitchData {
 	
-	public static final int HIT_LEFT = 0;
-	public static final int HIT_RIGHT = 1;
-	public static final int NOT_HIT = 2;
-	public static final int ERROR = 3;//both sensors hit
+	static Object lock_right, lock_left;
 	
-	static int state = NOT_HIT;
+	public static MMLimitSwitchData instance;
 	
-	public static int getData(){
-		return state;
+	private static boolean rightSwitch = false;
+	private static boolean leftSwitch = false;
+	
+	private MMLimitSwitchData(){
+		
 	}
 	
-	public static void setData(int newState){
-		state = newState;
+	public static MMLimitSwitchData getInstance(){
+		if(instance == null){
+			instance = new MMLimitSwitchData();
+		}
+		return instance;
 	}
+	
+	public boolean getRightState(){
+		synchronized(lock_right){
+			return rightSwitch;
+		}
+	}
+	
+	public void setRightState(boolean state){
+		synchronized(lock_right){
+			rightSwitch = state;
+		}
+	}
+	
+	public boolean getLeftState(){
+		synchronized(lock_left){
+			return leftSwitch;
+		}
+	}
+	
+	public void setLeftState(boolean state){
+		synchronized(lock_left){
+			leftSwitch = state;
+		}
+	}
+	
 }
