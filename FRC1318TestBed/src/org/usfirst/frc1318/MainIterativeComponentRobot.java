@@ -1,5 +1,9 @@
 package org.usfirst.frc1318;
 
+import org.usfirst.frc1318.minimike.calculators.MMCalculator;
+import org.usfirst.frc1318.minimike.components.MMGamePadReader;
+import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
+import org.usfirst.frc1318.minimike.components.MMTurretRunner;
 import org.usfirst.frc1318.testbed.calculators.TBKickerCalculator;
 import org.usfirst.frc1318.testbed.components.TBGamePadReader;
 import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
@@ -46,6 +50,15 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector MiniMikeNetworkTableTest() {
 		BotVector botVector = new BotVector();
 		botVector.add(new org.usfirst.frc1318.minimike.networktable.NetworkTableTest());
+		return botVector;
+	}
+	
+	protected static BotVector MiniMikeVector2(){
+		BotVector botVector = new BotVector();
+		botVector.add(new MMGamePadReader());
+		botVector.add(new MMCalculator());
+		botVector.add(new MMLimitSwitchReader());
+		botVector.add(new MMTurretRunner());
 		return botVector;
 	}
 }

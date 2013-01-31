@@ -1,11 +1,12 @@
 package org.usfirst.frc1318.minimike.components;
 
+import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.minimike.shared.MMLimitSwitchData;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
-public class MMLimitSwitchReader {
+public class MMLimitSwitchReader extends RobotComponentBase{
 	
 	final int RIGHT_PORT = MMPortRef.RIGHT_LIMIT_SWITCH;
 	final int LEFT_PORT = MMPortRef.LEFT_LIMIT_SWITCH;
