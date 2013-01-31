@@ -7,6 +7,10 @@ import org.usfirst.frc1318.minimike.shared.MMGamePadData;
 import org.usfirst.frc1318.minimike.shared.MMSensors;
 import org.usfirst.frc1318.minimike.shared.constants.MMButtonRef;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
+import org.usfirst.frc1318.testbed.shared.TBSolenoidData;
+
+import edu.wpi.first.wpilibj.Solenoid;
+import org.usfirst.frc1318.components.RobotComponentBase;
 
 public class MMGamePadReader extends RobotComponentBase{
 	private GamePad gamepad;
