@@ -53,7 +53,8 @@ public class PID implements FeedbackController
 	/**
 	 * This constructor initializes the object and sets constants to affect gain
 	 */
-	public PID(int memorySize, double ki, double kd, double kp, double kf)
+	public PID(int memorySize, double ki, double kd, double kp, double kf, 
+					double outputHigh, double outputLow)
 	{
 		this.memSize = memorySize;
 		this.ki = ki;
