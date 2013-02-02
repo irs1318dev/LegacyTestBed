@@ -1,11 +1,12 @@
 package org.usfirst.frc1318.minimike.components;
 
+import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.minimike.shared.MMLimitSwitchData;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
-public class MMLimitSwitchReader {
+public class MMLimitSwitchReader extends RobotComponentBase{
 	
 	final int RIGHT_PORT = MMPortRef.RIGHT_LIMIT_SWITCH;
 	final int LEFT_PORT = MMPortRef.LEFT_LIMIT_SWITCH;
@@ -19,20 +20,7 @@ public class MMLimitSwitchReader {
 	}
 	
 	public void teleopPeriodic(){
-		boolean right = rightSwitch.get();
-		boolean left = leftSwitch.get();
-		int state = 3;
-		
-		if(right && left){
-			state = MMLimitSwitchData.ERROR;
-		}else if(right && !left){
-			state = MMLimitSwitchData.HIT_RIGHT;
-		}else if(!right && left){
-			state = MMLimitSwitchData.HIT_LEFT;
-		}else{
-			state = MMLimitSwitchData.NOT_HIT;
-		}
-		
-		MMLimitSwitchData.setData(state);
+		MMLimitSwitchData.getInstance().setRightState(rightSwitch.get());
+		MMLimitSwitchData.getInstance().setLeftState(leftSwitch.get());
 	}
 }

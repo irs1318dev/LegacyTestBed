@@ -1,36 +1,60 @@
 package org.usfirst.frc1318.minimike.shared;
 
 public class MMGamePadData {
-	static Object lock_left, lock_right;
+	static Object lock_left = new Object();
+	static Object lock_right = new Object();
+	static Object lock_autonomous = new Object();
+	
+	private static MMGamePadData instance;
 	
 	static boolean leftButton = false;
 	static boolean rightButton = false;
+	static boolean autonomousButton = false;
 	
-	public static boolean getLeftButton(){
-		synchronized(lock_left)
-		{
+	private MMGamePadData(){
+		
+	}
+	
+	public static MMGamePadData getInstance(){
+		if(instance == null){
+			instance = new MMGamePadData();
+		}
+		return instance;
+	}
+	
+	public boolean getLeftButton(){
+		synchronized(lock_left){
 			return leftButton;
 		}
 	}
 	
-	public static void setLeftButton(boolean newValue){
-		synchronized(lock_left)
-		{
+	public void setLeftButton(boolean newValue){
+		synchronized(lock_left){
 			leftButton = newValue;
 		}
 	}
 	
-	public static boolean getRightButton(){
-		synchronized(lock_right)
-		{
+	public boolean getRightButton(){
+		synchronized(lock_right){
 			return rightButton;
 		}
 	}
 	
-	public static void setRightButton(boolean newValue){
-		synchronized(lock_right)
-		{
+	public void setRightButton(boolean newValue){
+		synchronized(lock_right){
 			rightButton = newValue;
+		}
+	}
+	
+	public boolean getAutonomousButton(){
+		synchronized(lock_autonomous){
+			return autonomousButton;
+		}
+	}
+	
+	public void setAutonomousButton(boolean newValue){
+		synchronized(lock_autonomous){
+			autonomousButton = newValue;
 		}
 	}
 }
