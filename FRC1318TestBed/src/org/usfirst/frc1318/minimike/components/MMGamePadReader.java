@@ -32,7 +32,7 @@ public class MMGamePadReader extends RobotComponentBase{
 		//update right button
 		if(gamepad.getRawButton(MMButtonRef.ROTATE_RIGHT)){
 			MMGamePadData.getInstance().setRightButton(true);
-			System.out.println("Right Button");
+			//System.out.println("Right Button");
 
 		}else{
 			MMGamePadData.getInstance().setRightButton(false);
@@ -41,7 +41,7 @@ public class MMGamePadReader extends RobotComponentBase{
 		//update left button
 		if(gamepad.getRawButton(MMButtonRef.ROTATE_LEFT)){
 			MMGamePadData.getInstance().setLeftButton(true);
-			System.out.println("Left Button");
+			//System.out.println("Left Button");
 		}else{
 			MMGamePadData.getInstance().setLeftButton(false);
 		}

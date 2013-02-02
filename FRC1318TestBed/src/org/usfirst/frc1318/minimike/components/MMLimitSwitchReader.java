@@ -15,11 +15,12 @@ public class MMLimitSwitchReader extends RobotComponentBase{
 	DigitalInput leftSwitch = null;
 	
 	public void robotInit(){
-		rightSwitch = new DigitalInput(RIGHT_PORT);
-		leftSwitch = new DigitalInput(LEFT_PORT);
+		rightSwitch = new DigitalInput(MMPortRef.SIDECAR_PORT, RIGHT_PORT);
+		leftSwitch = new DigitalInput(MMPortRef.SIDECAR_PORT, LEFT_PORT);
 	}
 	
 	public void teleopPeriodic(){
+		System.out.println("RightSwitch: " + rightSwitch.get()+ ", LeftSwitch: " + leftSwitch.get());
 		MMLimitSwitchData.getInstance().setRightState(rightSwitch.get());
 		MMLimitSwitchData.getInstance().setLeftState(leftSwitch.get());
 	}

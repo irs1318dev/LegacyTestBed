@@ -56,8 +56,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector MiniMikeVector2(){
 		BotVector botVector = new BotVector();
 		botVector.add(new MMGamePadReader());
-		botVector.add(new MMCalculator());
 		botVector.add(new MMLimitSwitchReader());
+		botVector.add(new MMCalculator());
 		botVector.add(new MMTurretRunner());
 		return botVector;
 	}

@@ -28,8 +28,10 @@ public class MMLimitSwitchData {
 	}
 	
 	public void setRightState(boolean state){
+		//System.out.println("in right switch");
 		synchronized(lock_right){
 			rightSwitch = state;
+			//System.out.println("right limit switch " + state + " hi");
 		}
 	}
 	
@@ -40,8 +42,10 @@ public class MMLimitSwitchData {
 	}
 	
 	public void setLeftState(boolean state){
+		//System.out.println("in left switch");
 		synchronized(lock_left){
 			leftSwitch = state;
+			//System.out.println("left limit switch " + state);
 		}
 	}
 	

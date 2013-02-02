@@ -20,35 +20,39 @@ public class MMCalculator extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		if(MMGamePadData.getInstance().getRightButton() //&& canMoveRight()
-				){
-			System.out.println("moving right");
+//		System.out.println(
+//				"RightButton: " + MMGamePadData.getInstance().getRightButton()
+//				+ ", LeftButton: " + MMGamePadData.getInstance().getLeftButton()
+//				+  ", CanMoveRight: "+ canMoveRight() 
+//				+ ", CanMoveLeft: "+ canMoveLeft());
+		
+		if (MMGamePadData.getInstance().getRightButton() && canMoveLeft()){
+			//System.out.println("moving right");
 			MMTurretData.getInstance().setTurnSpeed(SPEED);
-		}else if(MMGamePadData.getInstance().getLeftButton()// && canMoveLeft()
-				){
-			System.out.println("moving left");
+		} else if (MMGamePadData.getInstance().getLeftButton() && canMoveRight()){
+			//System.out.println("moving left");
 			MMTurretData.getInstance().setTurnSpeed(-SPEED);
-		}else{
+		} else {
 			MMTurretData.getInstance().setTurnSpeed(0);
 		}
 	}
 	
-	private boolean canMove(){
-		if(MMLimitSwitchData.getInstance().getLeftState() && MMLimitSwitchData.getInstance().getRightState()){
-			return false;
-		}
-		return true;
-	}
+//	private boolean canMove(){
+//		if(MMLimitSwitchData.getInstance().getLeftState() && MMLimitSwitchData.getInstance().getRightState()){
+//			return false;
+//		}
+//		return true;
+//	}
 	
 	private boolean canMoveRight(){
-		if(MMLimitSwitchData.getInstance().getRightState() && canMove()){
+		if(MMLimitSwitchData.getInstance().getRightState()){
 			return false;
 		}
 		return true;
 	}
 	
 	private boolean canMoveLeft(){
-		if(MMLimitSwitchData.getInstance().getLeftState() && canMove()){
+		if(MMLimitSwitchData.getInstance().getLeftState()){
 			return false;
 		}
 		return true;

@@ -11,7 +11,7 @@ public class MMTurretRunner extends RobotComponentBase {
 	
 	public void robotInit() {
 		
-		//this should make a new jaguar in percent mode
+		//this should make a new Victor in percent mode
 			turret = new Victor(MMPortRef.SIDECAR_PORT, MMPortRef.TURRET);
 		
 	}
@@ -20,7 +20,7 @@ public class MMTurretRunner extends RobotComponentBase {
 		
 		//This should set the speed of the motor controlled by the jaguar
 			turret.set(MMTurretData.getInstance().getTurnSpeed());
-			System.out.println("turret is moving" + MMTurretData.getInstance().getTurnSpeed());
+			//System.out.println("turret is moving" + MMTurretData.getInstance().getTurnSpeed());
 			//System.out.println(MMTurretData.getTurnSpeed());
 	}
 }
