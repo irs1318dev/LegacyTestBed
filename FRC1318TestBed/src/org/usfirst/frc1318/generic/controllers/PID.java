@@ -18,6 +18,12 @@ import edu.wpi.first.wpilibj.Timer;
  *	 	http://en.wikipedia.org/wiki/PID_controller
  * 		http://en.wikipedia.org/wiki/Feed_forward_(control)
  * 
+ * 
+ * 
+ * TODO
+ * 		More efficient integral algorithm
+ * 		Update constructor
+ * 
  * @author Graham
  */
 public class PID implements FeedbackController
@@ -52,6 +58,8 @@ public class PID implements FeedbackController
 	
 	/**
 	 * This constructor initializes the object and sets constants to affect gain
+	 * 
+	 * Get rid of memmorySize
 	 */
 	public PID(int memorySize, double ki, double kd, double kp, double kf, 
 					double outputHigh, double outputLow)

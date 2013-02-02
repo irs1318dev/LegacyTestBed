@@ -20,7 +20,8 @@ public class PIDtest {
 	{
 		//mockTimer = new Timer();
 		
-		controller = new PID(200, 1,1,1,1);
+		//TODO update this line to match PID constructor
+		controller = new PID(200, 1,1,1,1,-1,1);
 		
 		//controller.setTimer(mockTimer);
 	}
