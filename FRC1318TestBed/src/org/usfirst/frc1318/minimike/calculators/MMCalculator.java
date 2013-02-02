@@ -1,9 +1,7 @@
 package org.usfirst.frc1318.minimike.calculators;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.minimike.shared.MMGamePadData;
-import org.usfirst.frc1318.minimike.shared.MMLimitSwitchData;
-import org.usfirst.frc1318.minimike.shared.MMTurretData;
+import org.usfirst.frc1318.minimike.shared.MMReferenceData;
 import org.usfirst.frc1318.utils.DriverStationPrint;
 
 public class MMCalculator extends RobotComponentBase {
@@ -26,14 +24,14 @@ public class MMCalculator extends RobotComponentBase {
 //				+  ", CanMoveRight: "+ canMoveRight() 
 //				+ ", CanMoveLeft: "+ canMoveLeft());
 		
-		if (MMGamePadData.getInstance().getRightButton() && canMoveLeft()){
+		if (MMReferenceData.getInstance().getMMGamePadData().getRightButton() && canMoveLeft()){
 			//System.out.println("moving right");
-			MMTurretData.getInstance().setTurnSpeed(SPEED);
-		} else if (MMGamePadData.getInstance().getLeftButton() && canMoveRight()){
+			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(SPEED);
+		} else if (MMReferenceData.getInstance().getMMGamePadData().getLeftButton() && canMoveRight()){
 			//System.out.println("moving left");
-			MMTurretData.getInstance().setTurnSpeed(-SPEED);
+			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(-SPEED);
 		} else {
-			MMTurretData.getInstance().setTurnSpeed(0);
+			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(0);
 		}
 	}
 	
@@ -45,14 +43,14 @@ public class MMCalculator extends RobotComponentBase {
 //	}
 	
 	private boolean canMoveRight(){
-		if(MMLimitSwitchData.getInstance().getRightState()){
+		if(MMReferenceData.getInstance().getMMLimitSwitchData().getRightState()){
 			return false;
 		}
 		return true;
 	}
 	
 	private boolean canMoveLeft(){
-		if(MMLimitSwitchData.getInstance().getLeftState()){
+		if(MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState()){
 			return false;
 		}
 		return true;

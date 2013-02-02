@@ -5,19 +5,6 @@ public class MMTurretData {
 	
 	//speed must have a value between 1 and -1
 	
-	public static MMTurretData instance;
-	
-	private MMTurretData(){
-		
-	}
-	
-	public static MMTurretData getInstance(){
-		if(instance == null){
-			instance = new MMTurretData();
-		}
-		return instance;
-	}
-	
 	public void setTurnSpeed(double speed){
 		turnSpeed = speed;
 	}

@@ -6,22 +6,10 @@ import org.usfirst.frc1318.generic.reference.PS2Controller;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class MMSensors {
-
-	private MMSensors(){
-	} //ensure singelton
 	
-	private static MMSensors self;
 	private GamePad gamePad;
 	private DigitalInput leftLimitSwitch;
 	private DigitalInput rightLimitSwitch;
-	
-	public static MMSensors getInstance(){
-		if(self == null)
-		{
-			self = new MMSensors();
-		}
-		return self;
-	}
 	
 	//set gamepad
 	public void setGamePad(GamePad gamePad)

@@ -4,23 +4,10 @@ public class MMLimitSwitchData {
 	
 	static Object lock_right = new Object();
 	static Object lock_left = new Object();
-	
-	public static MMLimitSwitchData instance;
-	
+		
 	private static boolean rightSwitch = false;
 	private static boolean leftSwitch = false;
-	
-	private MMLimitSwitchData(){
-		
-	}
-	
-	public static MMLimitSwitchData getInstance(){
-		if(instance == null){
-			instance = new MMLimitSwitchData();
-		}
-		return instance;
-	}
-	
+
 	public boolean getRightState(){
 		synchronized(lock_right){
 			return rightSwitch;
