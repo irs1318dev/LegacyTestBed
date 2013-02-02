@@ -7,5 +7,6 @@
 	<classpathentry kind="var" path="TESTBED/libs/networktables-crio.jar"/>
 	<classpathentry kind="var" path="TESTBED/libs/squawk.jar"/>
 	<classpathentry kind="var" path="TESTBED/libs/wpilibj.jar"/>
+	<classpathentry kind="var" path="TESTBEDTEST/lib/mockito-all-1.9.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

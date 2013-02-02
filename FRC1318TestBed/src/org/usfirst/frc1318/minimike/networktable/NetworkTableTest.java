@@ -9,28 +9,27 @@ public class NetworkTableTest extends RobotComponentBase
 {
 	int time;
 	int val;
+	int val2;
 	
 	public void robotInit()
 	{
-		
+		NetworkTable.setTeam(1318);
 	}
 	
 	public void teleopPeriodic()
 	{
 		if(time++ % 50 == 0)
 		{
-			synchronized(NetworkTable.getTable("test"))
+			synchronized(NetworkTable.getTable("tst"))
 			{
-				NetworkTable.getTable("test").putInt("+", val++);
-				System.out.println("the value of \"plus\" is: " + val);
-				try
-				{
-					System.out.println("the value of \"minus\" is: " + NetworkTable.getTable("test").getInt("-"));
-				}
-				catch (NetworkTableKeyNotDefined e)
-				{
-					e.printStackTrace();
-				}
+				NetworkTable.getTable("test").putString("+", String.valueOf(val++));
+			}
+		}
+		if(time % 2000 == 0)
+		{
+			synchronized(NetworkTable.getTable("tst"))
+			{
+				NetworkTable.getTable("test").putString("-", String.valueOf(val2--));
 			}
 		}
 	}

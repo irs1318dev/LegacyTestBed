@@ -18,58 +18,77 @@ import edu.wpi.first.wpilibj.Timer;
  *	 	http://en.wikipedia.org/wiki/PID_controller
  * 		http://en.wikipedia.org/wiki/Feed_forward_(control)
  * 
+ * 
+ * 
+ * TODO
+ * 		More efficient integral algorithm
+ * 
  * @author Graham
  */
 public class PID implements FeedbackController
 {
-	//proportionality constants
+	//constants
 	double ki = 1;	//for integral
 	double kd = 1;	//for d/dx
 	double kp = 1;	//for p
 	double kf = 1;	//for something else
+	double kFade = .2;
 	
 	//feedback data
 	double input = 0;
 	double lastInput = 0;
-	int inputIndex = 0;
 	double setpoint = 0;
-	double[] memory;		//store error data in here; access with WriteMemory
-	int memIndex = 0;
-	int memSize;
 	double integral;		//integral of error data in memory
 	double slope = 0;			//approximate slope of input.. units in / seconds
 	double dt = 0;
 	double prevTime;
+	double error = 0;
 	double curTime = 0;
 	
 	//outputData
-	double maxOutput =  1;
-	double minOutput = -1;
+	double maxOutput =  10000000;
+	double minOutput = -10000000;
 	
 	//other vars
 	Timer timer;
+	double timeStep = .001;
 
-	
+////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * This constructor initializes the object and sets constants to affect gain
+	 * 
+	 * Get rid of memmorySize
 	 */
-	public PID(int memorySize, double ki, double kd, double kp, double kf)
+	public PID(double ki, double kd, double kp, double kf)
 	{
-		this.memSize = memorySize;
 		this.ki = ki;
 		this.kd = kd;
 		this.kp = kp;
 		this.kf = kf;
 		
-		//timer = new Timer();  TODO uncomment for deploy
+		timer = new Timer();
+		timer.start();
+		prevTime = timer.get();
 		
-		//initialize memory
-		memory = new double[memSize];
-		for(int i = 0; i < memSize; i++)
-		{
-			memory[i] = 0;
-		}
+		//TODO initialization stuff for integral?
 	}
+	
+	//second for no feed-forward
+	
+	public PID(double ki, double kd, double kp)
+	{
+		this.ki = ki;
+		this.kd = kd;
+		this.kp = kp;
+		
+		timer = new Timer();
+		timer.start();
+		prevTime = timer.get();
+		
+		//TODO initialization stuff for integral?
+	}
+
+////////////////////////////////////////////////////////////////////////////////
 	
 	public void input(double input)
 	{
@@ -79,51 +98,52 @@ public class PID implements FeedbackController
 		this.update();
 	}
 	
-	public double output()
+	
+////////////////////////////////////////////////////////////////////////////////
+	
+	public void inputForward(double value)
 	{
-		//TODO calculate output
-		return 0;
+		//TODO implement feed-forward control
 	}
+	
+////////////////////////////////////////////////////////////////////////////////
+	
+	public double getOutput()
+	{
+		double output = kp * error + ki * integral + kd * input + kf * setpoint;
+		output = clamp(output);
+		
+		return output;
+	}
+	
 	
 //Private methods
-	
-	/*
-	 * This array keeps track of previous velocities in an array that is written
-	 * to in a circular manner to ensure that it fades
-	 * 
-	 * @param value will be written to the array
-	 */
-	private void WriteMemmory(double value)
-	{
-		memory[memIndex] = value;
-		memIndex = ++memIndex % memSize;
-	}
-	
+////////////////////////////////////////////////////////////////////////////////
 	
 	//this updates essential values
 	private void update()
 	{
 		//update dt
-		//curTime = timer.get(); 			TODO Uncomment this for deployment
+		curTime = timer.get(); 	
 		dt = curTime - this.prevTime;
 		
 		//To prevent division by zero, output updates at a max of 1kHz
-		if(dt > .001)
+		if(dt > timeStep)
 		{
 			this.prevTime = curTime;
 			
-			//Update memory with current error
-			this.WriteMemmory((input - setpoint) * dt);
-			
 			
 			//update calculated values
+			updateError();
 			updateIntegral();
 			updateSlope();
 			
 		}
 	}
 	
-	//this ensures that value is within bounds, and if it isn't returns bound
+////////////////////////////////////////////////////////////////////////////////
+	
+	//this ensures that value is within bounds, and if it isn't return bound
 	private double clamp(double value, double low, double high)
 	{
 		if(value > high)
@@ -133,19 +153,39 @@ public class PID implements FeedbackController
 		else return value;
 	}
 	
+////////////////////////////////////////////////////////////////////////////////
+	
+	private double clamp(double value)
+	{
+		if(value > maxOutput)
+			return maxOutput;
+		else if(value < minOutput)
+			return minOutput;
+		else return value;
+		
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+
+	private void updateError()
+	{
+		error = input - setpoint;
+	}
+	
+////////////////////////////////////////////////////////////////////////////////
 	//This method updates the integral value
 	private void updateIntegral()
 	{
-		//update Integral value
-		double tempIntegral = 0;
-		for(int i = 0; i < memSize; i++)
-		{
-			tempIntegral += memory[i];
-		}
+		double temp = integral;
 		
-		//TODO: these values were copied from old pid class
-		integral = clamp(tempIntegral, -2000, 2000);
+		//TODO This is a pseudo algorithm and should be changed to something 
+		//that might actually work
+		temp *= kFade * (error);
+		
+		integral = clamp(temp, -2000, 2000);
 	}
+	
+////////////////////////////////////////////////////////////////////////////////
 	
 	//this method uses input and dt to find the rate of change of 
 	private void updateSlope()
@@ -153,30 +193,61 @@ public class PID implements FeedbackController
 		slope = (input - lastInput) / (dt);
 	}
 	
-//getters and setters
+////////////////////////////////////////////////////////////////////////////////
+//getters and setters///////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+
+////////////////////////////////////////////////////////////////////////////////
+	//for not feed forward
+	public void setConstants(double kp, double ki, double kd)
+	{
+		this.kp = kp;
+		this.ki = ki;
+		this.kd = kd;
+	}
 	
+////////////////////////////////////////////////////////////////////////////////
+	//for feed forward
+	public void setConstants(double kp, double ki, double kd, double kf)
+	{
+		this.kp = kp;
+		this.ki = ki;
+		this.kd = kd;
+		this.kf = kf;
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+	public void setKp(double kp){this.kp = kp;}
+	public void setKi(double ki){this.ki = ki;}
+	public void setKd(double kd){this.kd = kd;}
+	public void setKf(double kf){this.kf = kf;}
+	public void setKFade(double kFade){this.kFade = kFade;}
+	
+////////////////////////////////////////////////////////////////////////////////
 	public void setTimer(Timer timer)
 	{
 		this.timer = timer;
 	}
+	
+////////////////////////////////////////////////////////////////////////////////
 	
 	public void setSetpoint(double setpoint)
 	{
 		this.setpoint = setpoint;
 	}
 	
+////////////////////////////////////////////////////////////////////////////////
+	
 	public double getIntegral()
 	{
 		return integral;
 	}
+	
+////////////////////////////////////////////////////////////////////////////////
 	
 	public double getSlope()
 	{
 		return slope;
 	}
 	
-	public void setTime(double time)
-	{
-		curTime = time;
-	}
 }
