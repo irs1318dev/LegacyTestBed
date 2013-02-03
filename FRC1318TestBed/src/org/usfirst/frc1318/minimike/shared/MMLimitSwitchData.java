@@ -2,8 +2,8 @@ package org.usfirst.frc1318.minimike.shared;
 
 public class MMLimitSwitchData {
 		
-	private static boolean rightSwitch = false;
-	private static boolean leftSwitch = false;
+	private  boolean rightSwitch = false;
+	private  boolean leftSwitch = false;
 
 	public boolean getRightState(){
 		return rightSwitch;
