@@ -1,8 +1,10 @@
 package org.usfirst.frc1318;
 
+import org.usfirst.frc1318.autonomous.AutoTurretRunner;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
+import org.usfirst.frc1318.minimike.components.MMNetworkTableRunner;
 import org.usfirst.frc1318.minimike.components.MMTurretRunner;
 import org.usfirst.frc1318.testbed.calculators.TBKickerCalculator;
 import org.usfirst.frc1318.testbed.components.TBGamePadReader;
@@ -58,7 +60,9 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new MMGamePadReader());
 		botVector.add(new MMLimitSwitchReader());
 		botVector.add(new MMCalculator());
+		botVector.add(new AutoTurretRunner());
 		botVector.add(new MMTurretRunner());
+		botVector.add(new MMNetworkTableRunner());
 		return botVector;
 	}
 }

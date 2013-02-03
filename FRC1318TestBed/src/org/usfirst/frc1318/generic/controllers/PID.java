@@ -25,25 +25,26 @@ import edu.wpi.first.wpilibj.Timer;
  * 
  * @author Graham
  */
-public class PID implements FeedbackController
+public class PID
 {
 	//constants
-	double ki = 1;	//for integral
-	double kd = 1;	//for d/dx
-	double kp = 1;	//for p
-	double kf = 1;	//for something else
-	double kFade = .2;
+	double ki = 0;	//for integral
+	double kd = 0;	//for d/dx
+	double kp = 0;	//for p
+	double kf = 0;	//for something else
+	double kFade = 0;
 	
 	//feedback data
 	double input = 0;
-	double lastInput = 0;
+	double lastError = 0;
 	double setpoint = 0;
 	double integral;		//integral of error data in memory
 	double slope = 0;			//approximate slope of input.. units in / seconds
-	double dt = 0;
+	double dt = .001;
 	double prevTime;
 	double error = 0;
 	double curTime = 0;
+	double output = 0;
 	
 	//outputData
 	double maxOutput =  10000000;
@@ -66,11 +67,13 @@ public class PID implements FeedbackController
 		this.kp = kp;
 		this.kf = kf;
 		
+		/*
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
+		*/
 		
-		//TODO initialization stuff for integral?
+		//TODO uncomment^^^^
 	}
 	
 	//second for no feed-forward
@@ -80,42 +83,50 @@ public class PID implements FeedbackController
 		this.ki = ki;
 		this.kd = kd;
 		this.kp = kp;
-		
+		/*
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
+		*/
 		
-		//TODO initialization stuff for integral?
+		//TODO uncomment^^^^
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
 	
 	public void input(double input)
 	{
-		lastInput = this.input;
 		this.input = input;
 		
-		this.update();
+		//update dt
+		curTime = timer.get(); 	
+		dt = curTime - this.prevTime;
+		
+		//To prevent division by zero, output updates at a max of 1kHz
+		if(dt >= timeStep)
+		{
+			this.update();
+			this.calculateOutput();
+		}
 	}
 	
 	
 ////////////////////////////////////////////////////////////////////////////////
 	
-	public void inputForward(double value)
+	
+////////////////////////////////////////////////////////////////////////////////
+	
+	private void calculateOutput()
 	{
-		//TODO implement feed-forward control
+		output = kp * error + ki * integral + kd * slope + kf * setpoint;
+		output = clamp(output);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
-	
 	public double getOutput()
 	{
-		double output = kp * error + ki * integral + kd * input + kf * setpoint;
-		output = clamp(output);
-		
 		return output;
 	}
-	
 	
 //Private methods
 ////////////////////////////////////////////////////////////////////////////////
@@ -123,22 +134,13 @@ public class PID implements FeedbackController
 	//this updates essential values
 	private void update()
 	{
-		//update dt
-		curTime = timer.get(); 	
-		dt = curTime - this.prevTime;
+		this.prevTime = curTime;
 		
-		//To prevent division by zero, output updates at a max of 1kHz
-		if(dt > timeStep)
-		{
-			this.prevTime = curTime;
-			
-			
-			//update calculated values
-			updateError();
-			updateIntegral();
-			updateSlope();
-			
-		}
+		//update calculated values
+		updateError();
+		updateIntegral();
+		updateSlope();
+		
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -169,6 +171,7 @@ public class PID implements FeedbackController
 
 	private void updateError()
 	{
+		lastError = error;
 		error = input - setpoint;
 	}
 	
@@ -178,11 +181,10 @@ public class PID implements FeedbackController
 	{
 		double temp = integral;
 		
-		//TODO This is a pseudo algorithm and should be changed to something 
-		//that might actually work
+		//TODO This probably doesn't work
 		temp *= kFade * (error);
 		
-		integral = clamp(temp, -2000, 2000);
+		integral = clamp(temp);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -190,7 +192,7 @@ public class PID implements FeedbackController
 	//this method uses input and dt to find the rate of change of 
 	private void updateSlope()
 	{
-		slope = (input - lastInput) / (dt);
+		slope = (error - lastError) / (dt);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -222,6 +224,10 @@ public class PID implements FeedbackController
 	public void setKd(double kd){this.kd = kd;}
 	public void setKf(double kf){this.kf = kf;}
 	public void setKFade(double kFade){this.kFade = kFade;}
+	public void setMaxOutput(double value){this.maxOutput = value;}
+	public void setMinOutput(double value){this.minOutput = value;}
+	public void setOutputBounds(double min, double max)
+	{ this.minOutput = min; this.maxOutput = max;}
 	
 ////////////////////////////////////////////////////////////////////////////////
 	public void setTimer(Timer timer)
