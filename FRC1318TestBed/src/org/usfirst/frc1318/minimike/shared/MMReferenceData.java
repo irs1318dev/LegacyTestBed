@@ -6,7 +6,6 @@ public class MMReferenceData {
 	private MMLimitSwitchData limitSwitchData;
 	private MMGamePadData gamePadData;
 	private MMTurretData turretData;
-	private MMSensors sensors;
 	
 	private MMReferenceData(){
 	}
@@ -47,15 +46,4 @@ public class MMReferenceData {
 	public void setMMTuretData(MMTurretData newData){
 		turretData = newData;
 	}
-	
-	public MMSensors getMMSensors(){
-		if(sensors == null){
-			sensors = new MMSensors();
-		}
-		return sensors;
-	}
-	public void setMMSensors(MMSensors newData){
-		sensors = newData;
-	}
-
 }
