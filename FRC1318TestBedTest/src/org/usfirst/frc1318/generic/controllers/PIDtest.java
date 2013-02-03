@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.minimike.controllers;
+package org.usfirst.frc1318.generic.controllers;
 
 import static org.junit.Assert.*;
 
@@ -20,37 +20,46 @@ public class PIDtest {
 	{
 		mockTimer = mock(Timer.class);
 		
-		//TODO update this line to match PID constructor
-		test = new PID(1,1,1,1);
+		test = new PID(0, 0, 0);
 		
 		test.setTimer(mockTimer);
+		
+		test.setOutputBounds(-999999999.0, 999999999.0);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void calculatesPTest() {
-		test.setKp(3);
+		test.setConstants(-3, 0,0,0);
 		
-		//might have values switched
-		test.setSetpoint(10);
-		test.input(5);
+		//required to update
+		setTime(mockTimer.get() + .001);
 		
-		assertEquals(15.0, test.getOutput(), 0.001);
-		
-		//might have values switched
 		test.setSetpoint(5);
 		test.input(10);
 		
-		assertEquals(-15.0, test.getOutput(), 0.001);
+		assertEquals(-15.0, test.getOutput(), .001);
+		
+		//required to update
+		setTime(mockTimer.get() + .001);
+		
+		test.setSetpoint(10);
+		test.input(5);
+		
+		assertEquals(15.0, test.getOutput(), .001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void calculatesPTestNaN() {
-		test.setKp(3);
+		test.setConstants(-3, 0,0,0);
+		
+		setTime(mockTimer.get() + .001);
+		
 		test.setSetpoint(10);
 		test.input(10);
+		
 		assertEquals(0, test.getOutput(), 0.001);
 	}
 	
@@ -122,11 +131,17 @@ public class PIDtest {
 
 	@Test
 	public void calculateErrorDecreaseDTest() {
+		setTime(mockTimer.get() + 1);
+		
 		test.setKd(3);
+		
 		test.setSetpoint(10);
 		test.input(2);
-		setTime(1);
+		
+		setTime(mockTimer.get() + 1);
+		
 		test.input(6);
+		
 		assertEquals(12.0, test.getOutput(), 0.001);
 	}
 	
@@ -134,12 +149,31 @@ public class PIDtest {
 
 	@Test
 	public void calculateConstantErrorDelta() {
-		test.setKd(1.0);//other constants are 0
-		//time should be 0. you have to record two points before kd starts to work.
-		assertEquals(0.0, test.getOutput(10.0, 6.0), 0.001);
+		
+		//runs a few times to get values where they should be
+		test.setKd(1.0);
+		
+		test.setSetpoint(10);
+		test.input(6.0);
+		
+		setTime(mockTimer.get() + 1);
+		
+		test.input(6.0);
+		
+		setTime(mockTimer.get() + 1);
+		
+		test.input(6.0);
+
+		assertEquals(0.0, test.getOutput(), 0.001);
+		
+		//updates a few more times with same value;
 		for(int i= 0; i < 20; i++) {
-			incTime();
-			assertEquals("dError = 0, so kd should be zero",0.0, test.getOutput(10.0, 6.0), 0.001);
+			setTime(mockTimer.get() + 1);
+			
+			test.setSetpoint(10.0);
+			test.input(6.0);
+			
+			assertEquals(0.0, test.getOutput(), 0.001);
 		}
 	}
 	
@@ -154,13 +188,19 @@ public class PIDtest {
 			if(firstRun) {
 				//dt = 0, so output should be zero
 				firstRun = false;
-				assertEquals(0.0, test.getOutput(desired, 0.0), 0.0001);
+				
+				test.setSetpoint(desired);
+				test.input(0);
+				
+				assertEquals(0.0, test.getOutput(), 0.0001);
 			}else {
-				assertEquals("kd is a dampening term. Its sign must be opposite\n" +
-						"the derivative of the error, or it " +
-						"will accelerate the error instead of\ndampening it.\n",-0.5, test.getOutput(desired, 0.0), 0.001);
+				
+				test.setSetpoint(desired);
+				test.input(0);
+				
+				assertEquals(-500, test.getOutput(), 0.001);
 			}
-			incTime();
+			setTime(mockTimer.get() + .001);
 		}
 	}
 	
@@ -169,18 +209,22 @@ public class PIDtest {
 	@Test
 	public void decreasingErrorDelta() {
 		test.setKd(1.0);//other constants zero
-		boolean firstRun = true;
+		
+		test.setSetpoint(10.5);
+		
+		test.input(0);
+		incTime();
+		test.input(0);
+		incTime();
+		
 		for(double desired = 10.0; desired > 0.0; desired -= 0.5) {
 			//should increase error at a constant rate of -0.5
-			if(firstRun) {
-				//dt = 0, so output should be zero
-				firstRun = false;
-				assertEquals(0.0, test.getOutput(desired, 0.0), 0.0001);
-			}else {
-				assertEquals("kd is a dampening term. Its sign must be opposite\n" +
-						"the derivative of the error, or it " +
-						"will accelerate the error instead of\ndampening it.\n",0.5, test.getOutput(desired, 0.0), 0.001);
-			}
+			
+			test.setSetpoint(desired);
+			test.input(0);
+				   
+			assertEquals(0.5, test.getOutput(), 0.0001);
+			
 			incTime();
 		}
 	}
@@ -190,7 +234,7 @@ public class PIDtest {
 	}
 
 	private double getTime() {
-		return mockedTimer.get();
+		return mockTimer.get();
 	}
 
 	//Feed-forward loop
@@ -214,15 +258,24 @@ public class PIDtest {
 		test.setKp(3);
 		test.setKi(3);
 		test.setKd(3);
+		
 		test.setSetpoint(10);
 		test.setKFade(0.5);
+		
 		test.input(2);
+		
 		setTime(1);
+		
 		test.input(6);
+		
 		setTime(1.25);
+		
 		test.input(8);
+		
 		setTime(2);
+		
 		test.input(9);
+		
 		assertEquals(-1.53125, test.getOutput(), 0.001);
 	}
 	
@@ -233,7 +286,7 @@ public class PIDtest {
 	@Test
 	public void addsInClamp() {
 		test.setKp(1);
-		test.setClampRatio(0.9); // the clamp ratio is implemented in setSetpoint, so setClamp must go first
+		//test.setClampRatio(0.9); // the clamp ratio is implemented in setSetpoint, so setClamp must go first
 		test.setSetpoint(10);
 		test.input(11);
 		assertEquals(2, test.getOutput(), 0.001);
@@ -244,7 +297,7 @@ public class PIDtest {
 	@Test
 	public void hasUpperBound() {
 		test.setKp(1);
-		test.setClampBounds(8, -999999999); // the clamp's lower and upper bounds act on the end result (output)
+		test.setOutputBounds(-9000, 8); // the clamp's lower and upper bounds act on the end result (output)
 		test.setSetpoint(10);
 		test.input(20);
 		assertEquals(8, test.getOutput(), 0.001);	
@@ -255,9 +308,9 @@ public class PIDtest {
 	@Test
 	public void hasLowerBound() {
 		test.setKp(1);
-		test.setClampBounds(99999999999.0, -5); // the clamp's lower and upper bounds act on the end result (output)
+		test.setOutputBounds(-5, 99999999999.0); // the clamp's lower and upper bounds act on the end result (output)
 		test.setSetpoint(10);
-		test.input(3);
+		test.input(-30);
 		assertEquals(-5, test.getOutput(), 0.001);	
 	}
 	
@@ -266,7 +319,7 @@ public class PIDtest {
 ////////////////////////////////////////////////////////////////////////////////
 	
 	private void setTime(double time) {
-		when(mockedTimer.get()).thenReturn(time);		
+		when(mockTimer.get()).thenReturn(time);		
 	}
 
 }
