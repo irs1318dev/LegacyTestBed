@@ -2,9 +2,9 @@ package org.usfirst.frc1318.minimike.shared;
 
 public class MMGamePadData {
 		
-	static boolean leftButton = false;
-	static boolean rightButton = false;
-	static boolean autonomousButton = false;
+	private boolean leftButton = false;
+	private boolean rightButton = false;
+	private boolean autonomousButton = false;
 	
 	public boolean getLeftButton(){
 		return leftButton;

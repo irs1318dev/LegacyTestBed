@@ -1,8 +1,11 @@
 package org.usfirst.frc1318.minimike.networktable;
 
+import java.io.IOException;
+
 import org.usfirst.frc1318.components.RobotComponentBase;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //Knue
 public class NetworkTableTest extends RobotComponentBase
@@ -13,7 +16,7 @@ public class NetworkTableTest extends RobotComponentBase
 	
 	public void robotInit()
 	{
-		NetworkTable.setTeam(1318);
+		System.out.println("[Network-Table] I am a server: "+ NetworkTable.getTable("tst").isServer());
 	}
 	
 	public void teleopPeriodic()
@@ -22,14 +25,14 @@ public class NetworkTableTest extends RobotComponentBase
 		{
 			synchronized(NetworkTable.getTable("tst"))
 			{
-				NetworkTable.getTable("test").putString("+", String.valueOf(val++));
+				SmartDashboard.putNumber("+", val++);
 			}
 		}
-		if(time % 2000 == 0)
+		if(time % 200 == 0)
 		{
 			synchronized(NetworkTable.getTable("tst"))
 			{
-				NetworkTable.getTable("test").putString("-", String.valueOf(val2--));
+				SmartDashboard.putNumber("-", val2--);
 			}
 		}
 	}
