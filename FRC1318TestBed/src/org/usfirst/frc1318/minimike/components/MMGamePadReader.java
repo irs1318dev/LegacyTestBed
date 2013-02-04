@@ -4,6 +4,7 @@ import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.GamePad;
 import org.usfirst.frc1318.generic.reference.PS2Controller;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
+import org.usfirst.frc1318.minimike.shared.MMSensors;
 import org.usfirst.frc1318.minimike.shared.constants.MMButtonRef;
 import org.usfirst.frc1318.minimike.shared.constants.MMPortRef;
 import org.usfirst.frc1318.testbed.shared.TBSolenoidData;
@@ -15,15 +16,7 @@ public class MMGamePadReader extends RobotComponentBase{
 	private GamePad gamepad;
 	
 	public void robotInit() {
-		MMReferenceData.getInstance().getMMSensors().setGamePad(PS2Controller.create(MMPortRef.GAMEPAD));
-		
-		try {
-			gamepad = MMReferenceData.getInstance().getMMSensors().getGamePad();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
+		gamepad = PS2Controller.create(MMPortRef.GAMEPAD);
 	}
 	
 	public void teleopPeriodic() {

@@ -7,9 +7,20 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class MMSensors {
 	
+	private static MMSensors instance; 
 	private GamePad gamePad;
 	private DigitalInput leftLimitSwitch;
 	private DigitalInput rightLimitSwitch;
+	
+	private MMSensors(){
+	}
+	
+	public static MMSensors getInstance(){
+		if(instance == null){
+			instance = new MMSensors();
+		}
+		return instance;
+	}
 	
 	//set gamepad
 	public void setGamePad(GamePad gamePad)
