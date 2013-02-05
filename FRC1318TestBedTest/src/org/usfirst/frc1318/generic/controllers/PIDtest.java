@@ -66,7 +66,7 @@ public class PIDtest {
 	
 	@Test
 	public void calculateITestFadingMemoryDecreasingError() {
-		test.setKi(4);
+		test.setKi(1);
 		test.setSetpoint(10);
 		test.setKFade(.5); 
 		
@@ -76,23 +76,24 @@ public class PIDtest {
 		incTime();
 		test.input(14);
 		
-		assertEquals(0, test.getOutput(), .001);
+		assertEquals(8, test.getOutput(), .001);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void calculateITestNoFadingMemory() {
-		test.setKi(3);
+		test.setKi(1);
 		test.setSetpoint(10);
 		
 		test.setKFade(1);
 		
-		test.input(13);
 		setTime(1);
-		test.input(15);
+		test.input(13);
 		setTime(2);
+		test.input(15);
+		setTime(3);
 		test.input(8);
-		assertEquals(0, test.getOutput(), 0.001);
+		assertEquals(6, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -101,12 +102,22 @@ public class PIDtest {
 	public void calculateIChangingTimes() {
 		test.setKi(1);
 		test.setSetpoint(10);
-		test.input(12);
-		setTime(0.25);
-		test.input(16);
-		setTime(4.25);
+		
+		double expectedValue = 0 + (12-10)*(1 - 0); 
+		
+		incTime();
+		test.input(12); // 
+		assertEquals(expectedValue, test.getOutput(), 0.001);
+		
+		expectedValue = expectedValue + (16 - 10)*(1.25 - 1);
+		setTime(1.25);
+		test.input(16); // 
+		assertEquals(expectedValue, test.getOutput(), 0.001);
+		
+		expectedValue = expectedValue + (9 - 10)*(5.25 - 1.25);
+		setTime(5.25);
 		test.input(9);
-		assertEquals(11, test.getOutput(), 0.001);
+		assertEquals(expectedValue, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -117,11 +128,11 @@ public class PIDtest {
 		test.setSetpoint(10);
 		test.setKFade(.5);
 		test.input(18);
-		setTime(1);
+		incTime();
 		test.input(18);
-		setTime(2);
+		incTime();
 		test.input(18);
-		setTime(3);
+		incTime();
 		test.input(18);
 		assertEquals(14, test.getOutput(), 0.001);
 	}

@@ -18,11 +18,6 @@ import edu.wpi.first.wpilibj.Timer;
  *	 	http://en.wikipedia.org/wiki/PID_controller
  * 		http://en.wikipedia.org/wiki/Feed_forward_(control)
  * 
- * 
- * 
- * TODO
- * 		More efficient integral algorithm
- * 
  * @author Graham
  */
 public class PID
@@ -77,6 +72,7 @@ public class PID
 		this.kp = kp;
 		this.kf = kf;
 		this.clampMode = clampMode;
+		
 		/*
 		timer = new Timer();
 		timer.start();
@@ -120,10 +116,6 @@ public class PID
 		}
 	}
 	
-	
-////////////////////////////////////////////////////////////////////////////////
-	
-	
 ////////////////////////////////////////////////////////////////////////////////
 	
 	private void calculateOutput()
@@ -155,23 +147,12 @@ public class PID
 	
 ////////////////////////////////////////////////////////////////////////////////
 	
-	//this ensures that value is within bounds, and if it isn't return bound
-	private double clamp(double value, double low, double high)
-	{
-		if(value > high)
-			return high;
-		else if(value < low)
-			return low;
-		else return value;
-	}
-	
-////////////////////////////////////////////////////////////////////////////////
-	
 	private double clamp(double value)
 	{
 		switch(clampMode){
 		
 		case CLAMP_RANGE:
+			
 			if(value > maxOutput)
 				return maxOutput;
 			else if(value < minOutput)
@@ -218,10 +199,8 @@ public class PID
 	//This method updates the integral value
 	private void updateIntegral()
 	{
-		
-		integral *= kFade;
+		integral *= kFade * dt;
 		integral += error * dt;
-		
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
