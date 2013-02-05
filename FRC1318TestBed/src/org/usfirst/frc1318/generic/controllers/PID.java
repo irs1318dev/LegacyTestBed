@@ -27,12 +27,13 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class PID
 {
-	//constants
+	//instance constants
 	double ki = 0;	//for integral
 	double kd = 0;	//for d/dx
 	double kp = 0;	//for p
 	double kf = 0;	//for something else
 	double kFade = 0;
+	int clampMode = -1;
 	
 	//feedback data
 	double input = 0;
@@ -49,10 +50,19 @@ public class PID
 	//outputData
 	double maxOutput =  10000000;
 	double minOutput = -10000000;
+	double clampRatio = 1;
+	double clampMagnitude = 10000000;
 	
 	//other vars
 	Timer timer;
 	double timeStep = .001;
+	
+	//static constants
+	public static final int CLAMP_NONE = -1;
+	public static final int CLAMP_RATIO = 0;
+	public static final int CLAMP_RANGE = 1;
+	public static final int CLAMP_MAGNITUDE = 2;
+	
 
 ////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -66,12 +76,12 @@ public class PID
 		this.kd = kd;
 		this.kp = kp;
 		this.kf = kf;
-		
+		this.clampMode = clampMode;
 		/*
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
-		*/
+//		*/
 		
 		//TODO uncomment^^^^
 	}
@@ -87,7 +97,7 @@ public class PID
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
-		*/
+//		*/
 		
 		//TODO uncomment^^^^
 	}
@@ -159,12 +169,41 @@ public class PID
 	
 	private double clamp(double value)
 	{
-		if(value > maxOutput)
-			return maxOutput;
-		else if(value < minOutput)
-			return minOutput;
-		else return value;
+		switch(clampMode){
 		
+		case CLAMP_RANGE:
+			if(value > maxOutput)
+				return maxOutput;
+			else if(value < minOutput)
+				return minOutput;
+			else return value;
+			
+		case CLAMP_RATIO:
+			
+			double ratmax = setpoint + setpoint*Math.abs(clampRatio);
+			double ratmin = setpoint - setpoint*Math.abs(clampRatio);
+			
+			if(value > ratmax)
+				return ratmax;
+			else if(value < ratmin)
+				return ratmin;
+			else return value;
+			
+		case CLAMP_MAGNITUDE:
+			
+			double magmax = setpoint + Math.abs(clampMagnitude);
+			double magmin = setpoint - Math.abs(clampMagnitude);
+			
+			if(value > magmax)
+				return magmax;
+			else if(value < magmin)
+				return magmin;
+			else 
+				return value;
+			
+		default:
+			return value;
+		}
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -179,12 +218,10 @@ public class PID
 	//This method updates the integral value
 	private void updateIntegral()
 	{
-		double temp = integral;
 		
-		//TODO This probably doesn't work
-		temp *= kFade * (error);
+		integral *= kFade;
+		integral += error * dt;
 		
-		integral = clamp(temp);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -226,8 +263,33 @@ public class PID
 	public void setKFade(double kFade){this.kFade = kFade;}
 	public void setMaxOutput(double value){this.maxOutput = value;}
 	public void setMinOutput(double value){this.minOutput = value;}
-	public void setOutputBounds(double min, double max)
-	{ this.minOutput = min; this.maxOutput = max;}
+	
+////////////////////////////////////////////////////////////////////////////////
+
+	
+	public void setClampRange(double min, double max)
+	{ 
+		this.clampMode = CLAMP_RANGE;
+		this.minOutput = min; 
+		this.maxOutput = max;
+	}
+	
+	public void setClampRatio(double ratio)
+	{
+		this.clampMode = CLAMP_RATIO;
+		this.clampRatio = ratio;
+	}
+	
+	public void setClampMagnitude(double magnitude)
+	{
+		this.clampMode = CLAMP_MAGNITUDE;
+		this.clampMagnitude = magnitude;
+	}
+	
+	public void setClampMode(int clampMode)
+	{
+		this.clampMode = clampMode;
+	}
 	
 ////////////////////////////////////////////////////////////////////////////////
 	public void setTimer(Timer timer)

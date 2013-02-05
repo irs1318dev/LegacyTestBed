@@ -24,7 +24,6 @@ public class PIDtest {
 		
 		test.setTimer(mockTimer);
 		
-		test.setOutputBounds(-999999999.0, 999999999.0);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -72,13 +71,12 @@ public class PIDtest {
 		test.setKFade(.5); 
 		
 		test.input(26);
-		setTime(1);
+		incTime();
 		test.input(18);
-		setTime(2);
+		incTime();
 		test.input(14);
-		setTime(3);
-		test.input(12);
-		assertEquals(18, test.getOutput(), 0.001);
+		
+		assertEquals(0, test.getOutput(), .001);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -86,12 +84,15 @@ public class PIDtest {
 	public void calculateITestNoFadingMemory() {
 		test.setKi(3);
 		test.setSetpoint(10);
+		
+		test.setKFade(1);
+		
 		test.input(13);
 		setTime(1);
 		test.input(15);
 		setTime(2);
 		test.input(8);
-		assertEquals(16.5, test.getOutput(), 0.001);
+		assertEquals(0, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -243,9 +244,14 @@ public class PIDtest {
 
 	@Test
 	public void calculateFTest() {
+		test.setConstants(0, 0, 0);
+		
 		test.setKf(3);
 		test.setSetpoint(10);
+		incTime();
 		test.input(12);
+		incTime();
+		test.input(30);
 		assertEquals(30, test.getOutput(), 0.001);
 	}
 	
@@ -286,20 +292,26 @@ public class PIDtest {
 	@Test
 	public void addsInClamp() {
 		test.setKp(1);
-		//test.setClampRatio(0.9); // the clamp ratio is implemented in setSetpoint, so setClamp must go first
-		test.setSetpoint(10);
-		test.input(11);
-		assertEquals(2, test.getOutput(), 0.001);
+		test.setClampRatio(1); 
+		test.setSetpoint(0);
+		test.input(10);
+		incTime();
+		test.input(10);
+		assertEquals(0, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void hasUpperBound() {
+		
 		test.setKp(1);
-		test.setOutputBounds(-9000, 8); // the clamp's lower and upper bounds act on the end result (output)
+		test.setClampRange(-9000, 8); 
 		test.setSetpoint(10);
-		test.input(20);
+		
+		incTime();
+		
+		test.input(200);
 		assertEquals(8, test.getOutput(), 0.001);	
 	}
 
@@ -307,8 +319,10 @@ public class PIDtest {
 
 	@Test
 	public void hasLowerBound() {
+		incTime();
+		
 		test.setKp(1);
-		test.setOutputBounds(-5, 99999999999.0); // the clamp's lower and upper bounds act on the end result (output)
+		test.setClampRange(-5, 99999999999.0); 
 		test.setSetpoint(10);
 		test.input(-30);
 		assertEquals(-5, test.getOutput(), 0.001);	
