@@ -18,8 +18,6 @@ public class AutoTurretRunner extends RobotComponentBase{
 	
 	private Vector intervals; // the longs that represent the distance between each side hit.
 	private boolean isLeft = false; // is the turret on the left?
-	long init = -1; // the value for the start of the final movement for the turret
-	private long localTimer = 0;
 	
 	public void robotInit() 
 	{
@@ -29,7 +27,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 	}	
 	public void teleopPeriodic() 
 	{
-		System.out.println("tPer auto");
+//		System.out.println("tPer auto");
 		switch(currentState)
 		{
 		case 0:
@@ -44,12 +42,13 @@ public class AutoTurretRunner extends RobotComponentBase{
 		default:
 			break;
 		}
-		localTimer += 1;
 	}
 	
 	private void AutoTurretInit()
 	{// CASE 0 turns left until the left limit switch is hit
-		if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
+		
+		System.out.println("getLeftState = " + MMReferenceData.getInstance().getMMLimitSwitchData().getRightState());
+		if(!MMReferenceData.getInstance().getMMLimitSwitchData().getRightState())
 		{
 			System.out.println("Moving Left - AutoTurretInit");
 			MMReferenceData.getInstance().getMMGamePadData().setLeftButton(true);
@@ -73,12 +72,13 @@ public class AutoTurretRunner extends RobotComponentBase{
 		if(intervals.size() == 0) // starts if the start has not occured yet
 		{
 			intervals.addElement(new Interval());
-			((Interval)intervals.elementAt(intervals.size() - 1)).start(localTimer);
+			((Interval)intervals.elementAt(intervals.size() - 1)).start(System.currentTimeMillis());
 			isComplete = false;
+			System.out.println("Start interval");
 		}
 		if(isLeft) // this actually sends it to the right
 		{System.out.println("Moving Right - AutoTurretCalibrate");
-			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getRightState())
+			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
 			{
 				MMReferenceData.getInstance().getMMGamePadData().setLeftButton(false);
 				MMReferenceData.getInstance().getMMGamePadData().setRightButton(true);
@@ -91,6 +91,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 				{
 					intervals.addElement(new Interval());
 					((Interval)intervals.elementAt(intervals.size() - 1)).start(System.currentTimeMillis());
+					System.out.println("Complete move right");
 					
 				} 
 				isLeft = false;
@@ -100,7 +101,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 		}
 		else // this actually sends it to the left
 		{System.out.println("Moving Left - AutoTurretCalibrate");
-			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
+			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getRightState())
 			{
 				MMReferenceData.getInstance().getMMGamePadData().setLeftButton(true);
 				MMReferenceData.getInstance().getMMGamePadData().setRightButton(false);
@@ -110,11 +111,13 @@ public class AutoTurretRunner extends RobotComponentBase{
 				((Interval)intervals.elementAt(intervals.size()-1)).end(System.currentTimeMillis());
 				if (intervals.size() == samples) {
 				    isComplete = true;
+					System.out.println("Complete");
 				}
 				if(intervals.size() < samples)
 				{
 					intervals.addElement(new Interval());
 					((Interval)intervals.elementAt(intervals.size() - 1)).start(System.currentTimeMillis());
+					System.out.println("Complete move left");
 				}
 				isLeft = true;
 				MMReferenceData.getInstance().getMMGamePadData().setLeftButton(false);
@@ -157,6 +160,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 		{
 			total += ((Interval)intervals.elementAt(i)).getDifference();
 		}
+		System.out.println("Total="+total+", intervals="+intervals.size());
 		return (total / intervals.size());
 	}
 }
