@@ -60,8 +60,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new MMGamePadReader());
 		botVector.add(new MMLimitSwitchReader());
 		botVector.add(new MMCalculator());
+		//botVector.add(new MMTurretRunner());
 		botVector.add(new AutoTurretRunner());
-		botVector.add(new MMTurretRunner());
 		botVector.add(new MMNetworkTableRunner());
 		return botVector;
 	}

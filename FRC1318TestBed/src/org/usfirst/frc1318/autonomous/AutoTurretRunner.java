@@ -24,6 +24,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 	
 	public void robotInit() 
 	{
+		System.out.println("$&%$&%$&%$&%$ Autonomous robotInit");
 		intervals = new Vector();
 		isLeft = false;
 	}	
@@ -55,7 +56,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 		else
 		{
 			isLeft = true;
-			intervals.addElement(Timer.getUsClock()); // perhaps find a way to position at the beginning of calibration for smaller gap?
+			//intervals.addElement(Timer.getUsClock()); // perhaps find a way to position at the beginning of calibration for smaller gap?
 			currentState = 1;
 		}
 	}
