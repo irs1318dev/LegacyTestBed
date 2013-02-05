@@ -24,12 +24,13 @@ public class AutoTurretRunner extends RobotComponentBase{
 	
 	public void robotInit() 
 	{
+		System.out.println("RAN THE INIT FOR AUTOTURRET!");
 		intervals = new Vector();
 		isLeft = false;
 	}	
 	public void teleopPeriodic() 
 	{
-		localTimer++;
+		System.out.println("tPer auto");
 		switch(currentState)
 		{
 		case 0:
@@ -44,18 +45,21 @@ public class AutoTurretRunner extends RobotComponentBase{
 		default:
 			break;
 		}
+		localTimer += 1;
 	}
 	
 	private void AutoTurretInit()
 	{// CASE 0 turns left until the left limit switch is hit
 		if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
 		{
+			System.out.println("Moving Left - AutoTurretInit");
 			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(-MMCalculator.SPEED);
 		}
 		else
 		{
+			System.out.println("HIT LEFT");
 			isLeft = true;
-			intervals.addElement(Timer.getUsClock()); // perhaps find a way to position at the beginning of calibration for smaller gap?
+			//intervals.addElement(Timer.getUsClock()); // perhaps find a way to position at the beginning of calibration for smaller gap?
 			currentState = 1;
 		}
 	}
@@ -67,7 +71,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 			((Interval)intervals.elementAt(intervals.size() - 1)).start(localTimer);
 		}
 		if(isLeft) // this actually sends it to the right
-		{
+		{System.out.println("Moving Right - AutoTurretCalibrate");
 			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getRightState())
 			{
 				MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(MMCalculator.SPEED);
@@ -84,7 +88,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 			}
 		}
 		else // this actually sends it to the left
-		{
+		{System.out.println("Moving Left - AutoTurretCalibrate");
 			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
 			{
 				MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(-MMCalculator.SPEED);
