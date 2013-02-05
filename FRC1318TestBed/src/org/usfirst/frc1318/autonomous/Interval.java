@@ -2,24 +2,24 @@ package org.usfirst.frc1318.autonomous;
 
 public class Interval 
 {
-	protected double start = 0;
-	protected double end = 0;
+	protected long start = 0;
+	protected long end = 0;
 	
 	public Interval() { }
-	public Interval(double start)
+	public Interval(long start)
 	{
 		this.start = start;
 	}
 	
-	public void start(double start)
+	public void start(long start)
 	{
 		this.start = start;
 	}
-	public void end(double end)
+	public void end(long end)
 	{
 		this.end = end;
 	}
-	public double getDifference()
+	public long getDifference()
 	{
 		if(start < end)
 			return end - start;
