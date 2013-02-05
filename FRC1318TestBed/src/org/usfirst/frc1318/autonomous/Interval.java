@@ -24,6 +24,6 @@ public class Interval
 		if(start < end)
 			return end - start;
 		else
-			return (end - start) * -1;
+			throw new IllegalStateException("Start is same as or greater than end. Difference is "+ (end -start));
 	}
 }
