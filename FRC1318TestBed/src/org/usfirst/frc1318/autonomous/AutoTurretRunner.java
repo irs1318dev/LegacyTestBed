@@ -17,8 +17,10 @@ public class AutoTurretRunner extends RobotComponentBase{
 	public static final int samples = 3; // number of samples that the turret uses to find the center.
 	
 	private Vector intervals; // the longs that represent the distance between each side hit.
-	private boolean isLeft; // is the turret on the left?
-	long init; // the value for the start of the final movement for the turret
+	private boolean isLeft = false; // is the turret on the left?
+	private int cycles = 0;
+	long init = -1; // the value for the start of the final movement for the turret
+	private long localTimer = 0;
 	
 	public void robotInit() 
 	{
@@ -27,6 +29,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 	}	
 	public void teleopPeriodic() 
 	{
+		localTimer++;
 		switch(currentState)
 		{
 		case 0:
@@ -43,10 +46,8 @@ public class AutoTurretRunner extends RobotComponentBase{
 		}
 	}
 	
-	boolean isInit = false; // get rid of this, it is sketchy.
-	
 	private void AutoTurretInit()
-	{// turns left until the left limit switch is hit
+	{// CASE 0 turns left until the left limit switch is hit
 		if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
 		{
 			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(-MMCalculator.SPEED);
@@ -59,8 +60,13 @@ public class AutoTurretRunner extends RobotComponentBase{
 		}
 	}
 	private void AutoTurretCalibrate()
-	{
-		if(isLeft)
+	{//CASE 1
+		if(intervals.size() == 0) // starts if the start has not occured yet
+		{
+			intervals.addElement(new Interval());
+			((Interval)intervals.elementAt(intervals.size() - 1)).start(localTimer);
+		}
+		if(isLeft) // this actually sends it to the right
 		{
 			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getRightState())
 			{
@@ -68,11 +74,16 @@ public class AutoTurretRunner extends RobotComponentBase{
 			}
 			else
 			{
-				intervals.addElement(Timer.getUsClock());
+				((Interval)intervals.elementAt(cycles)).end(localTimer);
+				if(!(intervals.size() > samples))
+				{
+					intervals.addElement(new Interval());
+					((Interval)intervals.elementAt(intervals.size() - 1)).start(localTimer);
+				}
 				isLeft = false;
 			}
 		}
-		else
+		else // this actually sends it to the left
 		{
 			if(!MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState())
 			{
@@ -80,7 +91,12 @@ public class AutoTurretRunner extends RobotComponentBase{
 			}
 			else
 			{
-				intervals.addElement(Timer.getUsClock());
+				((Interval)intervals.elementAt(cycles)).end(localTimer);
+				if(!(intervals.size() > samples))
+				{
+					intervals.addElement(new Interval());
+					((Interval)intervals.elementAt(intervals.size() - 1)).start(localTimer);
+				}
 				isLeft = true;
 			}
 		}
@@ -88,13 +104,12 @@ public class AutoTurretRunner extends RobotComponentBase{
 			currentState = 2;
 	}
 	private void AutoTurretFindCenter()
-	{//locates the center based on the longs you found
-		if(!isInit)
+	{//CASE 3locates the center based on the longs you found
+		if(init == -1)
 		{
-			init = Timer.getUsClock();
-			isInit = true;;
+			init = localTimer;
 		}
-		if(Timer.getUsClock() < (init + getAverage(intervals)))
+		if(localTimer < (init + getAverage(intervals) / 2))
 		{
 			MMReferenceData.getInstance().getMMTurretData().setTurnSpeed(-MMCalculator.SPEED);
 		}
@@ -109,7 +124,7 @@ public class AutoTurretRunner extends RobotComponentBase{
 		long total = 0;
 		for(int i = 0; i < intervals.size() - 1; i++)
 		{
-			total += ((long)intervals.elementAt(i + 1)) - ((long)intervals.elementAt(i));
+			total += ((Interval)intervals.elementAt(i)).getDifference();
 		}
 		return (total / intervals.size());
 	}
