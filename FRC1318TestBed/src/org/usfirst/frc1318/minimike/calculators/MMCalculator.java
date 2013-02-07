@@ -41,7 +41,8 @@ public class MMCalculator extends RobotComponentBase {
 //		}
 //		return true;
 //	}
-	
+
+	//TODO move to a data class.
 	private boolean canMoveRight(){
 		if(MMReferenceData.getInstance().getMMLimitSwitchData().getRightState()){
 			return false;

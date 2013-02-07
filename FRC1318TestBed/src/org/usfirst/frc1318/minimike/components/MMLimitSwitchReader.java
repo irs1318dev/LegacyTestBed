@@ -20,7 +20,7 @@ public class MMLimitSwitchReader extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic(){
-		System.out.println("RightSwitch: " + rightSwitch.get()+ ", LeftSwitch: " + leftSwitch.get());
+		//System.out.println("RightSwitch: " + rightSwitch.get()+ ", LeftSwitch: " + leftSwitch.get());
 		MMReferenceData.getInstance().getMMLimitSwitchData().setRightState(rightSwitch.get());
 		MMReferenceData.getInstance().getMMLimitSwitchData().setLeftState(leftSwitch.get());
 	}

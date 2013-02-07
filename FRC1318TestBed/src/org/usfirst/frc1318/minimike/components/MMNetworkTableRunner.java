@@ -3,8 +3,7 @@ package org.usfirst.frc1318.minimike.components;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.minimike.networktable.NTReff;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc1318.generic.networktable.IRSTable;
 
 
 public class MMNetworkTableRunner extends RobotComponentBase
@@ -27,19 +26,19 @@ public class MMNetworkTableRunner extends RobotComponentBase
 	
  	private void gamePadData()
 	{
-		SmartDashboard.putBoolean(NTReff.Gamepad_AtonButton, MMReferenceData.getInstance().getMMGamePadData().getAutonomousButton());
-		SmartDashboard.putBoolean(NTReff.Gamepad_LeftButton, MMReferenceData.getInstance().getMMGamePadData().getLeftButton());
-		SmartDashboard.putBoolean(NTReff.Gamepad_RightButton, MMReferenceData.getInstance().getMMGamePadData().getRightButton());
+		IRSTable.putBoolean(NTReff.Gamepad_AtonButton, MMReferenceData.getInstance().getMMGamePadData().getAutonomousButton());
+		IRSTable.putBoolean(NTReff.Gamepad_LeftButton, MMReferenceData.getInstance().getMMGamePadData().getLeftButton());
+		IRSTable.putBoolean(NTReff.Gamepad_RightButton, MMReferenceData.getInstance().getMMGamePadData().getRightButton());
 	}
 
  	private void limitSwitchData()
  	{
- 		SmartDashboard.putBoolean(NTReff.LimitSwitch_LeftSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState());
- 		SmartDashboard.putBoolean(NTReff.LimitSwitch_RightSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getRightState());
+ 		IRSTable.putBoolean(NTReff.LimitSwitch_LeftSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState());
+ 		IRSTable.putBoolean(NTReff.LimitSwitch_RightSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getRightState());
  	}
 
  	private void turretData()
  	{
- 		SmartDashboard.putNumber(NTReff.Turret_TurnSpeed, MMReferenceData.getInstance().getMMTurretData().getTurnSpeed());
+ 		IRSTable.putNumber(NTReff.Turret_TurnSpeed, MMReferenceData.getInstance().getMMTurretData().getTurnSpeed());
  	}
 }

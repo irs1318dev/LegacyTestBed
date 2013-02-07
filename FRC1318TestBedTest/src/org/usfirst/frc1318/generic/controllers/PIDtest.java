@@ -24,7 +24,6 @@ public class PIDtest {
 		
 		test.setTimer(mockTimer);
 		
-		test.setOutputBounds(-999999999.0, 999999999.0);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -67,31 +66,34 @@ public class PIDtest {
 	
 	@Test
 	public void calculateITestFadingMemoryDecreasingError() {
-		test.setKi(4);
+		test.setKi(1);
 		test.setSetpoint(10);
 		test.setKFade(.5); 
 		
 		test.input(26);
-		setTime(1);
+		incTime();
 		test.input(18);
-		setTime(2);
+		incTime();
 		test.input(14);
-		setTime(3);
-		test.input(12);
-		assertEquals(18, test.getOutput(), 0.001);
+		
+		assertEquals(8, test.getOutput(), .001);
 	}
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void calculateITestNoFadingMemory() {
-		test.setKi(3);
+		test.setKi(1);
 		test.setSetpoint(10);
-		test.input(13);
+		
+		test.setKFade(1);
+		
 		setTime(1);
-		test.input(15);
+		test.input(13);
 		setTime(2);
+		test.input(15);
+		setTime(3);
 		test.input(8);
-		assertEquals(16.5, test.getOutput(), 0.001);
+		assertEquals(6, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -100,12 +102,22 @@ public class PIDtest {
 	public void calculateIChangingTimes() {
 		test.setKi(1);
 		test.setSetpoint(10);
-		test.input(12);
-		setTime(0.25);
-		test.input(16);
-		setTime(4.25);
+		
+		double expectedValue = 0 + (12-10)*(1 - 0); 
+		
+		incTime();
+		test.input(12); // 
+		assertEquals(expectedValue, test.getOutput(), 0.001);
+		
+		expectedValue = expectedValue + (16 - 10)*(1.25 - 1);
+		setTime(1.25);
+		test.input(16); // 
+		assertEquals(expectedValue, test.getOutput(), 0.001);
+		
+		expectedValue = expectedValue + (9 - 10)*(5.25 - 1.25);
+		setTime(5.25);
 		test.input(9);
-		assertEquals(11, test.getOutput(), 0.001);
+		assertEquals(expectedValue, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -116,11 +128,11 @@ public class PIDtest {
 		test.setSetpoint(10);
 		test.setKFade(.5);
 		test.input(18);
-		setTime(1);
+		incTime();
 		test.input(18);
-		setTime(2);
+		incTime();
 		test.input(18);
-		setTime(3);
+		incTime();
 		test.input(18);
 		assertEquals(14, test.getOutput(), 0.001);
 	}
@@ -243,9 +255,14 @@ public class PIDtest {
 
 	@Test
 	public void calculateFTest() {
+		test.setConstants(0, 0, 0);
+		
 		test.setKf(3);
 		test.setSetpoint(10);
+		incTime();
 		test.input(12);
+		incTime();
+		test.input(30);
 		assertEquals(30, test.getOutput(), 0.001);
 	}
 	
@@ -286,20 +303,26 @@ public class PIDtest {
 	@Test
 	public void addsInClamp() {
 		test.setKp(1);
-		//test.setClampRatio(0.9); // the clamp ratio is implemented in setSetpoint, so setClamp must go first
-		test.setSetpoint(10);
-		test.input(11);
-		assertEquals(2, test.getOutput(), 0.001);
+		test.setClampRatio(1); 
+		test.setSetpoint(0);
+		test.input(10);
+		incTime();
+		test.input(10);
+		assertEquals(0, test.getOutput(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
 
 	@Test
 	public void hasUpperBound() {
+		
 		test.setKp(1);
-		test.setOutputBounds(-9000, 8); // the clamp's lower and upper bounds act on the end result (output)
+		test.setClampRange(-9000, 8); 
 		test.setSetpoint(10);
-		test.input(20);
+		
+		incTime();
+		
+		test.input(200);
 		assertEquals(8, test.getOutput(), 0.001);	
 	}
 
@@ -307,8 +330,10 @@ public class PIDtest {
 
 	@Test
 	public void hasLowerBound() {
+		incTime();
+		
 		test.setKp(1);
-		test.setOutputBounds(-5, 99999999999.0); // the clamp's lower and upper bounds act on the end result (output)
+		test.setClampRange(-5, 99999999999.0); 
 		test.setSetpoint(10);
 		test.input(-30);
 		assertEquals(-5, test.getOutput(), 0.001);	
