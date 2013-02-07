@@ -111,6 +111,8 @@ public class PID
 		//To prevent division by zero, output updates at a max of 1kHz
 		if(dt >= timeStep)
 		{
+			this.prevTime = curTime;
+			
 			this.update();
 			this.calculateOutput();
 		}
@@ -135,9 +137,7 @@ public class PID
 	
 	//this updates essential values
 	private void update()
-	{
-		this.prevTime = curTime;
-		
+	{	
 		//update calculated values
 		updateError();
 		updateIntegral();
@@ -199,7 +199,7 @@ public class PID
 	//This method updates the integral value
 	private void updateIntegral()
 	{
-		integral *= kFade * dt;
+		integral *= kFade;
 		integral += error * dt;
 	}
 	

@@ -101,22 +101,35 @@ public class PIDtest {
 	@Test
 	public void calculateIChangingTimes() {
 		test.setKi(1);
+		test.setKFade(1);
+		
 		test.setSetpoint(10);
 		
-		double expectedValue = 0 + (12-10)*(1 - 0); 
+		test.input(10);
+		setTime(.23);
+		test.input(10);
+		setTime(.5);
+		test.input(10);
+		setTime(1);
+		test.input(10);
 		
-		incTime();
-		test.input(12); // 
+		double expectedValue = 0 + (12-10)*(2 - 1); 
+		
+		setTime(2);
+		test.input(12);
 		assertEquals(expectedValue, test.getOutput(), 0.001);
 		
-		expectedValue = expectedValue + (16 - 10)*(1.25 - 1);
-		setTime(1.25);
-		test.input(16); // 
+		expectedValue += (16 - 10)*(2.25 - 2);
+		
+		setTime(2.25);
+		test.input(16); 
 		assertEquals(expectedValue, test.getOutput(), 0.001);
 		
-		expectedValue = expectedValue + (9 - 10)*(5.25 - 1.25);
-		setTime(5.25);
+		expectedValue += (9 - 10)*(6.25 - 2.25);
+		
+		setTime(6.25);
 		test.input(9);
+		
 		assertEquals(expectedValue, test.getOutput(), 0.001);
 	}
 	
