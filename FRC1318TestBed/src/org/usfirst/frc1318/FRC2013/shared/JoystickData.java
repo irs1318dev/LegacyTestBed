@@ -10,6 +10,9 @@ public class JoystickData {
 	}
 	
 	public void setJoystickR(double val){
+		if(val > 1 || val < -1){
+			val = val / Math.abs(val);
+		}
 		joystickR = val;
 	}
 	
@@ -18,6 +21,9 @@ public class JoystickData {
 	}
 	
 	public void setJoystickL(double val){
+		if(val > 1 || val < -1){
+			val = val / Math.abs(val);
+		}
 		joystickL = val;
 	}
 
