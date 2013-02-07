@@ -14,7 +14,7 @@ public class JoystickData {
 	}
 	
 	public double getJoystickL(){
-		return joystickR;
+		return joystickL;
 	}
 	
 	public void setJoystickL(double val){

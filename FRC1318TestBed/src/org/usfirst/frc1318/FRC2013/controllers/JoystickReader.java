@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class JoystickReader extends RobotComponentBase{
 	
-	//private GamePad gamepad;
 	private Joystick joystickL;
 	private Joystick joystickR;
 	
@@ -18,10 +17,15 @@ public class JoystickReader extends RobotComponentBase{
 		joystickR = new Joystick(PortRef.JOYSTICK_R);
 	}
 	
-	public void robotTeleop(){//getRawButton
+	public void robotTeleop(){
 		
 		ReferenceData.getInstance().getJoystickData().setJoystickL(joystickL.getY());
 		ReferenceData.getInstance().getJoystickData().setJoystickR(joystickR.getY());
 		
+	}
+	
+	public void setJoystick(Joystick j1, Joystick j2){
+		joystickL = j1;
+		joystickR = j2;
 	}
 }
