@@ -55,25 +55,25 @@ public class JoystickReaderTest {
 	
 	@Test
 	public void rightAssignPositive1Test(){
-		setJoystickL(1);
+		setJoystickR(1);
 		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
 	}
 	
 	@Test
 	public void rightAssign0Test(){
-		setJoystickL(0);
+		setJoystickR(0);
 		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
 	}
 	
 	@Test
 	public void rightAssignNegitive1Test(){
-		setJoystickL(-1);
+		setJoystickR(-1);
 		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
 	}
 	
 //	@Test
 //	public void rightAssignPositive100Test(){
-//		setJoystickL(100);
+//		setJoystickR(100);
 //		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
 //	}
 	
