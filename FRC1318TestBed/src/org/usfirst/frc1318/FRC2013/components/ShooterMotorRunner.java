@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.FRC2013.runners;
+package org.usfirst.frc1318.FRC2013.components;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
 

@@ -1,5 +1,6 @@
-package org.usfirst.frc1318.components;
+package org.usfirst.frc1318.FRC2013.components;
 
+import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.shared.constants.PortRef;
 
 import edu.wpi.first.wpilibj.Solenoid;

@@ -1,5 +1,6 @@
-package org.usfirst.frc1318.components;
+package org.usfirst.frc1318.FRC2013.controllers;
 
+import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.GamePad;
 import org.usfirst.frc1318.generic.reference.PS2Controller;
 import org.usfirst.frc1318.generic.shared.GamePadData;
