@@ -15,4 +15,15 @@ public class ShooterCalculator extends RobotComponentBase {
 	//calculate motor speed
 		//calculate somehow
 		//set value in data class
+	
+	//Load Frisbees
+		
+		//decide if needs to load
+			//do we have frisbees in the hopper
+				//load
+			//else
+				//alert drivers
+	
+		//think about possible purge option for stuck frisbees
+	
 }
