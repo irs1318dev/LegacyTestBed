@@ -28,82 +28,166 @@ public class JoystickReaderTest {
 	}
 	
 	@Test
-	public void leftAssignPositive1Test(){
-		setJoystickL(1);
+	public void leftYAssignPositive1Test(){
+		setJoystickLY(1);
 		joystickReader.robotTeleop();
-		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickL(), 0.001);
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
-	public void leftAssign0Test(){
-		setJoystickL(0);
+	public void leftYAssign0Test(){
+		setJoystickLY(0);
 		joystickReader.robotTeleop();
-		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickL(), 0.001);
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
-	public void leftAssignNegitive1Test(){
-		setJoystickL(-1);
+	public void leftYAssignNegitive1Test(){
+		setJoystickLY(-1);
 		joystickReader.robotTeleop();
-		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickL(), 0.001);
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
-	public void leftAssignPositive100Test(){
-		setJoystickL(100);
+	public void leftYAssignPositive100Test(){
+		setJoystickLY(100);
 		joystickReader.robotTeleop();
-		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickL(), 0.001);
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
-	public void leftAssignNegitive100Test(){
-		setJoystickL(-100);
+	public void leftYAssignNegitive100Test(){
+		setJoystickLY(-100);
 		joystickReader.robotTeleop();
-		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickL(), 0.001);
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Test
-	public void rightAssignPositive1Test(){
-		setJoystickR(1);
+	public void leftXAssignPositive1Test(){
+		setJoystickLX(1);
 		joystickReader.robotTeleop();
-		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
 	}
 	
 	@Test
-	public void rightAssign0Test(){
-		setJoystickR(0);
+	public void leftXAssign0Test(){
+		setJoystickLY(0);
 		joystickReader.robotTeleop();
-		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
-	public void rightAssignNegitive1Test(){
-		setJoystickR(-1);
+	public void leftXAssignNegitive1Test(){
+		setJoystickLX(-1);
 		joystickReader.robotTeleop();
-		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
 	}
 	
 	@Test
-	public void rightAssignPositive100Test(){
-		setJoystickR(100);
+	public void leftXAssignPositive100Test(){
+		setJoystickLX(100);
 		joystickReader.robotTeleop();
-		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
 	}
 	
 	@Test
-	public void rightAssignNegitive100Test(){
-		setJoystickR(-100);
+	public void leftXAssignNegitive100Test(){
+		setJoystickLX(-100);
 		joystickReader.robotTeleop();
-		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickR(), 0.001);
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
 	}
 	
-	private void setJoystickL(double val){
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@Test
+	public void rightYAssignPositive1Test(){
+		setJoystickRY(1);
+		joystickReader.robotTeleop();
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssign0Test(){
+		setJoystickRY(0);
+		joystickReader.robotTeleop();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignNegitive1Test(){
+		setJoystickRY(-1);
+		joystickReader.robotTeleop();
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignPositive100Test(){
+		setJoystickRY(100);
+		joystickReader.robotTeleop();
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignNegitive100Test(){
+		setJoystickRY(-100);
+		joystickReader.robotTeleop();
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@Test
+	public void rightXAssignPositive1Test(){
+		setJoystickRX(1);
+		joystickReader.robotTeleop();
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssign0Test(){
+		setJoystickRX(0);
+		joystickReader.robotTeleop();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssignNegitive1Test(){
+		setJoystickRX(-1);
+		joystickReader.robotTeleop();
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssignPositive100Test(){
+		setJoystickRX(100);
+		joystickReader.robotTeleop();
+		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssignNegitive100Test(){
+		setJoystickRX(-100);
+		joystickReader.robotTeleop();
+		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	private void setJoystickLY(double val){
 		when(mockJoystickL.getY()).thenReturn(val);
 	}
 	
-	private void setJoystickR(double val){
+	private void setJoystickRY(double val){
 		when(mockJoystickR.getY()).thenReturn(val);
+	}
+	
+	private void setJoystickLX(double val){
+		when(mockJoystickL.getX()).thenReturn(val);
+	}
+	
+	private void setJoystickRX(double val){
+		when(mockJoystickR.getX()).thenReturn(val);
 	}
 }

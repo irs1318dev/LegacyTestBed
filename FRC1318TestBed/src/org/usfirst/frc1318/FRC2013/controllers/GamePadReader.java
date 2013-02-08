@@ -1,12 +1,11 @@
 package org.usfirst.frc1318.FRC2013.controllers;
 
+import org.usfirst.frc1318.FRC2013.reference.ButtonRef;
+import org.usfirst.frc1318.FRC2013.reference.PortRef;
+import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.GamePad;
 import org.usfirst.frc1318.generic.reference.PS2Controller;
-import org.usfirst.frc1318.generic.shared.GamePadData;
-import org.usfirst.frc1318.generic.shared.ReferenceData;
-import org.usfirst.frc1318.generic.shared.constants.ButtonRef;
-import org.usfirst.frc1318.generic.shared.constants.PortRef;
 
 public class GamePadReader extends RobotComponentBase{
 	private GamePad gamePad;
@@ -16,13 +15,12 @@ public class GamePadReader extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic() {
-		//update right button
-		ReferenceData.getInstance().getGamePadData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP));
-		//System.out.println("Right Button");
 		
-		//update left button;
+		ReferenceData.getInstance().getGamePadData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP));
+		
 		ReferenceData.getInstance().getGamePadData().setLiftDown(gamePad.getRawButton(ButtonRef.LIFT_DOWN));
-		//System.out.println("Left Button");
+		
+		//TODO add joysticks
 	}
 }
 

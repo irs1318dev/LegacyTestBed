@@ -2,29 +2,77 @@ package org.usfirst.frc1318.FRC2013.shared;
 
 public class JoystickData {
 	
-	private double joystickL;
-	private double joystickR;
+	private double joystickLY;
+	private double joystickRY;
+	private double joystickLX;
+	private double joystickRX;
+
+	private boolean liftUp;
+	private boolean liftDown;
 	
-	public double getJoystickR(){
-		return joystickR;
+	//TODO change to y and add x
+	
+	public double getJoystickRY(){
+		return joystickRY;
 	}
 	
-	public void setJoystickR(double val){
+	public void setJoystickRY(double val){
 		if(val > 1 || val < -1){
 			val = val / Math.abs(val);
 		}
-		joystickR = val;
+		joystickRY = val;
 	}
 	
-	public double getJoystickL(){
-		return joystickL;
+	public double getJoystickRX(){
+		return joystickRX;
 	}
 	
-	public void setJoystickL(double val){
+	public void setJoystickRX(double val){
 		if(val > 1 || val < -1){
 			val = val / Math.abs(val);
 		}
-		joystickL = val;
+		joystickRX = val;
 	}
+	
+	public double getJoystickLY(){
+		return joystickLY;
+	}
+	
+	public void setJoystickLY(double val){
+		if(val > 1 || val < -1){
+			val = val / Math.abs(val);
+		}
+		joystickLY = val;
+	}
+	
+	public double getJoystickLX(){
+		return joystickLX;
+	}
+	
+	public void setJoystickLX(double val){
+		if(val > 1 || val < -1){
+			val = val / Math.abs(val);
+		}
+		joystickLX = val;
+	}
+
+	
+	public boolean getLiftUp() {
+		return liftUp;
+	}
+	
+	public void setLiftUp(boolean newValue) {
+		this.liftUp = newValue;
+	}
+	
+	public boolean getLiftDown() {
+		return liftDown;
+	}
+	
+	public void setLiftDown(boolean newValue) {
+		this.liftDown = newValue;
+	}
+	
+	
 
 }

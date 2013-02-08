@@ -5,6 +5,7 @@ public class ReferenceData {
 	private static ReferenceData instance;
 	private JoystickData joystickData;
 	private DriveTrainData driveTrainData;
+	private GamePadData gamePadData;
 	
 	private ReferenceData(){
 	}
@@ -34,6 +35,16 @@ public class ReferenceData {
 	}
 	public void setDriveTrainData(DriveTrainData newData){
 		driveTrainData = newData;
+	}
+	
+	public GamePadData getGamePadData(){
+		if(gamePadData == null){
+			gamePadData = new GamePadData();
+		}
+		return gamePadData;
+	}
+	public void setGamePadData(GamePadData newData){
+		gamePadData = newData;
 	}
 
 }
