@@ -10,16 +10,11 @@ public class JoystickData {
 	private boolean liftUp;
 	private boolean liftDown;
 	
-	//TODO change to y and add x
-	
 	public double getJoystickRY(){
 		return joystickRY;
 	}
 	
 	public void setJoystickRY(double val){
-		if(val > 1 || val < -1){
-			val = val / Math.abs(val);
-		}
 		joystickRY = val;
 	}
 	
@@ -28,9 +23,6 @@ public class JoystickData {
 	}
 	
 	public void setJoystickRX(double val){
-		if(val > 1 || val < -1){
-			val = val / Math.abs(val);
-		}
 		joystickRX = val;
 	}
 	
@@ -39,9 +31,6 @@ public class JoystickData {
 	}
 	
 	public void setJoystickLY(double val){
-		if(val > 1 || val < -1){
-			val = val / Math.abs(val);
-		}
 		joystickLY = val;
 	}
 	
@@ -50,9 +39,6 @@ public class JoystickData {
 	}
 	
 	public void setJoystickLX(double val){
-		if(val > 1 || val < -1){
-			val = val / Math.abs(val);
-		}
 		joystickLX = val;
 	}
 

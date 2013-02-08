@@ -3,6 +3,7 @@ package org.usfirst.frc1318.FRC2013.shared;
 public class GamePadData {
 	private boolean liftUp;
 	private boolean liftDown;
+
 	
 	public boolean getLiftUp() {
 		return liftUp;
