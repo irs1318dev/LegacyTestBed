@@ -2,6 +2,8 @@ package org.usfirst.frc1318.generic.controllers;
 
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.usfirst.frc1318.generic.controllers.PID;
@@ -137,17 +139,29 @@ public class PIDtest {
 
 	@Test
 	public void calculateITestConstantError() {
-		test.setKi(2);
+		test.setKi(1);
 		test.setSetpoint(10);
+		
+		test.input(10);
+		incTime();
+		test.input(10);
+		incTime();
+		
 		test.setKFade(.5);
+		double expectedValue = 0;
+		
 		test.input(18);
-		incTime();
-		test.input(18);
-		incTime();
-		test.input(18);
-		incTime();
-		test.input(18);
-		assertEquals(14, test.getOutput(), 0.001);
+		expectedValue = 8;
+		
+		for(int i = 0; i < 10000; i++)
+		{
+			incTime();
+			test.input(18);
+			expectedValue *= .5;
+			expectedValue += 8;
+			assertEquals(expectedValue, test.getOutput(), .001);
+		}
+		
 	}
 	
 	//D
@@ -282,34 +296,72 @@ public class PIDtest {
 	//combined
 	
 ////////////////////////////////////////////////////////////////////////////////
-
+	
 	@Test
 	public void combinesPID() {
-		test.setKp(3);
-		test.setKi(3);
-		test.setKd(3);
-		
-		test.setSetpoint(10);
-		test.setKFade(0.5);
-		
-		test.input(2);
-		
-		setTime(1);
-		
-		test.input(6);
-		
-		setTime(1.25);
-		
-		test.input(8);
-		
-		setTime(2);
-		
-		test.input(9);
-		
-		assertEquals(-1.53125, test.getOutput(), 0.001);
-	}
 	
-	//clamp
+		//vars for test
+		double setpoint = 10;
+		double p = 0, i = 0, d = 0;
+		double error = 0, lastError = 0;
+		double input = 10;
+		double expectedValue = 0;
+		double predictableError = .31;
+		double kFade = .5;
+		double dt = 1;
+		
+		//initialize controller
+		test.setConstants(3, 3, 3);
+		test.setKFade(kFade);
+		test.setSetpoint(10);
+		
+		//first two inputs
+		test.input(10);
+		incTime();
+		test.input(10);
+		incTime();
+		
+		//run test
+		for(int c = 0; c < 1000; c++){
+			
+			//generate input with predictable error
+			switch(c % 3){
+			case 0:
+				input = 10;
+				break;
+			case 1: 
+				input = 10 - predictableError;
+				break;
+			case 2:
+				input = 10 + predictableError;
+				break;
+			default:
+				input = 10;
+			}
+			
+			//do input
+			test.input(input);
+			
+			//run test calculations
+			error = input - setpoint;
+			
+			p = error;
+			
+			i *= kFade;
+			i += error * dt;
+			
+			d = (error - lastError) * dt;
+			
+			//compare values
+			expectedValue = 3 * p + 3 * i + 3 * d;
+			assertEquals(expectedValue, test.getOutput(), .001);
+			
+			//prepare for next;
+			incTime();
+			lastError = error;
+		}
+		
+	}
 	
 ////////////////////////////////////////////////////////////////////////////////
 
