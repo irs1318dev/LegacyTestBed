@@ -14,6 +14,10 @@ public class LifterLimitSwitchReader extends RobotComponentBase{
 	}
 	
 	public void teleopPeriodic() {
-		ReferenceData.getInstance().getLifterLimitSwitchData().setIsSwitched(lifterLimitSwitch.get());
+		ReferenceData.getInstance().getLifterLimitSwitchData().setIsSwitched(getLifterLimitSwitch().get());
+	}
+	
+	public DigitalInput getLifterLimitSwitch() {
+		return lifterLimitSwitch;
 	}
 }
