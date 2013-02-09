@@ -1,18 +1,57 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
 public class ShooterData {
-	public static int encoderValue = 0;
-	public static boolean shooterAngle = false;
+	
+	private static boolean shooterAngle = false;
+	
+	private static double motorSetPoint = 0;
+	private static double encoderAngularVelocity = 0;
+	
+	private static boolean hasFrisbees = false;
 	
 	public interface constants{
-		
-		public static final boolean SOLENOID_UP = true;
-		public static final boolean SOLENOID_DOWN = false;
-	
+		public static final boolean SHOOTER_UP = true;
+		public static final boolean SHOOTER_DOWN = false;
 	}
 	
 	public void setShooterAngle(boolean upOrDown)
 	{
 		shooterAngle = upOrDown;
 	}
+	
+	public static boolean getShooterAngle()
+	{
+		return shooterAngle;
+	}
+	
+	public static void setEncoderAngularVelocity(double velocity)
+	{
+		encoderAngularVelocity = velocity;
+	}
+	
+	public static double getEncoderAngularVelocity()
+	{
+		return encoderAngularVelocity;
+	}
+	
+	public static boolean getHasFrisbees()
+	{
+		return hasFrisbees;
+	}
+	
+	public static void setHasFrisbees(boolean frisbees)
+	{
+		hasFrisbees = frisbees;
+	}
+	
+	public static void setMotorSetPoint(double setPoint)
+	{
+		motorSetPoint = setPoint;
+	}
+	
+	public static double getMotorSetPoint()
+	{
+		return motorSetPoint;
+	}
+
 }
