@@ -3,6 +3,7 @@ package org.usfirst.frc1318.FRC2013.components;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
@@ -59,16 +60,16 @@ public class ShooterFireRunner extends RobotComponentBase {
 		}else if(state == RETRACTED)
 		{
 			//if should fire
-			if(ShooterData.getShouldFire())
+			if(ReferenceData.getInstance().getShooterData().getShouldFire())
 			{
 				//don't fire without frisbees
-				if(!ShooterData.getHasFrisbees()){
-					ShooterData.setShouldFire(false);
+				if(!ReferenceData.getInstance().getShooterData().getHasFrisbees()){
+					ReferenceData.getInstance().getShooterData().setShouldFire(false);
 				}else{
 					//fire
 					state = EXTENDED;
 					fireTime = timer.get();
-					ShooterData.setShouldFire(false);
+					ReferenceData.getInstance().getShooterData().setShouldFire(false);
 				}//has frisbees if/else
 			}else{
 				//retract

@@ -1,5 +1,4 @@
 package org.usfirst.frc1318.FRC2013.reference;
-
 import edu.wpi.first.wpilibj.SensorBase;
 
 public interface PortRef {
@@ -15,7 +14,7 @@ public interface PortRef {
 	int SHOOTER_DOWN_SOLENOID = 0;//TODO
 	int SHOOTER_ENCODER_A = 0;//TODO
 	int SHOOTER_ENCODER_B = 0;//TODO
-	int SHOOTER_MOTOR = 0;//TODO
+	int SHOOTER_MOTOR = 4;
 	int SHOOTER_FIRE_RETRACT = 0;//TODO
 	int SHOOTER_FIRE_EXTEND = 0;//TODO
 	

@@ -1,6 +1,7 @@
 package org.usfirst.frc1318.FRC2013.components;
 
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
+import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.controllers.PID;
@@ -23,9 +24,9 @@ public class ShooterPIDRunner extends RobotComponentBase {
 	
 	public void teleopPeriodic()
 	{
-		shooterPID.setSetpoint(ShooterData.getMotorSetPoint());
+		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		shooterPID.input(encoder.getRate());
-		ShooterData.setMotorSpeed(shooterPID.getOutput());
+		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
 	}
 	
 }

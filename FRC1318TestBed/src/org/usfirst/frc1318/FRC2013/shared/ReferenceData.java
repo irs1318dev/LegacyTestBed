@@ -8,6 +8,7 @@ public class ReferenceData {
 	private GamePadData gamePadData;
 	private LifterData lifterData;
 	private LifterLimitSwitchData lifterLimitSwitchData;
+	private ShooterData shooterData;
 	
 	private ReferenceData(){
 	}
@@ -18,7 +19,7 @@ public class ReferenceData {
 		}
 		return instance;
 	}
-	
+		
 	public JoystickData getJoystickData(){
 		if(joystickData == null){
 			joystickData = new JoystickData();
@@ -67,5 +68,12 @@ public class ReferenceData {
 	}
 	public void setLifterLimitSwitchData(LifterLimitSwitchData newData) {
 		lifterLimitSwitchData = newData;
+	}
+
+	public ShooterData getShooterData(){
+		return shooterData;
+	}
+	public void setShooterData(ShooterData newData){
+		shooterData = newData;
 	}
 }

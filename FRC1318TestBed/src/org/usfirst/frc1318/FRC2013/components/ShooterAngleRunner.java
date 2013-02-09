@@ -3,6 +3,7 @@ package org.usfirst.frc1318.FRC2013.components;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -19,7 +20,7 @@ public class ShooterAngleRunner extends RobotComponentBase{
 	public void teleopPeriodic() {
 		
 		//set shooter to either up or down based on data class
-		if(ShooterData.getShooterAngle() == ShooterData.constants.SHOOTER_UP)
+		if(ReferenceData.getInstance().getShooterData().getShooterAngle() == ShooterData.constants.SHOOTER_UP)
 		{
 			upSolenoid.set(true);
 			downSolenoid.set(false);
