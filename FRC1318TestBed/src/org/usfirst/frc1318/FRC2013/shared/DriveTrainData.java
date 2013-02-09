@@ -2,7 +2,8 @@ package org.usfirst.frc1318.FRC2013.shared;
 
 public class DriveTrainData {
 	
-	private double rightEncoder, leftEncoder;
+	private double rightEncoder;
+	private double leftEncoder;
 	private double rightSpeedSetPoint, leftSpeedSetPoint;	//read from joystick
 															//-1 to +1 
 	private double rightPIDSpeed, leftPIDSpeed;
