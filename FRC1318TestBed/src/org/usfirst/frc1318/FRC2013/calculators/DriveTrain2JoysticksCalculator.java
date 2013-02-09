@@ -10,7 +10,7 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 	DriverStationPrint driverStationPrint;
 
 	// Encoder rightEnc, leftEnc; => not needed
-	PID rightPID, leftPID;
+	//PID rightPID, leftPID;
 
 	// find and set PID constants
 	// rightPid = new PID(kp, ki, kd, kf);
