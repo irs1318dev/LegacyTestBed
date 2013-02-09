@@ -1,5 +1,7 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
-public class LookupTable {
+import edu.wpi.first.wpilibj.networktables2.util.Set;
 
+public class LookupTable {
+	
 }

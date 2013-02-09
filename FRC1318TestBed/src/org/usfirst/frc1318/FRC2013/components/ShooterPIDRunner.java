@@ -12,7 +12,7 @@ public class ShooterPIDRunner extends RobotComponentBase {
 	
 	public void robotInit()
 	{
-		//Encoder class might need a constant to scale the output by
+		//TODO Encoder class might need a constant to scale the output by
 		encoder = new EncoderAngularVelocity(PortRef.SHOOTER_ENCODER_A,
 												PortRef.SHOOTER_ENCODER_B);
 		encoder.start();

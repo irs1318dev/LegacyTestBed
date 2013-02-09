@@ -14,5 +14,6 @@ public interface PortRef {
 	int SHOOTER_ENCODER_A = 0;//TODO
 	int SHOOTER_ENCODER_B = 0;//TODO
 	int SHOOTER_MOTOR = 0;//TODO
-	
+	int SHOOTER_FIRE_RETRACT = 0;//TODO
+	int SHOOTER_FIRE_EXTEND = 0;//TODO
 }

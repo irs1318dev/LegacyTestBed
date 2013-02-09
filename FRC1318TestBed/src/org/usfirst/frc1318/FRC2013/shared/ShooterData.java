@@ -10,6 +10,8 @@ public class ShooterData {
 	
 	private static boolean hasFrisbees = false;
 	
+	private static boolean shouldFire = false;
+	
 	public interface constants{
 		public static final boolean SHOOTER_UP = true;
 		public static final boolean SHOOTER_DOWN = false;
@@ -61,6 +63,16 @@ public class ShooterData {
 
 	public static double getMotorSpeed() {
 		return motorSpeed;
+	}
+	
+	public static void setShouldFire(boolean shouldI)
+	{
+		shouldFire = shouldI;
+	}
+	
+	public static boolean getShouldFire()
+	{
+		return shouldFire;
 	}
 
 }
