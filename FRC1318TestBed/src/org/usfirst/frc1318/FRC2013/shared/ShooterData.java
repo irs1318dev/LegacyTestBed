@@ -2,15 +2,15 @@ package org.usfirst.frc1318.FRC2013.shared;
 
 public class ShooterData {
 	
-	private static boolean shooterAngle = false;
+	private boolean shooterAngle = false;
 	
-	private static double motorSetPoint = 0;
-	private static double encoderAngularVelocity = 0;
-	private static double motorSpeed = 0;
+	private double motorSetPoint = 0;
+	private double encoderAngularVelocity = 0;
+	private double motorSpeed = 0;
 	
-	private static boolean hasFrisbees = false;
+	private boolean hasFrisbees = false;
 	
-	private static boolean shouldFire = false;
+	private boolean shouldFire = false;
 	
 	public interface constants{
 		public static final boolean SHOOTER_UP = true;
@@ -22,57 +22,56 @@ public class ShooterData {
 		shooterAngle = upOrDown;
 	}
 	
-	public static boolean getShooterAngle()
+	public boolean getShooterAngle()
 	{
 		return shooterAngle;
 	}
 	
-	public static void setEncoderAngularVelocity(double velocity)
+	public void setEncoderAngularVelocity(double velocity)
 	{
 		encoderAngularVelocity = velocity;
 	}
 	
-	public static double getEncoderAngularVelocity()
+	public double getEncoderAngularVelocity()
 	{
 		return encoderAngularVelocity;
 	}
 	
-	public static boolean getHasFrisbees()
+	public boolean getHasFrisbees()
 	{
 		return hasFrisbees;
 	}
 	
-	public static void setHasFrisbees(boolean frisbees)
+	public void setHasFrisbees(boolean frisbees)
 	{
 		hasFrisbees = frisbees;
 	}
 	
-	public static void setMotorSetPoint(double setPoint)
+	public void setMotorSetPoint(double setPoint)
 	{
 		motorSetPoint = setPoint;
 	}
 	
-	public static double getMotorSetPoint()
+	public double getMotorSetPoint()
 	{
 		return motorSetPoint;
 	}
 
-	public static void setMotorSpeed(double speed) {
+	public void setMotorSpeed(double speed) {
 		motorSpeed = speed;
 	}
 
-	public static double getMotorSpeed() {
+	public double getMotorSpeed() {
 		return motorSpeed;
 	}
 	
-	public static void setShouldFire(boolean shouldI)
+	public void setShouldFire(boolean shouldI)
 	{
 		shouldFire = shouldI;
 	}
 	
-	public static boolean getShouldFire()
+	public boolean getShouldFire()
 	{
 		return shouldFire;
 	}
-
 }

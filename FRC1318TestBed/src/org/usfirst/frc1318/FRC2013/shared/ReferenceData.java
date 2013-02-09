@@ -6,6 +6,7 @@ public class ReferenceData {
 	private JoystickData joystickData;
 	private DriveTrainData driveTrainData;
 	private GamePadData gamePadData;
+	private ShooterData shooterData;
 	
 	private ReferenceData(){
 	}
@@ -16,7 +17,7 @@ public class ReferenceData {
 		}
 		return instance;
 	}
-	
+		
 	public JoystickData getJoystickData(){
 		if(joystickData == null){
 			joystickData = new JoystickData();
@@ -47,4 +48,10 @@ public class ReferenceData {
 		gamePadData = newData;
 	}
 
+	public ShooterData getShooterData(){
+		return shooterData;
+	}
+	public void setShooterData(ShooterData newData){
+		shooterData = newData;
+	}
 }
