@@ -6,6 +6,8 @@ public class ReferenceData {
 	private JoystickData joystickData;
 	private DriveTrainData driveTrainData;
 	private GamePadData gamePadData;
+	private LifterData lifterData;
+	private LifterLimitSwitchData lifterLimitSwitchData;
 	
 	private ReferenceData(){
 	}
@@ -47,4 +49,23 @@ public class ReferenceData {
 		gamePadData = newData;
 	}
 
+	public LifterData getLifterData() {
+		if (lifterData == null) {
+			lifterData = new LifterData();
+		}
+		return lifterData;
+	}
+	public void setLiferData(LifterData newData) {
+		lifterData = newData;
+	}
+	
+	public LifterLimitSwitchData getLifterLimitSwitchData() {
+		if (lifterLimitSwitchData == null) {
+			lifterLimitSwitchData = new LifterLimitSwitchData();
+		}
+		return lifterLimitSwitchData;
+	}
+	public void setLifterLimitSwitchData(LifterLimitSwitchData newData) {
+		lifterLimitSwitchData = newData;
+	}
 }
