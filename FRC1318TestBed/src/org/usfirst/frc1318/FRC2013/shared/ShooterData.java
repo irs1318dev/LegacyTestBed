@@ -6,6 +6,7 @@ public class ShooterData {
 	
 	private static double motorSetPoint = 0;
 	private static double encoderAngularVelocity = 0;
+	private static double motorSpeed = 0;
 	
 	private static boolean hasFrisbees = false;
 	
@@ -52,6 +53,14 @@ public class ShooterData {
 	public static double getMotorSetPoint()
 	{
 		return motorSetPoint;
+	}
+
+	public static void setMotorSpeed(double speed) {
+		motorSpeed = speed;
+	}
+
+	public static double getMotorSpeed() {
+		return motorSpeed;
 	}
 
 }

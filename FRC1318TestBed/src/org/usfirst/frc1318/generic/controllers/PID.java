@@ -4,10 +4,11 @@ import edu.wpi.first.wpilibj.Timer;
 
 
 /**
+ * This class is a PID controller with a feedFoward controller that uses the
+ * setpoint as input.  
  * 
- * in the event of strange behavior check todo tag locations
- * 
- * ***THIS CLASS IS NOT FINISHED****
+ * TODO tags mark code that must be commented for testing and uncommented for 
+ * deploy
  * 
  * To use pid control:
  * 		set the setpoint
@@ -64,8 +65,13 @@ public class PID
 	 * This constructor initializes the object and sets constants to affect gain
 	 * 
 	 * Get rid of memmorySize
+	 * 
+	 * @param kp scalar for proportional component
+	 * @param ki scalar for integral component
+	 * @param kd scalar for derivative component
+	 * @param kf scalar for feed-foward control
 	 */
-	public PID(double ki, double kd, double kp, double kf)
+	public PID(double kp, double ki, double kd, double kf)
 	{
 		this.ki = ki;
 		this.kd = kd;
@@ -84,7 +90,16 @@ public class PID
 	
 	//second for no feed-forward
 	
-	public PID(double ki, double kd, double kp)
+	/**
+	 * This constructor initializes the object and sets constants to affect gain
+	 * 
+	 * Get rid of memmorySize
+	 * 
+	 * @param kp scalar for proportional component
+	 * @param ki scalar for integral component
+	 * @param kd scalar for derivative component
+	 */
+	public PID(double kp, double ki, double kd)
 	{
 		this.ki = ki;
 		this.kd = kd;
@@ -99,7 +114,12 @@ public class PID
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
-	
+	/**
+	 * input should be in the same unit as the setpoint.  this method should be
+	 * called in a loop and fed feedback data so that the controller works
+	 * 
+	 * @param input feedback data
+	 */
 	public void input(double input)
 	{
 		this.input = input;
@@ -127,6 +147,12 @@ public class PID
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * this returns the output of the PID controller.  Ideally this should 
+	 * eventually be the setpoint
+	 * 
+	 * @return value to be used
+	 */
 	public double getOutput()
 	{
 		return output;
@@ -217,6 +243,14 @@ public class PID
 
 ////////////////////////////////////////////////////////////////////////////////
 	//for not feed forward
+	/**
+	 * This can be used to adjust "constants" on the fly, possibly for an 
+	 * adaptive controller
+	 * 
+	 * @param kp same as constructor
+	 * @param ki same as constructor
+	 * @param kd same as constructor
+	 */
 	public void setConstants(double kp, double ki, double kd)
 	{
 		this.kp = kp;
@@ -226,6 +260,15 @@ public class PID
 	
 ////////////////////////////////////////////////////////////////////////////////
 	//for feed forward
+	/**
+	 * This can be used to adjust "constants" on the fly, possibly for an 
+	 * adaptive controller
+	 * 
+	 * @param kp same as constructor
+	 * @param ki same as constructor
+	 * @param kd same as constructor
+	 * @param kf same as constructor
+	 */
 	public void setConstants(double kp, double ki, double kd, double kf)
 	{
 		this.kp = kp;
