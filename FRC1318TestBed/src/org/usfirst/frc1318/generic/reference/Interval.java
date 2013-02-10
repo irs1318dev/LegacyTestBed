@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.autonomous;
+package org.usfirst.frc1318.generic.reference;
 
 public class Interval 
 {
