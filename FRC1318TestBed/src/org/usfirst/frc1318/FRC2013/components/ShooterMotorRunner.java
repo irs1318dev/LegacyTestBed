@@ -17,7 +17,7 @@ public class ShooterMotorRunner extends RobotComponentBase{
 	public void teleopPeriodic() {
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(ReferenceData.getInstance().getJoystickData().getJoystickLY());
 		motor.set(ReferenceData.getInstance().getShooterData().getMotorSpeed());
-		System.out.println("The Motor Speed has been set");
+		System.out.println("The Motor Speed has been set to " + (ReferenceData.getInstance().getShooterData().getMotorSpeed()));
 	}
 
 	
