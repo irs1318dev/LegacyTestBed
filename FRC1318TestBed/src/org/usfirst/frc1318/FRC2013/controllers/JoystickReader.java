@@ -24,7 +24,7 @@ public class JoystickReader extends RobotComponentBase{
 		ReferenceData.getInstance().getJoystickData().setJoystickLX(joystickL.getX());
 		ReferenceData.getInstance().getJoystickData().setJoystickRX(joystickR.getX());
 				
-		ReferenceData.getInstance().getJoystickData().setLiftUp(joystickL.getRawButton(ButtonRef.LIFT_UP));
+		ReferenceData.getInstance().getJoystickData().setLiftUp1(joystickL.getRawButton(ButtonRef.LIFT_UP_1));
 		ReferenceData.getInstance().getJoystickData().setLiftDown(joystickL.getRawButton(ButtonRef.LIFT_DOWN));
 	}
 	

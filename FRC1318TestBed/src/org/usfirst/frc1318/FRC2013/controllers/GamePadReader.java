@@ -16,7 +16,7 @@ public class GamePadReader extends RobotComponentBase{
 	
 	public void teleopPeriodic() {
 		
-		ReferenceData.getInstance().getGamePadData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP));
+		ReferenceData.getInstance().getGamePadData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP_1));
 		ReferenceData.getInstance().getGamePadData().setLiftDown(gamePad.getRawButton(ButtonRef.LIFT_DOWN));
 		ReferenceData.getInstance().getJoystickData().setJoystickLY(gamePad.getYLeft());
 		ReferenceData.getInstance().getJoystickData().setJoystickRY(gamePad.getYRight());
