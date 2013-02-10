@@ -26,11 +26,27 @@ public class JoystickReaderTest {
 		joystickReader.setJoystick(mockJoystickL, mockJoystickR);
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Test
 	public void leftYAssignPositive1Test(){
 		setJoystickLY(1);
 		joystickReader.teleopPeriodic();
 		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void leftYAssignPositiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void leftYAssignPositiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
@@ -47,6 +63,20 @@ public class JoystickReaderTest {
 		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
+	@Test
+	public void leftYAssignNegitiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void leftYAssignNegitiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Test
@@ -54,6 +84,20 @@ public class JoystickReaderTest {
 		setJoystickLX(1);
 		joystickReader.teleopPeriodic();
 		assertEquals(1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
+	}
+	
+	@Test
+	public void leftXAssignPositiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void leftXAssignPositiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
@@ -70,6 +114,20 @@ public class JoystickReaderTest {
 		assertEquals(-1, ReferenceData.getInstance().getJoystickData().getJoystickLX(), 0.001);
 	}
 	
+	@Test
+	public void leftXAssignNegitiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void leftXAssignNegitiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Test
@@ -80,10 +138,38 @@ public class JoystickReaderTest {
 	}
 	
 	@Test
+	public void rightYAssignPositiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignPositiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
 	public void rightYAssign0Test(){
 		setJoystickRY(0);
 		joystickReader.teleopPeriodic();
 		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickRY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignNegitiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void rightYAssignNegitiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
 	}
 	
 	@Test
@@ -103,11 +189,40 @@ public class JoystickReaderTest {
 	}
 	
 	@Test
+	public void rightXAssignPositiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssignPositiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
 	public void rightXAssign0Test(){
 		setJoystickRX(0);
 		joystickReader.teleopPeriodic();
 		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickRX(), 0.001);
 	}
+	
+	@Test
+	public void rightXAssignNegitiveInBounds(){
+		setJoystickLY(.42);
+		joystickReader.teleopPeriodic();
+		assertEquals(.355, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
+	@Test
+	public void rightXAssignNegitiveInDeadZone(){
+		setJoystickLY(.06);
+		joystickReader.teleopPeriodic();
+		assertEquals(0, ReferenceData.getInstance().getJoystickData().getJoystickLY(), 0.001);
+	}
+	
 	
 	@Test
 	public void rightXAssignNegitive1Test(){

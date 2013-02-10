@@ -26,6 +26,8 @@ public class GamePadReaderTest {
 		gamePadReader.setGamePad(gamePad);
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	@Test
 	public void leftYAssignPositive1Test(){
 		setJoystickLY(1);
