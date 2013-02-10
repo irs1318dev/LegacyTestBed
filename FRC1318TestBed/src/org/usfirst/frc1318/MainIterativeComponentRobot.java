@@ -1,6 +1,6 @@
 package org.usfirst.frc1318;
 
-import org.usfirst.frc1318.autonomous.AutoTurretRunner;
+import org.usfirst.frc1318.autonomous.macros.AutoTurretMacro;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
@@ -59,7 +59,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		BotVector botVector = new BotVector();
 		botVector.add(new MMGamePadReader());
 		botVector.add(new MMLimitSwitchReader());
-		botVector.add(new AutoTurretRunner());
+		botVector.add(new AutoTurretMacro());
 		botVector.add(new MMCalculator());
         botVector.add(new MMTurretRunner());
 		botVector.add(new MMNetworkTableRunner());

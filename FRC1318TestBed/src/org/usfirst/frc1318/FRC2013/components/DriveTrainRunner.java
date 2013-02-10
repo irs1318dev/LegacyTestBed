@@ -28,20 +28,25 @@ public class DriveTrainRunner extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		
+		System.out.println("Begin teleop");
 		double rightVal = ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed();
+		System.out.println("\tgot right " + rightVal);
 		rightVal = Math.min(rightVal, 1);
 		rightVal = Math.max(rightVal, -1);
+		//System.out.println("curved right " + rightVal);
 		getRightTalon().set(rightVal);
 		
-		//System.out.println("DriveTrainRunner 29 Right Value " + rightVal);
+		System.out.println("\tDriveTrainRunner 29 Right Value " + rightVal);
 		
 		double leftVal = ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed();
+		System.out.println("\tgot left " + leftVal);
 		leftVal = Math.min(leftVal, 1);
 		leftVal = Math.max(leftVal, -1);
+		//System.out.println("curved left" + leftVal);
 		getLeftTalon().set(leftVal);
 		
-		//System.out.println("DriveTrainRunner 36 Left Value " + leftVal);
+		System.out.println("\tDriveTrainRunner 36 Left Value " + leftVal);
+		System.out.println("End teleop");
 	}
 	
 }
