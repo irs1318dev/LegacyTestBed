@@ -1,6 +1,6 @@
-package org.usfirst.frc1318.minimike.networktable;
+package org.usfirst.frc1318.minimike.reference;
 
-public class NTReff 
+public class NTRef 
 {
 	//GamePad======================================================================
 	public static final String Gamepad_AtonButton = "gp.ab";
