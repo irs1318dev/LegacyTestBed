@@ -30,7 +30,6 @@ public class DriveTrainData {
 	
 	public void setRightPIDSpeed(double val){
 		rightPIDSpeed = val;
-		System.out.println("Set right PID to " + val);
 	}
 	
 	public double getLeftPIDSpeed(){
@@ -39,7 +38,6 @@ public class DriveTrainData {
 	
 	public void setLeftPIDSpeed(double val){
 		leftPIDSpeed = val;
-		System.out.println("Set left PID to " + val);
 	}
 	
 	public double getRightEncoder(){
