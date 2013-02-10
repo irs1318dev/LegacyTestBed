@@ -1,18 +1,12 @@
-package org.usfirst.frc1318.autonomous;
-
+package org.usfirst.frc1318.autonomous.macros;
+//OLD, DONT USE PLEASE! HERE FOR REFERENCE!
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.minimike.calculators.MMCalculator;
-import org.usfirst.frc1318.minimike.shared.MMGamePadData;
-import org.usfirst.frc1318.minimike.shared.MMLimitSwitchData;
-import org.usfirst.frc1318.minimike.shared.MMTurretData;
-import org.usfirst.frc1318.utils.DriverStationPrint;
+import org.usfirst.frc1318.generic.reference.Interval;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
-
 import java.util.Vector;
-import edu.wpi.first.wpilibj.Timer;
 
-public class AutoTurretRunner extends RobotComponentBase{
-
+public class AutoTurretMacro extends RobotComponentBase
+{
 	private int currentState = 0; // Current state of state machine. 0 - init, 1 - calibrate, 2 - find center.
 	public static final int samples = 2; // number of samples that the turret uses to find the center.
 	
