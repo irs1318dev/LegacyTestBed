@@ -26,7 +26,7 @@ public class NetworkTableRunner extends RobotComponentBase
 	
  	private void gamePadData()
 	{
- 		IRSTable.putNumber(NTReff.GamePad_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
+ 		IRSTable.putNumber(NTReff.JoyStick_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
 	}
 
  	private void limitSwitchData()
