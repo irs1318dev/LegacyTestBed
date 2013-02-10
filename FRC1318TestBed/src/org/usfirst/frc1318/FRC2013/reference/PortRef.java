@@ -3,7 +3,7 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 public interface PortRef {
 
-	int GAMEPAD = 0;
+	int GAMEPAD = 1;
 	
 	int JOYSTICK_L = 0;
 	int JOYSTICK_R = 1;

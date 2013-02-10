@@ -17,10 +17,10 @@ import org.usfirst.frc1318.FRC2013.components.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return MiniMikeVector2();
+		return motorTest();
 	}
 	
-	protected static BotVector MotorTest() {
+	protected static BotVector motorTest() {
 		BotVector botVector = new BotVector();
 		botVector.add(new GamePadReader());
 		botVector.add(new NetworkTableRunner());
