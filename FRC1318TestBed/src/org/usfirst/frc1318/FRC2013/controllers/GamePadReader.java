@@ -18,10 +18,25 @@ public class GamePadReader extends RobotComponentBase{
 		
 		ReferenceData.getInstance().getJoystickData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP));
 		ReferenceData.getInstance().getJoystickData().setLiftDown(gamePad.getRawButton(ButtonRef.LIFT_DOWN));
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(gamePad.getYLeft());
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(gamePad.getYRight());
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(gamePad.getXLeft());
-		ReferenceData.getInstance().getJoystickData().setJoystickRX(gamePad.getXRight());
+		
+		double[] joysticks = {gamePad.getYLeft(), gamePad.getYRight(), gamePad.getXLeft(), gamePad.getXRight()};
+		
+		for(int i = 0; i < joysticks.length; i++){
+			joysticks[i] = Math.min(joysticks[i], 1);
+			joysticks[i] = Math.max(joysticks[i], -1);
+			if(joysticks[i] > .1){
+				joysticks[i] = ( (10.0 * joysticks[i]) - 1 ) / 9;
+			}else if(joysticks[i] < -.1){
+				joysticks[i] = ( (10.0 * joysticks[i]) + 1) / 9;
+			}else{
+				joysticks[i] = 0;
+			}
+		}
+		
+		ReferenceData.getInstance().getJoystickData().setJoystickLY(joysticks[0]);
+		ReferenceData.getInstance().getJoystickData().setJoystickRY(joysticks[1]);
+		ReferenceData.getInstance().getJoystickData().setJoystickLX(joysticks[2]);
+		ReferenceData.getInstance().getJoystickData().setJoystickRX(joysticks[3]);
 
 	}
 
