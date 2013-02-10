@@ -1,14 +1,13 @@
 package org.usfirst.frc1318.FRC2013.calculatorsTest;
 
 import org.usfirst.frc1318.FRC2013.calculators.DriveTrain2JoysticksCalculator;
-import org.usfirst.frc1318.FRC2013.shared.JoystickData;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
 
-public class DriveTrain2JoystiticksCalculatorTest {
+public class DriveTrain2JoysticksCalculatorTest {
 	
 	DriveTrain2JoysticksCalculator calc;
 	

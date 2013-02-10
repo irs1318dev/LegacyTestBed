@@ -23,6 +23,7 @@ public class JoystickReader extends RobotComponentBase{
 		for(int i = 0; i < joysticks.length; i++){
 			joysticks[i] = Math.min(joysticks[i], 1);
 			joysticks[i] = Math.max(joysticks[i], -1);
+			//TODO turn .1 into a constant
 			if(joysticks[i] > .1){
 				joysticks[i] = ( (10.0 * joysticks[i]) - 1 ) / 9;
 			}else if(joysticks[i] < -.1){
