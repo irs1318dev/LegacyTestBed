@@ -1,7 +1,7 @@
 package org.usfirst.frc1318.FRC2013.components;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.FRC2013.reference.NTReff;
+import org.usfirst.frc1318.FRC2013.reference.NTRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.generic.networktable.IRSTable;
 
@@ -18,24 +18,43 @@ public class NetworkTableRunner extends RobotComponentBase
 	{
 		if(val++ % 10 == 0)
 		{
-			gamePadData();
-			limitSwitchData();
+			driveTrainData();
+			joystickData();
+			lifterLimitSwitchData();
 			shooterData();
 		}
 	}
 	
- 	private void gamePadData()
+	private void driveTrainData()
 	{
- 		IRSTable.putNumber(NTReff.JoyStick_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
+		IRSTable.putNumber(NTRef.DriveTrain_RightEncoder, ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftEncoder, ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
+		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
+		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
+		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
+	}
+	
+ 	private void joystickData()
+	{
+ 		IRSTable.putNumber(NTRef.Joystick_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
+ 		IRSTable.putNumber(NTRef.JoyStick_RightStickY, ReferenceData.getInstance().getJoystickData().getJoystickRY());
+ 		IRSTable.putNumber(NTRef.JoyStick_LeftStickX, ReferenceData.getInstance().getJoystickData().getJoystickLX());
+ 		IRSTable.putNumber(NTRef.JoyStick_RightStickX, ReferenceData.getInstance().getJoystickData().getJoystickRX());
+ 		IRSTable.putBoolean(NTRef.JoyStick_LiftUp, ReferenceData.getInstance().getJoystickData().getLiftUp());
+ 		IRSTable.putBoolean(NTRef.JoyStick_LiftDown, ReferenceData.getInstance().getJoystickData().getLiftDown());
 	}
 
- 	private void limitSwitchData()
+ 	private void lifterLimitSwitchData()
  	{
  		
  	}
 
  	private void shooterData()
  	{
- 		IRSTable.putNumber(NTReff.Shooter_motor, ReferenceData.getInstance().getShooterData().getMotorSpeed());
+ 		IRSTable.putNumber(NTRef.Shooter_SetPoint, ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+ 		IRSTable.putNumber(NTRef.Shooter_AngularEncoderSpeed, ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity());
+ 		IRSTable.putNumber(NTRef.Shooter_motor, ReferenceData.getInstance().getShooterData().getMotorSpeed());
+ 		IRSTable.putBoolean(NTRef.Shooter_HasFrisbee, ReferenceData.getInstance().getShooterData().getHasFrisbees());
+ 		IRSTable.putBoolean(NTRef.Shooter_ShouldFire, ReferenceData.getInstance().getShooterData().getShouldFire());
  	}
 }

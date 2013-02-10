@@ -1,7 +1,7 @@
 package org.usfirst.frc1318.minimike.components;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.minimike.networktable.NTReff;
+import org.usfirst.frc1318.minimike.reference.NTRef;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
 import org.usfirst.frc1318.generic.networktable.IRSTable;
 
@@ -26,19 +26,19 @@ public class MMNetworkTableRunner extends RobotComponentBase
 	
  	private void gamePadData()
 	{
-		IRSTable.putBoolean(NTReff.Gamepad_AtonButton, MMReferenceData.getInstance().getMMGamePadData().getAutonomousButton());
-		IRSTable.putBoolean(NTReff.Gamepad_LeftButton, MMReferenceData.getInstance().getMMGamePadData().getLeftButton());
-		IRSTable.putBoolean(NTReff.Gamepad_RightButton, MMReferenceData.getInstance().getMMGamePadData().getRightButton());
+		IRSTable.putBoolean(NTRef.Gamepad_AtonButton, MMReferenceData.getInstance().getMMGamePadData().getAutonomousButton());
+		IRSTable.putBoolean(NTRef.Gamepad_LeftButton, MMReferenceData.getInstance().getMMGamePadData().getLeftButton());
+		IRSTable.putBoolean(NTRef.Gamepad_RightButton, MMReferenceData.getInstance().getMMGamePadData().getRightButton());
 	}
 
  	private void limitSwitchData()
  	{
- 		IRSTable.putBoolean(NTReff.LimitSwitch_LeftSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState());
- 		IRSTable.putBoolean(NTReff.LimitSwitch_RightSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getRightState());
+ 		IRSTable.putBoolean(NTRef.LimitSwitch_LeftSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getLeftState());
+ 		IRSTable.putBoolean(NTRef.LimitSwitch_RightSwitch, MMReferenceData.getInstance().getMMLimitSwitchData().getRightState());
  	}
 
  	private void turretData()
  	{
- 		IRSTable.putNumber(NTReff.Turret_TurnSpeed, MMReferenceData.getInstance().getMMTurretData().getTurnSpeed());
+ 		IRSTable.putNumber(NTRef.Turret_TurnSpeed, MMReferenceData.getInstance().getMMTurretData().getTurnSpeed());
  	}
 }
