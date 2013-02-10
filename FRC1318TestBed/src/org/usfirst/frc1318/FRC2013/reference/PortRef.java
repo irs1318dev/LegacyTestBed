@@ -3,12 +3,12 @@ import edu.wpi.first.wpilibj.SensorBase;
 
 public interface PortRef {
 
-	int GAMEPAD = 0;
+	int GAMEPAD = 1;
 	
 	int JOYSTICK_L = 0;
 	int JOYSTICK_R = 1;
 	
-	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();//2
+	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	
 	int SHOOTER_UP_SOLENOID = 0;//TODO
 	int SHOOTER_DOWN_SOLENOID = 0;//TODO

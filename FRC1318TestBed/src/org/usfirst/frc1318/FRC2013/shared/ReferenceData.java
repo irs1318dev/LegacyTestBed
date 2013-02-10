@@ -5,7 +5,6 @@ public class ReferenceData {
 	private static ReferenceData instance;
 	private JoystickData joystickData;
 	private DriveTrainData driveTrainData;
-	private GamePadData gamePadData;
 	private LifterData lifterData;
 	private LifterLimitSwitchData lifterLimitSwitchData;
 	private ShooterData shooterData;
@@ -40,15 +39,6 @@ public class ReferenceData {
 		driveTrainData = newData;
 	}
 	
-	public GamePadData getGamePadData(){
-		if(gamePadData == null){
-			gamePadData = new GamePadData();
-		}
-		return gamePadData;
-	}
-	public void setGamePadData(GamePadData newData){
-		gamePadData = newData;
-	}
 
 	public LifterData getLifterData() {
 		if (lifterData == null) {
@@ -71,6 +61,8 @@ public class ReferenceData {
 	}
 
 	public ShooterData getShooterData(){
+		if(shooterData == null)
+			shooterData = new ShooterData();
 		return shooterData;
 	}
 	public void setShooterData(ShooterData newData){

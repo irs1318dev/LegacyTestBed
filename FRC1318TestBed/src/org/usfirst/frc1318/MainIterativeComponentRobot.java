@@ -1,6 +1,6 @@
 package org.usfirst.frc1318;
 
-import org.usfirst.frc1318.autonomous.macros.AutoTurretMacro;
+import org.usfirst.frc1318.autonomous.AutoRunner;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
@@ -11,11 +11,21 @@ import org.usfirst.frc1318.testbed.components.TBGamePadReader;
 import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
+import org.usfirst.frc1318.FRC2013.controllers.*;
+import org.usfirst.frc1318.FRC2013.components.*;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return MiniMikeVector2();
+		return motorTest();
+	}
+	
+	protected static BotVector motorTest() {
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePadReader());
+		botVector.add(new NetworkTableRunner());
+		botVector.add(new ShooterMotorRunner());
+		return botVector;
 	}
 
 	protected static BotVector helloBot() {
@@ -59,7 +69,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		BotVector botVector = new BotVector();
 		botVector.add(new MMGamePadReader());
 		botVector.add(new MMLimitSwitchReader());
-		botVector.add(new AutoTurretMacro());
+		botVector.add(new AutoRunner());
 		botVector.add(new MMCalculator());
         botVector.add(new MMTurretRunner());
 		botVector.add(new MMNetworkTableRunner());

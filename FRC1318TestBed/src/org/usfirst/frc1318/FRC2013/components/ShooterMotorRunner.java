@@ -10,16 +10,13 @@ import edu.wpi.first.wpilibj.Talon;
 public class ShooterMotorRunner extends RobotComponentBase{
 	private Talon motor;
 	
-	public void RobotInit() {
-		
+	public void robotInit() {
 		motor = new Talon(PortRef.SIDECAR_SLOT, PortRef.SHOOTER_MOTOR);
 	}
 	
 	public void teleopPeriodic() {
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(ReferenceData.getInstance().getJoystickData().getJoystickLY());
 		motor.set(ReferenceData.getInstance().getShooterData().getMotorSpeed());
+		System.out.println("The Motor Speed has been set to " + (ReferenceData.getInstance().getShooterData().getMotorSpeed()));
 	}
-
-	
-
 }
