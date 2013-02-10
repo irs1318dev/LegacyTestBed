@@ -11,11 +11,20 @@ import org.usfirst.frc1318.testbed.components.TBGamePadReader;
 import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
+import org.usfirst.frc1318.FRC2013.controllers.*;
+import org.usfirst.frc1318.FRC2013.components.*;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return MiniMikeVector2();
+		return MotorTest();
+	}
+	
+	protected static BotVector MotorTest() {
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePadReader());
+		botVector.add(new ShooterMotorRunner());
+		return botVector;
 	}
 
 	protected static BotVector helloBot() {
