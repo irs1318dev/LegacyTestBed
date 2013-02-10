@@ -71,6 +71,8 @@ public class ReferenceData {
 	}
 
 	public ShooterData getShooterData(){
+		if(shooterData == null)
+			shooterData = new ShooterData();
 		return shooterData;
 	}
 	public void setShooterData(ShooterData newData){
