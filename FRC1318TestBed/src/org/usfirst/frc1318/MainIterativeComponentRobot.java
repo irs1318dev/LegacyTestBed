@@ -11,6 +11,10 @@ import org.usfirst.frc1318.testbed.components.TBGamePadReader;
 import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
+import org.usfirst.frc1318.FRC2013.calculators.DriveTrain1JoystickCalculator;
+import org.usfirst.frc1318.FRC2013.calculators.DriveTrainPIDCalculator;
+import org.usfirst.frc1318.FRC2013.calculators.LifterCalculator;
+import org.usfirst.frc1318.FRC2013.calculators.ShooterCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
 import org.usfirst.frc1318.FRC2013.components.*;
 
@@ -18,6 +22,35 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
 		return motorTest();
+	}
+	
+	protected static BotVector competitionBot(){
+		BotVector botVector = new BotVector();
+		
+		botVector.add(new DriveTrainEncoderReader());
+		botVector.add(new GamePadReader());
+		botVector.add(new JoystickReader());
+		botVector.add(new LifterLimitSwitchReader());
+		botVector.add(new ShooterEncoderReader());
+		
+		//Autonomous Here
+		
+		botVector.add(new LifterCalculator());
+		botVector.add(new DriveTrain1JoystickCalculator());
+		botVector.add(new ShooterCalculator());
+		
+		botVector.add(new DriveTrainPIDCalculator());
+		botVector.add(new ShooterPIDRunner());
+		botVector.add(new ShooterPIDRunner());
+		
+		botVector.add(new DriveTrainRunner());
+		botVector.add(new LifterRunner());
+		botVector.add(new ShooterAngleRunner());
+		botVector.add(new ShooterFireRunner());
+		botVector.add(new ShooterMotorRunner());
+		
+		botVector.add(new NetworkTableRunner());
+		
 	}
 	
 	protected static BotVector motorTest() {
