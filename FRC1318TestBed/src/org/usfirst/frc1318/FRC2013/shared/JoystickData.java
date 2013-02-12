@@ -7,8 +7,7 @@ public class JoystickData {
 	private double joystickLX;
 	private double joystickRX;
 
-	private boolean liftUp1;
-	private boolean liftUp2;
+	private boolean liftUp;
 	private boolean liftDown;
 	
 	public double getJoystickRY(){
@@ -47,21 +46,12 @@ public class JoystickData {
 	}
 
 	
-	public boolean getLiftUp1() {
-		return liftUp1;
+	public boolean getLiftUp() {
+		return liftUp;
 	}
 	
-	public void setLiftUp1(boolean newValue) {
-		this.liftUp1 = newValue;
-	}
-	
-	
-	public boolean getLiftUp2() {
-		return liftUp2;
-	}
-	
-	public void setLift2(boolean newValue) {
-		this.liftUp2 = newValue;
+	public void setLiftUp(boolean newValue) {
+		this.liftUp = newValue;
 	}
 	
 	

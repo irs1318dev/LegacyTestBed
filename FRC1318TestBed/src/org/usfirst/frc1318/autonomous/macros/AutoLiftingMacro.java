@@ -7,6 +7,10 @@ import org.usfirst.frc1318.autonomous.AutoTask;
 public class AutoLiftingMacro implements AutoTask{
 	
 	private int currentState = StateRef.AUTO_LIFTING_MACRO_DEFAULT_STATE;
+	
+	private final double SLOW_DRIVE_SPEED = .2;
+	private final double STOP = 0;
+	private final boolean LIFT = true;
 
 	private boolean hasFinished = false;
 	private boolean hasInitalized = false;
@@ -43,12 +47,17 @@ public class AutoLiftingMacro implements AutoTask{
 	}
 
 	private void driveSlowlyTillSwitchTriggered() {
+		ReferenceData.getInstance().getJoystickData().setJoystickLY(SLOW_DRIVE_SPEED);
+		ReferenceData.getInstance().getJoystickData().setJoystickRY(SLOW_DRIVE_SPEED);
 		if (ReferenceData.getInstance().getLifterLimitSwitchData().getIsSwitched()) {
+			ReferenceData.getInstance().getJoystickData().setJoystickLY(STOP);
+			ReferenceData.getInstance().getJoystickData().setJoystickRY(STOP);
+			
 			currentState = StateRef.ACTUATE_LIFTER_STATE;
 		}
 	}
 	
 	private void actuateLifter() {
-		
+		ReferenceData.getInstance().getJoystickData().setLiftUp(LIFT);
 	}
 }
