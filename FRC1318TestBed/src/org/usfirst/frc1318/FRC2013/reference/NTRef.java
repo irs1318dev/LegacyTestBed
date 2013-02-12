@@ -27,5 +27,6 @@ public class NTRef
 	public static final String Shooter_motor = "s.m";
 	public static final String Shooter_HasFrisbee = "s.hf";
 	public static final String Shooter_ShouldFire = "s.sf";
+	public static final String Shooter_Current = "s.c";
 	//=============================================================================
 }
