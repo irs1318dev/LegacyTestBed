@@ -2,7 +2,6 @@ package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.generic.controllers.PID;
 import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
 public class DriveTrain2JoysticksCalculator extends RobotComponentBase {

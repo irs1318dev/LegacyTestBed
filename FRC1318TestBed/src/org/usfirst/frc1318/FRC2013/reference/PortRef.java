@@ -33,4 +33,7 @@ public interface PortRef {
 	int TALON_R = 5;
 	int TALON_L = 6;
 
+	int AIR_PRESSURE_SWITCH_CHANNEL = 0;//TODO
+	int AIR_RELAY_CHANNEL = 0;//TODO
+
 }
