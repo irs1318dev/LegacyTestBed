@@ -20,6 +20,7 @@ public class NetworkTableRunner extends RobotComponentBase
 		{
 			driveTrainData();
 			joystickData();
+			lifterData();
 			lifterLimitSwitchData();
 			shooterData();
 		}
@@ -43,10 +44,15 @@ public class NetworkTableRunner extends RobotComponentBase
  		IRSTable.putBoolean(NTRef.JoyStick_LiftUp, ReferenceData.getInstance().getJoystickData().getLiftUp());
  		IRSTable.putBoolean(NTRef.JoyStick_LiftDown, ReferenceData.getInstance().getJoystickData().getLiftDown());
 	}
+ 	
+ 	private void lifterData()
+ 	{
+ 		IRSTable.putBoolean(NTRef.Lifter_ShouldLift, ReferenceData.getInstance().getLifterData().getShouldLift());
+ 	}
 
  	private void lifterLimitSwitchData()
  	{
- 		
+ 		IRSTable.putBoolean(NTRef.LifterLimitSwitch_Switched, ReferenceData.getInstance().getLifterLimitSwitchData().getIsSwitched());
  	}
 
  	private void shooterData()
