@@ -2,28 +2,37 @@ package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
 
 public class ShooterCalculator extends RobotComponentBase {
+	SettingsLookup shooterSpeed;
 	
-	//set angle based on buttons
-		//if button pressed
-		//ShooterData.setShooterAngle(ShooterData.constants.SHOOTER_UP);
-		//if button pressed
-		//ShooterData.setShooterAngle(ShooterData.constants.SHOOTER_DOWN);
-		
-	//calculate motor speed
-		//calculate somehow
-		//set value in data class
+	public void RobotInit()
+	{
+		shooterSpeed.addSetting(0);
+	}
 	
-	//Load Frisbees
-		
-		//decide if needs to load
-			//do we have frisbees in the hopper
-				//load
-			//else
-				//alert drivers
+	public void TeleopPeriodic()
+	{
+		updateAngle();
+		updateSpeed();
+	}
 	
-		//think about possible purge option for stuck frisbees
+	private void updateAngle()
+	{
+		//set angle based on buttons
+			//if button pressed
+			//ShooterData.setShooterAngle(ShooterData.constants.SHOOTER_UP);
+			//if button pressed
+			//ShooterData.setShooterAngle(ShooterData.constants.SHOOTER_DOWN);
+	}
+	
+	private void updateSpeed()
+	{
+		//calculate motor speed
+			//calculate somehow
+			//set value in data class
+	}
 	
 }
