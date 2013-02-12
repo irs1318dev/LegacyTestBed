@@ -3,8 +3,8 @@ package org.usfirst.frc1318.testbed.calculators;
 import org.usfirst.frc1318.testbed.shared.TBGamepadData;
 import org.usfirst.frc1318.testbed.shared.TBSolenoidData;
 import org.usfirst.frc1318.testbed.shared.TBThroughBeamData;
-import org.usfirst.frc1318.utils.DriverStationPrint;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
 public class TBKickerCalculator extends RobotComponentBase
 {

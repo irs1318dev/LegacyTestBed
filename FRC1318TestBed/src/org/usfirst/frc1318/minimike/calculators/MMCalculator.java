@@ -1,8 +1,8 @@
 package org.usfirst.frc1318.minimike.calculators;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
-import org.usfirst.frc1318.utils.DriverStationPrint;
 
 public class MMCalculator extends RobotComponentBase {
 	

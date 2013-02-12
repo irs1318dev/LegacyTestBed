@@ -1,7 +1,7 @@
 package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
-import org.usfirst.frc1318.utils.DriverStationPrint;
+import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
 public class DriveTrain1JoystickCalculator {
 	

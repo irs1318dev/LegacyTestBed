@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.utils;
+package org.usfirst.frc1318.generic.utils;
 
 import edu.wpi.first.wpilibj.DriverStationLCD;
 
