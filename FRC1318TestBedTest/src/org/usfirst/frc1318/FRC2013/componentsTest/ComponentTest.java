@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.components;
+package org.usfirst.frc1318.FRC2013.componentsTest;
 
 import org.junit.After;
 import org.junit.Before;

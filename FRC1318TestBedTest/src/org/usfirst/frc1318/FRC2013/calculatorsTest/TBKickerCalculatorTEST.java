@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.calculators;
+package org.usfirst.frc1318.FRC2013.calculatorsTest;
 
 import static org.junit.Assert.*;
 

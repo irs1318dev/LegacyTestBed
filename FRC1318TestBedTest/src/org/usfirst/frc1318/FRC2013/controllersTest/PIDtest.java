@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.generic.controllers;
+package org.usfirst.frc1318.FRC2013.controllersTest;
 
 import static org.junit.Assert.*;
 
