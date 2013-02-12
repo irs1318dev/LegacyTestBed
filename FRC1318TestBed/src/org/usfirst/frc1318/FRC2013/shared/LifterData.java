@@ -1,7 +1,7 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
 public class LifterData {
-	private boolean shouldLift;
+	private boolean shouldLift = true;
 	
 	public boolean getShouldLift() {
 		return shouldLift;

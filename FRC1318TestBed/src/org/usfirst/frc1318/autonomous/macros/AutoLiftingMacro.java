@@ -6,11 +6,10 @@ import org.usfirst.frc1318.autonomous.AutoTask;
 
 public class AutoLiftingMacro implements AutoTask{
 	
-	private int currentState = StateRef.AUTO_LIFTING_MACRO_DEFAULT_STATE;
+	private int currentState = StateRef.ADJUST_LIFTER_AND_SHOOTER;
 	
 	private final double SLOW_DRIVE_SPEED = .2;
 	private final double STOP = 0;
-	private final boolean LIFT = true;
 
 	private boolean hasFinished = false;
 	private boolean hasInitalized = false;
@@ -22,6 +21,8 @@ public class AutoLiftingMacro implements AutoTask{
 
 	public void run() {
 		switch(currentState) {
+		case StateRef.ADJUST_LIFTER_AND_SHOOTER:
+			adjustLifterAndShooter();
 		case StateRef.DRIVE_SLOWLY_TILL_SWITCH_TRIGGERED_STATE:
 			driveSlowlyTillSwitchTriggered();
 			break;
@@ -35,7 +36,8 @@ public class AutoLiftingMacro implements AutoTask{
 	}
 
 	public void cancel() {
-		
+		ReferenceData.getInstance().getJoystickData().setJoystickLY(STOP);
+		ReferenceData.getInstance().getJoystickData().setJoystickRY(STOP);
 	}
 
 	public boolean hasFinished() {
@@ -44,6 +46,13 @@ public class AutoLiftingMacro implements AutoTask{
 
 	public boolean hasInitalized() {
 		return hasInitalized;
+	}
+	
+	private void adjustLifterAndShooter() {
+		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
+		ReferenceData.getInstance().getJoystickData().setShooterDown(true);
+		
+		currentState = StateRef.DRIVE_SLOWLY_TILL_SWITCH_TRIGGERED_STATE;
 	}
 
 	private void driveSlowlyTillSwitchTriggered() {
@@ -58,6 +67,8 @@ public class AutoLiftingMacro implements AutoTask{
 	}
 	
 	private void actuateLifter() {
-		ReferenceData.getInstance().getJoystickData().setLiftUp(LIFT);
+		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
+		
+		currentState = StateRef.DONE_STATE;
 	}
 }
