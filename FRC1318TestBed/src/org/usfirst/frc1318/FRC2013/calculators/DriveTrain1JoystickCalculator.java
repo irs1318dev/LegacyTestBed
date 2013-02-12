@@ -5,16 +5,22 @@ import org.usfirst.frc1318.utils.DriverStationPrint;
 
 public class DriveTrain1JoystickCalculator {
 	
-	private final int K1 = 1;
-	private final int K2 = 1;
+	private double K1 = 1;
+	private double K2 = 1;
 	
-	private final int K3 = K1;
-	private final int K4 = -K2;
-	
-	DriverStationPrint driverStationPrint;
+	private double K3 = K1;
+	private double K4 = -K2;
 
 	public void robotInit() {
-		driverStationPrint = new DriverStationPrint();
+	}
+	
+	public void setXScaleFactor(double xScaleFactor) {
+		K1 = xScaleFactor;
+		K3 = xScaleFactor;
+	}
+	public void setYScaleFactor(double yScaleFactor) {
+		K2 = yScaleFactor;
+		K4 = -yScaleFactor;
 	}
 	
 	public void teleopPeriodic(){
@@ -24,8 +30,31 @@ public class DriveTrain1JoystickCalculator {
 		double y = ReferenceData.getInstance().getJoystickData().getJoystickLY();
 		double x = ReferenceData.getInstance().getJoystickData().getJoystickLX();
 		
-		ReferenceData.getInstance().getDriveTrainData().setLeftSpeedSetPoint((K1 * x) + (K2 * y));
-		ReferenceData.getInstance().getDriveTrainData().setRightSpeedSetPoint((K3 * x) + (K4 * y));
+		double speedL = (K1 * x) + (K2 * y);
+		double speedR = (K3 * x) + (K4 * y);
+		
+		//TODO scale L, R to be the same 
+		if(Math.abs(speedL)>1){
+			speedR = speedR/Math.abs(speedL);
+			speedL = speedL/Math.abs(speedL);
+		}
+		if (Math.abs(speedR)>1){
+			speedL = speedL/Math.abs(speedR);
+			speedR = speedR/Math.abs(speedR);
+		}
+		// find the max of L, R using abs values
+		// if L max, set absL, L = 1, R = R/absL
+		// if R max, set absR, R = 1, L = L/absR
+		/*
+		speedL = Math.max(speedL, -1);
+		speedL = Math.min(speedL, 1);
+		speedR = Math.max(speedR, -1);
+		speedR = Math.min(speedR, 1);
+		*/
+		
+		ReferenceData.getInstance().getDriveTrainData().setLeftSpeedSetPoint(speedL);
+		ReferenceData.getInstance().getDriveTrainData().setRightSpeedSetPoint(speedR);
+		
 		
 		
 	}
