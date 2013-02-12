@@ -17,7 +17,9 @@ public class NTRef
 	public static final String JoyStick_LiftUp = "js.lu";
 	public static final String JoyStick_LiftDown = "js.ld";
 	//Lifter=======================================================================
+	public static final String Lifter_ShouldLift = "l.sl";
 	//LifterLimitSwitch============================================================
+	public static final String LifterLimitSwitch_Switched = "lms.s";
 	//LookUpTable==================================================================
 	//Shooter======================================================================
 	public static final String Shooter_SetPoint = "s.sp";
