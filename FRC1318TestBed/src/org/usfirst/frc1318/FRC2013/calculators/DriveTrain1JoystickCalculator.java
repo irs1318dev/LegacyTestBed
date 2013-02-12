@@ -1,9 +1,10 @@
 package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
+import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
-public class DriveTrain1JoystickCalculator {
+public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 	
 	private double K1 = 1;
 	private double K2 = 1;

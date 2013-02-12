@@ -31,7 +31,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new GamePadReader());
 		botVector.add(new JoystickReader());
 		botVector.add(new LifterLimitSwitchReader());
-		botVector.add(new ShooterEncoderReader());
+		//botVector.add(new ShooterEncoderReader());
 		
 		//Autonomous Here
 		
@@ -50,6 +50,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterMotorRunner());
 		
 		botVector.add(new NetworkTableRunner());
+		
+		return botVector;
 		
 	}
 	
