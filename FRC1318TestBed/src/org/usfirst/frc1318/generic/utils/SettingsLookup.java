@@ -13,7 +13,7 @@ public class SettingsLookup {
 	Vector settings;
 	int current;
 	
-	SettingsLookup()
+	public SettingsLookup()
 	{
 		settings = new Vector();
 	}
