@@ -10,5 +10,6 @@ public class CompressorRunner extends RobotComponentBase {
 	
 	public void robotInit() {
 		compressor = new Compressor(PortRef.AIR_PRESSURE_SWITCH_CHANNEL, PortRef.AIR_RELAY_CHANNEL);
+		compressor.start();
 	}
 }
