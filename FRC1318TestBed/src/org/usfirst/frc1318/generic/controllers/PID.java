@@ -79,7 +79,7 @@ public class PID
 		this.kf = kf;
 		this.clampMode = clampMode;
 		
-		/*
+		
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
@@ -104,7 +104,8 @@ public class PID
 		this.ki = ki;
 		this.kd = kd;
 		this.kp = kp;
-		/*
+		
+		
 		timer = new Timer();
 		timer.start();
 		prevTime = timer.get();
