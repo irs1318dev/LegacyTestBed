@@ -20,7 +20,7 @@ public class ShooterAngleRunner extends RobotComponentBase{
 	public void teleopPeriodic() {
 		
 		//set shooter to either up or down based on data class
-		if(ReferenceData.getInstance().getShooterData().getShooterAngle() == ShooterData.constants.SHOOTER_UP)
+		if(ReferenceData.getInstance().getShooterData().getShooterUp())
 		{
 			upSolenoid.set(true);
 			downSolenoid.set(false);
