@@ -13,6 +13,7 @@ public class JoystickData {
 	private boolean shooterDown;
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	private boolean shooterFire;
 	
 	public double getJoystickRY(){
 		return joystickRY;
@@ -101,5 +102,13 @@ public class JoystickData {
 	
 	public void setShooterSpeedDown(boolean newValue){
 		shooterSpeedDown = newValue;
+	}
+	
+	public boolean getShooterFire() {
+		return shooterFire;
+	}
+	
+	public void setShooterFire(boolean newValue) {
+		this.shooterFire = newValue;
 	}
 }

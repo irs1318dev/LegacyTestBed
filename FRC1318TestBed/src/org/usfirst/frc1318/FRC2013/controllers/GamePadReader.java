@@ -40,7 +40,11 @@ public class GamePadReader extends RobotComponentBase{
 		ReferenceData.getInstance().getJoystickData().setJoystickRX(joysticks[3]);
 		ReferenceData.getInstance().getJoystickData().setLiftUp(gamePad.getRawButton(ButtonRef.LIFT_UP));
 		ReferenceData.getInstance().getJoystickData().setLiftDown(gamePad.getRawButton(ButtonRef.LIFT_DOWN));
-
+		ReferenceData.getInstance().getJoystickData().setShooterDown(gamePad.getRawButton(ButtonRef.SHOOTER_DOWN));
+		ReferenceData.getInstance().getJoystickData().setShooterUp(gamePad.getRawButton(ButtonRef.SHOOTER_UP));
+		ReferenceData.getInstance().getJoystickData().setShooterSpeedDown(gamePad.getRawButton(ButtonRef.SHOOTER_SPEED_DOWN));
+		ReferenceData.getInstance().getJoystickData().setShooterSpeedUp(gamePad.getRawButton(ButtonRef.SHOOTER_SPEED_UP));
+		ReferenceData.getInstance().getJoystickData().setShooterFire(gamePad.getRawButton(ButtonRef.SHOOTER_FIRE));
 	}
 
 	public void setGamePad(GamePad newGamePad) {
