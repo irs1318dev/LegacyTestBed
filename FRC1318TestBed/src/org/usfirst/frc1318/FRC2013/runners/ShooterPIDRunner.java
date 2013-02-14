@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.FRC2013.components;
+package org.usfirst.frc1318.FRC2013.runners;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
@@ -7,13 +7,10 @@ import org.usfirst.frc1318.generic.controllers.PID;
 
 public class ShooterPIDRunner extends RobotComponentBase {
 	PID shooterPID;
-	ShooterData shooterData;
 	
 	
 	public void robotInit()
 	{	
-		shooterData = ReferenceData.getInstance().getShooterData();
-		
 		shooterPID = new PID(1,1,1);//TODO adjust values
 		shooterPID.setKFade(.75);
 	}
@@ -21,7 +18,7 @@ public class ShooterPIDRunner extends RobotComponentBase {
 	public void teleopPeriodic()
 	{
 		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		shooterPID.input(shooterData.getEncoderAngularVelocity());
+		shooterPID.input(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity());
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
 	}
 	

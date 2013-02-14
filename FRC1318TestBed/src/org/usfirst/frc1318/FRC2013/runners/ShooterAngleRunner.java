@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.FRC2013.components;
+package org.usfirst.frc1318.FRC2013.runners;
 
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
