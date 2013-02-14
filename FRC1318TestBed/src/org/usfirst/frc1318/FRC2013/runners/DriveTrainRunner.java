@@ -37,8 +37,8 @@ public class DriveTrainRunner extends RobotComponentBase {
 		leftVal = Math.max(leftVal, -1);
 		getLeftTalon().set(leftVal);
 	}
-	
-}
+}	
+
 
 //package org.usfirst.frc1318.FRC2013.runners;
 //
