@@ -16,7 +16,6 @@ import org.usfirst.frc1318.FRC2013.calculators.DriveTrainPIDCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.LifterCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.ShooterCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
-import org.usfirst.frc1318.FRC2013.components.*;
 import org.usfirst.frc1318.FRC2013.runners.CompressorRunner;
 import org.usfirst.frc1318.FRC2013.runners.DriveTrainRunner;
 import org.usfirst.frc1318.FRC2013.runners.LifterRunner;
