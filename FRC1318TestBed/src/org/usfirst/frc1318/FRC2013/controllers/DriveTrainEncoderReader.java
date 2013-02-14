@@ -11,8 +11,8 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	EncoderAngularVelocity encoderL;
 	
 	public void robotInit(){
-		encoderR = new EncoderAngularVelocity(PortRef.SIDECAR_SLOT, PortRef.ENCODER_R);
-		encoderL = new EncoderAngularVelocity(PortRef.SIDECAR_SLOT, PortRef.ENCODER_L);
+		encoderR = new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
+		encoderL = new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
 		//TODO check inputs
 	}
 	

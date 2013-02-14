@@ -25,11 +25,18 @@ import org.usfirst.frc1318.FRC2013.runners.ShooterAngleRunner;
 import org.usfirst.frc1318.FRC2013.runners.ShooterFireRunner;
 import org.usfirst.frc1318.FRC2013.runners.ShooterMotorRunner;
 import org.usfirst.frc1318.FRC2013.runners.ShooterPIDRunner;
+import org.usfirst.frc1318.FRC2013.runners.SolenoidTestRunner;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return motorTest();
+		return CompressorTestBot();
+	}
+	
+	protected static BotVector CompressorTestBot(){
+		BotVector botVector = new BotVector();
+		botVector.add(new CompressorRunner());
+		return botVector;
 	}
 	
 	protected static BotVector competitionBot(){
@@ -69,6 +76,15 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new GamePadReader());
 		botVector.add(new NetworkTableRunner());
 		botVector.add(new ShooterMotorRunner());
+		return botVector;
+	}
+	
+	protected static BotVector solenoidTest(){
+		BotVector botVector = new BotVector();
+		
+		botVector.add(new CompressorRunner());
+		botVector.add(new SolenoidTestRunner());
+		
 		return botVector;
 	}
 

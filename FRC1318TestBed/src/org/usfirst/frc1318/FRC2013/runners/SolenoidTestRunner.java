@@ -29,6 +29,13 @@ public class SolenoidTestRunner extends RobotComponentBase{
 	
 	public void TeleopPeriodoc()
 	{
+		
+		/*
+		 * state machine.  
+		 * even numbers set initial condition
+		 * odd numbers check if finished, turn off solenoid, reset data and 
+		 * 		incremnt sate counter 
+		 */
 		switch(data.state)
 		{
 		case 0:
