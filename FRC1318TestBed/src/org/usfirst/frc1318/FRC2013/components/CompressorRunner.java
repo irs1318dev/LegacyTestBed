@@ -9,7 +9,7 @@ public class CompressorRunner extends RobotComponentBase {
 	private Compressor compressor;
 	
 	public void robotInit() {
-		compressor = new Compressor(PortRef.AIR_PRESSURE_SWITCH_CHANNEL, PortRef.AIR_RELAY_CHANNEL);
+		compressor = new Compressor(PortRef.SIDECAR_SLOT, PortRef.AIR_PRESSURE_SWITCH_CHANNEL, PortRef.DIGITAL_IO, PortRef.AIR_RELAY_CHANNEL);
 		compressor.start();
 	}
 }
