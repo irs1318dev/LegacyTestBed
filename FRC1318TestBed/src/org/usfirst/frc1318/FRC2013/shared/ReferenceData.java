@@ -8,6 +8,7 @@ public class ReferenceData {
 	private LifterData lifterData;
 	private LifterLimitSwitchData lifterLimitSwitchData;
 	private ShooterData shooterData;
+	private SolenoidTestData solenoidTestData;
 	
 	private ReferenceData(){
 	}
@@ -67,5 +68,13 @@ public class ReferenceData {
 	}
 	public void setShooterData(ShooterData newData){
 		shooterData = newData;
+	}
+	
+	public SolenoidTestData getSolenoidTestData()
+	{
+		if (this.solenoidTestData == null){
+			solenoidTestData = new SolenoidTestData();
+		}
+		return solenoidTestData;
 	}
 }
