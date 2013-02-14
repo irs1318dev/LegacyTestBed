@@ -5,13 +5,13 @@ import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 
 public class ShooterMotorRunner extends RobotComponentBase{
-	private Talon motor;
+	private Jaguar motor;
 	
 	public void robotInit() {
-		motor = new Talon(PortRef.SIDECAR_SLOT, PortRef.SHOOTER_MOTOR);
+		motor = new Jaguar(PortRef.SIDECAR_SLOT, PortRef.SHOOTER_MOTOR);
 	}
 	
 	public void teleopPeriodic() {
