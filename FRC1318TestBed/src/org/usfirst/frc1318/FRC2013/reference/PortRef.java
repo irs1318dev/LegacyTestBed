@@ -9,6 +9,7 @@ public interface PortRef {
 	int JOYSTICK_R = 1;
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
+	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();
 	
 	int SHOOTER_UP_SOLENOID = 2;
 	int SHOOTER_DOWN_SOLENOID = 5;
@@ -27,13 +28,15 @@ public interface PortRef {
 	int LIFTER_LIMIT_SWITCH_PORT = 0;//TODO
 	
 	
-	int ENCODER_R = 3;
-	int ENCODER_L = 4;
+	int ENCODER_R_A = 5;
+	int ENCODER_R_B = 4;
+	int ENCODER_L_A = 3;
+	int ENCODER_L_B = 2;
 	
 	int TALON_R = 2;
 	int TALON_L = 1;
 
-	int AIR_PRESSURE_SWITCH_CHANNEL = 0;//TODO
-	int AIR_RELAY_CHANNEL = 0;//TODO
+	int AIR_PRESSURE_SWITCH_CHANNEL = 10;
+	int AIR_RELAY_CHANNEL = 1;
 
 }

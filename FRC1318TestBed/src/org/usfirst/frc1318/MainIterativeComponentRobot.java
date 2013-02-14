@@ -21,7 +21,13 @@ import org.usfirst.frc1318.FRC2013.components.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return motorTest();
+		return CompressorTestBot();
+	}
+	
+	protected static BotVector CompressorTestBot(){
+		BotVector botVector = new BotVector();
+		botVector.add(new CompressorRunner());
+		return botVector;
 	}
 	
 	protected static BotVector competitionBot(){
