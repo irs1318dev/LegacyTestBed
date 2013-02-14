@@ -17,6 +17,14 @@ import org.usfirst.frc1318.FRC2013.calculators.LifterCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.ShooterCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
 import org.usfirst.frc1318.FRC2013.components.*;
+import org.usfirst.frc1318.FRC2013.runners.CompressorRunner;
+import org.usfirst.frc1318.FRC2013.runners.DriveTrainRunner;
+import org.usfirst.frc1318.FRC2013.runners.LifterRunner;
+import org.usfirst.frc1318.FRC2013.runners.NetworkTableRunner;
+import org.usfirst.frc1318.FRC2013.runners.ShooterAngleRunner;
+import org.usfirst.frc1318.FRC2013.runners.ShooterFireRunner;
+import org.usfirst.frc1318.FRC2013.runners.ShooterMotorRunner;
+import org.usfirst.frc1318.FRC2013.runners.ShooterPIDRunner;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 

@@ -3,7 +3,7 @@ package org.usfirst.frc1318.FRC2013.controllersTest;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
-import org.usfirst.frc1318.FRC2013.components.DriveTrainRunner;
+import org.usfirst.frc1318.FRC2013.runners.DriveTrainRunner;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
 import edu.wpi.first.wpilibj.Talon;
