@@ -16,21 +16,20 @@ import org.usfirst.frc1318.FRC2013.calculators.DriveTrainPIDCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.LifterCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.ShooterCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
-import org.usfirst.frc1318.FRC2013.components.*;
-import org.usfirst.frc1318.FRC2013.runners.CompressorRunner;
-import org.usfirst.frc1318.FRC2013.runners.DriveTrainRunner;
-import org.usfirst.frc1318.FRC2013.runners.LifterRunner;
-import org.usfirst.frc1318.FRC2013.runners.NetworkTableRunner;
-import org.usfirst.frc1318.FRC2013.runners.ShooterAngleRunner;
-import org.usfirst.frc1318.FRC2013.runners.ShooterFireRunner;
-import org.usfirst.frc1318.FRC2013.runners.ShooterMotorRunner;
-import org.usfirst.frc1318.FRC2013.runners.ShooterPIDRunner;
-import org.usfirst.frc1318.FRC2013.runners.SolenoidTestRunner;
+import org.usfirst.frc1318.FRC2013.runners.*;
 
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return CompressorTestBot();
+		return gamePadBot();
+	}
+	
+	protected static BotVector gamePadBot()
+	{
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePadReader());
+		//botVector.add(new NetworkTableRunner());
+		return botVector;
 	}
 	
 	protected static BotVector CompressorTestBot(){
