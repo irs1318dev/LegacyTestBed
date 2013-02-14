@@ -32,11 +32,11 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return compressorTest();
 	}
 	
-	protected static BotVector gamePadTest()
+	protected static BotVector gamePadBot()
 	{
 		BotVector botVector = new BotVector();
 		botVector.add(new GamePadReader());
-		botVector.add(new NetworkTableRunner());
+		//botVector.add(new NetworkTableRunner());
 		return botVector;
 	}
 	
