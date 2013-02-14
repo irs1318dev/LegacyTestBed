@@ -6,6 +6,8 @@ import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
 public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 	
+	//???eden: K vals help rep speed to be fed into robot ???
+	
 	private double K1 = 1;
 	private double K2 = 1;
 	

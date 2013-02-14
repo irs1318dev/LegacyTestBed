@@ -27,9 +27,9 @@ public class ShooterCalculator extends RobotComponentBase {
 	private void updateAngle()
 	{
 		//set angle in data class based on buttons
-		if(ReferenceData.getInstance().getJoystickData().getShooterDown()) {
+		if(ReferenceData.getInstance().getGamePadData().getShooterDown()) {
 			ReferenceData.getInstance().getShooterData().setShooterUp(false);
-		}else if(ReferenceData.getInstance().getJoystickData().getShooterUp()) {
+		}else if(ReferenceData.getInstance().getGamePadData().getShooterUp()) {
 			ReferenceData.getInstance().getShooterData().setShooterUp(true);
 		}
 		
@@ -39,11 +39,11 @@ public class ShooterCalculator extends RobotComponentBase {
 	private void updateSpeed()
 	{
 		//respond to button presses
-		if(ReferenceData.getInstance().getJoystickData().getShooterSpeedUp()) {
+		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedUp()) {
 			shooterSpeed.up();
 		}
 		
-		if(ReferenceData.getInstance().getJoystickData().getShooterSpeedDown()) {
+		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedDown()) {
 			shooterSpeed.down();
 		}
 		

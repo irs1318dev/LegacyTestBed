@@ -1,5 +1,7 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
+import org.usfirst.frc1318.generic.shared.GamePadData;
+
 public class ReferenceData {
 	
 	private static ReferenceData instance;
@@ -8,6 +10,7 @@ public class ReferenceData {
 	private LifterData lifterData;
 	private LifterLimitSwitchData lifterLimitSwitchData;
 	private ShooterData shooterData;
+	private GamePadData gamePadData;
 	private SolenoidTestData solenoidTestData;
 	
 	private ReferenceData(){
@@ -19,7 +22,14 @@ public class ReferenceData {
 		}
 		return instance;
 	}
-		
+	
+	public GamePadData getGamePadData(){
+		if(gamePadData == null){
+			gamePadData = new GamePadData();
+		}
+		return gamePadData;
+	}
+	
 	public JoystickData getJoystickData(){
 		if(joystickData == null){
 			joystickData = new JoystickData();
@@ -50,7 +60,7 @@ public class ReferenceData {
 	public void setLiferData(LifterData newData) {
 		lifterData = newData;
 	}
-	
+
 	public LifterLimitSwitchData getLifterLimitSwitchData() {
 		if (lifterLimitSwitchData == null) {
 			lifterLimitSwitchData = new LifterLimitSwitchData();

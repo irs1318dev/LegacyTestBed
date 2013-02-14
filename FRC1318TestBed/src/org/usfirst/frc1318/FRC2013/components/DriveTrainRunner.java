@@ -13,7 +13,6 @@ public class DriveTrainRunner extends RobotComponentBase {
 	//read speed from a data class and update
 	
 	public void robotInit(){
-		System.out.println("yeah this should never be called. if it is stuff is broke (for tests)");
 		rightTalon = new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_R);
 		leftTalon = new Talon(PortRef.SIDECAR_SLOT, PortRef.TALON_L);
 	}
@@ -27,15 +26,9 @@ public class DriveTrainRunner extends RobotComponentBase {
 	}
 	
 	public void teleopPeriodic(){
-		double rightVal = ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed();
-		rightVal = Math.min(rightVal, 1);
-		rightVal = Math.max(rightVal, -1);
-		getRightTalon().set(rightVal);
+		getRightTalon().set(ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
 				
-		double leftVal = ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed();
-		leftVal = Math.min(leftVal, 1);
-		leftVal = Math.max(leftVal, -1);
-		getLeftTalon().set(leftVal);
+		getLeftTalon().set(ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
 	}
 	
 }
