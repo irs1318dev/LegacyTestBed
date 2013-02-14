@@ -63,6 +63,15 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterMotorRunner());
 		return botVector;
 	}
+	
+	protected static BotVector solenoidTest(){
+		BotVector botVector = new BotVector();
+		
+		botVector.add(new CompressorRunner());
+		botVector.add(new SolenoidTestRunner());
+		
+		return botVector;
+	}
 
 	protected static BotVector helloBot() {
 		BotVector botVector = new BotVector();
