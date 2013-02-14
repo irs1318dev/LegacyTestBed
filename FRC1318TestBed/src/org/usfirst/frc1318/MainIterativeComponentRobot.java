@@ -21,7 +21,15 @@ import org.usfirst.frc1318.FRC2013.components.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return CompressorTestBot();
+		return compressorTest();
+	}
+	
+	protected static BotVector gamePadTest()
+	{
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePadReader());
+		botVector.add(new NetworkTableRunner());
+		return botVector;
 	}
 	
 	protected static BotVector CompressorTestBot(){
@@ -70,6 +78,16 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return botVector;
 	}
 	
+	
+	protected static BotVector compressorTest(){
+		BotVector botVector = new BotVector();
+		
+		botVector.add(new CompressorRunner());
+	
+		return botVector;
+	}
+
+
 	protected static BotVector solenoidTest(){
 		BotVector botVector = new BotVector();
 		
