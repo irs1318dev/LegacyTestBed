@@ -12,6 +12,7 @@ import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
 import org.usfirst.frc1318.FRC2013.calculators.DriveTrain1JoystickCalculator;
+import org.usfirst.frc1318.FRC2013.calculators.DriveTrain2JoysticksCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.DriveTrainPIDCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.LifterCalculator;
 import org.usfirst.frc1318.FRC2013.calculators.ShooterCalculator;
@@ -58,7 +59,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		//Autonomous Here
 		
 		botVector.add(new LifterCalculator());
-		botVector.add(new DriveTrain1JoystickCalculator());
+		botVector.add(new DriveTrain2JoysticksCalculator());
 		botVector.add(new ShooterCalculator());
 		
 		botVector.add(new DriveTrainPIDCalculator());
