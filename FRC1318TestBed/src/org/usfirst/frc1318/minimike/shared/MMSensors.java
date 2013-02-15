@@ -1,7 +1,6 @@
 package org.usfirst.frc1318.minimike.shared;
 
 import org.usfirst.frc1318.generic.reference.GamePad;
-import org.usfirst.frc1318.generic.reference.PS2Controller;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 

@@ -2,6 +2,7 @@ package org.usfirst.frc1318.FRC2013.controllers;
 
 import org.usfirst.frc1318.FRC2013.reference.ButtonRef;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
+import org.usfirst.frc1318.FRC2013.shared.JoystickData;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import edu.wpi.first.wpilibj.Joystick;
@@ -41,6 +42,11 @@ public class JoystickReader extends RobotComponentBase{
 				
 		ReferenceData.getInstance().getJoystickData().setLiftUp(joystickL.getRawButton(ButtonRef.LIFT_UP));
 		ReferenceData.getInstance().getJoystickData().setLiftDown(joystickL.getRawButton(ButtonRef.LIFT_DOWN));
+		ReferenceData.getInstance().getJoystickData().setShooterDown(joystickL.getRawButton(ButtonRef.SHOOTER_DOWN));
+		ReferenceData.getInstance().getJoystickData().setShooterUp(joystickL.getRawButton(ButtonRef.SHOOTER_UP));
+		ReferenceData.getInstance().getJoystickData().setShooterSpeedDown(joystickL.getRawButton(ButtonRef.SHOOTER_SPEED_DOWN));
+		ReferenceData.getInstance().getJoystickData().setShooterSpeedUp(joystickL.getRawButton(ButtonRef.SHOOTER_SPEED_UP));
+		ReferenceData.getInstance().getJoystickData().setShooterFire(joystickL.getRawButton(ButtonRef.SHOOTER_FIRE));
 	}
 	
 	public void setJoystick(Joystick j1, Joystick j2){

@@ -2,7 +2,6 @@ package org.usfirst.frc1318.minimike.components;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.GamePad;
-import org.usfirst.frc1318.generic.reference.PS2Controller;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
 import org.usfirst.frc1318.minimike.shared.MMSensors;
 import org.usfirst.frc1318.minimike.shared.constants.MMButtonRef;
@@ -16,7 +15,7 @@ public class MMGamePadReader extends RobotComponentBase{
 	private GamePad gamepad;
 	
 	public void robotInit() {
-		gamepad = PS2Controller.create(MMPortRef.GAMEPAD);
+		gamepad = GamePad.create(MMPortRef.GAMEPAD);
 	}
 	
 	public void teleopPeriodic() {

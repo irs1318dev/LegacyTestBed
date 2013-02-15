@@ -5,7 +5,7 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
  public class ShooterData {
 	
-	private boolean shooterAngle = false;
+	private boolean shooterUp = false;
 	
 	private double motorSetPoint = 0;
 	private double encoderAngularVelocity = 0;
@@ -17,19 +17,14 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 	
 	private SettingsLookup speedSettings;
 	
-	 public  interface constants{
-		 public final boolean SHOOTER_UP = true;
-		 public final boolean SHOOTER_DOWN = false;
+	 public void setShooterUp(boolean upOrDown)
+	{
+		shooterUp = upOrDown;
 	}
 	
-	 public void setShooterAngle(boolean upOrDown)
+	 public boolean getShooterUp()
 	{
-		shooterAngle = upOrDown;
-	}
-	
-	 public boolean getShooterAngle()
-	{
-		return shooterAngle;
+		return shooterUp;
 	}
 	
 	 public void setEncoderAngularVelocity(double velocity)

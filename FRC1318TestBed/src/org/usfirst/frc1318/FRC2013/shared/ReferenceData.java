@@ -1,5 +1,7 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
+import org.usfirst.frc1318.generic.shared.GamePadData;
+
 public class ReferenceData {
 	
 	private static ReferenceData instance;
@@ -8,6 +10,9 @@ public class ReferenceData {
 	private LifterData lifterData;
 	private LifterLimitSwitchData lifterLimitSwitchData;
 	private ShooterData shooterData;
+	private GamePadData gamePadData;
+	private SolenoidTestData solenoidTestData;
+	private UserInputData userInputData;
 	
 	private ReferenceData(){
 	}
@@ -18,7 +23,21 @@ public class ReferenceData {
 		}
 		return instance;
 	}
-		
+	
+	public GamePadData getGamePadData(){
+		if(gamePadData == null){
+			gamePadData = new GamePadData();
+		}
+		return gamePadData;
+	}
+	
+	public UserInputData getUserInputData(){
+		if(userInputData == null){
+			userInputData = new UserInputData();
+		}
+		return userInputData;
+	}
+	
 	public JoystickData getJoystickData(){
 		if(joystickData == null){
 			joystickData = new JoystickData();
@@ -49,7 +68,7 @@ public class ReferenceData {
 	public void setLiferData(LifterData newData) {
 		lifterData = newData;
 	}
-	
+
 	public LifterLimitSwitchData getLifterLimitSwitchData() {
 		if (lifterLimitSwitchData == null) {
 			lifterLimitSwitchData = new LifterLimitSwitchData();
@@ -67,5 +86,17 @@ public class ReferenceData {
 	}
 	public void setShooterData(ShooterData newData){
 		shooterData = newData;
+	}
+	
+	public SolenoidTestData getSolenoidTestData()
+	{
+		if (this.solenoidTestData == null){
+			solenoidTestData = new SolenoidTestData();
+		}
+		return solenoidTestData;
+	}
+	
+	public void setUserInputData(UserInputData newData){
+		userInputData = newData;
 	}
 }

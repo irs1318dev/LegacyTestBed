@@ -9,12 +9,9 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
 public class ShooterCalculator extends RobotComponentBase {
 	SettingsLookup shooterSpeed;
-	ShooterData shooterData;
 	
 	public void RobotInit()
-	{
-		shooterData = ReferenceData.getInstance().getShooterData();
-		
+	{	
 		shooterSpeed = new SettingsLookup();
 		ReferenceData.getInstance().getShooterData().setSpeedSettings(shooterSpeed);
 		shooterSpeed.addSetting(0);
@@ -30,10 +27,10 @@ public class ShooterCalculator extends RobotComponentBase {
 	private void updateAngle()
 	{
 		//set angle in data class based on buttons
-		if(ReferenceData.getInstance().getJoystickData().getShooterDown()) {
-			shooterData.setShooterAngle(ShooterData.constants.SHOOTER_DOWN);
-		}else if(ReferenceData.getInstance().getJoystickData().getShooterUp()) {
-			shooterData.setShooterAngle(ShooterData.constants.SHOOTER_UP);
+		if(ReferenceData.getInstance().getGamePadData().getShooterDown()) {
+			ReferenceData.getInstance().getShooterData().setShooterUp(false);
+		}else if(ReferenceData.getInstance().getGamePadData().getShooterUp()) {
+			ReferenceData.getInstance().getShooterData().setShooterUp(true);
 		}
 		
 		
@@ -42,11 +39,11 @@ public class ShooterCalculator extends RobotComponentBase {
 	private void updateSpeed()
 	{
 		//respond to button presses
-		if(ReferenceData.getInstance().getJoystickData().getShooterSpeedUp()) {
+		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedUp()) {
 			shooterSpeed.up();
 		}
 		
-		if(ReferenceData.getInstance().getJoystickData().getShooterSpeedDown()) {
+		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedDown()) {
 			shooterSpeed.down();
 		}
 		

@@ -2,7 +2,7 @@ package org.usfirst.frc1318.testbed.components;
 
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.*;
-import org.usfirst.frc1318.generic.reference.PS2Controller.PS2ButtonMap;
+import org.usfirst.frc1318.generic.reference.GamePad.ButtonVals;
 import org.usfirst.frc1318.generic.shared.ButtonData;
 import org.usfirst.frc1318.generic.shared.KinematicData;
 import org.usfirst.frc1318.generic.shared.ReferenceData;
@@ -40,9 +40,9 @@ public class TBGamePadReader extends RobotComponentBase {
 		
 		
 	public interface ButtonMap {
-		int COMPRESSOR_TOGGLE = PS2Controller.PS2ButtonMap.CIRCLE;
-		int KICK_BUTTON = PS2ButtonMap.X;
-		int MODE_TOGGLE = PS2ButtonMap.TRIANGLE;
+		int COMPRESSOR_TOGGLE = GamePad.ButtonVals.B;
+		int KICK_BUTTON = ButtonVals.A;
+		int MODE_TOGGLE = ButtonVals.Y;
 	}
 	
 	

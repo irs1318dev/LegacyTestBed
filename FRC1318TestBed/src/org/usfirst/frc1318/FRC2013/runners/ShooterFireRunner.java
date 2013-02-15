@@ -1,11 +1,11 @@
-package org.usfirst.frc1318.FRC2013.components;
+package org.usfirst.frc1318.FRC2013.runners;
 
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
-import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 /**
  * This class is a basic state machine that switches itself back and forth 
@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.Timer;
  * 
  * to tell it when it should fire, use ShooterData.setShouldFire
  * 
- * @author Graham
+ * @author Graham but Rainier fixed it
  *
  */
 public class ShooterFireRunner extends RobotComponentBase {
 	
-	private Solenoid extend, retract;
+	private DoubleSolenoid fireSolenoid;
 	Timer timer;
 	int state = 0;
 	double fireTime;
@@ -30,8 +30,7 @@ public class ShooterFireRunner extends RobotComponentBase {
 	public void RobotInit()
 	{
 		timer = new Timer();
-		extend = new Solenoid(PortRef.SHOOTER_FIRE_EXTEND);
-		retract = new Solenoid(PortRef.SHOOTER_FIRE_RETRACT);
+		fireSolenoid = new DoubleSolenoid(PortRef.SOLENOID_MODULE_PORT, PortRef.SHOOTER_FIRE_EXTEND, PortRef.SHOOTER_FIRE_RETRACT);
 	}
 	
 	public void TeleopPeriodic()
@@ -53,8 +52,7 @@ public class ShooterFireRunner extends RobotComponentBase {
 				state = RETRACTED;
 			}else{
 				//extend
-				extend.set(true);
-				retract.set(false);
+				fireSolenoid.set(Value.kForward);
 				return;
 			}//if/else
 		}else if(state == RETRACTED)
@@ -73,8 +71,7 @@ public class ShooterFireRunner extends RobotComponentBase {
 				}//has frisbees if/else
 			}else{
 				//retract
-				extend.set(false);
-				retract.set(true);
+				fireSolenoid.set(Value.kReverse);
 			}//should fire if/else
 		}//state if/else
 	}//teleopPeriodic

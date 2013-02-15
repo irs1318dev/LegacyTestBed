@@ -2,15 +2,14 @@ package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.generic.controllers.PID;
 import org.usfirst.frc1318.generic.utils.DriverStationPrint;
 
 public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 
-	DriverStationPrint driverStationPrint;
+	//DriverStationPrint driverStationPrint;
 
 	public void robotInit() {
-		driverStationPrint = new DriverStationPrint();
+		//driverStationPrint = new DriverStationPrint();
 	}
 
 	public void teleopPeriodic() {
@@ -21,14 +20,18 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 				.getInstance()
 				.getDriveTrainData()
 				.setLeftSpeedSetPoint(
-						ReferenceData.getInstance().getJoystickData()
-								.getJoystickLY());
+						/*ReferenceData.getInstance().getJoystickData()
+								.getJoystickLY()*/
+						ReferenceData.getInstance().getGamePadData().getJoystickLY()
+						);
 		ReferenceData
 				.getInstance()
 				.getDriveTrainData()
 				.setRightSpeedSetPoint(
-						ReferenceData.getInstance().getJoystickData()
-								.getJoystickRY());
+						/*ReferenceData.getInstance().getJoystickData()
+								.getJoystickRY()*/
+						ReferenceData.getInstance().getGamePadData().getJoystickRY()
+								);
 
 	}
 

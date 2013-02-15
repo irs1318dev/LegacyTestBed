@@ -1,15 +1,13 @@
-package org.usfirst.frc1318.FRC2013.components;
+package org.usfirst.frc1318.FRC2013.readers;
 
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
-import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.generic.controllers.PID;
 import org.usfirst.frc1318.generic.sensors.EncoderAngularVelocity;
 
-public class ShooterPIDRunner extends RobotComponentBase {
-	PID shooterPID;
+public class ShooterEncoderReader {
 	EncoderAngularVelocity encoder;
+	ShooterData shooterData;
 	
 	public void robotInit()
 	{
@@ -18,15 +16,12 @@ public class ShooterPIDRunner extends RobotComponentBase {
 												PortRef.SHOOTER_ENCODER_B);
 		encoder.start();
 		
-		shooterPID = new PID(1,1,1);//TODO adjust values
-		shooterPID.setKFade(.75);
+		shooterData = ReferenceData.getInstance().getShooterData();
 	}
 	
 	public void teleopPeriodic()
 	{
-		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		shooterPID.input(encoder.getRate());
-		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
+		shooterData.setEncoderAngularVelocity(encoder.getRate());
 	}
 	
 }
