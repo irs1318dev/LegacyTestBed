@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
 import edu.wpi.first.wpilibj.Joystick;
-import org.usfirst.frc1318.FRC2013.controllers.JoystickReader;
+import org.usfirst.frc1318.FRC2013.readers.Joystick1Reader;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 
 import static org.mockito.Mockito.mock;
@@ -14,7 +14,7 @@ public class JoystickReaderTest {
 	
 	Joystick mockJoystickL;
 	Joystick mockJoystickR;
-	JoystickReader joystickReader;
+	Joystick1Reader joystickReader;
 	
 	//when(mockTimer.get()).thenReturn(time);
 	
@@ -22,7 +22,7 @@ public class JoystickReaderTest {
 	public void setUpJoystickReaderTest(){
 		mockJoystickL = mock(Joystick.class);
 		mockJoystickR = mock(Joystick.class);
-		joystickReader = new JoystickReader();
+		joystickReader = new Joystick1Reader();
 		joystickReader.setJoystick(mockJoystickL, mockJoystickR);
 	}
 	

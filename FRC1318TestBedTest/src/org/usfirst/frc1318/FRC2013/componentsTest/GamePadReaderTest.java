@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.usfirst.frc1318.FRC2013.controllers.GamePadReader;
+import org.usfirst.frc1318.FRC2013.readers.GamePad1Reader;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.generic.reference.GamePad;
 
@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class GamePadReaderTest {
 
-	GamePadReader gamePadReader;
+	GamePad1Reader gamePadReader;
 	GamePad gamePad;
 	
 	//when(mockTimer.get()).thenReturn(time);
@@ -22,7 +22,7 @@ public class GamePadReaderTest {
 	@Before
 	public void setUpGamePadReaderTest(){
 		gamePad = mock(GamePad.class);
-		gamePadReader = new GamePadReader();
+		gamePadReader = new GamePad1Reader();
 		gamePadReader.setGamePad(gamePad);
 	}
 	
