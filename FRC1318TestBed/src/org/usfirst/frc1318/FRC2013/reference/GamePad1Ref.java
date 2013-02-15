@@ -1,7 +1,5 @@
 package org.usfirst.frc1318.FRC2013.reference;
 
-import org.usfirst.frc1318.generic.reference.PS2Controller;
-import org.usfirst.frc1318.generic.reference.PS2Controller.PS2ButtonMap;
 
 public interface GamePad1Ref {
 	int LIFT_UP= 2;//circle

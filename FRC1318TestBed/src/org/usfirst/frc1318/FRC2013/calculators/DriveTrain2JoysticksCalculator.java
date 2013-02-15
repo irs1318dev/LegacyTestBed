@@ -22,7 +22,7 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 				.setLeftSpeedSetPoint(
 						/*ReferenceData.getInstance().getJoystickData()
 								.getJoystickLY()*/
-						ReferenceData.getInstance().getGamePadData().getJoystickLY()
+						ReferenceData.getInstance().getUserInputData().getJoystickAxis1()
 						);
 		ReferenceData
 				.getInstance()
@@ -30,7 +30,7 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 				.setRightSpeedSetPoint(
 						/*ReferenceData.getInstance().getJoystickData()
 								.getJoystickRY()*/
-						ReferenceData.getInstance().getGamePadData().getJoystickRY()
+						ReferenceData.getInstance().getUserInputData().getJoystickAxis2()
 								);
 
 	}

@@ -31,7 +31,7 @@ public class UserInputData {
 	}
 	
 	
-	public boolean isLiftDown() {
+	public boolean getLiftDown() {
 		return liftDown;
 	}
 	
@@ -39,7 +39,7 @@ public class UserInputData {
 		this.liftDown = liftDown;
 	}
 	
-	public boolean isLiftUp() {
+	public boolean getLiftUp() {
 		return liftUp;
 	}
 	
@@ -47,7 +47,7 @@ public class UserInputData {
 		this.liftUp = liftUp;
 	}
 	
-	public boolean isShooterDown() {
+	public boolean getShooterDown() {
 		return shooterDown;
 	}
 	
@@ -55,7 +55,7 @@ public class UserInputData {
 		this.shooterDown = shooterDown;
 	}
 	
-	public boolean isShooterUp() {
+	public boolean getShooterUp() {
 		return shooterUp;
 	}
 	
@@ -63,7 +63,7 @@ public class UserInputData {
 		this.shooterUp = shooterUp;
 	}
 	
-	public boolean isShooterSpeedUp() {
+	public boolean getShooterSpeedUp() {
 		return shooterSpeedUp;
 	}
 	
@@ -71,7 +71,7 @@ public class UserInputData {
 		this.shooterSpeedUp = shooterSpeedUp;
 	}
 	
-	public boolean isShooterSpeedDown() {
+	public boolean getShooterSpeedDown() {
 		return shooterSpeedDown;
 	}
 	

@@ -6,9 +6,9 @@ import org.usfirst.frc1318.components.RobotComponentBase;
 public class LifterCalculator extends RobotComponentBase {
 	
 	public void teleopPeriodic() {
-		if (ReferenceData.getInstance().getJoystickData().getLiftDown()) {
+		if (ReferenceData.getInstance().getUserInputData().getLiftDown()) {
 			ReferenceData.getInstance().getLifterData().setShouldLift(false);
-		} else if (ReferenceData.getInstance().getJoystickData().getLiftUp()) {
+		} else if (ReferenceData.getInstance().getUserInputData().getLiftUp()) {
 			ReferenceData.getInstance().getLifterData().setShouldLift(true);
 		}
 	}
