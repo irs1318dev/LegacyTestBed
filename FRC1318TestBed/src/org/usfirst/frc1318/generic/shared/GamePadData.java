@@ -1,33 +1,41 @@
 package org.usfirst.frc1318.generic.shared;
 
 public class GamePadData{
-	private boolean liftUp;
-	private boolean liftDown;
-	
 	private double joystickLY;
 	private double joystickLX;
 	private double joystickRY;
 	private double joystickRX;
 	
-	private boolean shooterUp;
-	private boolean shooterDown;
-	private boolean shooterSpeedUp;
-	private boolean shooterSpeedDown;
+	private boolean[] buttons;
 	
-	public boolean getLiftUp() {
-		return liftUp;
+	public GamePadData()
+	{
+		buttons = new boolean[12];
 	}
 	
-	public void setLiftUp(boolean newValue) {
-		this.liftUp = newValue;
+	public boolean getButton(int button)
+	{
+		try
+		{
+		return buttons[button-1];
+		}
+		catch (IndexOutOfBoundsException ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
 	}
 	
-	public boolean getLiftDown() {
-		return liftDown;
-	}
-	
-	public void setLiftDown(boolean newValue) {
-		this.liftDown = newValue;
+	public void setButton(int button, boolean pressed)
+	{
+		try
+		{
+			buttons[button-1] = pressed;
+		}
+		catch(IndexOutOfBoundsException ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 	
 	public double getJoystickRY(){
@@ -63,40 +71,5 @@ public class GamePadData{
 	
 	public void setJoystickLX(double val){
 		joystickLX = val;
-	}
-
-	public boolean getShooterUp() {
-		return shooterUp;
-	}
-	
-	public void setShooterUp(boolean newValue) {
-		this.shooterUp = newValue;
-	}
-	
-	
-	public boolean getShooterDown() {
-		return shooterDown;
-	}
-	
-	public void setShooterDown(boolean newValue) {
-		this.shooterDown = newValue;
-	}
-	
-	public boolean getShooterSpeedUp()
-	{
-		return shooterSpeedUp;
-	}
-	
-	public void setShooterSpeedUp(boolean newValue){
-		shooterSpeedUp = newValue;
-	}
-	
-	public boolean getShooterSpeedDown()
-	{
-		return shooterSpeedDown;
-	}
-	
-	public void setShooterSpeedDown(boolean newValue){
-		shooterSpeedDown = newValue;
 	}
 }
