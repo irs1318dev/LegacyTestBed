@@ -19,7 +19,34 @@ import org.usfirst.frc1318.FRC2013.runners.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return solenoidTest();
+		return demoBot();
+	}
+	
+	protected static BotVector demoBot()
+	{
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePad1Reader());
+		botVector.add(new ShooterCalculator());
+		botVector.add(new SolenoidCalculator());
+		botVector.add(new DriveTrain1JoystickCalculator());
+		botVector.add(new DriveTrainNoPIDCalculator());
+		botVector.add(new DriveTrainRunner());
+		botVector.add(new ShooterMotorRunner());
+		botVector.add(new CompressorRunner());
+		botVector.add(new SolenoidRunner());
+		botVector.add(new NetworkTableRunner());
+		return botVector;
+	}
+	
+	protected static BotVector driveTrainTestBot()
+	{
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePad1Reader());
+		botVector.add(new DriveTrainEncoderReader());
+		botVector.add(new DriveTrain1JoystickCalculator());
+		botVector.add(new DriveTrainPIDCalculator());
+		botVector.add(new DriveTrainRunner());
+		return botVector;
 	}
 	
 	protected static BotVector gamePadBot()
@@ -69,18 +96,27 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector motorTest() {
 		BotVector botVector = new BotVector();
 		botVector.add(new GamePad1Reader());
+		botVector.add(new ShooterCalculator());
+		botVector.add(new ShooterMotorRunner());
 		botVector.add(new NetworkTableRunner());
-		botVector.add(new ShooterMotorRunner());s
 		return botVector;
 	}
-
-
+	protected static BotVector solenoidRunnerTest(){
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePad1Reader());
+		botVector.add(new SolenoidCalculator());
+		botVector.add(new CompressorRunner());
+		botVector.add(new SolenoidRunner());
+		
+		return botVector;
+	}
+	
 	protected static BotVector solenoidTest(){
 		BotVector botVector = new BotVector();
 		
 		botVector.add(new CompressorRunner());
-		botVector.add(new SolenoidFireTestRunner());
-		botVector.add(new SolenoidArmTestRunner());
+		//botVector.add(new SolenoidFireTestRunner());
+		//botVector.add(new SolenoidArmTestRunner());
 		botVector.add(new SolenoidShooterTrayTestRunner());
 		
 		return botVector;

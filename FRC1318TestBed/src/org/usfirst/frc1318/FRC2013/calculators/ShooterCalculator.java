@@ -8,34 +8,44 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
 
 public class ShooterCalculator extends RobotComponentBase {
-	SettingsLookup shooterSpeed;
 	
-	public void RobotInit()
-	{	
-		shooterSpeed = new SettingsLookup();
-		ReferenceData.getInstance().getShooterData().setSpeedSettings(shooterSpeed);
-		shooterSpeed.addSetting(0);
-		shooterSpeed.addSetting(1000);
+	public void robotInit()
+	{
+		
 	}
 	
-	public void TeleopPeriodic()
+	public void teleopPeriodic()
 	{
-		updateSpeed();
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
+			ReferenceData.getInstance().getShooterData().setMotorSpeed(
+			ReferenceData.getInstance().getShooterData().getMotorSpeed() - 0.005
+					);
+		}
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
+			ReferenceData.getInstance().getShooterData().setMotorSpeed(
+			ReferenceData.getInstance().getShooterData().getMotorSpeed() + 0.005
+					);
+		}
+		if(ReferenceData.getInstance().getShooterData().getMotorSpeed() > 0)
+			ReferenceData.getInstance().getShooterData().setMotorSpeed(0);
+
+		if(ReferenceData.getInstance().getShooterData().getMotorSpeed() < -1)
+			ReferenceData.getInstance().getShooterData().setMotorSpeed(-1);
 	}
 	
 	private void updateSpeed()
 	{
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
-			shooterSpeed.up();
+			ReferenceData.getInstance().getShooterData().getSpeedSettings().up();
 		}
 		
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
-			shooterSpeed.down();
+			ReferenceData.getInstance().getShooterData().getSpeedSettings().down();
 		}
 		
 		//update data class with speed
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(
-												shooterSpeed.getCurrent());
+				ReferenceData.getInstance().getShooterData().getSpeedSettings().getCurrent());
 	}
 	
 }

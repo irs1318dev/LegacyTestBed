@@ -18,8 +18,8 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	
 	public void teleopPeriodic(){
 
-		ReferenceData.getInstance().getDriveTrainData().setRightEncoder(encoderR.getValue());
-		ReferenceData.getInstance().getDriveTrainData().setLeftEncoder(encoderL.getValue());
+		ReferenceData.getInstance().getDriveTrainData().setRightEncoder(encoderR.getRate());
+		ReferenceData.getInstance().getDriveTrainData().setLeftEncoder(encoderL.getRate());
 		
 		//TODO check encoder call
 	}

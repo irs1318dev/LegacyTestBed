@@ -53,7 +53,7 @@ public class SolenoidShooterTrayTestRunner extends RobotComponentBase{
 			{
 				data.state = 1;
 				prevTime = System.currentTimeMillis();
-				System.out.println("state changed to: " + data.state+", solenoid value="+shooterSolenoid.get().value);
+				System.out.println("state changed to: " + data.state+", solenoid value= Forward");
 			}
 			break;
 		case 1:
@@ -63,7 +63,7 @@ public class SolenoidShooterTrayTestRunner extends RobotComponentBase{
 			{
 				data.state = 0;
 				prevTime = System.currentTimeMillis();
-				System.out.println("state changed to: " + data.state+", solenoid value="+shooterSolenoid.get().value);
+				System.out.println("state changed to: " + data.state+", solenoid value= off");
 			}
 			break;
 			

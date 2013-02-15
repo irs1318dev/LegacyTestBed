@@ -70,8 +70,9 @@ public class ReferenceData {
 		shooterData = newData;
 	}
 	
-	public SolenoidData getSolenoidData()
-	{
+	public SolenoidData getSolenoidData(){
+		if(solenoidData == null)
+			solenoidData = new SolenoidData();
 		return solenoidData;
 	}
 
