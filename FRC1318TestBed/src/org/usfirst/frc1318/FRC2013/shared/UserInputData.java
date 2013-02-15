@@ -4,15 +4,24 @@ public class UserInputData {
 	
 	private int userInputType;
 
-	private double joystickLY;
-	private double joystickRY;
+	private double joystickAxis1;
+	private double joystickAxis2;
 	private boolean liftDown;
 	private boolean liftUp;
 	private boolean shooterDown;
 	private boolean shooterUp;
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	private boolean shooterFire;
 	
+	public boolean getShooterFire() {
+		return shooterFire;
+	}
+
+	public void setShooterFire(boolean shooterFire) {
+		this.shooterFire = shooterFire;
+	}
+
 	//use these to set interface type
 	public interface InterfaceType{
 		final static int ONE_JOYSTICK_TO_DRIVE = 1;
@@ -21,22 +30,6 @@ public class UserInputData {
 		final static int TWO_GAMEPAD_STICKS_TO_DRIVE = 4;
 	}
 	
-	
-	public double getJoystickLY() {
-		return joystickLY;
-	}
-	
-	public void setJoystickLY(double joystickLY) {
-		this.joystickLY = joystickLY;
-	}
-	
-	public double getJoystickRY() {
-		return joystickRY;
-	}
-	
-	public void setJoystickRY(double joystickRY) {
-		this.joystickRY = joystickRY;
-	}
 	
 	public boolean isLiftDown() {
 		return liftDown;
@@ -92,6 +85,22 @@ public class UserInputData {
 
 	public void setUserInputType(int userInputType) {
 		this.userInputType = userInputType;
+	}
+
+	public double getJoystickAxis1() {
+		return joystickAxis1;
+	}
+
+	public void setJoystickAxis1(double joystickAxis1) {
+		this.joystickAxis1 = joystickAxis1;
+	}
+
+	public double getJoystickAxis2() {
+		return joystickAxis2;
+	}
+
+	public void setJoystickAxis2(double joystickAxis2) {
+		this.joystickAxis2 = joystickAxis2;
 	}
 	
 }
