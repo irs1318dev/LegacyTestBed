@@ -19,7 +19,7 @@ public class AutoIntegrationTestMacro implements AutoTask
 	{
 		if(System.currentTimeMillis() > localTime + 10000)
 		{
-			ReferenceData.getInstance().getJoystickData().setJoystickLY(1);
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(1);
 		}
 		else
 		{
@@ -29,7 +29,7 @@ public class AutoIntegrationTestMacro implements AutoTask
 
 	public void cancel() 
 	{
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
 	}
 
 	public boolean hasFinished() 

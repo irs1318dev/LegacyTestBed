@@ -9,18 +9,10 @@ public class NTRef
 	public static final String DriveTrain_LeftSetPoint = "dt.ldp";
 	public static final String DriveTrain_RightPIDSpeed = "dt.rps";
 	public static final String DriveTrain_LeftPIDSpeed = "dt.lps";
-	//JoyStick=====================================================================
-	public static final String Joystick_LeftStickY = "js.lsy";
-	public static final String JoyStick_RightStickY = "js.rsy";
-	public static final String JoyStick_LeftStickX = "js.lsx";
-	public static final String JoyStick_RightStickX = "js.rsx";
-	public static final String JoyStick_LiftUp = "js.lu";
-	public static final String JoyStick_LiftDown = "js.ld";
 	//Lifter=======================================================================
 	public static final String Lifter_ShouldLift = "l.sl";
 	//LifterLimitSwitch============================================================
 	public static final String LifterLimitSwitch_Switched = "lms.s";
-	//LookUpTable==================================================================
 	//Shooter======================================================================
 	public static final String Shooter_SetPoint = "s.sp";
 	public static final String Shooter_AngularEncoderSpeed = "s.aes";
@@ -28,5 +20,9 @@ public class NTRef
 	public static final String Shooter_HasFrisbee = "s.hf";
 	public static final String Shooter_ShouldFire = "s.sf";
 	public static final String Shooter_Current = "s.c";
+	//Solenoid=====================================================================
+	
+	//UserInput====================================================================
+	
 	//=============================================================================
 }

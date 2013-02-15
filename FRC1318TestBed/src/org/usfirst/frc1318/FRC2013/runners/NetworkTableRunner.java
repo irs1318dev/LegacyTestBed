@@ -19,8 +19,6 @@ public class NetworkTableRunner extends RobotComponentBase
 		if(val++ % 10 == 0)
 		{
 			driveTrainData();
-			gamePadData();
-			joystickData();
 			lifterData();
 			lifterLimitSwitchData();
 			shooterData();
@@ -34,21 +32,6 @@ public class NetworkTableRunner extends RobotComponentBase
 		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
 		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
 		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
-	}
-	
-	private void gamePadData()
-	{
-		
-	}
-	
- 	private void joystickData()
-	{
- 		IRSTable.putNumber(NTRef.Joystick_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
- 		IRSTable.putNumber(NTRef.JoyStick_RightStickY, ReferenceData.getInstance().getJoystickData().getJoystickRY());
- 		IRSTable.putNumber(NTRef.JoyStick_LeftStickX, ReferenceData.getInstance().getJoystickData().getJoystickLX());
- 		IRSTable.putNumber(NTRef.JoyStick_RightStickX, ReferenceData.getInstance().getJoystickData().getJoystickRX());
- 		IRSTable.putBoolean(NTRef.JoyStick_LiftUp, ReferenceData.getInstance().getJoystickData().getLiftUp());
- 		IRSTable.putBoolean(NTRef.JoyStick_LiftDown, ReferenceData.getInstance().getJoystickData().getLiftDown());
 	}
  	
  	private void lifterData()

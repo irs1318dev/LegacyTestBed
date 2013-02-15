@@ -4,8 +4,10 @@ public class UserInputData {
 	
 	private int userInputType;
 
-	private double joystickAxis1;
-	private double joystickAxis2;
+	private double joystickLeft;
+	private double joystickRight;
+	private double joystickX;
+	private double joystickY;
 	private boolean liftDown;
 	private boolean liftUp;
 	private boolean shooterDown;
@@ -87,20 +89,40 @@ public class UserInputData {
 		this.userInputType = userInputType;
 	}
 
-	public double getJoystickAxis1() {
-		return joystickAxis1;
+	public double getJoystickLeft() {
+		return joystickLeft;
 	}
 
-	public void setJoystickAxis1(double joystickAxis1) {
-		this.joystickAxis1 = joystickAxis1;
+	public void setJoystickLeft(double joystickAxis1) {
+		this.joystickLeft = joystickAxis1;
 	}
 
-	public double getJoystickAxis2() {
-		return joystickAxis2;
+	public double getJoystickRight() {
+		return joystickRight;
 	}
 
-	public void setJoystickAxis2(double joystickAxis2) {
-		this.joystickAxis2 = joystickAxis2;
+	public void setJoystickRight(double joystickAxis2) {
+		this.joystickRight = joystickAxis2;
+	}
+
+	public double getJoystickX()
+	{
+		return joystickX;
+	}
+
+	public void setJoystickX(double joystickX)
+	{
+		this.joystickX = joystickX;
+	}
+
+	public double getJoystickY()
+	{
+		return joystickY;
+	}
+
+	public void setJoystickY(double joystickY)
+	{
+		this.joystickY = joystickY;
 	}
 	
 }

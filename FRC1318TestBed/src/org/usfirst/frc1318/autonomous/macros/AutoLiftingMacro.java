@@ -36,8 +36,8 @@ public class AutoLiftingMacro implements AutoTask{
 	}
 
 	public void cancel() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(STOP);
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(STOP);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(STOP);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 	}
 
 	public boolean hasFinished() {
@@ -49,25 +49,25 @@ public class AutoLiftingMacro implements AutoTask{
 	}
 	
 	private void adjustLifterAndShooter() {
-		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
-		ReferenceData.getInstance().getJoystickData().setShooterDown(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(true);
+		ReferenceData.getInstance().getUserInputData().setShooterDown(true);
 		
 		currentState = StateRef.DRIVE_SLOWLY_TILL_SWITCH_TRIGGERED_STATE;
 	}
 
 	private void driveSlowlyTillSwitchTriggered() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(SLOW_DRIVE_SPEED);
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(SLOW_DRIVE_SPEED);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(SLOW_DRIVE_SPEED);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(SLOW_DRIVE_SPEED);
 		if (ReferenceData.getInstance().getLifterLimitSwitchData().getIsSwitched()) {
-			ReferenceData.getInstance().getJoystickData().setJoystickLY(STOP);
-			ReferenceData.getInstance().getJoystickData().setJoystickRY(STOP);
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(STOP);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 			
 			currentState = StateRef.ACTUATE_LIFTER_STATE;
 		}
 	}
 	
 	private void actuateLifter() {
-		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
 		
 		currentState = StateRef.DONE_STATE;
 	}

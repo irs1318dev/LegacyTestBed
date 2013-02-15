@@ -20,20 +20,7 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void TeleopPeriodic()
 	{
-		updateAngle();
 		updateSpeed();
-	}
-	
-	private void updateAngle()
-	{
-		//set angle in data class based on buttons
-		if(ReferenceData.getInstance().getUserInputData().getShooterDown()) {
-			ReferenceData.getInstance().getShooterData().setShooterUp(false);
-		}else if(ReferenceData.getInstance().getUserInputData().getShooterUp()) {
-			ReferenceData.getInstance().getShooterData().setShooterUp(true);
-		}
-		
-		
 	}
 	
 	private void updateSpeed()
