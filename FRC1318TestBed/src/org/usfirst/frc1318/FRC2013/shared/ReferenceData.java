@@ -12,6 +12,7 @@ public class ReferenceData {
 	private ShooterData shooterData;
 	private GamePadData gamePadData;
 	private SolenoidTestData solenoidTestData;
+	private UserInputData userInputData;
 	
 	private ReferenceData(){
 	}
@@ -86,5 +87,16 @@ public class ReferenceData {
 			solenoidTestData = new SolenoidTestData();
 		}
 		return solenoidTestData;
+	}
+	
+	public void setUserInputData(UserInputData newData){
+		userInputData = newData;
+	}
+	
+	public UserInputData getUserInputData(){
+		if(this.userInputData == null){
+			userInputData = new UserInputData();
+		}
+		return userInputData;
 	}
 }
