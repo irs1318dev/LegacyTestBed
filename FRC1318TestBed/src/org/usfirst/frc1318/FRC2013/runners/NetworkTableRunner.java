@@ -19,6 +19,7 @@ public class NetworkTableRunner extends RobotComponentBase
 		if(val++ % 10 == 0)
 		{
 			driveTrainData();
+			gamePadData();
 			joystickData();
 			lifterData();
 			lifterLimitSwitchData();
@@ -33,6 +34,11 @@ public class NetworkTableRunner extends RobotComponentBase
 		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
 		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
 		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
+	}
+	
+	private void gamePadData()
+	{
+		
 	}
 	
  	private void joystickData()
