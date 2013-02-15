@@ -72,9 +72,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterAngleRunner());
 		botVector.add(new ShooterFireRunner());
 		botVector.add(new ShooterMotorRunner());
-		
 		botVector.add(new NetworkTableRunner());
-		
 		return botVector;
 		
 	}
@@ -90,9 +88,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector compressorTest(){
 		BotVector botVector = new BotVector();
-		
 		botVector.add(new CompressorRunner());
-	
 		return botVector;
 	}
 

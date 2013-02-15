@@ -5,7 +5,7 @@ import org.usfirst.frc1318.generic.reference.Interval;
 import org.usfirst.frc1318.minimike.shared.MMReferenceData;
 import java.util.Vector;
 
-public class AutoTurretMacro extends RobotComponentBase
+public class old_AutoTurretMacro extends RobotComponentBase
 {
 	private int currentState = 0; // Current state of state machine. 0 - init, 1 - calibrate, 2 - find center.
 	public static final int samples = 2; // number of samples that the turret uses to find the center.

@@ -7,8 +7,9 @@ import org.usfirst.frc1318.components.RobotComponentBase;
 
 public class AutoRunner extends RobotComponentBase
 {
-	private AutoTask task;
-	private Vector completedTasks;
+	public AutoTask task;
+	public Vector completedTasks;
+	public AutoMacroMap macroMap = new AutoMacroMap(this);
 	
 	public void robotInit() 
 	{//sets up the variables. set the initial task here, for say autonomous period.
