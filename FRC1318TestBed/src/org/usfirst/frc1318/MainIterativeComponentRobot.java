@@ -30,7 +30,7 @@ import org.usfirst.frc1318.FRC2013.runners.SolenoidTestRunner;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return compressorTest();
+		return compressorTestBot();
 	}
 	
 	protected static BotVector gamePadBot()
@@ -41,7 +41,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return botVector;
 	}
 	
-	protected static BotVector CompressorTestBot(){
+	protected static BotVector compressorTestBot(){
 		BotVector botVector = new BotVector();
 		botVector.add(new CompressorRunner());
 		return botVector;
@@ -82,13 +82,6 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new GamePadReader());
 		botVector.add(new NetworkTableRunner());
 		botVector.add(new ShooterMotorRunner());
-		return botVector;
-	}
-	
-	
-	protected static BotVector compressorTest(){
-		BotVector botVector = new BotVector();
-		botVector.add(new CompressorRunner());
 		return botVector;
 	}
 

@@ -27,7 +27,7 @@ public class SolenoidTestRunner extends RobotComponentBase{
 		timer.start();
 	}
 	
-	public void TeleopPeriodoc()
+	public void TeleopPeriodic()
 	{
 		
 		/*
