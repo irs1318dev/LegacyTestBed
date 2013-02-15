@@ -12,7 +12,7 @@ public class GamePadReader extends RobotComponentBase{
 	private double deadZone = 0.1;
 	
 	public void robotInit() {
-		gamePad = PS2Controller.create(PortRef.GAMEPAD);
+		gamePad = GamePad.create(PortRef.GAMEPAD);
 	}
 	
 	public void teleopPeriodic() {

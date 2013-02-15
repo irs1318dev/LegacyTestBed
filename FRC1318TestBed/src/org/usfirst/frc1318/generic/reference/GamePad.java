@@ -14,43 +14,43 @@ public class GamePad extends Joystick{
 		/**
 		 * left button
 		 */
-		int _1 = 1;
+		int X = 1;
 		/**
 		 * bottom button
 		 */
-		int _2 = 2;
+		int A = 2;
 		/**
 		 * Top button
 		 */
-		int _4 = 4;
+		int Y = 4;
 		/**
 		 * right button
 		 */
-		int _3 = 3;
+		int B = 3;
 		/**
 		 * R1
 		 */
-		int _6 = 6;
+		int RB = 6;
 		/**
 		 * R2
 		 */
-		int _8 = 8;
+		int RT = 8;
 		/**
 		 * L1
 		 */
-		int _5 = 5;
+		int LB = 5;
 		/**
 		 * L2
 		 */
-		int _7 = 7;
+		int LT = 7;
 		/**
 		 * Select
 		 */
-		int _9 = 9;
+		int Back = 9;
 		/**
 		 * Start
 		 */
-		int _10 = 10;
+		int Start = 10;
 		
 		int RIGHT_STICK_CLICK = 12;
 		int LEFT_STICK_CLICK = 11;
