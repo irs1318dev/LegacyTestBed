@@ -31,6 +31,13 @@ public class ReferenceData {
 		return gamePadData;
 	}
 	
+	public UserInputData getUserInputData(){
+		if(userInputData == null){
+			userInputData = new UserInputData();
+		}
+		return userInputData;
+	}
+	
 	public JoystickData getJoystickData(){
 		if(joystickData == null){
 			joystickData = new JoystickData();
@@ -91,12 +98,5 @@ public class ReferenceData {
 	
 	public void setUserInputData(UserInputData newData){
 		userInputData = newData;
-	}
-	
-	public UserInputData getUserInputData(){
-		if(this.userInputData == null){
-			userInputData = new UserInputData();
-		}
-		return userInputData;
 	}
 }
