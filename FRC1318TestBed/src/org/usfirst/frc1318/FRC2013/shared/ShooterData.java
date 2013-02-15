@@ -1,11 +1,9 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
-import org.usfirst.frc1318.generic.utils.Settings;
 import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
  public class ShooterData {
 	
-	private boolean shooterUp = false;
 	
 	private double motorSetPoint = 0;
 	private double encoderAngularVelocity = 0;
@@ -16,16 +14,6 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 	private boolean shouldFire = false;
 	
 	private SettingsLookup speedSettings;
-	
-	 public void setShooterUp(boolean upOrDown)
-	{
-		shooterUp = upOrDown;
-	}
-	
-	 public boolean getShooterUp()
-	{
-		return shooterUp;
-	}
 	
 	 public void setEncoderAngularVelocity(double velocity)
 	{

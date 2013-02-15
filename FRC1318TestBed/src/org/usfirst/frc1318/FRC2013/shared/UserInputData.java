@@ -4,15 +4,26 @@ public class UserInputData {
 	
 	private int userInputType;
 
-	private double joystickLY;
-	private double joystickRY;
+	private double joystickLeft;
+	private double joystickRight;
+	private double joystickX;
+	private double joystickY;
 	private boolean liftDown;
 	private boolean liftUp;
 	private boolean shooterDown;
 	private boolean shooterUp;
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	private boolean shooterFire;
 	
+	public boolean getShooterFire() {
+		return shooterFire;
+	}
+
+	public void setShooterFire(boolean shooterFire) {
+		this.shooterFire = shooterFire;
+	}
+
 	//use these to set interface type
 	public interface InterfaceType{
 		final static int ONE_JOYSTICK_TO_DRIVE = 1;
@@ -22,23 +33,7 @@ public class UserInputData {
 	}
 	
 	
-	public double getJoystickLY() {
-		return joystickLY;
-	}
-	
-	public void setJoystickLY(double joystickLY) {
-		this.joystickLY = joystickLY;
-	}
-	
-	public double getJoystickRY() {
-		return joystickRY;
-	}
-	
-	public void setJoystickRY(double joystickRY) {
-		this.joystickRY = joystickRY;
-	}
-	
-	public boolean isLiftDown() {
+	public boolean getLiftDown() {
 		return liftDown;
 	}
 	
@@ -46,7 +41,7 @@ public class UserInputData {
 		this.liftDown = liftDown;
 	}
 	
-	public boolean isLiftUp() {
+	public boolean getLiftUp() {
 		return liftUp;
 	}
 	
@@ -54,7 +49,7 @@ public class UserInputData {
 		this.liftUp = liftUp;
 	}
 	
-	public boolean isShooterDown() {
+	public boolean getShooterDown() {
 		return shooterDown;
 	}
 	
@@ -62,7 +57,7 @@ public class UserInputData {
 		this.shooterDown = shooterDown;
 	}
 	
-	public boolean isShooterUp() {
+	public boolean getShooterUp() {
 		return shooterUp;
 	}
 	
@@ -70,7 +65,7 @@ public class UserInputData {
 		this.shooterUp = shooterUp;
 	}
 	
-	public boolean isShooterSpeedUp() {
+	public boolean getShooterSpeedUp() {
 		return shooterSpeedUp;
 	}
 	
@@ -78,7 +73,7 @@ public class UserInputData {
 		this.shooterSpeedUp = shooterSpeedUp;
 	}
 	
-	public boolean isShooterSpeedDown() {
+	public boolean getShooterSpeedDown() {
 		return shooterSpeedDown;
 	}
 	
@@ -92,6 +87,42 @@ public class UserInputData {
 
 	public void setUserInputType(int userInputType) {
 		this.userInputType = userInputType;
+	}
+
+	public double getJoystickLeft() {
+		return joystickLeft;
+	}
+
+	public void setJoystickLeft(double joystickAxis1) {
+		this.joystickLeft = joystickAxis1;
+	}
+
+	public double getJoystickRight() {
+		return joystickRight;
+	}
+
+	public void setJoystickRight(double joystickAxis2) {
+		this.joystickRight = joystickAxis2;
+	}
+
+	public double getJoystickX()
+	{
+		return joystickX;
+	}
+
+	public void setJoystickX(double joystickX)
+	{
+		this.joystickX = joystickX;
+	}
+
+	public double getJoystickY()
+	{
+		return joystickY;
+	}
+
+	public void setJoystickY(double joystickY)
+	{
+		this.joystickY = joystickY;
 	}
 	
 }

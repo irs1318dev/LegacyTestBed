@@ -16,15 +16,15 @@ public class NetworkTableRunner extends RobotComponentBase
 	
 	public void teleopPeriodic() 
 	{
-		if(val++ % 10 == 0)
-		{
+//		if(val++ % 10 == 0)
+//		{
 			driveTrainData();
-			gamePadData();
-			joystickData();
 			lifterData();
 			lifterLimitSwitchData();
 			shooterData();
-		}
+			solenoidData();
+			userInputData();
+//		}
 	}
 	
 	private void driveTrainData()
@@ -34,21 +34,6 @@ public class NetworkTableRunner extends RobotComponentBase
 		IRSTable.putNumber(NTRef.DriveTrain_RightSetPoint, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
 		IRSTable.putNumber(NTRef.DriveTrain_RightPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed());
 		IRSTable.putNumber(NTRef.DriveTrain_LeftPIDSpeed, ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());
-	}
-	
-	private void gamePadData()
-	{
-		
-	}
-	
- 	private void joystickData()
-	{
- 		IRSTable.putNumber(NTRef.Joystick_LeftStickY, ReferenceData.getInstance().getJoystickData().getJoystickLY());
- 		IRSTable.putNumber(NTRef.JoyStick_RightStickY, ReferenceData.getInstance().getJoystickData().getJoystickRY());
- 		IRSTable.putNumber(NTRef.JoyStick_LeftStickX, ReferenceData.getInstance().getJoystickData().getJoystickLX());
- 		IRSTable.putNumber(NTRef.JoyStick_RightStickX, ReferenceData.getInstance().getJoystickData().getJoystickRX());
- 		IRSTable.putBoolean(NTRef.JoyStick_LiftUp, ReferenceData.getInstance().getJoystickData().getLiftUp());
- 		IRSTable.putBoolean(NTRef.JoyStick_LiftDown, ReferenceData.getInstance().getJoystickData().getLiftDown());
 	}
  	
  	private void lifterData()
@@ -68,5 +53,30 @@ public class NetworkTableRunner extends RobotComponentBase
  		IRSTable.putNumber(NTRef.Shooter_motor, ReferenceData.getInstance().getShooterData().getMotorSpeed());
  		IRSTable.putBoolean(NTRef.Shooter_HasFrisbee, ReferenceData.getInstance().getShooterData().getHasFrisbees());
  		IRSTable.putBoolean(NTRef.Shooter_ShouldFire, ReferenceData.getInstance().getShooterData().getShouldFire());
+ 	}
+ 	
+ 	private void solenoidData()
+ 	{
+ 		IRSTable.putBoolean(NTRef.Solenoid_ShouldShooterBeUp, ReferenceData.getInstance().getSolenoidData().getShouldShooterBeUp());
+ 		IRSTable.putBoolean(NTRef.Solenoid_ShouldLifterBeUp, ReferenceData.getInstance().getSolenoidData().getShouldLifterBeUp());
+ 		IRSTable.putBoolean(NTRef.Solenoid_ShouldFrisbeeBeExtended, ReferenceData.getInstance().getSolenoidData().getShouldFrisbeeBeExtended());
+ 		IRSTable.putBoolean(NTRef.Solenoid_ShooterUp, ReferenceData.getInstance().getSolenoidData().getShooterUp());
+ 		IRSTable.putBoolean(NTRef.Solenoid_LifterUp, ReferenceData.getInstance().getSolenoidData().getLifterUp());
+ 		IRSTable.putBoolean(NTRef.Solenoid_FrisbeeExtended, ReferenceData.getInstance().getSolenoidData().getFrisbeeExtended());
+ 	}
+ 	
+ 	private void userInputData()
+ 	{
+ 		IRSTable.putNumber(NTRef.Input_LeftJoystick, ReferenceData.getInstance().getUserInputData().getJoystickLeft());
+ 		IRSTable.putNumber(NTRef.Input_RightJoystick, ReferenceData.getInstance().getUserInputData().getJoystickRight());
+ 		IRSTable.putNumber(NTRef.Input_JoystickX, ReferenceData.getInstance().getUserInputData().getJoystickX());
+ 		IRSTable.putNumber(NTRef.Input_JoystickY, ReferenceData.getInstance().getUserInputData().getJoystickY());
+ 		IRSTable.putBoolean(NTRef.Input_LiftDown, ReferenceData.getInstance().getUserInputData().getLiftDown());
+ 		IRSTable.putBoolean(NTRef.Input_LiftUp, ReferenceData.getInstance().getUserInputData().getLiftUp());
+ 		IRSTable.putBoolean(NTRef.Input_ShooterDown, ReferenceData.getInstance().getUserInputData().getShooterDown());
+ 		IRSTable.putBoolean(NTRef.Input_ShooterUp, ReferenceData.getInstance().getUserInputData().getShooterUp());
+ 		IRSTable.putBoolean(NTRef.Input_ShooterSpeedDown, ReferenceData.getInstance().getUserInputData().getShooterSpeedDown());
+ 		IRSTable.putBoolean(NTRef.Input_ShooterSpeedUp, ReferenceData.getInstance().getUserInputData().getShooterSpeedUp());
+ 		IRSTable.putBoolean(NTRef.Input_ShooterFire, ReferenceData.getInstance().getUserInputData().getShooterFire());
  	}
 }

@@ -5,7 +5,6 @@ import org.usfirst.frc1318.generic.reference.*;
 import org.usfirst.frc1318.generic.reference.GamePad.ButtonVals;
 import org.usfirst.frc1318.generic.shared.ButtonData;
 import org.usfirst.frc1318.generic.shared.KinematicData;
-import org.usfirst.frc1318.generic.shared.ReferenceData;
 import org.usfirst.frc1318.generic.shared.Sensors;
 import org.usfirst.frc1318.testbed.shared.TBGamepadData;
 import org.usfirst.frc1318.testbed.shared.constants.TBButtonRef;

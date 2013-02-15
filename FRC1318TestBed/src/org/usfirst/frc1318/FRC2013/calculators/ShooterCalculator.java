@@ -20,32 +20,18 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void TeleopPeriodic()
 	{
-		updateAngle();
 		updateSpeed();
-	}
-	
-	private void updateAngle()
-	{
-		//set angle in data class based on buttons
-//		if(ReferenceData.getInstance().getGamePadData().getShooterDown()) {
-//			ReferenceData.getInstance().getShooterData().setShooterUp(false);
-//		}else if(ReferenceData.getInstance().getGamePadData().getShooterUp()) {
-//			ReferenceData.getInstance().getShooterData().setShooterUp(true);
-//		}
-		
-		
 	}
 	
 	private void updateSpeed()
 	{
-		//respond to button presses
-//		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedUp()) {
-//			shooterSpeed.up();
-//		}
-//		
-//		if(ReferenceData.getInstance().getGamePadData().getShooterSpeedDown()) {
-//			shooterSpeed.down();
-//		}
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
+			shooterSpeed.up();
+		}
+		
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
+			shooterSpeed.down();
+		}
 		
 		//update data class with speed
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(
