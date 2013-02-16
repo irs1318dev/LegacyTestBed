@@ -12,11 +12,12 @@ public class GamePad2Reader extends RobotComponentBase{
 	
 	private GamePad gamePad;
 	
-	private Joystick joystick;
+	private Joystick joystick, joystickT;
 	
 	public void robotInit(){
 		gamePad = GamePad.create(PortRef.GAMEPAD);
 		joystick = new Joystick(PortRef.JOYSTICK_L);
+		joystickT = new Joystick(PortRef.JOYSTICK_R);
 	}
 	
 	public void teleopPeriodic(){
@@ -29,7 +30,7 @@ public class GamePad2Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setShooterFire((gamePad.getRawButton(GamePad1Ref.SHOOTER_FIRE)));
 		
 		ReferenceData.getInstance().getUserInputData().setJoystickLeft(joystick.getY(Hand.kLeft));
-		ReferenceData.getInstance().getUserInputData().setJoystickRight(joystick.getY(Hand.kRight));
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(joystickT.getY(Hand.kRight));
 	}
 
 }

@@ -9,22 +9,24 @@ import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
 public class Joystick1Reader extends RobotComponentBase {
-	Joystick joystick;
+	Joystick joystickL;
+	Joystick joystickR;
 	
 	public void robotInit() {
-		joystick = new Joystick(PortRef.JOYSTICK_R);
+		joystickR = new Joystick(PortRef.JOYSTICK_R);
+		joystickL = new Joystick(PortRef.JOYSTICK_L);
 	}
 
 	public void teleopPeriodic() {
-		ReferenceData.getInstance().getUserInputData().setLiftUp(joystick.getRawButton(Joystick1Ref.LIFT_UP));
-		ReferenceData.getInstance().getUserInputData().setLiftDown(joystick.getRawButton(Joystick1Ref.LIFT_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterUp(joystick.getRawButton(Joystick1Ref.SHOOTER_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterDown(joystick.getRawButton(Joystick1Ref.SHOOTER_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(joystick.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystick.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterFire((joystick.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
+		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickR.getRawButton(Joystick1Ref.LIFT_UP));
+		ReferenceData.getInstance().getUserInputData().setLiftDown(joystickR.getRawButton(Joystick1Ref.LIFT_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterUp(joystickR.getRawButton(Joystick1Ref.SHOOTER_UP));
+		ReferenceData.getInstance().getUserInputData().setShooterDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickR.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
 		
-		ReferenceData.getInstance().getUserInputData().setJoystickY(joystick.getY(Hand.kLeft));
-		ReferenceData.getInstance().getUserInputData().setJoystickX(joystick.getX(Hand.kLeft));
+		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickR.getX());
+		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickR.getY());
 	}
 }
