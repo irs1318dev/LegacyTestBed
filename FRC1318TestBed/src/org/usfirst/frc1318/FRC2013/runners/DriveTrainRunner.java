@@ -30,6 +30,7 @@ public class DriveTrainRunner extends RobotComponentBase {
 		double rightVal = ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed();
 		rightVal = Math.min(rightVal, 1);
 		rightVal = Math.max(rightVal, -1);
+		System.out.println("################HERE###########");
 		getRightTalon().set(rightVal);
 				
 		double leftVal = ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed();

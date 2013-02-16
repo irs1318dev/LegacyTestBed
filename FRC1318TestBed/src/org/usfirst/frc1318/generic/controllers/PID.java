@@ -53,6 +53,7 @@ public class PID
 	//other vars
 	Timer timer;
 	double timeStep = .001;
+	private double kScale;
 	
 	//static constants
 	public static final int CLAMP_NONE = -1;
@@ -60,6 +61,10 @@ public class PID
 	public static final int CLAMP_RANGE = 1;
 	public static final int CLAMP_MAGNITUDE = 2;
 	
+	
+	public void setKScale(double scale){
+		this.kScale = scale;
+	}
 
 ////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -78,6 +83,7 @@ public class PID
 		this.kd = kd;
 		this.kp = kp;
 		this.kf = kf;
+		
 		this.clampMode = clampMode;
 		
 		
@@ -105,7 +111,6 @@ public class PID
 		this.ki = ki;
 		this.kd = kd;
 		this.kp = kp;
-		
 		
 		timer = new Timer();
 		timer.start();
@@ -220,7 +225,7 @@ public class PID
 	private void updateError()
 	{
 		lastError = error;
-		error = input - setpoint;
+		error = input - kScale * setpoint;
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -236,7 +241,7 @@ public class PID
 	//this method uses input and dt to find the rate of change of 
 	private void updateSlope()
 	{
-		slope = (error - lastError) / (dt);
+		slope = (error);
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
