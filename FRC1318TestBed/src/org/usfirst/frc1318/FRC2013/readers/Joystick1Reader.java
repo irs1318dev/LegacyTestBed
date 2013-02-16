@@ -18,6 +18,8 @@ public class Joystick1Reader extends RobotComponentBase {
 	}
 
 	public void teleopPeriodic() {
+		
+		//Manual Tasks
 		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickR.getRawButton(Joystick1Ref.LIFT_UP));
 		ReferenceData.getInstance().getUserInputData().setLiftDown(joystickR.getRawButton(Joystick1Ref.LIFT_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterUp(joystickR.getRawButton(Joystick1Ref.SHOOTER_UP));
@@ -26,6 +28,7 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickR.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
 		
+		//Joysticks w/ finetuning on left and reg on right
 		double joystickX = joystickR.getX();
 		double joystickY = -joystickR.getY();
 		if(Math.abs(joystickX)<0.1){
@@ -36,5 +39,11 @@ public class Joystick1Reader extends RobotComponentBase {
 		}
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickY);
+
+		//Auto Tasks
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(joystickL.getRawButton(Joystick1Ref.AUTO_TRANSLATE_LEFT));
+		ReferenceData.getInstance().getUserInputData().setAutoFireAll(joystickL.getRawButton(Joystick1Ref.AUTO_FIREALL));
+		ReferenceData.getInstance().getUserInputData().setAutoLift(joystickL.getRawButton(Joystick1Ref.AUTO_LIFT));
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(joystickL.getRawButton(Joystick1Ref.AUTO_TRANSLATE_RIGHT));
 	}
 }
