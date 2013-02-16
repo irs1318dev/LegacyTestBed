@@ -15,7 +15,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		//rightPID = new PID(0, 0, 0, 1);
 		//flip sign if not work right after pull
 		rightPID = new PID(0, 0, -0.001, 0);
-		rightPID.setKScale(1250);
+		rightPID.setKScale(1250); 
 		
 		//all left negative
 		leftPID = new PID(0, 0, 0.0, 0);
