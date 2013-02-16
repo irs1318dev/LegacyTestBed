@@ -3,10 +3,27 @@ package org.usfirst.frc1318.FRC2013.shared;
 public class DriveTrainData {
 	
 	private double rightEncoder, leftEncoder;
+	private double rightEncoderTicks, leftEncoderTicks;
 	private double rightSpeedSetPoint, leftSpeedSetPoint;	//read from joystick
 															//-1 to +1 
 	private double rightPIDSpeed, leftPIDSpeed;
 	
+	public double getRightEncoderTicks() {
+		return rightEncoderTicks;
+	}
+
+	public void setRightEncoderTicks(double val) {
+		this.rightEncoderTicks = val;
+	}
+
+	public double getLeftEncoderTicks() {
+		return leftEncoderTicks;
+	}
+
+	public void setLeftEncoderTicks(double val) {
+		this.leftEncoderTicks = val;
+	}
+
 	public double getRightSpeedSetPoint(){
 		return rightSpeedSetPoint;
 	}

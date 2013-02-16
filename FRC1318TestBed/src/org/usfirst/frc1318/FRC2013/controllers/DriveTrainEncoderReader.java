@@ -20,6 +20,8 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoder(encoderR.getRate());
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoder(encoderL.getRate());
+		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(encoderR.getDistance());
+		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(encoderL.getDistance());
 		
 		//TODO check encoder call
 	}

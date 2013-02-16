@@ -6,7 +6,5 @@
 	<classpathentry kind="var" path="TESTBED/libs/squawk.jar"/>
 	<classpathentry kind="var" path="TESTBED/libs/wpilibj.jar" sourcepath="/TESTBED/libs/wpilibj.src.zip"/>
 	<classpathentry kind="var" path="ECLIPSE_HOME"/>
-	<classpathentry kind="lib" path="C:/devfrc/eclipse/plugins/edu.wpi.first.javadev.sunspotfrcsdk_1.0.7.1/sunspotfrcsdk/lib/WPILibJ/classes.jar"/>
-	<classpathentry kind="lib" path="C:/devfrc/eclipse/plugins/edu.wpi.first.javadev.sunspotfrcsdk_1.0.7.1/sunspotfrcsdk/lib/squawk_device.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>
