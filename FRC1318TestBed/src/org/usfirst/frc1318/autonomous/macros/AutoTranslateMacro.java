@@ -10,6 +10,7 @@ public class AutoTranslateMacro implements AutoTask
 	
 	public int state;
 	public int ticksForward1;
+	public int ticksBackward;
 	
 	
 	public void init() {
@@ -62,7 +63,11 @@ public class AutoTranslateMacro implements AutoTask
 	{// this is the first time we are moving forward.
 		if(ticksForward1 < 1080) // three wheel rotations.
 		{
+			//TODO: Find a better way to account for either set of controls
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(1);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(1);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(1);
 		}
 		else
 		{
@@ -70,24 +75,33 @@ public class AutoTranslateMacro implements AutoTask
 		}
 	}
 	
-	private void goBackward() {
+	private void turnRight() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	private void turnLeft() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	private void goForward2() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	private void turnRight() {
-		// TODO Auto-generated method stub
+	
+	private void turnLeft() {
+		// TODO Auto-generiated method stub
 		
+	}
+	
+	private void goBackward() {
+		if(ticksBackward < 1080)
+		{
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-1);
+		}
+		else
+		{
+			state = 5;
+		}
 	}
 	
 }

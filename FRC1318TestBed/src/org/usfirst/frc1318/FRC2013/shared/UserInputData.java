@@ -1,7 +1,7 @@
 package org.usfirst.frc1318.FRC2013.shared;
 
 public class UserInputData {
-	
+	//When you add a button thats not a macro: add it to the autoAnyButton setter
 	private int userInputType;
 	
 	private double joystickLeft;
@@ -21,26 +21,51 @@ public class UserInputData {
 	
 	private boolean shooterFire;
 	
-	private boolean autoAnyButton;
 	private boolean autoTranslateRight;
 	private boolean autoLift;
+	private boolean autoFireAll;
+	private boolean autoTranslateLeft;
 	
+
+	public boolean getAnyUI() {
+		return (
+				   Math.abs(joystickLeft)>0.1
+				|| Math.abs(joystickRight)>0.1
+				|| Math.abs(joystickX)>0.1
+				|| Math.abs(joystickY)>0.1
+				|| liftDown
+				|| liftUp
+				|| shooterDown
+				|| shooterUp
+				|| shooterSpeedUp
+				|| shooterSpeedDown
+				|| shooterFire
+				);
+				
+	}
 	
-	
+	public boolean getAutoFireAll() {
+		return autoFireAll;
+	}
+
+	public void setAutoFireAll(boolean autoFireall) {
+		this.autoFireAll = autoFireall;
+	}
+
+	public boolean getAutoTranslateLeft() {
+		return autoTranslateLeft;
+	}
+
+	public void setAutoTranslateLeft(boolean autoTranslateLeft) {
+		this.autoTranslateLeft = autoTranslateLeft;
+	}
+
 	public boolean getAutoLift() {
 		return autoLift;
 	}
 
 	public void setAutoLift(boolean autoLift) {
 		this.autoLift = autoLift;
-	}
-
-	public boolean getAutoAnyButton() {
-		return autoAnyButton;
-	}
-
-	public void setAutoAnyButton(boolean autoAnyButton) {
-		this.autoAnyButton = autoAnyButton;
 	}
 
 	public boolean getAutoTranslateRight() {
