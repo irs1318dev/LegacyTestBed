@@ -21,7 +21,7 @@ public class AutoMacroMap extends RobotComponentBase
 	
 	public void teleopPeriodic() // change to other update
 	{
-		if(ReferenceData.getInstance().getUserInputData().getAutoAnyButton())//anybutton.ispressed()
+		if(!ReferenceData.getInstance().getUserInputData().getAnyUI())//anybutton.ispressed()
 		{
 			if(!autoRunner.hasActiveTask())
 			{
