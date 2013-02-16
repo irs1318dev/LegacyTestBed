@@ -26,6 +26,11 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickR.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
 		
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(joystickL.getRawButton(Joystick1Ref.AUTO_TRANSLATE_LEFT));
+		ReferenceData.getInstance().getUserInputData().setAutoFireAll(joystickL.getRawButton(Joystick1Ref.AUTO_FIREALL));
+		ReferenceData.getInstance().getUserInputData().setAutoLift(joystickL.getRawButton(Joystick1Ref.AUTO_LIFT));
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(joystickL.getRawButton(Joystick1Ref.AUTO_TRANSLATE_RIGHT));
+		
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickR.getX());
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickR.getY());
 	}

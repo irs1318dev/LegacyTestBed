@@ -2,21 +2,22 @@ package org.usfirst.frc1318.FRC2013.reference;
 
 public interface Joystick1Ref {
 	
-	static final int LIFT_UP = 1;
-	static final int LIFT_DOWN = 2;
+	static final int LIFT_UP = 11;//R
+	static final int LIFT_DOWN = 12;//R
 	
-	static final int SHOOTER_UP = 11;
-	static final int SHOOTER_DOWN = 3;
+	static final int SHOOTER_UP = 6;//R
+	static final int SHOOTER_DOWN = 7;//R
 	
-	static final int SHOOTER_FIRE = 6;
+	static final int SHOOTER_FIRE = 1;//R
 	
-	static final int SHOOTER_SPEED_UP = 12;
-	static final int SHOOTER_SPEED_DOWN = 7;
+	static final int SHOOTER_SPEED_UP = 3;//R
+	static final int SHOOTER_SPEED_DOWN = 2;//R
 	
-	/*	These values were not used ^^^
-	static final int TEST_1 = 0;
-	static final int TEST_2 = 4;
-	static final int TEST_3 = 5;
-	static final int TEST_4 = 10;
-	*/
+	//Macros
+	
+	static final int AUTO_TRANSLATE_RIGHT = 5;//L
+	static final int AUTO_LIFT = 3; //L
+	static final int AUTO_FIREALL = 2; //L
+	static final int AUTO_TRANSLATE_LEFT = 4; //L
+
 }
