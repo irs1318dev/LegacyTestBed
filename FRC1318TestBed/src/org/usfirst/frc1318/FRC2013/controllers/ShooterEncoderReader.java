@@ -1,0 +1,33 @@
+package org.usfirst.frc1318.FRC2013.controllers;
+
+import org.usfirst.frc1318.FRC2013.reference.PortRef;
+import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
+import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.sensors.EncoderAngularVelocity;
+
+public class ShooterEncoderReader extends RobotComponentBase{
+	
+	EncoderAngularVelocity encoderShooter;
+	double count;
+	
+	public void robotInit(){
+		encoderShooter = new EncoderAngularVelocity(PortRef.SHOOTER_ENCODER_A, PortRef.SHOOTER_ENCODER_B);
+	}
+	
+	public void teleopPeriodic(){
+
+		double shooterEncv = encoderShooter.getRate();
+		ReferenceData.getInstance().getShooterData().setEncoderAngularVelocity(shooterEncv);
+		if (count%1==0) {
+			System.out.println("shooterEncv="+shooterEncv);
+		}
+		count++;
+
+	}
+	
+	public void setEncoders(EncoderAngularVelocity eShooter){
+		encoderShooter = eShooter;
+	}
+
+}
+ 

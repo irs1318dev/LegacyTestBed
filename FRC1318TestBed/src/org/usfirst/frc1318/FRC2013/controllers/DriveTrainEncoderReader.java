@@ -13,7 +13,6 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	public void robotInit(){
 		encoderR = new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
 		encoderL = new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
-		//TODO check inputs
 	}
 	
 	public void teleopPeriodic(){
@@ -23,6 +22,9 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(encoderR.getDistance());
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(encoderL.getDistance());
 		
+//		System.out.println("LEV="+ReferenceData.getInstance().getDriveTrainData().getLeftEncoder()
+//				+", REV="+ReferenceData.getInstance().getDriveTrainData().getRightEncoder()
+//				);
 		//TODO check encoder call
 	}
 	
