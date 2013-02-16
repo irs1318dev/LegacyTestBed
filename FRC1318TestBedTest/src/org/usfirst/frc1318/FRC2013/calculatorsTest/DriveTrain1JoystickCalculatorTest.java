@@ -23,8 +23,8 @@ public class DriveTrain1JoystickCalculatorTest {
 	// Takes into account backwards right motor!!!
 	@Test
 	public void goStraight() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(1);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(1);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 		calc.teleopPeriodic();
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
@@ -35,17 +35,9 @@ public class DriveTrain1JoystickCalculatorTest {
 	// TODO: figure out what the physical meaning of tests is
 	@Test
 	public void goBack() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(-1);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(-1);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 		calc.teleopPeriodic();
-
-		System.out.println("go Back \n Input: Y = -1, X = 0\n Output: L = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getLeftSpeedSetPoint()
-				+ " R = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
@@ -54,17 +46,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void spinRight() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(1);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(1);
 		calc.teleopPeriodic();
-
-		System.out.println("Spin Right \n Input: Y = 0, X = 1\n Output: L = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getLeftSpeedSetPoint()
-				+ " R = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
@@ -73,17 +57,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void spinLeft() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(-1);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(-1);
 		calc.teleopPeriodic();
-
-		System.out.println("Spin Left \n Input: Y = 0, X = -1\n Output: L = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getLeftSpeedSetPoint()
-				+ " R = "
-				+ ReferenceData.getInstance().getDriveTrainData()
-						.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()
@@ -92,18 +68,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void pivotRightForward() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0.707107);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(0.707107);
 		calc.teleopPeriodic();
-
-		System.out
-				.println("pivot right forward \n Input: Y = 0.707107, X = 0.707107\n Output: L = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getLeftSpeedSetPoint()
-						+ " R = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData()
@@ -112,18 +79,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void pivotLeftForward() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0.707107);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(-0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(-0.707107);
 		calc.teleopPeriodic();
-
-		System.out
-				.println("pivot left forward hi \n Input: Y = 0.707107, X = -0.707107\n Output: L = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getLeftSpeedSetPoint()
-						+ " R = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()
@@ -132,18 +90,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void pivotRightBackward() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(-0.707107);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(-0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(0.707107);
 		calc.teleopPeriodic();
-
-		System.out
-				.println("pivot right backward \n Input: Y = -0.707107, X = 0.707107\n Output: L = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getLeftSpeedSetPoint()
-						+ " R = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData()
@@ -152,18 +101,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void pivotLeftBackward() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(-0.707107);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(-0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(-0.707107);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(-0.707107);
 		calc.teleopPeriodic();
-
-		System.out
-				.println("pivot left backward \n Input: Y = -0.707107, X = -0.707107\n Output: L = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getLeftSpeedSetPoint()
-						+ " R = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData()
@@ -172,18 +112,9 @@ public class DriveTrain1JoystickCalculatorTest {
 
 	@Test
 	public void gentleLeftForward() {
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0.5);
-		ReferenceData.getInstance().getJoystickData().setJoystickLX(-0.866025);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(0.5);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(-0.866025);
 		calc.teleopPeriodic();
-
-		System.out
-				.println("gentle left forward \n Input: Y = 0.5, X = -0.866025\n Output: L = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getLeftSpeedSetPoint()
-						+ " R = "
-						+ ReferenceData.getInstance().getDriveTrainData()
-								.getRightSpeedSetPoint() + "\n\n");
-
 		assertEquals(-0.26795, ReferenceData.getInstance().getDriveTrainData()
 				.getLeftSpeedSetPoint(), .001);
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData()

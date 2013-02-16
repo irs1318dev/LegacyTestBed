@@ -1,7 +1,6 @@
 package org.usfirst.frc1318.autonomous;
 
 import org.usfirst.frc1318.autonomous.macros.*;
-import org.usfirst.frc1318.generic.shared.GamePadData;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
@@ -21,10 +20,11 @@ public class AutoMacroMap extends RobotComponentBase
 	
 	public void teleopPeriodic() // change to other update
 	{
-		if(ReferenceData.getInstance().getUserInputData().getAutoAnyButton())//anybutton.ispressed()
+		if(ReferenceData.getInstance().getUserInputData().getAnyUI())
 		{
 			if(!autoRunner.hasActiveTask())
 			{
+				//If you add a macro, create a button in UserInputData and a button reference in the GamePad1Ref and Joystick1Ref and Joystick2Ref
 				if(ReferenceData.getInstance().getUserInputData().getAutoLift())
 				{
 					autoRunner.setTask(new AutoLiftingMacro());
@@ -36,7 +36,7 @@ public class AutoMacroMap extends RobotComponentBase
 			}
 			else
 			{
-				autoRunner.cancelTask();
+				//autoRunner.cancelTask();
 			}
 		}
 	}
