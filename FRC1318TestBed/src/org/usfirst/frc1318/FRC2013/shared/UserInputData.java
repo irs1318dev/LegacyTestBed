@@ -3,17 +3,22 @@ package org.usfirst.frc1318.FRC2013.shared;
 public class UserInputData {
 	
 	private int userInputType;
-
+	
 	private double joystickLeft;
 	private double joystickRight;
+	
 	private double joystickX;
 	private double joystickY;
+	
 	private boolean liftDown;
 	private boolean liftUp;
+	
 	private boolean shooterDown;
 	private boolean shooterUp;
+	
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	
 	private boolean shooterFire;
 	
 	private boolean autoAnyButton;
@@ -52,6 +57,7 @@ public class UserInputData {
 
 	public void setShooterFire(boolean shooterFire) {
 		this.shooterFire = shooterFire;
+		System.out.println("shooter fire: " + shooterFire);
 	}
 
 	//use these to set interface type
@@ -69,6 +75,7 @@ public class UserInputData {
 	
 	public void setLiftDown(boolean liftDown) {
 		this.liftDown = liftDown;
+		System.out.println("lift down: " + liftDown);
 	}
 	
 	public boolean getLiftUp() {
@@ -77,6 +84,7 @@ public class UserInputData {
 	
 	public void setLiftUp(boolean liftUp) {
 		this.liftUp = liftUp;
+		System.out.println("lift up: " + liftUp);
 	}
 	
 	public boolean getShooterDown() {
@@ -85,6 +93,7 @@ public class UserInputData {
 	
 	public void setShooterDown(boolean shooterDown) {
 		this.shooterDown = shooterDown;
+		System.out.println("shooter down: " + shooterDown);
 	}
 	
 	public boolean getShooterUp() {
@@ -93,6 +102,7 @@ public class UserInputData {
 	
 	public void setShooterUp(boolean shooterUp) {
 		this.shooterUp = shooterUp;
+		System.out.println("shooter up: " + shooterUp);
 	}
 	
 	public boolean getShooterSpeedUp() {
@@ -101,6 +111,7 @@ public class UserInputData {
 	
 	public void setShooterSpeedUp(boolean shooterSpeedUp) {
 		this.shooterSpeedUp = shooterSpeedUp;
+		System.out.println("shooter speed up: " + shooterSpeedUp);
 	}
 	
 	public boolean getShooterSpeedDown() {
@@ -109,6 +120,7 @@ public class UserInputData {
 	
 	public void setShooterSpeedDown(boolean shooterSpeedDown) {
 		this.shooterSpeedDown = shooterSpeedDown;
+		System.out.println("shooter speed down: " + shooterSpeedDown);
 	}
 	
 	public int getUserInputType() {
@@ -143,6 +155,7 @@ public class UserInputData {
 	public void setJoystickX(double joystickX)
 	{
 		this.joystickX = joystickX;
+		System.out.println("joystick X: " + joystickX);
 	}
 
 	public double getJoystickY()
@@ -153,6 +166,7 @@ public class UserInputData {
 	public void setJoystickY(double joystickY)
 	{
 		this.joystickY = joystickY;
+		System.out.println("joystick Y: " + joystickY);
 	}
 	
 }

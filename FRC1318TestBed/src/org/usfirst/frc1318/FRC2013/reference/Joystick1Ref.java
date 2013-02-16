@@ -1,6 +1,7 @@
 package org.usfirst.frc1318.FRC2013.reference;
 
 public interface Joystick1Ref {
+	
 	static final int LIFT_UP = 11;
 	static final int LIFT_DOWN = 12;
 	
