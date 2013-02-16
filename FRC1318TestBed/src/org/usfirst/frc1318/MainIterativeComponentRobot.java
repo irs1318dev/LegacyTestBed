@@ -21,7 +21,7 @@ import org.usfirst.frc1318.FRC2013.runners.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return demoBotWithPID();
+		return gameBot();
 	}
 	
 	protected static BotVector PIDTest()
@@ -36,7 +36,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return b;
 	}
 	
-	protected static BotVector demoBotWithPID()
+	protected static BotVector gameBot()
 	{
 		BotVector botVector = new BotVector();
 		botVector.add(new CompressorRunner());
@@ -102,36 +102,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return botVector;
 	}
 	
-	protected static BotVector competitionBot(){
-		BotVector botVector = new BotVector();
-		
-		botVector.add(new DriveTrainEncoderReader());
-		botVector.add(new GamePad1Reader());
-		botVector.add(new Joystick1Reader());
-		botVector.add(new LifterLimitSwitchReader());
-		//botVector.add(new ShooterEncoderReader());
-		
-		//Autonomous Here
-		
-		botVector.add(new LifterCalculator());
-		botVector.add(new DriveTrain2JoysticksCalculator());
-		botVector.add(new SolenoidCalculator());
-		botVector.add(new ShooterCalculator());
-		
-		botVector.add(new DriveTrainPIDCalculator());
-		botVector.add(new ShooterPIDCalculator());
-		botVector.add(new ShooterPIDCalculator());
-		
-		botVector.add(new CompressorRunner());
-		botVector.add(new DriveTrainRunner());
-		botVector.add(new LifterRunner());
-		botVector.add(new ShooterFireRunner());
-		botVector.add(new ShooterMotorRunner());
-		botVector.add(new NetworkTableRunner());
-		return botVector;
-		
-	}
-	
+
 	protected static BotVector motorTest() {
 		BotVector botVector = new BotVector();
 		botVector.add(new GamePad1Reader());
