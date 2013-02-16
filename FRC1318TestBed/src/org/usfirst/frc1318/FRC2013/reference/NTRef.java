@@ -39,5 +39,7 @@ public class NTRef
 	public static final String Input_ShooterSpeedUp = "i.ssu";
 	public static final String Input_ShooterSpeedDown = "i.ssd";
 	public static final String Input_ShooterFire = "i.sf";
+	//RobotGeneral=================================================================
+	public static final String Robot_State = "r.s";
 	//=============================================================================
 }

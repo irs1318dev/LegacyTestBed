@@ -12,6 +12,17 @@ public class NetworkTableRunner extends RobotComponentBase
 	public void robotInit()
 	{
 		System.out.println("Network Table is ready!");
+		IRSTable.putString(NTRef.Robot_State, "Init");
+	}
+	
+	public void teleopInit()
+	{
+		IRSTable.putString(NTRef.Robot_State, "Teleop");
+	}
+	
+	public void disabledInit()
+	{
+		IRSTable.putString(NTRef.Robot_State, "Disabled");
 	}
 	
 	public void teleopPeriodic() 
