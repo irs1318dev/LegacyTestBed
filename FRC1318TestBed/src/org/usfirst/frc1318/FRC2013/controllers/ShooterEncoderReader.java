@@ -18,7 +18,7 @@ public class ShooterEncoderReader extends RobotComponentBase{
 
 		double shooterEncv = encoderShooter.getRate();
 		ReferenceData.getInstance().getShooterData().setEncoderAngularVelocity(shooterEncv);
-		if (count%1==0) {
+		if (count%1000==0) {
 			System.out.println("shooterEncv="+shooterEncv);
 		}
 		count++;
