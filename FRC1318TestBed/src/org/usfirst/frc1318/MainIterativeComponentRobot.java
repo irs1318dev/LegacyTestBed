@@ -51,7 +51,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	
 	protected static BotVector gamepadTest(){
 		BotVector botVector = new BotVector();
-		botVector.add(new GamePad1Reader());
+		botVector.add(new Joystick1Reader());
 		return botVector;
 	}
 	

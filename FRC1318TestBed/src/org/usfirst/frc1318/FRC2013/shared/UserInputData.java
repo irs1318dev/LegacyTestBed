@@ -135,16 +135,18 @@ public class UserInputData {
 		return joystickLeft;
 	}
 
-	public void setJoystickLeft(double joystickAxis1) {
-		this.joystickLeft = joystickAxis1;
+	public void setJoystickLeft(double joystickLeft) {
+		this.joystickLeft = joystickLeft;
+		System.out.println("Joystick L: " + joystickLeft);
 	}
 
 	public double getJoystickRight() {
 		return joystickRight;
 	}
 
-	public void setJoystickRight(double joystickAxis2) {
-		this.joystickRight = joystickAxis2;
+	public void setJoystickRight(double joystickRight) {
+		this.joystickRight = joystickRight;
+		System.out.println("Joystick R: " + joystickRight);
 	}
 
 	public double getJoystickX()
