@@ -5,6 +5,7 @@ import org.usfirst.frc1318.FRC2013.reference.Joystick2Ref;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.controllers.DeadBand;
 import org.usfirst.frc1318.generic.reference.GamePad;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -29,9 +30,10 @@ public class Joystick2Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickL.getRawButton(Joystick2Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickL.getRawButton(Joystick2Ref.SHOOTER_FIRE)));
 		
-		//TODO deadband here
-		ReferenceData.getInstance().getUserInputData().setJoystickLeft(joystickL.getY(Hand.kLeft));
-		ReferenceData.getInstance().getUserInputData().setJoystickRight(joystickR.getY(Hand.kRight));
+		double jYL= DeadBand.applyLinearDeadBand(joystickL.getY(Hand.kLeft),0.1);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(jYL);
+		double jYR= DeadBand.applyLinearDeadBand(joystickL.getY(Hand.kRight),0.1);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(jYR);
 //		System.out.println("jyL="+ReferenceData.getInstance().getUserInputData().getJoystickLeft()
 //				+", jyR= " + ReferenceData.getInstance().getUserInputData().getJoystickRight());
 

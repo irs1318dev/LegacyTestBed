@@ -7,6 +7,7 @@ import org.usfirst.frc1318.FRC2013.reference.Joystick1Ref;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.controllers.DeadBand;
 
 public class Joystick1Reader extends RobotComponentBase {
 	Joystick joystickL;
@@ -28,15 +29,16 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickR.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
 		
+		double joystickX = DeadBand.applyLinearDeadBand(joystickR.getX(),0.1);
+		double joystickY = -DeadBand.applyLinearDeadBand(joystickR.getY(),0.1);
+
 		//Joysticks w/ finetuning on left and reg on right
-		double joystickX = joystickR.getX();
-		double joystickY = -joystickR.getY();
-		if(Math.abs(joystickX)<0.1){
-			joystickX = joystickL.getX()/4;
-		}
-		if(Math.abs(joystickY)<0.1){
-			joystickY = joystickL.getY()/4;
-		}
+//		if(Math.abs(joystickX)<0.1){
+//			joystickX = joystickL.getX()/4;
+//		}
+//		if(Math.abs(joystickY)<0.1){
+//			joystickY = joystickL.getY()/4;
+//		}
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickY);
 

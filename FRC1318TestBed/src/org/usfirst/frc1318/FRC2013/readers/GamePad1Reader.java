@@ -4,6 +4,7 @@ import org.usfirst.frc1318.FRC2013.reference.GamePad1Ref;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.controllers.DeadBand;
 import org.usfirst.frc1318.generic.reference.GamePad;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
@@ -25,8 +26,10 @@ public class GamePad1Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(gamePad.getRawButton(GamePad1Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((gamePad.getRawButton(GamePad1Ref.SHOOTER_FIRE)));
 		
-		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystick.getY(Hand.kLeft));
-		ReferenceData.getInstance().getUserInputData().setJoystickX(joystick.getX(Hand.kLeft));
+		double jY= - DeadBand.applyLinearDeadBand(joystick.getY(Hand.kRight),0.1);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(jY);
+		double jX= DeadBand.applyLinearDeadBand(joystick.getX(Hand.kRight),0.1);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(jX);
 	}
 	
 	public void robotInit(){
