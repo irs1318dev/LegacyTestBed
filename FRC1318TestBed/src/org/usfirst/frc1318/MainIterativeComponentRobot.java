@@ -12,6 +12,7 @@ import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
 import org.usfirst.frc1318.FRC2013.calculators.*;
+import org.usfirst.frc1318.FRC2013.calculators.ShooterPIDCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
 import org.usfirst.frc1318.FRC2013.controllers.ShooterEncoderReader;
 import org.usfirst.frc1318.FRC2013.readers.*;
@@ -47,6 +48,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new DriveTrain2JoysticksCalculator());
 		botVector.add(new DriveTrainPIDCalculator());
 		botVector.add(new DriveTrainRunner());
+//		botVector.add(new ShooterPIDRunner());
 		botVector.add(new ShooterMotorRunner());
 		botVector.add(new SolenoidRunner());
 		botVector.add(new NetworkTableRunner());
@@ -117,8 +119,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterCalculator());
 		
 		botVector.add(new DriveTrainPIDCalculator());
-		botVector.add(new ShooterPIDRunner());
-		botVector.add(new ShooterPIDRunner());
+		botVector.add(new ShooterPIDCalculator());
+		botVector.add(new ShooterPIDCalculator());
 		
 		botVector.add(new CompressorRunner());
 		botVector.add(new DriveTrainRunner());
