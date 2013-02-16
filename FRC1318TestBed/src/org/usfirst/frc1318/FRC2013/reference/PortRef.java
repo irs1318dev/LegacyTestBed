@@ -5,8 +5,8 @@ public interface PortRef {
 
 	int GAMEPAD = 1;
 	
-	int JOYSTICK_L = 0;
-	int JOYSTICK_R = 1;
+	int JOYSTICK_L = 1;
+	int JOYSTICK_R = 2;
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();
@@ -16,10 +16,11 @@ public interface PortRef {
 	int SHOOTER_ENCODER_A = 0;//TODO
 	int SHOOTER_ENCODER_B = 0;//TODO
 	int SHOOTER_MOTOR = 4;
+
 	int SHOOTER_FIRE_RETRACT = 3;
-	int SHOOTER_FIRE_EXTEND = 6;
+	int SHOOTER_FIRE_EXTEND = 4;
 	
-	int LIFTER_EXTENDER_SOLENOID_PORT = 4;
+	int LIFTER_EXTENDER_SOLENOID_PORT = 6;
 	int LIFTER_RETRACTOR_SOLENOID_PORT = 1;
 	
 	int SIDECAR_PORT = SensorBase.getDefaultDigitalModule();

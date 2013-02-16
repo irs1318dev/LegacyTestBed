@@ -64,6 +64,8 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 	}
 
 	public SettingsLookup getSpeedSettings() {
+		if(speedSettings == null)
+			speedSettings = new SettingsLookup();
 		return speedSettings;
 	}
 	

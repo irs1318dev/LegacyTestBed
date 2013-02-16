@@ -15,15 +15,7 @@ public class DriveTrainNoPIDCalculator extends RobotComponentBase
 		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(ReferenceData
 				.getInstance()
 				.getDriveTrainData()
-				.getLeftSpeedSetPoint());
-
-		System.out.println("rSetPoint="+
-				 ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint()+", lSetPoint="
-				+ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint());		
-
-		System.out.println("rPID="+
-		 ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed()+", lPID="
-		+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed());		
+				.getLeftSpeedSetPoint());	
 
 	}
 }

@@ -24,11 +24,13 @@ public class GamePad1Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(gamePad.getRawButton(GamePad1Ref.SHOOTER_SPEED_UP));
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(gamePad.getRawButton(GamePad1Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((gamePad.getRawButton(GamePad1Ref.SHOOTER_FIRE)));
-		ReferenceData.getInstance().getUserInputData().setJoystickY(joystick.getY(Hand.kLeft));
+		
+		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystick.getY(Hand.kLeft));
 		ReferenceData.getInstance().getUserInputData().setJoystickX(joystick.getX(Hand.kLeft));
 	}
 	
 	public void robotInit(){
+		gamePad = GamePad.create(PortRef.GAMEPAD);
 		joystick = new Joystick(PortRef.JOYSTICK_L);
 	}
 }

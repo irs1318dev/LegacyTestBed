@@ -3,14 +3,11 @@ package org.usfirst.frc1318.autonomous;
 import org.usfirst.frc1318.autonomous.macros.*;
 import org.usfirst.frc1318.generic.shared.GamePadData;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
+import org.usfirst.frc1318.components.RobotComponentBase;
 
 
-public class AutoMacroMap
+public class AutoMacroMap extends RobotComponentBase
 {
-	  
-	public boolean FAKE_BUTTON_1_isDown = true;
-	public boolean FAKE_BUTTON_2_isDown = false;
-	public boolean runTest = false;
 	private AutoRunner autoRunner;
 	
 	public AutoMacroMap(AutoRunner autoRunner)
@@ -19,28 +16,28 @@ public class AutoMacroMap
 	}
 	
 	//reads from the button table.
-	//will use an ElseIf to see if buttons are pressed, certain ones taking priority
+	//will use an ElseIf to see if buttons are pressed, 
+	//certain ones taking priority
 	
-	public void update()
+	public void teleopPeriodic() // change to other update
 	{
-		//if(true)//anybutton.ispressed()
-		//{
-		if(!autoRunner.hasActiveTask() && !runTest)
+		if(ReferenceData.getInstance().getUserInputData().getAutoAnyButton())//anybutton.ispressed()
 		{
-			if(FAKE_BUTTON_1_isDown)
+			if(!autoRunner.hasActiveTask())
 			{
-				autoRunner.setTask(new AutoLiftingMacro());
-				runTest = true;
+				if(ReferenceData.getInstance().getUserInputData().getAutoLift())
+				{
+					autoRunner.setTask(new AutoLiftingMacro());
+				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
+				{
+					autoRunner.setTask(new AutoTranslateMacro());
+				}
 			}
-			else if(FAKE_BUTTON_2_isDown)
+			else
 			{
-				autoRunner.setTask(new AutoLiftingMacro());
+				autoRunner.cancelTask();
 			}
 		}
-		else
-		{
-			autoRunner.cancelTask();
-		}
-		//}
 	}
 }

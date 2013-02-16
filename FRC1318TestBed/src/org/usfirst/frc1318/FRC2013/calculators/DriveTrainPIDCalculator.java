@@ -21,7 +21,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		rightPID.setSetpoint(ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
 		leftPID.setSetpoint(ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint());
 		
-		rightPID.input(ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
+		rightPID.input(ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
 		leftPID.input(ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
 		
 		double rightPIDVal = rightPID.getOutput();
