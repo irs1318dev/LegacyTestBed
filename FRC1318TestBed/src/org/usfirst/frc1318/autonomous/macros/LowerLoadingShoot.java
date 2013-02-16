@@ -5,22 +5,31 @@ import org.usfirst.frc1318.autonomous.AutoTask;
 
 import edu.wpi.first.wpilibj.Timer;
 
+/**
+ * This macro should lower the loading shoot so that frisbees can be loaded into
+ * the robot.
+ * 
+ * this is accomplished by going forward and then backwards quickly, as the 
+ * shoot is not actuated.
+ * 
+ * This macro takes 1 second
+ * 
+ * @author Graham
+ *
+ */
 public class LowerLoadingShoot implements AutoTask{
 	int state = 0;
 	boolean hasInit = false;
 	boolean hasFinished = false;
 	double lastTime;
 	
-	double forwardDuration = .2; //sec
-	double reverseDuration = .5; //sec
+	double forwardDuration = .4; //sec
+	double reverseDuration = .6; //sec
 	
 	ReferenceData ref;
-	Timer timer;
 
 	public void init() {
 		ref = ReferenceData.getInstance();
-		timer = new Timer();
-		timer.start();
 		hasInit = true;
 	}
 
@@ -38,13 +47,13 @@ public class LowerLoadingShoot implements AutoTask{
 		 */
 		switch(state){
 		case 0:
-			lastTime = timer.get();
+			lastTime = Timer.getFPGATimestamp();
 			state++;
 		case 1:
 			forward();
 			break;
 		case 2:
-			lastTime = timer.get();
+			lastTime = Timer.getFPGATimestamp();
 			state++;
 		case 3:
 			reverse();
@@ -56,7 +65,7 @@ public class LowerLoadingShoot implements AutoTask{
 	}
 
 	private void forward(){
-		if(timer.get() - this.lastTime < this.forwardDuration){
+		if(Timer.getFPGATimestamp() - this.lastTime < this.forwardDuration){
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(.31);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(.31);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
@@ -67,7 +76,7 @@ public class LowerLoadingShoot implements AutoTask{
 	}
 	
 	private void reverse() {
-		if(timer.get() - this.lastTime < this.reverseDuration){
+		if(Timer.getFPGATimestamp() - this.lastTime < this.reverseDuration){
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
