@@ -16,6 +16,36 @@ public class UserInputData {
 	private boolean shooterSpeedDown;
 	private boolean shooterFire;
 	
+	private boolean autoAnyButton;
+	private boolean autoTranslateRight;
+	private boolean autoLift;
+	
+	
+	
+	public boolean getAutoLift() {
+		return autoLift;
+	}
+
+	public void setAutoLift(boolean autoLift) {
+		this.autoLift = autoLift;
+	}
+
+	public boolean getAutoAnyButton() {
+		return autoAnyButton;
+	}
+
+	public void setAutoAnyButton(boolean autoAnyButton) {
+		this.autoAnyButton = autoAnyButton;
+	}
+
+	public boolean getAutoTranslateRight() {
+		return autoTranslateRight;
+	}
+
+	public void setAutoTranslateRight(boolean autoTranslateRight) {
+		this.autoTranslateRight = autoTranslateRight;
+	}
+	
 	public boolean getShooterFire() {
 		return shooterFire;
 	}

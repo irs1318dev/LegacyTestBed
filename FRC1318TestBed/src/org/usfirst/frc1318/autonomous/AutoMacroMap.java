@@ -21,7 +21,7 @@ public class AutoMacroMap extends RobotComponentBase
 	
 	public void teleopPeriodic() // change to other update
 	{
-		if(ReferenceData.getInstance().getUserInputData().getAnyButtonPressed())//anybutton.ispressed()
+		if(ReferenceData.getInstance().getUserInputData().getAutoAnyButton())//anybutton.ispressed()
 		{
 			if(!autoRunner.hasActiveTask())
 			{
@@ -29,7 +29,7 @@ public class AutoMacroMap extends RobotComponentBase
 				{
 					autoRunner.setTask(new AutoLiftingMacro());
 				}
-				else if(ReferenceData.getInstance().getUserInputData().getTranslateRight())
+				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
 				{
 					autoRunner.setTask(new AutoTranslateMacro());
 				}
@@ -38,6 +38,6 @@ public class AutoMacroMap extends RobotComponentBase
 			{
 				autoRunner.cancelTask();
 			}
-		//}
+		}
 	}
 }

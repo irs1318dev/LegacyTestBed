@@ -44,6 +44,7 @@ public class AutoTranslateMacro implements AutoTask
 		
 	}
 
+
 	public void cancel() {
 		// this is were you set any variables you were messing with
 		// to their default value, or the value before the Macro started.
@@ -67,6 +68,26 @@ public class AutoTranslateMacro implements AutoTask
 		{
 			state = 1;
 		}
+	}
+	
+	private void goBackward() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void turnLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void goForward2() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void turnRight() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
