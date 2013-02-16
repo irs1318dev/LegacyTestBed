@@ -31,7 +31,7 @@ public class AutoMacroMap extends RobotComponentBase
 				}
 				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
 				{
-					autoRunner.setTask(new AutoTranslateMacro());
+					autoRunner.setTask(new AutoTranslateLeftMacro());
 				}
 			}
 			else
