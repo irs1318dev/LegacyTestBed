@@ -33,6 +33,18 @@ public class AutoMacroMap
 				{
 					autoRunner.setTask(new AutoTranslateLeftMacro());
 				}
+//				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
+//				{
+//					autoRunner.setTask(new AutoTranslateRightMacro());
+//				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoDriveShoot())
+				{
+					autoRunner.setTask(new AutoDriveShootMacro());
+				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoFireAll())
+				{
+					autoRunner.setTask(new AutoFireAll());
+				}
 			}
 			else
 			{

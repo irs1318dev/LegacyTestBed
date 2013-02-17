@@ -43,6 +43,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new Joystick2Reader());
 		botVector.add(new DriveTrainEncoderReader());
 		botVector.add(new ShooterEncoderReader());
+		botVector.add(new AutoRunner());
 		botVector.add(new ShooterCalculator());
 		botVector.add(new SolenoidCalculator());
 		botVector.add(new DriveTrain2JoysticksCalculator());

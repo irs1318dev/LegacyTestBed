@@ -19,5 +19,6 @@ public interface Joystick2Ref {
 	static final int AUTO_LIFT = 3; //L
 	static final int AUTO_FIREALL = 2; //L
 	static final int AUTO_TRANSLATE_LEFT = 4; //L
+	static final int AUTO_DRIVE_SHOOT = 6; //L
 
 }

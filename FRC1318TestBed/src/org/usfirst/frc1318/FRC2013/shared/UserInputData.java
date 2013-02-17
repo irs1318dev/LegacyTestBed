@@ -25,7 +25,16 @@ public class UserInputData {
 	private boolean autoLift;
 	private boolean autoFireAll;
 	private boolean autoTranslateLeft;
+	private boolean autoDriveShoot; // 15 second routine
 	
+
+	public boolean getAutoDriveShoot() {
+		return autoDriveShoot;
+	}
+
+	public void setAutoDriveShoot(boolean autoDriveShoot) {
+		this.autoDriveShoot = autoDriveShoot;
+	}
 
 	public boolean getAnyUI() {
 		return (
