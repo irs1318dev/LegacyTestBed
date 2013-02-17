@@ -13,8 +13,8 @@ public interface PortRef {
 	
 	int SHOOTER_UP_SOLENOID = 2;
 	int SHOOTER_DOWN_SOLENOID = 5;
-	int SHOOTER_ENCODER_A = 0;//TODO
-	int SHOOTER_ENCODER_B = 0;//TODO
+	int SHOOTER_ENCODER_A = 6;//TODO
+	int SHOOTER_ENCODER_B = 7;//TODO
 	int SHOOTER_MOTOR = 4;
 
 	int SHOOTER_FIRE_RETRACT = 3;
@@ -29,10 +29,11 @@ public interface PortRef {
 	int LIFTER_LIMIT_SWITCH_PORT = 0;//TODO
 	
 	
-	int ENCODER_R_A = 5;
-	int ENCODER_R_B = 4;
-	int ENCODER_L_A = 3;
-	int ENCODER_L_B = 2;
+	int ENCODER_L_A = 2; 
+	int ENCODER_L_B = 3;
+
+	int ENCODER_R_A = 4;
+	int ENCODER_R_B = 5;
 	
 	int TALON_R = 2;
 	int TALON_L = 1;

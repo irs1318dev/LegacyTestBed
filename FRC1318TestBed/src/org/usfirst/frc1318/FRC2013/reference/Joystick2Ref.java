@@ -2,8 +2,8 @@ package org.usfirst.frc1318.FRC2013.reference;
 
 public interface Joystick2Ref {
 	
-	static final int LIFT_UP = 7;	//moves lifter down
-	static final int LIFT_DOWN = 6;	//moves lifter up
+	static final int LIFT_UP = 11;
+	static final int LIFT_DOWN = 10;
 	
 	static final int SHOOTER_UP = 4;
 	static final int SHOOTER_DOWN = 5;

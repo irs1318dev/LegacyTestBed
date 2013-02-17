@@ -33,9 +33,14 @@ public class PID
 	int clampMode = -1;
 	
 	//feedback data
-	double input = 0;
-	double lastError = 0;
-	double setpoint = 0;
+	double position = 0;
+	double lastPositionError = 0;
+	double positionSetpoint = 0;
+	
+	double velocity= 0;
+	double lastVelocityError = 0;
+	double velocitySetpoint = 0;
+	
 	double integral;		//integral of error data in memory
 	double slope = 0;			//approximate slope of input.. units in / seconds
 	double dt = .001;
@@ -129,7 +134,7 @@ public class PID
 	 */
 	public void input(double input)
 	{
-		this.input = input;
+		this.position = input;
 		
 		//update dt
 		curTime = timer.get(); 	
@@ -145,11 +150,16 @@ public class PID
 		}
 	}
 	
+	public void inputWithVelocity(double position, double velocity) {
+		this.position = position;
+		this.velocity = velocity;
+	}
+	
 ////////////////////////////////////////////////////////////////////////////////
 	
 	private void calculateOutput()
 	{
-		output = kp * error + ki * integral + kd * slope + kf * setpoint;
+		output = kp * error + ki * integral + kd * slope + kf * positionSetpoint;
 		output = clamp(output);
 	}
 	
@@ -194,8 +204,8 @@ public class PID
 			
 		case CLAMP_RATIO:
 			
-			double ratmax = setpoint + setpoint*Math.abs(clampRatio);
-			double ratmin = setpoint - setpoint*Math.abs(clampRatio);
+			double ratmax = positionSetpoint + positionSetpoint*Math.abs(clampRatio);
+			double ratmin = positionSetpoint - positionSetpoint*Math.abs(clampRatio);
 			
 			if(value > ratmax)
 				return ratmax;
@@ -205,8 +215,8 @@ public class PID
 			
 		case CLAMP_MAGNITUDE:
 			
-			double magmax = setpoint + Math.abs(clampMagnitude);
-			double magmin = setpoint - Math.abs(clampMagnitude);
+			double magmax = positionSetpoint + Math.abs(clampMagnitude);
+			double magmin = positionSetpoint - Math.abs(clampMagnitude);
 			
 			if(value > magmax)
 				return magmax;
@@ -224,8 +234,10 @@ public class PID
 
 	private void updateError()
 	{
-		lastError = error;
-		error = input - kScale * setpoint;
+		lastPositionError = error;
+//		error = position - kScale * positionSetpoint;
+		error = position - kScale * positionSetpoint;
+		
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -330,7 +342,7 @@ public class PID
 	
 	public void setSetpoint(double setpoint)
 	{
-		this.setpoint = setpoint;
+		this.positionSetpoint = setpoint;
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -346,5 +358,9 @@ public class PID
 	{
 		return slope;
 	}
+
 	
+	public String toString() {
+		return"kp="+kp+", ki="+ki+", kd="+kd+", kf="+kf;
+	}
 }

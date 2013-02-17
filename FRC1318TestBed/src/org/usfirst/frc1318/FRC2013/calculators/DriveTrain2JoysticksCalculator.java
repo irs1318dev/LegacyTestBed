@@ -14,7 +14,7 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 
 	public void teleopPeriodic() {
 		
-		//TODO make one side negitive
+		// Left side is negative due to the motor arrangement
 
 		ReferenceData
 				.getInstance()
