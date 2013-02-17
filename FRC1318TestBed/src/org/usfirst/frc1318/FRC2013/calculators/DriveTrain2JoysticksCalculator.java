@@ -20,7 +20,7 @@ public class DriveTrain2JoysticksCalculator extends RobotComponentBase {
 				.getInstance()
 				.getDriveTrainData()
 				.setLeftSpeedSetPoint(
-						ReferenceData.getInstance().getUserInputData().getJoystickLeft()
+						- ReferenceData.getInstance().getUserInputData().getJoystickLeft()
 						);
 		ReferenceData
 				.getInstance()
