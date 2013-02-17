@@ -31,7 +31,7 @@ public class AutoMacroMap
 				}
 				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateLeft())
 				{
-					autoRunner.setTask(new AutoTranslateLeftMacro());
+					autoRunner.setTask(new AutoTranslateRightMacro());
 				}
 //				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
 //				{
