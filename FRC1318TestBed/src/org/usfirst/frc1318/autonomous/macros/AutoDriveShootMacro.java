@@ -13,18 +13,29 @@ public class AutoDriveShootMacro implements AutoTask {
 	private boolean newState = true;
 	
 	private int currentState = StateRef.AUTO_DRIVE_SHOOT_MACRO_DEFAULT;
+	private int fireState = 0;
+	private int timesFired = 0;
 	
 	private double stateStartTime;
+	private double leftPositionBeforeRotation;
+	private double rightPositionBeforeRotation;
 	private double initWaitTime = 3000000;//3 seconds
 	private double waitForPistonsTime = 500000;//.5 seconds TODO
-	private double ticksToShootPosition = 0;//TODO
+	private double shootPosition = 0;//TODO
+	private double backedUpPosition = 0;//TODO
 	private double driveForwardSpeed = .3;//TODO
 	private double driveBackSlowlySpeed = -.1;//TODO
+	private double driveBackSpeed = -driveForwardSpeed;
+	private double driveForwardSlowlySpeed = -driveBackSlowlySpeed;
 	private double stop = 0;
-	private double tooFar = ticksToShootPosition + 1000;//TODO
+	private double tooFarForward = 1000;//TODO
+	private double tooFarBack = -tooFarForward;
 	private double shooterMotorSetPoint = .75;//TODO
 	private double shooterMinSpeed = 0;//TODO
 	private double shooterMaxSpeed = 0;//TODO
+	private double rotateClockwise = .3;//TODO
+	private double rotateCounterClockwiseSlowly = -.1;//TODO
+	private double rotationDistance = 0;//TODO
 	
 	private Timer timer;
 	
@@ -61,13 +72,22 @@ public class AutoDriveShootMacro implements AutoTask {
 			rotate();
 			break;
 		default:
+			hasFinished = true;
 			break;
 		}
-		hasFinished = true;
 	}
 
 	public void cancel() {
-		
+		ReferenceData.getInstance().getShooterData().setMotorSetPoint(stop);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(stop);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(stop);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(stop);
+		ReferenceData.getInstance().getUserInputData().setJoystickY(stop);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(false);
+		ReferenceData.getInstance().getUserInputData().setShooterUp(false);
+		ReferenceData.getInstance().getUserInputData().setShooterDown(true);
+		ReferenceData.getInstance().getUserInputData().setShooterFire(false);
 	}
 	
 	public boolean hasFinished() {
@@ -96,19 +116,32 @@ public class AutoDriveShootMacro implements AutoTask {
 			stateStartTime = timer.get();
 			newState = false;
 		}
-		if(timer.get() - stateStartTime >= waitForPistonsTime) {
-			currentState = StateRef.DRIVE_TO_LAUNCH_POSITION;
-			newState = true;
+		if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks()) / 2 >= backedUpPosition) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveBackSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveBackSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(driveBackSpeed);
+		} else if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoder()) / 2 <= backedUpPosition + tooFarBack) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveForwardSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveForwardSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(driveForwardSlowlySpeed);
+		} else {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(stop);
+			if(timer.get() - stateStartTime >= waitForPistonsTime) {
+				currentState = StateRef.DRIVE_TO_LAUNCH_POSITION;
+				newState = true;
+			}
 		}
 	}
 	
 	private void driveToLaunchPosition() {
 		ReferenceData.getInstance().getShooterData().setMotorSetPoint(shooterMotorSetPoint);
-		if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks()) / 2 <= ticksToShootPosition) {
+		if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks()) / 2 <= shootPosition) {
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveForwardSpeed);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveForwardSpeed);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(driveForwardSpeed);
-		} else if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoder()) / 2 >= tooFar) {
+		} else if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoder()) / 2 >= shootPosition + tooFarForward) {
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveBackSlowlySpeed);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveBackSlowlySpeed);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(driveBackSlowlySpeed);
@@ -127,26 +160,103 @@ public class AutoDriveShootMacro implements AutoTask {
 			newState = false;
 		}
 		if(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() >= shooterMinSpeed 
-			&& ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() <= shooterMaxSpeed 
-			&& timer.get() - stateStartTime >=waitForPistonsTime) {
-				currentState = StateRef.FIRE;
-				newState = true;
+				&& ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() <= shooterMaxSpeed 
+				&& timer.get() - stateStartTime >= waitForPistonsTime) {
+			currentState = StateRef.FIRE;
+			newState = true;
 		}
 	}
 	
 	private void fire() {
-		
+		if(timesFired < 3) {
+			switch(fireState) {
+			case 0: //Retract piston
+				if(newState) {
+					stateStartTime = timer.get();
+					newState = false;
+				}
+				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
+				if(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() >= shooterMinSpeed 
+						&& ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() <= shooterMaxSpeed 
+						&& timer.get() - stateStartTime >= waitForPistonsTime) {
+					fireState = 1;
+					newState = true;
+				}
+				break;
+			case 1: //Extend piston
+				if(newState) {
+					stateStartTime = timer.get();
+					newState = false;
+				}
+				ReferenceData.getInstance().getUserInputData().setShooterFire(false);
+				if(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() >= shooterMinSpeed 
+						&& ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() <= shooterMaxSpeed 
+						&& timer.get() - stateStartTime >= waitForPistonsTime) {
+					fireState = 0;
+					timesFired++;
+					newState = true;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		currentState = StateRef.PREPARE_TO_DRIVE;
 	}
 	
 	private void prepareToDrive() {
-		
+		if(newState) {
+			ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+			ReferenceData.getInstance().getUserInputData().setShooterDown(true);
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(stop);
+			stateStartTime = timer.get();
+			newState = false;
+		}
+		if(timer.get() - stateStartTime >= waitForPistonsTime) {
+			currentState = StateRef.BACK_UP;
+			newState = true;
+		}
 	}
 	
 	private void backUp() {
-		
+		if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks()) / 2 >= backedUpPosition) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveBackSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveBackSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(driveBackSpeed);
+		} else if((ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() + ReferenceData.getInstance().getDriveTrainData().getRightEncoder()) / 2 <= backedUpPosition + tooFarBack) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveForwardSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveForwardSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(driveForwardSlowlySpeed);
+		} else {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(stop);
+			currentState = StateRef.ROTATE;
+		}
 	}
 	
 	private void rotate() {
-		
+		if(newState) {
+			leftPositionBeforeRotation = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
+			rightPositionBeforeRotation = ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks();
+			newState = false;
+		}
+		if(ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() <= leftPositionBeforeRotation + rotationDistance
+				&& ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks() >= rightPositionBeforeRotation - rotationDistance) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveForwardSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveBackSpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(rotateClockwise);
+		} else if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() >= leftPositionBeforeRotation + rotationDistance + tooFarForward
+				&& ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks() <= rightPositionBeforeRotation - rotationDistance + tooFarBack) {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(driveBackSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(driveForwardSlowlySpeed);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(rotateCounterClockwiseSlowly);
+		} else {
+			ReferenceData.getInstance().getUserInputData().setJoystickLeft(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickRight(stop);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(stop);
+			currentState = StateRef.DONE;
+			newState = true;
+		}
 	}
 }
