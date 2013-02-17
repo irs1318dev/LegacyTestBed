@@ -17,19 +17,19 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	
 	public void teleopPeriodic()
 	{
-		double shooterSet =ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint();
-		double shooterEncv = ReferenceData.getInstance().getDriveTrainData().getLeftEncoder();
-		double shooterKf = 1;
-		double shooterKd = 0.0;
+		double shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
+		double shooterEncv = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();
+		double shooterKf = 0.25;
+		double shooterKd = 0.001;
 		double shooterKscale = 20000;
 
 		double shooterPIDVal = shooterKf * shooterSet + shooterKd*(shooterKscale * shooterSet - shooterEncv);
 
-		if (count%10==0) { 
+		if (count%100==0) { 
 			System.out.println("shooterSet="+shooterSet+", shooterEncv="+shooterEncv+", shooterPID="+shooterPIDVal);
 		}
 		count++;
-		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
+		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPIDVal);
 
 //		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 //		shooterPID.input(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity());

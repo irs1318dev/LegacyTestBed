@@ -19,16 +19,17 @@ public class AutoRunner extends RobotComponentBase
 	
 	public void teleopPeriodic()
 	{//runs through checking if we need to do anything.
-		if(task != null)
-		{// runs our active task if we have one (other than dormant)
-			if(!task.hasInitalized())
+		macroMap.periodic();
+		if(task != null){// runs our active task if we have one (other than dormant)
+			if(!task.hasInitalized()){
 				task.init();
-			else if(!task.hasFinished())
+			}else if(!task.hasFinished()){
 				task.run();
-			else
+			}else{
 				completedTasks.addElement(task);
 				//TODO: add to data structure for network table.
 				task = null;
+			}
 		}
 	}
 	
@@ -47,5 +48,9 @@ public class AutoRunner extends RobotComponentBase
 		if(task != null)
 			task.cancel();
 		task = null;
+	}
+	
+	public AutoTask getTask(){
+		return task;
 	}
 }

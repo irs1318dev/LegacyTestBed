@@ -12,11 +12,21 @@ public class DriveTrainEncoderReader extends RobotComponentBase{
 	
 	public void robotInit(){
 		encoderR = new EncoderAngularVelocity(PortRef.ENCODER_R_A, PortRef.ENCODER_R_B);
+		encoderR.setName("RightMotor");
 		encoderL = new EncoderAngularVelocity(PortRef.ENCODER_L_A, PortRef.ENCODER_L_B);
+		encoderL.setName("LeftMotor");
 	}
+	
+	double count;
 	
 	public void teleopPeriodic(){
 
+		double rencv = encoderR.getRate();
+		double lencv = encoderL.getRate();
+		
+//		if (count%10000==0) {
+//			System.out.println("rawLencv="+lencv+", rawRencv="+rencv);
+//		}
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoder(encoderR.getRate());
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoder(encoderL.getRate());
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(encoderR.getDistance());

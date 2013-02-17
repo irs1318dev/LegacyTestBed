@@ -12,13 +12,14 @@ public class ShooterEncoderReader extends RobotComponentBase{
 	
 	public void robotInit(){
 		encoderShooter = new EncoderAngularVelocity(PortRef.SHOOTER_ENCODER_A, PortRef.SHOOTER_ENCODER_B);
+		encoderShooter.setName("ShooterMotor");
 	}
 	
 	public void teleopPeriodic(){
 
 		double shooterEncv = encoderShooter.getRate();
 		ReferenceData.getInstance().getShooterData().setEncoderAngularVelocity(shooterEncv);
-		if (count%1==0) {
+		if (count%100==0) {
 			System.out.println("shooterEncv="+shooterEncv);
 		}
 		count++;
