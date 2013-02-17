@@ -50,12 +50,10 @@ public class SolenoidCalculator extends RobotComponentBase
 		if(ReferenceData.getInstance().getUserInputData().getLiftDown())
 		{
 			ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
-//			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
 		}
 		if(ReferenceData.getInstance().getUserInputData().getShooterUp())
 		{
-			ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(true);
-//			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(true);
+			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(true);
 		}
 		if(ReferenceData.getInstance().getUserInputData().getLiftUp())
 		{
@@ -64,6 +62,18 @@ public class SolenoidCalculator extends RobotComponentBase
 		if(ReferenceData.getInstance().getUserInputData().getShooterDown())
 		{
 			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
+		}
+		if(ReferenceData.getInstance().getUserInputData().getBothDown())
+		{
+			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
+			ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
+			
+		}
+		if(ReferenceData.getInstance().getUserInputData().getBothUp())
+		{
+			ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(true);
+			ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(true);
+			
 		}
 		ReferenceData.getInstance().getSolenoidData().setShouldFrisbeeBeExtended(
 				ReferenceData.getInstance().getUserInputData().getShooterFire()

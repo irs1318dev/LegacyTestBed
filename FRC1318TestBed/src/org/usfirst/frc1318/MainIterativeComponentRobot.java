@@ -21,7 +21,7 @@ import org.usfirst.frc1318.FRC2013.runners.*;
 public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
-		return driveTrainTestBot();
+		return gameBot1();
 	}
 	
 	protected static BotVector PIDTest()
@@ -35,8 +35,27 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new NetworkTableRunner());
 		return b;
 	}
+	protected static BotVector gameBot1()
+	{
+		BotVector botVector = new BotVector();
+		botVector.add(new CompressorRunner());
+		botVector.add(new Joystick1Reader());
+		botVector.add(new DriveTrainEncoderReader());
+		botVector.add(new ShooterEncoderReader());
+		botVector.add(new AutoRunner());
+		botVector.add(new ShooterCalculator());
+		botVector.add(new SolenoidCalculator());
+		botVector.add(new DriveTrain1JoystickCalculator());
+		botVector.add(new DriveTrainPIDCalculator());
+		botVector.add(new DriveTrainRunner());
+		botVector.add(new ShooterPIDCalculator());
+		botVector.add(new ShooterMotorRunner());
+		botVector.add(new SolenoidRunner());
+		botVector.add(new NetworkTableRunner());
+		return botVector;
+	}
 	
-	protected static BotVector gameBot()
+	protected static BotVector gameBot2()
 	{
 		BotVector botVector = new BotVector();
 		botVector.add(new CompressorRunner());

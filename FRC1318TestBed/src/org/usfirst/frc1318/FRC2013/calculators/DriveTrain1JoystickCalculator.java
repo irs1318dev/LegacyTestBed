@@ -9,7 +9,7 @@ public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 	//???eden: K vals help rep speed to be fed into robot ???
 	
 	private double K1 = 2.5;
-	private double K2 = 0.4;
+	private double K2 = 0.9;
 	
 	private double K3 = K1;
 	private double K4 = -K2;

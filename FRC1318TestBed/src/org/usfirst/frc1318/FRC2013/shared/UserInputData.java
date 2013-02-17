@@ -16,6 +16,9 @@ public class UserInputData {
 	private boolean shooterDown;
 	private boolean shooterUp;
 	
+	private boolean bothDown;
+	private boolean bothUp;
+	
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
 	
@@ -201,6 +204,22 @@ public class UserInputData {
 	{
 		this.joystickY = joystickY;
 //		System.out.println("joystick Y: " + joystickY);
+	}
+
+	public boolean getBothDown() {
+		return bothDown;
+	}
+
+	public void setBothDown(boolean bothDown) {
+		this.bothDown = bothDown;
+	}
+
+	public boolean getBothUp() {
+		return bothUp;
+	}
+
+	public void setBothUp(boolean bothUp) {
+		this.bothUp = bothUp;
 	}
 	
 }

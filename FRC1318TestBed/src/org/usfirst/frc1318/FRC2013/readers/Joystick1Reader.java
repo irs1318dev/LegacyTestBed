@@ -22,18 +22,19 @@ public class Joystick1Reader extends RobotComponentBase {
 		
 		
 		//Manual Tasks
-		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickR.getRawButton(Joystick1Ref.LIFT_UP));
-		ReferenceData.getInstance().getUserInputData().setLiftDown(joystickR.getRawButton(Joystick1Ref.LIFT_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterUp(joystickR.getRawButton(Joystick1Ref.SHOOTER_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickR.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickR.getRawButton(Joystick1Ref.SHOOTER_FIRE)));
-		
+		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickL.getRawButton(Joystick1Ref.LIFT_UP));
+		ReferenceData.getInstance().getUserInputData().setLiftDown(joystickL.getRawButton(Joystick1Ref.LIFT_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterUp(joystickL.getRawButton(Joystick1Ref.SHOOTER_UP));
+		ReferenceData.getInstance().getUserInputData().setShooterDown(joystickL.getRawButton(Joystick1Ref.SHOOTER_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
+		ReferenceData.getInstance().getUserInputData().setShooterFire(joystickL.getRawButton(Joystick1Ref.SHOOTER_FIRE));
+		ReferenceData.getInstance().getUserInputData().setBothUp(joystickL.getRawButton(Joystick1Ref.SHOOTER_LIFTER_UP));
+		ReferenceData.getInstance().getUserInputData().setBothDown(joystickL.getRawButton(Joystick1Ref.SHOOTER_DOWN));
 		
 		//Joysticks
-		double joystickX = JoystickFilter.applyLinearDeadBand(joystickR.getX(),0.1);
-		double joystickY = -JoystickFilter.applyLinearDeadBand(joystickR.getY(),0.1);
+		double joystickX = JoystickFilter.applyLinearDeadBand(joystickL.getX(),0.1);
+		double joystickY = -JoystickFilter.applyLinearDeadBand(joystickL.getY(),0.1);
 
 		//Joysticks: finetuning on left and reg on right
 //		if(joystickX == 0){
