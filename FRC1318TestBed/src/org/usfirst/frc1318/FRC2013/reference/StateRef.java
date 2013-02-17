@@ -18,5 +18,15 @@ public interface StateRef {
 	int ROTATE = 7;
 	int AUTO_DRIVE_SHOOT_MACRO_DEFAULT = INITIALIZE;
 	
+	//States for AutTranslateLeftMacro
+	int GO_FORWARD_1 = 0;
+	int TURN_RIGHT = 1;
+	int GO_FORWARD_2 = 2;
+	int TURN_LEFT = 3;
+	int GO_BACKWARD = 4;
+	int DEFAULT = 5;
+	
+	
 	int DONE = 9001;
+	
 }

@@ -17,8 +17,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyFalseLiftUpFalseLiftDownFalse() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(false);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(false);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(false);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(false);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(false);
 		lifterCalculator.teleopPeriodic();
 		assertFalse(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -26,8 +26,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyFalseLiftUpFalseLiftDownTrue() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(false);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(false);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(false);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(true);
 		lifterCalculator.teleopPeriodic();
 		assertFalse(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -35,8 +35,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyFalseLiftUpTrueLiftDownFalse() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(false);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(false);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(false);
 		lifterCalculator.teleopPeriodic();
 		assertTrue(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -44,8 +44,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyFalseLiftUpTrueLiftDownTrue() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(false);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(true);
 		lifterCalculator.teleopPeriodic();
 		assertFalse(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -53,8 +53,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyTrueLiftUpFalseLiftDownFalse() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(true);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(false);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(false);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(false);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(false);
 		lifterCalculator.teleopPeriodic();
 		assertTrue(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -62,8 +62,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyTrueLiftUpFalseLiftDownTrue() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(true);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(false);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(false);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(true);
 		lifterCalculator.teleopPeriodic();
 		assertFalse(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -71,8 +71,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyTrueLiftUpTrueLiftDownFalse() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(true);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(false);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(false);
 		lifterCalculator.teleopPeriodic();
 		assertTrue(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}
@@ -80,8 +80,8 @@ public class LifterCalculatorTest {
 	@Test
 	public void testShouldLiftAlreadyTrueLiftUpTrueLiftDownTrue() {
 		ReferenceData.getInstance().getLifterData().setShouldLift(true);
-		ReferenceData.getInstance().getJoystickData().setLiftUp(true);
-		ReferenceData.getInstance().getJoystickData().setLiftDown(true);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(true);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(true);
 		lifterCalculator.teleopPeriodic();
 		assertFalse(ReferenceData.getInstance().getLifterData().getShouldLift());
 	}

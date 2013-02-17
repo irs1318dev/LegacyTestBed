@@ -92,4 +92,9 @@ public class ReferenceData {
 	public void setUserInputData(UserInputData newData){
 		userInputData = newData;
 	}
+
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
 }
