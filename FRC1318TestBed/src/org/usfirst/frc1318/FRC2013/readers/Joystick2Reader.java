@@ -32,7 +32,7 @@ public class Joystick2Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickL.getRawButton(Joystick2Ref.SHOOTER_SPEED_DOWN));
 		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickL.getRawButton(Joystick2Ref.SHOOTER_FIRE)));
 		
-		double initialJYL = joystickL.getY(Hand.kLeft);
+		double initialJYL = - joystickL.getY(Hand.kLeft);
 		double jYL= DeadBand.applyLinearDeadBand(initialJYL,0.1);
 		ReferenceData.getInstance().getUserInputData().setJoystickLeft(jYL);
 		double initialJYR = joystickR.getY(Hand.kRight);

@@ -17,35 +17,26 @@ public class ShooterCalculator extends RobotComponentBase {
 	public void teleopPeriodic()
 	{
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
-			ReferenceData.getInstance().getShooterData().setMotorSpeed(
-			ReferenceData.getInstance().getShooterData().getMotorSpeed() - 0.005
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() - 0.005
 					);
+//			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
-			ReferenceData.getInstance().getShooterData().setMotorSpeed(
-			ReferenceData.getInstance().getShooterData().getMotorSpeed() + 0.005
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.005
 					);
+//			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
-		if(ReferenceData.getInstance().getShooterData().getMotorSpeed() > 0)
-			ReferenceData.getInstance().getShooterData().setMotorSpeed(0);
+		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > 0) {
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
+//			System.out.println("ShooterCalc: Clipping to 0, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		}
 
-		if(ReferenceData.getInstance().getShooterData().getMotorSpeed() < -1)
-			ReferenceData.getInstance().getShooterData().setMotorSpeed(-1);
-	}
-	
-	private void updateSpeed()
-	{
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
-			ReferenceData.getInstance().getShooterData().getSpeedSettings().up();
+		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() < -1) {
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(-1);
+//			System.out.println("ShooterCalc: Clipping to -1, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
-		
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
-			ReferenceData.getInstance().getShooterData().getSpeedSettings().down();
-		}
-		
-		//update data class with speed
-		ReferenceData.getInstance().getShooterData().setMotorSpeed(
-				ReferenceData.getInstance().getShooterData().getSpeedSettings().getCurrent());
 	}
-	
+		
 }
