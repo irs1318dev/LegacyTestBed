@@ -20,6 +20,8 @@ public class Joystick2Reader extends RobotComponentBase{
 		joystickL = new Joystick(PortRef.JOYSTICK_L);
 		joystickR = new Joystick(PortRef.JOYSTICK_R);
 	}
+
+	long count;
 	
 	public void teleopPeriodic(){
 		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickL.getRawButton(Joystick2Ref.LIFT_UP));
@@ -33,11 +35,17 @@ public class Joystick2Reader extends RobotComponentBase{
 		double initialJYL = joystickL.getY(Hand.kLeft);
 		double jYL= DeadBand.applyLinearDeadBand(initialJYL,0.1);
 		ReferenceData.getInstance().getUserInputData().setJoystickLeft(jYL);
-		double initialJYR = joystickL.getY(Hand.kRight);
+		double initialJYR = joystickR.getY(Hand.kRight);
 		double jYR= DeadBand.applyLinearDeadBand(initialJYR,0.1);
 		ReferenceData.getInstance().getUserInputData().setJoystickRight(jYR);
-		System.out.println("intiialJYL= "+initialJYL+",jyL="+ReferenceData.getInstance().getUserInputData().getJoystickLeft()
-				+", initialJYR="+initialJYR+" ,jyR= " + ReferenceData.getInstance().getUserInputData().getJoystickRight());
+		
+		if (count%100==0) {
+		System.out.println("intiialJYL= "+initialJYL+",jyL="
+		        +ReferenceData.getInstance().getUserInputData().getJoystickLeft()
+				+", initialJYR="+initialJYR+" ,jyR= " 
+				+ ReferenceData.getInstance().getUserInputData().getJoystickRight());
+		}
+		count++;
 
 	}
 }

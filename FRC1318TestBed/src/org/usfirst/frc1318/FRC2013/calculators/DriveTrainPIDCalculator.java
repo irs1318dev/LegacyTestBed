@@ -46,7 +46,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 
 		double leftPIDVal = lkf * lset + lkd*(lkscale * lset - lencv);
 
-		if (count%1==0) {
+		if (count%1000==0) {
 			System.out.println("lset="+lset+" , rset="+rset);
 			System.out.println("lencv="+lencv+" , rencv="+rencv);
 			System.out.println("LPID="+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed()
