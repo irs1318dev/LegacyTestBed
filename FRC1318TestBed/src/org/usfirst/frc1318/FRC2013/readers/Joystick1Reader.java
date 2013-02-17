@@ -7,7 +7,7 @@ import org.usfirst.frc1318.FRC2013.reference.Joystick1Ref;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
-import org.usfirst.frc1318.generic.controllers.DeadBand;
+import org.usfirst.frc1318.generic.controllers.JoystickFilter;
 
 public class Joystick1Reader extends RobotComponentBase {
 	Joystick joystickL;
@@ -32,8 +32,8 @@ public class Joystick1Reader extends RobotComponentBase {
 		
 		
 		//Joysticks
-		double joystickX = DeadBand.applyLinearDeadBand(joystickR.getX(),0.1);
-		double joystickY = -DeadBand.applyLinearDeadBand(joystickR.getY(),0.1);
+		double joystickX = JoystickFilter.applyLinearDeadBand(joystickR.getX(),0.1);
+		double joystickY = -JoystickFilter.applyLinearDeadBand(joystickR.getY(),0.1);
 
 		//Joysticks: finetuning on left and reg on right
 //		if(joystickX == 0){
@@ -43,8 +43,9 @@ public class Joystick1Reader extends RobotComponentBase {
 //			joystickY = -DeadBand.applylinearDeadBand(joystickL.getY(), 0.1)/4;
 //		}
 		
-		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickX);
-		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickY);
+		//TODO X and Y were switched on hardware, switched in software
+		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
 
 		
 		//Auto Tasks

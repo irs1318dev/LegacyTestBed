@@ -2,6 +2,7 @@ package org.usfirst.frc1318.FRC2013.calculators;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.components.RobotComponentBase;
+import org.usfirst.frc1318.generic.controllers.JoystickFilter;
 import org.usfirst.frc1318.generic.controllers.PID;
 
 public class DriveTrainPIDCalculator extends RobotComponentBase{
@@ -45,31 +46,26 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 
 		double leftPIDVal = lkf * lset + lkd*(lkscale * lset - lencv);
 
-		if (count%10000==0) {
+		JoystickFilter.Speed motorSpeed = new JoystickFilter.Speed();
+		motorSpeed.speedL = leftPIDVal;
+		motorSpeed.speedR = rightPIDVal;
+//		JoystickFilter.Speed clampedSpeed = JoystickFilter.applyClamp(motorSpeed, 1.0);
+		
+		if (count%100==0) {
 			System.out.println("lset="+lset+" , rset="+rset);
 			System.out.println("lencv="+lencv+" , rencv="+rencv);
 			System.out.println("LPID="+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed()
 					+", RPID="+ReferenceData.getInstance().getDriveTrainData().getRightPIDSpeed()
 					);
+//			System.out.println("lmotor="+clampedSpeed.speedL+" , rmotor="+clampedSpeed.speedR);
 		}
 		count++;
-		//		rightPID.setSetpoint(ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint());
-//		leftPID.setSetpoint(ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint());
-//		
-//		System.out.println("LSet="+ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint()
-//				+", RSet="+ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint()
-//				);
-//
-//		rightPID.input(ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
-//		leftPID.input(ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
-//		
-//		double rightPIDVal = rightPID.getOutput();
-		                    
-		
-//		double leftPIDVal = leftPID.getOutput();
 
 		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(rightPIDVal);
 		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(leftPIDVal);
+
+//		ReferenceData.getInstance().getDriveTrainData().setRightPIDSpeed(clampedSpeed.speedR);
+//		ReferenceData.getInstance().getDriveTrainData().setLeftPIDSpeed(clampedSpeed.speedL);
 
 //		System.out.println("LPIDConst:"+leftPID.toString()
 //				+", RPIDConst:"+rightPID.toString()
