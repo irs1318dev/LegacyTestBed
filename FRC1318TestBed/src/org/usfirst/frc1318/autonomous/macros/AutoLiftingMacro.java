@@ -29,9 +29,9 @@ public class AutoLiftingMacro implements AutoTask{
 			actuateLifter();
 			break;
 		default:
+			hasFinished = true;
 			break;
 		}
-		hasFinished = true;
 	}
 
 	public void cancel() {
