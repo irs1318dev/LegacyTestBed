@@ -8,16 +8,16 @@ public class AutoTranslateLeftMacro implements AutoTask{
 	private boolean hasInit = false;
 	private boolean hasFinished = false;
 	
-	public int state;
-	public int ticksStartLeft;
-	public int ticksStartRight;
+	private int state;
+	private int ticksStartLeft;
+	private int ticksStartRight;
 	
 	//TODO figure out numbers
-	public final int TICKS_FORWARD1 = 1080;
-	public final int TICKS_TURN_RIGHT = 120;
-	public final int TICKS_FORWARD2 = 200;
-	public final int TICKS_TURN_LEFT = 120;
-	public final int TICKS_BACKWARD = 1260;
+	private final int TICKS_FORWARD1 = 1080;
+	private final int TICKS_TURN_RIGHT = 120;
+	private final int TICKS_FORWARD2 = 200;
+	private final int TICKS_TURN_LEFT = 120;
+	private final int TICKS_BACKWARD = 1260;
 	
 	
 	public void init() {
@@ -115,8 +115,8 @@ public class AutoTranslateLeftMacro implements AutoTask{
 	}
 	
 	private void turnLeft() {
-		if(		(int)ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() < ticksStartLeft - TICKS_TURN_LEFT &&
-				(int)ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks() > ticksStartRight + TICKS_TURN_LEFT){
+		if(		(int)ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() > ticksStartLeft - TICKS_TURN_LEFT &&
+				(int)ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks() < ticksStartRight + TICKS_TURN_LEFT){
 			//TODO check values
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-.5);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(.5);
