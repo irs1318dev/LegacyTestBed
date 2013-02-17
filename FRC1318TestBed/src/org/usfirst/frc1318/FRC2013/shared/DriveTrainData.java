@@ -18,6 +18,7 @@ public class DriveTrainData {
 
 	public double getLeftEncoderTicks() {
 		return leftEncoderTicks;
+		
 	}
 
 	public void setLeftEncoderTicks(double val) {
