@@ -18,35 +18,35 @@ public class DriveTrain2JoysticksCalculatorTest {
 	
 	@Test
 	public void LeftSetPointPositive1(){
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(1);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(1);
 		calc.teleopPeriodic();
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void LeftSetPointPositiveInBounds(){
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(.45);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(.45);
 		calc.teleopPeriodic();
 		assertEquals(.45, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void LeftSetPointNegitive1(){
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(-1);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 		calc.teleopPeriodic();
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void LeftSetPointNegitiveInBounds(){
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(-.65);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(-.65);
 		calc.teleopPeriodic();
 		assertEquals(-.65, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void LeftSetPoint0(){
-		ReferenceData.getInstance().getJoystickData().setJoystickLY(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
 		calc.teleopPeriodic();
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint(), .001);
 	}
@@ -55,35 +55,35 @@ public class DriveTrain2JoysticksCalculatorTest {
 	
 	@Test
 	public void RightSetPointPositive1(){
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(1);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(1);
 		calc.teleopPeriodic();
 		assertEquals(1, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void RightSetPointPositiveInBounds(){
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(.34);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(.34);
 		calc.teleopPeriodic();
 		assertEquals(.34, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void RightSetPointNegitive1(){
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(-1);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
 		calc.teleopPeriodic();
 		assertEquals(-1, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void RightSetPointNegitiveInBounds(){
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(-.75);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(-.75);
 		calc.teleopPeriodic();
 		assertEquals(-.75, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint(), .001);
 	}
 	
 	@Test
 	public void RightSetPoint0(){
-		ReferenceData.getInstance().getJoystickData().setJoystickRY(0);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(0);
 		calc.teleopPeriodic();
 		assertEquals(0, ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint(), .001);
 	}
