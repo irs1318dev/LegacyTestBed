@@ -11,23 +11,23 @@ import org.junit.Test;
 import org.usfirst.frc1318.FRC2013.runners.DriveTrainRunner;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.UserInputData;
-import org.usfirst.frc1318.autonomous.macros.AutoTranslateLeftMacro;
+import org.usfirst.frc1318.autonomous.macros.AutoTranslateRightMacro;
 
 import edu.wpi.first.wpilibj.Talon;
 
 
-public class AutoTranslateLeftMacroTest {
+public class AutoTranslateRightMacroTest {
 	
 	AutoRunner runner;
 	AutoRunner runnerSpy;
-	AutoTranslateLeftMacro macro;
+	AutoTranslateRightMacro macro;
 	
 	@Test
 	public void macroTest(){
 		
 		runner = new AutoRunner();
 		runnerSpy = spy(runner);
-		macro = new AutoTranslateLeftMacro();
+		macro = new AutoTranslateRightMacro();
 		
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(0);
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(0);
