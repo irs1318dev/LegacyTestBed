@@ -12,9 +12,7 @@ import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
 import org.usfirst.frc1318.testbed.components.TBSolenoidRunner;
 import org.usfirst.frc1318.testbed.components.TBThroughBeamReader;
 import org.usfirst.frc1318.FRC2013.calculators.*;
-import org.usfirst.frc1318.FRC2013.calculators.ShooterPIDCalculator;
 import org.usfirst.frc1318.FRC2013.controllers.*;
-import org.usfirst.frc1318.FRC2013.controllers.ShooterEncoderReader;
 import org.usfirst.frc1318.FRC2013.readers.*;
 import org.usfirst.frc1318.FRC2013.runners.*;
 
@@ -94,10 +92,10 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector driveTrainTestBot()
 	{
 		BotVector botVector = new BotVector();
-		botVector.add(new Joystick1Reader());
+		botVector.add(new GamePad1Reader());
 		botVector.add(new DriveTrainEncoderReader());
 		botVector.add(new DriveTrain1JoystickCalculator());
-		botVector.add(new DriveTrainPIDCalculator());
+		botVector.add(new DriveTrainNoPIDCalculator());
 		botVector.add(new DriveTrainRunner());
 		return botVector;
 	}
@@ -105,6 +103,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	protected static BotVector gamepadTest(){
 		BotVector botVector = new BotVector();
 		botVector.add(new Joystick1Reader());
+		botVector.add(new AutoRunner());
 		return botVector;
 	}
 	
@@ -122,7 +121,37 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		return botVector;
 	}
 	
-
+	protected static BotVector competitionBot(){
+		BotVector botVector = new BotVector();
+		
+		botVector.add(new DriveTrainEncoderReader());
+		botVector.add(new GamePad1Reader());
+		botVector.add(new Joystick1Reader());
+		botVector.add(new LifterLimitSwitchReader());
+		//botVector.add(new ShooterEncoderReader());
+		
+		//Autonomous Here
+		
+		botVector.add(new LifterCalculator());
+		botVector.add(new DriveTrain2JoysticksCalculator());
+		botVector.add(new SolenoidCalculator());
+		botVector.add(new ShooterCalculator());
+		
+		botVector.add(new DriveTrainPIDCalculator());
+		//TODO add back in once working 
+		//botVector.add(new ShooterPIDRunner());
+		//botVector.add(new ShooterPIDRunner());
+		
+		botVector.add(new CompressorRunner());
+		botVector.add(new DriveTrainRunner());
+		botVector.add(new LifterRunner());
+		botVector.add(new ShooterFireRunner());
+		botVector.add(new ShooterMotorRunner());
+		botVector.add(new NetworkTableRunner());
+		return botVector;
+		
+	}
+	
 	protected static BotVector motorTest() {
 		BotVector botVector = new BotVector();
 		botVector.add(new GamePad1Reader());

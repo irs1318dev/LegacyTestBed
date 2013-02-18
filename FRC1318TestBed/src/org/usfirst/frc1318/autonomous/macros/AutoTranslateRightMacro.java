@@ -26,9 +26,11 @@ public class AutoTranslateRightMacro implements AutoTask{
 		hasInit = true;
 		ticksStartLeft = (int)ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
 		ticksStartRight = (int)ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks();
+		System.out.println("AutoTranslateRight init");
 	}
 
 	public void run() {
+		System.out.println("AutoTranslateRight currintState: " + state);
 		switch(state){
 		case StateRef.GO_FORWARD_1:
 			goForward1();

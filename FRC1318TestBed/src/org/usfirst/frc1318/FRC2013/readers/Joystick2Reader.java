@@ -1,6 +1,7 @@
 package org.usfirst.frc1318.FRC2013.readers;
 
 import org.usfirst.frc1318.FRC2013.reference.GamePad1Ref;
+import org.usfirst.frc1318.FRC2013.reference.Joystick1Ref;
 import org.usfirst.frc1318.FRC2013.reference.Joystick2Ref;
 import org.usfirst.frc1318.FRC2013.reference.PortRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
@@ -16,6 +17,28 @@ public class Joystick2Reader extends RobotComponentBase{
 	private Joystick joystickL;
 	private Joystick joystickR;
 	
+	private double joystickLeft;
+	private double joystickRight;
+	
+	private boolean liftDown;
+	private boolean liftUp;
+	
+	private boolean shooterDown;
+	private boolean shooterUp;
+	
+	private boolean shooterSpeedUp;
+	private boolean shooterSpeedDown;
+	
+	private boolean shooterFire;
+	
+	private boolean autoTranslateRight;
+	private boolean autoLift;
+	private boolean autoFireAll;
+	private boolean autoTranslateLeft;
+	private boolean autoDriveShoot;
+	
+	private boolean[] anyUIArr = new boolean[14];
+	
 	public void robotInit(){
 		joystickL = new Joystick(PortRef.JOYSTICK_L);
 		joystickR = new Joystick(PortRef.JOYSTICK_R);
@@ -24,28 +47,64 @@ public class Joystick2Reader extends RobotComponentBase{
 	long count;
 	
 	public void teleopPeriodic(){
-		ReferenceData.getInstance().getUserInputData().setLiftUp(joystickL.getRawButton(Joystick2Ref.LIFT_UP));
-		ReferenceData.getInstance().getUserInputData().setLiftDown(joystickL.getRawButton(Joystick2Ref.LIFT_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterUp(joystickL.getRawButton(Joystick2Ref.SHOOTER_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterDown(joystickL.getRawButton(Joystick2Ref.SHOOTER_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(joystickL.getRawButton(Joystick2Ref.SHOOTER_SPEED_UP));
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(joystickL.getRawButton(Joystick2Ref.SHOOTER_SPEED_DOWN));
-		ReferenceData.getInstance().getUserInputData().setShooterFire((joystickL.getRawButton(Joystick2Ref.SHOOTER_FIRE)));
+		joystickLeft= - joystickL.getY(Hand.kLeft);
+		joystickLeft= JoystickFilter.applyLinearDeadBand(joystickLeft,0.1);
+		joystickRight = joystickR.getY(Hand.kRight);
+		joystickRight = JoystickFilter.applyLinearDeadBand(joystickRight,0.1);
+				
+		liftUp = (joystickR.getRawButton(Joystick2Ref.LIFT_UP));
+		liftDown = (joystickR.getRawButton(Joystick2Ref.LIFT_DOWN));
+		shooterUp = (joystickR.getRawButton(Joystick2Ref.SHOOTER_UP));
+		shooterDown = (joystickR.getRawButton(Joystick2Ref.SHOOTER_DOWN));
+		shooterSpeedUp = (joystickR.getRawButton(Joystick2Ref.SHOOTER_SPEED_UP));
+		shooterSpeedDown = (joystickR.getRawButton(Joystick2Ref.SHOOTER_SPEED_DOWN));
+		shooterFire = (joystickR.getRawButton(Joystick2Ref.SHOOTER_FIRE));
+		autoTranslateLeft = joystickL.getRawButton(Joystick2Ref.AUTO_TRANSLATE_LEFT);
+		autoFireAll = joystickL.getRawButton(Joystick2Ref.AUTO_FIREALL);
+		autoLift = joystickL.getRawButton(Joystick2Ref.AUTO_LIFT);
+		autoTranslateRight = (joystickL.getRawButton(Joystick2Ref.AUTO_TRANSLATE_RIGHT));
 		
-		double initialJYL = - joystickL.getY(Hand.kLeft);
-		double jYL= JoystickFilter.applyLinearDeadBand(initialJYL,0.1);
-		ReferenceData.getInstance().getUserInputData().setJoystickLeft(jYL);
-		double initialJYR = joystickR.getY(Hand.kRight);
-		double jYR= JoystickFilter.applyLinearDeadBand(initialJYR,0.1);
-		ReferenceData.getInstance().getUserInputData().setJoystickRight(jYR);
 		
-		if (count%100==0) {
-		System.out.println("intiialJYL= "+initialJYL+",jyL="
-		        +ReferenceData.getInstance().getUserInputData().getJoystickLeft()
-				+", initialJYR="+initialJYR+" ,jyR= " 
-				+ ReferenceData.getInstance().getUserInputData().getJoystickRight());
+		ReferenceData.getInstance().getUserInputData().setJoystickLeft(-joystickLeft);
+		ReferenceData.getInstance().getUserInputData().setJoystickRight(-joystickRight);
+		ReferenceData.getInstance().getUserInputData().setLiftUp(liftUp);
+		ReferenceData.getInstance().getUserInputData().setLiftDown(liftDown);
+		ReferenceData.getInstance().getUserInputData().setShooterUp(shooterUp);
+		ReferenceData.getInstance().getUserInputData().setShooterDown(shooterDown);
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(shooterSpeedUp);
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(shooterSpeedDown);
+		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(autoTranslateLeft);
+		ReferenceData.getInstance().getUserInputData().setAutoFireAll(autoFireAll);
+		ReferenceData.getInstance().getUserInputData().setAutoLift(autoLift);
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(autoTranslateRight);
+		
+		anyUIArr[0] = liftUp;
+		anyUIArr[1] = liftDown;
+		anyUIArr[2] = shooterUp;
+		anyUIArr[3] = shooterDown;
+		anyUIArr[4] = shooterSpeedUp;
+		anyUIArr[5] = shooterSpeedDown;
+		anyUIArr[6] = shooterFire;
+		anyUIArr[7] = autoTranslateLeft;
+		anyUIArr[8] = autoFireAll;
+		anyUIArr[9] = autoLift;
+		anyUIArr[10] = autoTranslateRight;
+		anyUIArr[11] = joystickLeft > 0;
+		anyUIArr[12] = joystickRight > 0;
+		ReferenceData.getInstance().getUserInputData().setAnyUI(false);
+		for(int i = 0; i<anyUIArr.length; i++){
+			if(anyUIArr[i])
+				ReferenceData.getInstance().getUserInputData().setAnyUI(true);
 		}
-		count++;
+		
+		//if (count%100==0) {
+		//System.out.println("intiialJYL= "+initialJYL+",jyL="
+		//        +ReferenceData.getInstance().getUserInputData().getJoystickLeft()
+		//		+", initialJYR="+initialJYR+" ,jyR= " 
+		//		+ ReferenceData.getInstance().getUserInputData().getJoystickRight());
+		//}
+		//count++;
 
 	}
 }

@@ -31,6 +31,7 @@ public class LowerLoadingShoot implements AutoTask{
 	public void init() {
 		ref = ReferenceData.getInstance();
 		hasInit = true;
+		System.out.println("LowerLoadingShoot init");
 	}
 
 
@@ -45,6 +46,7 @@ public class LowerLoadingShoot implements AutoTask{
 		 * 
 		 * go reverse
 		 */
+		System.out.println("LowerLoadingShoot currentState: " + state);
 		switch(state){
 		case 0:
 			lastTime = Timer.getFPGATimestamp();
