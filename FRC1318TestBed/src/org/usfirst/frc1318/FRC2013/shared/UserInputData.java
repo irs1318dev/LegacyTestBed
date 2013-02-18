@@ -4,6 +4,8 @@ public class UserInputData {
 	//When you add a button thats not a macro: add it to the autoAnyButton setter
 	private int userInputType;
 	
+	private boolean anyUI;
+	
 	private double joystickLeft;
 	private double joystickRight;
 	
@@ -27,7 +29,18 @@ public class UserInputData {
 	private boolean autoTranslateLeft;
 	private boolean autoDriveShoot; // 15 second routine
 	
-
+	
+	public void setAnyUI(boolean val){
+		anyUI = val;
+		System.out.println("Setting UI to: "+val);
+	}
+	
+	public boolean getAnyUI() {	
+		System.out.println("Getting UI at: "+anyUI);
+		return anyUI;
+				
+	}
+	
 	public boolean getAutoDriveShoot() {
 		return autoDriveShoot;
 	}
@@ -36,24 +49,10 @@ public class UserInputData {
 		this.autoDriveShoot = autoDriveShoot;
 	}
 
-	public boolean getAnyUI() {
-		return (
-				   Math.abs(joystickLeft)>0.1
-				|| Math.abs(joystickRight)>0.1
-				|| Math.abs(joystickX)>0.1
-				|| Math.abs(joystickY)>0.1
-				|| liftDown
-				|| liftUp
-				|| shooterDown
-				|| shooterUp
-				|| shooterSpeedUp
-				|| shooterSpeedDown
-				|| shooterFire
-				);
-				
-	}
 	
 	public boolean getAutoFireAll() {
+		if(autoFireAll)
+			System.out.println("I should  be calling AutoFireAll");
 		return autoFireAll;
 	}
 

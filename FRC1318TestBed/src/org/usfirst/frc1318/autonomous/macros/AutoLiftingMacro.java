@@ -16,9 +16,11 @@ public class AutoLiftingMacro implements AutoTask{
 	
 	public void init() {
 		hasInitalized = true;
+		System.out.println("AutoLifting init");
 	}
 
 	public void run() {
+		System.out.println("AutoLifting currentState: " + currentState);
 		switch(currentState) {
 		case StateRef.ADJUST_LIFTER_AND_SHOOTER:
 			adjustLifterAndShooter();

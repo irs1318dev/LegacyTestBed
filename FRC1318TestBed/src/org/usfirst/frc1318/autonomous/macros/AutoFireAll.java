@@ -18,9 +18,11 @@ public class AutoFireAll implements AutoTask{
 	public void init() {
 		discsFired = 0;
 		hasInitialized = true;
+		System.out.println("AutoFireAll init");
 	}
 
 	public void run() {
+		System.out.println("AutoFireAll currentState: " + currentState);
 		switch(currentState){
 			case 0://retract
 				break;
