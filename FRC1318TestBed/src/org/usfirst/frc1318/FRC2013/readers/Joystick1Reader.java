@@ -38,7 +38,7 @@ public class Joystick1Reader extends RobotComponentBase {
 	private boolean autoTranslateLeft;
 	private boolean autoDriveShoot;
 	
-	private boolean[] anyUIArr = new boolean[14];
+	private boolean[] anyUIArr = new boolean[15];
 	
 	public void robotInit() {
 		joystickR = new Joystick(PortRef.JOYSTICK_R);

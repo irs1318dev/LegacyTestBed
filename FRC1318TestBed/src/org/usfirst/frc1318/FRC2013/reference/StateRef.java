@@ -1,5 +1,5 @@
 package org.usfirst.frc1318.FRC2013.reference;
-
+//TODO: Put our constants in our classes
 public interface StateRef {
 	//States for AutoLiftingMacro
 	int ADJUST_LIFTER_AND_SHOOTER = 0;

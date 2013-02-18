@@ -23,14 +23,14 @@ public class AutoTranslateRightMacro implements AutoTask{
 	public void init() {
 		// create things
 		state = StateRef.GO_FORWARD_1;
-		hasInit = true;
 		ticksStartLeft = (int)ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
 		ticksStartRight = (int)ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks();
 		System.out.println("AutoTranslateRight init");
+		hasInit = true;
 	}
 
 	public void run() {
-		System.out.println("AutoTranslateRight currintState: " + state);
+		System.out.println("AutoTranslateRight currentState: " + state);
 		switch(state){
 		case StateRef.GO_FORWARD_1:
 			goForward1();
@@ -82,7 +82,7 @@ public class AutoTranslateRightMacro implements AutoTask{
 		}else{
 			ticksStartLeft = (int)ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
 			ticksStartRight = (int)ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks();
-			state = StateRef.TURN_RIGHT;
+			//state = StateRef.TURN_RIGHT;
 		}
 	}
 	
