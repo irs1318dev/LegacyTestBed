@@ -11,20 +11,20 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void robotInit()
 	{
-		
+		ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
 	}
 	
 	public void teleopPeriodic()
 	{
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-			ReferenceData.getInstance().getShooterData().getMotorSetPoint() - 0.005
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() - 0.0005
 					);
 //			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.005
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.0005
 					);
 //			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
