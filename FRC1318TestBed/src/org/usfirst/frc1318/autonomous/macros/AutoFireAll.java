@@ -2,7 +2,6 @@ package org.usfirst.frc1318.autonomous.macros;
 
 //Assumes prior motor speed by driver preference.
 
-import org.usfirst.frc1318.FRC2013.reference.StateRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.autonomous.AutoTask;
 

@@ -1,6 +1,4 @@
 package org.usfirst.frc1318.autonomous.macros;
-
-import org.usfirst.frc1318.FRC2013.reference.StateRef;
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.autonomous.AutoTask;
 
@@ -12,7 +10,17 @@ public class AutoDriveShootMacro implements AutoTask {
 	private boolean hasInitialized = false;
 	private boolean newState = true;
 	
-	private int currentState = StateRef.AUTO_DRIVE_SHOOT_MACRO_DEFAULT;
+	final int INITIALIZE = 0;
+	final int PREPRARE_TO_DRIVE_UNDER_PYRAMID = 1;
+	final int DRIVE_TO_LAUNCH_POSITION = 2;
+	final int PREPARE_TO_SHOOT = 3;
+	final int FIRE = 4;
+	final int PREPARE_TO_DRIVE = 5;
+	final int BACK_UP = 6;
+	final int ROTATE = 7;
+	final int AUTO_DRIVE_SHOOT_MACRO_DEFAULT = INITIALIZE;
+	
+	private int currentState = AUTO_DRIVE_SHOOT_MACRO_DEFAULT;
 	private int fireState = 0;
 	private int timesFired = 0;
 	
@@ -48,28 +56,28 @@ public class AutoDriveShootMacro implements AutoTask {
 
 	public void run() {
 		switch(currentState) {
-		case StateRef.INITIALIZE:
+		case INITIALIZE:
 			initialize();
 			break;
-		case StateRef.PREPRARE_TO_DRIVE_UNDER_PYRAMID:
+		case PREPRARE_TO_DRIVE_UNDER_PYRAMID:
 			prepareToDriveUnderPyramid();
 			break;
-		case StateRef.DRIVE_TO_LAUNCH_POSITION:
+		case DRIVE_TO_LAUNCH_POSITION:
 			driveToLaunchPosition();
 			break;
-		case StateRef.PREPARE_TO_SHOOT:
+		case PREPARE_TO_SHOOT:
 			prepareToShoot();
 			break;
-		case StateRef.FIRE:
+		case FIRE:
 			fire();
 			break;
-		case StateRef.PREPARE_TO_DRIVE:
+		case PREPARE_TO_DRIVE:
 			prepareToDrive();
 			break;
-		case StateRef.BACK_UP:
+		case BACK_UP:
 			backUp();
 			break;
-		case StateRef.ROTATE:
+		case ROTATE:
 			rotate();
 			break;
 		default:
@@ -105,7 +113,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			newState = false;
 		}
 		if(timer.get() - stateStartTime >= INIT_WAIT_TIME) {
-			currentState = StateRef.PREPRARE_TO_DRIVE_UNDER_PYRAMID;
+			currentState = PREPRARE_TO_DRIVE_UNDER_PYRAMID;
 			newState = true;
 		}
 	}
@@ -130,7 +138,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(STOP);
 			if(timer.get() - stateStartTime >= WAIT_FOR_PISTONS_TIME) {
-				currentState = StateRef.DRIVE_TO_LAUNCH_POSITION;
+				currentState = DRIVE_TO_LAUNCH_POSITION;
 				newState = true;
 			}
 		}
@@ -150,7 +158,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(STOP);
-			currentState = StateRef.PREPARE_TO_SHOOT;
+			currentState = PREPARE_TO_SHOOT;
 		}
 	}
 	
@@ -163,7 +171,7 @@ public class AutoDriveShootMacro implements AutoTask {
 		if(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() >= SHOOTER_MIN_SPEED 
 				&& ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity() <= SHOOTER_MAX_SPEED 
 				&& timer.get() - stateStartTime >= WAIT_FOR_PISTONS_TIME) {
-			currentState = StateRef.FIRE;
+			currentState = FIRE;
 			newState = true;
 		}
 	}
@@ -202,7 +210,7 @@ public class AutoDriveShootMacro implements AutoTask {
 				break;
 			}
 		}
-		currentState = StateRef.PREPARE_TO_DRIVE;
+		currentState = PREPARE_TO_DRIVE;
 	}
 	
 	private void prepareToDrive() {
@@ -214,7 +222,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			newState = false;
 		}
 		if(timer.get() - stateStartTime >= WAIT_FOR_PISTONS_TIME) {
-			currentState = StateRef.BACK_UP;
+			currentState = BACK_UP;
 			newState = true;
 		}
 	}
@@ -232,7 +240,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(STOP);
-			currentState = StateRef.ROTATE;
+			currentState = ROTATE;
 		}
 	}
 	
@@ -256,7 +264,7 @@ public class AutoDriveShootMacro implements AutoTask {
 			ReferenceData.getInstance().getUserInputData().setJoystickLeft(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickRight(STOP);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(STOP);
-			currentState = StateRef.DONE;
+			currentState++;
 			newState = true;
 		}
 	}
