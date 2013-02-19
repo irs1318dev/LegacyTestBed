@@ -11,6 +11,7 @@ public class ReferenceData {
 	private SolenoidData solenoidData;
 	private SolenoidTestData solenoidTestData;
 	private UserInputData userInputData;
+	private DipSwitchData dipSwitchData;
 	
 	private ReferenceData(){
 	}
@@ -79,6 +80,16 @@ public class ReferenceData {
 	public void setSolenoidData(SolenoidData solenoidData)
 	{
 		this.solenoidData = solenoidData;
+	}
+	
+	public DipSwitchData getDipSwitchData(){
+		if(dipSwitchData == null)
+			dipSwitchData = new DipSwitchData();
+		return dipSwitchData;
+	}
+
+	public void setDipSwitchData(DipSwitchData dipSwitchData){
+		this.dipSwitchData = dipSwitchData;
 	}
 
 	public SolenoidTestData getSolenoidTestData()
