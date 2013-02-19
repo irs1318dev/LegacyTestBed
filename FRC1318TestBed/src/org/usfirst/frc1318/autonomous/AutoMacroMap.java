@@ -35,7 +35,8 @@ public class AutoMacroMap
 				}
 				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateLeft())
 				{
-					autoRunner.setTask(new AutoTranslateRightMacro());
+					//autoRunner.setTask(new AutoTranslateLefttMacro());
+					System.out.println("AutoTranslatLeft does not exist");
 				}
 				else if(ReferenceData.getInstance().getUserInputData().getAutoTranslateRight())
 				{

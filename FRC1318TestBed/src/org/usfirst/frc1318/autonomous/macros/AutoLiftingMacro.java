@@ -24,6 +24,7 @@ public class AutoLiftingMacro implements AutoTask{
 		switch(currentState) {
 		case StateRef.ADJUST_LIFTER_AND_SHOOTER:
 			adjustLifterAndShooter();
+			break;
 		case StateRef.DRIVE_SLOWLY_TILL_SWITCH_TRIGGERED:
 			driveSlowlyTillSwitchTriggered();
 			break;

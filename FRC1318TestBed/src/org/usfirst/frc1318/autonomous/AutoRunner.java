@@ -13,7 +13,7 @@ public class AutoRunner extends RobotComponentBase
 	
 	public void robotInit() 
 	{//sets up the variables. set the initial task here, for say autonomous period.
-		//task = new AutoDriveShootMacro(); // the first task that will be run.
+		task = new AutoDriveShootMacro(); // the first task that will be run.
 		completedTasks = new Vector();
 	}
 	
