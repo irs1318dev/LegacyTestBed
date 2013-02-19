@@ -20,6 +20,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
 		return gameBot1();
+		//return helloBot();
 	}
 	
 	protected static BotVector PIDTest()
@@ -40,7 +41,9 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new Joystick1Reader());
 		botVector.add(new DriveTrainEncoderReader());
 		botVector.add(new ShooterEncoderReader());
+		System.out.println("*************************before AutoRunner");
 		botVector.add(new AutoRunner());
+		System.out.println("*************************after AutoRunner");
 		botVector.add(new ShooterCalculator());
 		botVector.add(new SolenoidCalculator());
 		botVector.add(new DriveTrain1JoystickCalculator());
