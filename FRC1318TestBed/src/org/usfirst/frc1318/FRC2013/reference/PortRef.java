@@ -6,7 +6,7 @@ public interface PortRef {
 	int GAMEPAD = 1;
 	
 	int JOYSTICK_L = 1;
-	int JOYSTICK_R = 2;
+	int JOYSTICK_R = 2; 
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	int DIGITAL_IO = SensorBase.getDefaultSolenoidModule();
