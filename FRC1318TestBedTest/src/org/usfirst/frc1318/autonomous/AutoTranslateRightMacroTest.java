@@ -19,21 +19,22 @@ import edu.wpi.first.wpilibj.Talon;
 public class AutoTranslateRightMacroTest {
 	
 	AutoRunner runner;
-	AutoRunner runnerSpy;
-	AutoTranslateRightMacro macro;
+	//AutoRunner runnerSpy;
+	//AutoTranslateRightMacro macro;
 	
 	@Test
 	public void macroTest(){
 		
 		runner = new AutoRunner();
-		runnerSpy = spy(runner);
-		macro = new AutoTranslateRightMacro();
+		//runnerSpy = spy(runner);
+		//macro = new AutoTranslateRightMacro();
 		
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(0);
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(0);
 		
 		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(true);
-		runner.setTask(macro);
+		//runner.setTask(macro);
+		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(true);
 		runner.teleopPeriodic();
 		
 		assertTrue(runner.getTask().hasInitalized());
@@ -46,7 +47,7 @@ public class AutoTranslateRightMacroTest {
 		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickLeft(), .0001);
 		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickRight(), .0001);
 		assertEquals(0, ReferenceData.getInstance().getUserInputData().getJoystickX(), .0001);
-		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickY(), .0001);
+		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoys tickY(), .0001);
 
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(1190);
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(1190);
