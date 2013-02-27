@@ -18,25 +18,25 @@ public class ShooterCalculator extends RobotComponentBase {
 	{
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-			ReferenceData.getInstance().getShooterData().getMotorSetPoint() - 0.0005
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() - 0.005
 					);
 //			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.0005
+			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.005
 					);
 //			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
-		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > 0) {
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
-//			System.out.println("ShooterCalc: Clipping to 0, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}
-
-		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() < -1) {
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(-1);
-//			System.out.println("ShooterCalc: Clipping to -1, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}
+//		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > 0) {
+//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
+////			System.out.println("ShooterCalc: Clipping to 0, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+//		}
+//
+//		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() < -1) {
+//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(-1);
+////			System.out.println("ShooterCalc: Clipping to -1, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+//		}
 	}
 		
 }

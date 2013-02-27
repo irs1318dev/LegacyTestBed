@@ -51,7 +51,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		motorSpeed.speedR = rightPIDVal;
 //		JoystickFilter.Speed clampedSpeed = JoystickFilter.applyClamp(motorSpeed, 1.0);
 		
-		if (count%100==0) {
+		if (count%100000==0) {
 			System.out.println("lset="+lset+" , rset="+rset);
 			System.out.println("lencv="+lencv+" , rencv="+rencv);
 			System.out.println("LPID="+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed()

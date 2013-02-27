@@ -11,29 +11,40 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	
 	public void robotInit()
 	{	
-		shooterPID = new PID(1,1,1);//TODO adjust values
-		shooterPID.setKFade(.75);
+		shooterPID = new PID(-0.0004 ,0.0, 0.0 , 1);//TODO adjust values
+		shooterPID.setKFade(0.75);
+		shooterPID.setClampRange(-1, 1);
+		shooterPID.setKScale(25000);
 	}
 	
+	double shooterKf = 1.0;
+	double shooterKd = -0.0005;
+
 	public void teleopPeriodic()
 	{
-		double shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
-		double shooterEncv = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();
-		double shooterKf = 0.25;
-		double shooterKd = 0.001;
-		double shooterKscale = 20000;
+//		double shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
+//		double shooterEncv = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();
+//		
+//		double shooterKscale = 20000;
+//		double shooterKf = 0.25;
+//		double shooterKd = 0.0005;
+//		
+//		double shooterPIDVal = shooterKf * shooterSet + shooterKd*(shooterKscale * shooterSet - shooterEncv);
+//
+//		if (count%100000==0) { 
+//			
+//			System.out.println("shooterSet="+shooterSet+", shooterEncv="+shooterEncv+", shooterPID="+shooterPIDVal);
+//		}
+//		count++;
+//		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPIDVal);
 
-		double shooterPIDVal = shooterKf * shooterSet + shooterKd*(shooterKscale * shooterSet - shooterEncv);
-
-		if (count%100==0) { 
-			System.out.println("shooterSet="+shooterSet+", shooterEncv="+shooterEncv+", shooterPID="+shooterPIDVal);
-		}
-		count++;
-		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPIDVal);
-
-//		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-//		shooterPID.input(ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity());
-//		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
+		
+		double angularVelocity = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();
+		shooterPID.setSetpoint(ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		shooterPID.input(angularVelocity);
+		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
+		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPID.getOutput());
+		
 	}
 	
 }
