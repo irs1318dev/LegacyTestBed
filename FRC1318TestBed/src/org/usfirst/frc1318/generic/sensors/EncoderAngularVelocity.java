@@ -56,7 +56,7 @@ public class EncoderAngularVelocity extends Encoder
     	currentTime = timer.get();
     	currentTicks = getDistance();
     	dt = currentTime - previousTime;
-    	dt = 0.02;
+//    	dt = 0.02;
     	double omega = (currentTicks - previousTicks) / (dt);
     	if(Double.isNaN(omega)) {
     		//dt could be zero, so you could get some sketchy stuff
