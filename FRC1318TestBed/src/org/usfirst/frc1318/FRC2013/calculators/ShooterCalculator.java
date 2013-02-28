@@ -22,7 +22,8 @@ public class ShooterCalculator extends RobotComponentBase {
 					);
 //			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown()) {
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown() &&
+		   ReferenceData.getInstance().getShooterData().getMotorSetPoint() < 0) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
 			ReferenceData.getInstance().getShooterData().getMotorSetPoint() + 0.005
 					);
