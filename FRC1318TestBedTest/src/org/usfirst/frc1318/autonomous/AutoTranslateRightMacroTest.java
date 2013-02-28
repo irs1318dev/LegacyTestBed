@@ -47,7 +47,7 @@ public class AutoTranslateRightMacroTest {
 		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickLeft(), .0001);
 		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickRight(), .0001);
 		assertEquals(0, ReferenceData.getInstance().getUserInputData().getJoystickX(), .0001);
-		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoys tickY(), .0001);
+		assertEquals(1, ReferenceData.getInstance().getUserInputData().getJoystickY(), .0001);
 
 		ReferenceData.getInstance().getDriveTrainData().setLeftEncoderTicks(1190);
 		ReferenceData.getInstance().getDriveTrainData().setRightEncoderTicks(1190);

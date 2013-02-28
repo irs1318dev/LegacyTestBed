@@ -2,7 +2,6 @@ package org.usfirst.frc1318.autonomous;
 
 import java.util.Vector;
 
-import org.usfirst.frc1318.autonomous.macros.AutoFireAll;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
 public class AutoRunner extends RobotComponentBase
@@ -14,7 +13,6 @@ public class AutoRunner extends RobotComponentBase
 	public void robotInit() 
 	{//sets up the variables. set the initial task here, for say autonomous period.
 		System.out.println("+++++++++++++++++++++++++++++inside init");
-		task = new AutoFireAll(); // the first task that will be run.
 		completedTasks = new Vector();
 	}
 	

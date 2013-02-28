@@ -1,6 +1,7 @@
 package org.usfirst.frc1318;
 
 import org.usfirst.frc1318.autonomous.AutoRunner;
+import org.usfirst.frc1318.autonomous.AutonomousRunner;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
@@ -21,7 +22,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 	public BotVector currentRobotComponents() {
 //		return shooterPIDBot();
 		return gameBot1();
-		//return helloBot();
+//		return helloBot();
 	}
 	
 	protected static BotVector PIDTest()
@@ -42,9 +43,9 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new Joystick1Reader());
 		botVector.add(new DriveTrainEncoderReader());
 		botVector.add(new ShooterEncoderReader());
-		System.out.println("*************************before AutoRunner");
-		//botVector.add(new AutoRunner());
-		System.out.println("*************************after AutoRunner");
+		botVector.add(new DipSwitchReader());
+		botVector.add(new AutonomousRunner());
+		botVector.add(new AutoRunner());
 		botVector.add(new ShooterCalculator());
 		botVector.add(new SolenoidCalculator());
 		botVector.add(new DriveTrain1JoystickCalculator());

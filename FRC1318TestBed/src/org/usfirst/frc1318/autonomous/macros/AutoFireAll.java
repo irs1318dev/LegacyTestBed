@@ -9,7 +9,6 @@ public class AutoFireAll implements AutoTask{
 
 	private boolean hasFinished = false;
 	private boolean hasInitialized = false;
-	private boolean newState = true;
 	
 	private int currentState;
 	private int  discsFired;
@@ -28,19 +27,25 @@ public class AutoFireAll implements AutoTask{
 		System.out.println("*******************************************AutoFireAll currentState: " + currentState);
 		switch(currentState){
 			case 0:
-				startUp();
+				liftUp();
 				break;
-			case 1://wait
-				andWait();
+			case 1://spin up shooter
+				spinShooter();
 				break;
-			case 2://fire
+			case 2:
+				andWait(1000);
+				break;
+			case 3://fire
 				fire();
-				break;//retract
-			case 3:
+				break;
+			case 4://retract
 				bothDown();
 				break;
-			case 4: 
-				spinBackward();
+			case 5:
+				andWait(1000);
+				break;
+			case 6: 
+				backUp();
 				break;
 			default:
 				hasFinished = true;
@@ -48,64 +53,66 @@ public class AutoFireAll implements AutoTask{
 		}
 		
 	}
-	public void startUp(){
-		if(count == 0){
-			ReferenceData.getInstance().getUserInputData().setBothUp(true);
-			startTime = System.currentTimeMillis();
-		}else if(System.currentTimeMillis() - startTime < 2500){
-			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(true);
-			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}else{
-			currentState++;
-			count = 0;
-		}
-		count++;
+	public void liftUp(){
+		ReferenceData.getInstance().getUserInputData().setBothUp(true);
+		nextState();
 	}
 	
-	public void andWait(){
-		System.out.println("*******************CurrentTimeIs:"+(System.currentTimeMillis()-startTime));
-		if((System.currentTimeMillis() - startTime) >= 2500){
-			currentState++;	
+	public void spinShooter() {
+		if(count<30){
+			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(true);
+			count++;
+//			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		}else{
+			nextState();
 		}
-			
 	}
 	
 	public void fire(){
-		if(discsFired<4){
-			if(count<15){
+		if(discsFired<3){
+			if(System.currentTimeMillis() - startTime > 1000){
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
-				count++;
-			} else{
-				count = 0;
-				currentState = 1;
-				discsFired++;
 				startTime = System.currentTimeMillis();
-			}
+				discsFired++;
+			} 
 		}
 		else{
-			currentState++;
+			nextState();
 		}
 	}
 	
 	public void bothDown(){
 		ReferenceData.getInstance().getUserInputData().setBothDown(true);
-		startTime = System.currentTimeMillis();
-		currentState++;
+		nextState();
 	}
 	
-	public void spinBackward(){
-		if((System.currentTimeMillis() - startTime) < 500){
+	public void andWait(long delay){
+//		System.out.println("*******************CurrentTimeIs:"+(System.currentTimeMillis()-startTime));
+		if((System.currentTimeMillis() - startTime) >= delay){
+			nextState();	
+		}
+	}
+
+	
+	public void backUp(){
+		if((System.currentTimeMillis() - startTime) < 1500){
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
-			ReferenceData.getInstance().getUserInputData().setJoystickX(1);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(-1);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.2);
 		}else{
-			currentState++;
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+			nextState();
 		}
+	}
+	
+	public void nextState() {
+		currentState++;
+		count = 0;
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void cancel() {

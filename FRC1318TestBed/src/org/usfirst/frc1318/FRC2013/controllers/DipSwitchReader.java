@@ -11,12 +11,12 @@ public class DipSwitchReader extends RobotComponentBase{
 	
 	public void robotInit(){
 		
-		dipSwitches[0] = DipSwitchRef.DIP_SWITCH_1 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_1);
-		dipSwitches[1] = DipSwitchRef.DIP_SWITCH_2 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_2);
-		dipSwitches[2] = DipSwitchRef.DIP_SWITCH_3 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_3);
-		dipSwitches[3] = DipSwitchRef.DIP_SWITCH_4 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_4);
-		dipSwitches[4] = DipSwitchRef.DIP_SWITCH_5 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_5);
-		dipSwitches[5] = DipSwitchRef.DIP_SWITCH_6 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_6);
+//		dipSwitches[0] = DipSwitchRef.DIP_SWITCH_1 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_1);
+//		dipSwitches[1] = DipSwitchRef.DIP_SWITCH_2 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_2);
+//		dipSwitches[2] = DipSwitchRef.DIP_SWITCH_3 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_3);
+//		dipSwitches[3] = DipSwitchRef.DIP_SWITCH_4 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_4);
+//		dipSwitches[4] = DipSwitchRef.DIP_SWITCH_5 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_5);
+//		dipSwitches[5] = DipSwitchRef.DIP_SWITCH_6 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_6);
 		dipSwitches[6] = DipSwitchRef.DIP_SWITCH_7 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_7);
 		dipSwitches[7] = DipSwitchRef.DIP_SWITCH_8 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_8);
 		
@@ -28,6 +28,7 @@ public class DipSwitchReader extends RobotComponentBase{
 		
 		for(int i = 0; i < dipSwitches.length; i++){
 			if(dipSwitches[i] != null){
+				System.out.println("dip switch " + (i + 1) + " is set to " + dipSwitches[i].get());
 				ReferenceData.getInstance().getDipSwitchData().setDipSwitch((i + 1), dipSwitches[i].get());
 			}
 		}
@@ -49,8 +50,16 @@ public class DipSwitchReader extends RobotComponentBase{
 //		if(dipSwitches[7] != null)
 //			ReferenceData.getInstance().getDipSwitchData().setDipSwitch8(dipSwitches[7].get());
 	}
+
+	
 	
 	public void teleopPeriodic(){
+		for(int i = 0; i < dipSwitches.length; i++){
+			if(dipSwitches[i] != null){
+				System.out.println("dip switch " + (i + 1) + " is set to " + dipSwitches[i].get());
+				ReferenceData.getInstance().getDipSwitchData().setDipSwitch((i + 1), dipSwitches[i].get());
+			}
+		}
 		
 	}
 

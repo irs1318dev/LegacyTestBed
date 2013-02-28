@@ -6,11 +6,13 @@ public class DipSwitchData {
 	
 	public void setDipSwitch(int dipSwitch, boolean value){
 		if(switches[dipSwitch - 1] != value)
-			System.out.println("dip switch 1: " + value);
+			System.out.println("dip switch " + dipSwitch + ": " + value);
 		switches[dipSwitch - 1] = value;
 	}
 	
 	public boolean getDipSwitch(int dipSwitch){
+		System.out.print("Getting switch " + dipSwitch + ": ");
+		System.out.println(switches[dipSwitch - 1]);
 		return switches[dipSwitch - 1];
 	}
 	
