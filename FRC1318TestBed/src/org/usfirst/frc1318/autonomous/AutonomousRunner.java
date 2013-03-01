@@ -16,16 +16,16 @@ public class AutonomousRunner extends RobotComponentBase {
 		if (task == null) {
 			System.out.println("No task - Checking dipswitch...");
 			if (ReferenceData.getInstance().getDipSwitchData().getDipSwitch(8)) {
-				System.out.println("Switch 8 on - firing");
+				System.out.println("Switch 8 on - center");
 				this.task = new AutoFireAll();
 			} else {
-				System.out.println("Switch 8 off - driving");
-				this.task = new AutoDriveShootMacro();
+				System.out.println("Switch 8 off - right");
+				this.task = new AutonomousRight();
 			}
 		}
+
 		
 		if(task != null) {
-			System.out.println("Have an autonomous task");
 			if (!task.hasInitalized()) {
 				System.out.println("Autonomous init");
 				task.init();

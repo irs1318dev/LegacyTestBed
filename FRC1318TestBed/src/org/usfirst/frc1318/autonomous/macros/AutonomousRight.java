@@ -1,11 +1,9 @@
 package org.usfirst.frc1318.autonomous.macros;
 
-//Assumes prior motor speed by driver preference.
-
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.autonomous.AutoTask;
 
-public class AutoFireAll implements AutoTask{
+public class AutonomousRight implements AutoTask {
 
 	private boolean hasFinished = false;
 	private boolean hasInitialized = false;
@@ -14,58 +12,65 @@ public class AutoFireAll implements AutoTask{
 	private int  discsFired;
 	private long startTime;
 	private int count = 0;
-	
+
+
 	public void init() {
-		discsFired = 0;
-		count = 0;
 		hasInitialized = true;
-		System.out.println("*******************************************AutoFireAll init");
+		discsFired = 0;
+		System.out.println("*******************************************AutonomousRight init");
 		startTime = System.currentTimeMillis();
 	}
 
 	public void run() {
-		System.out.println("*******************************************AutoFireAll currentState: " + currentState);
+		System.out.println("*******************************************AutotonomousRight currentState: " + currentState);
 		switch(currentState){
 			case 0:
-				andWait(3500);
+				andWait(1000);
 				break;
 			case 1:
-				liftUp();
+				driveToFront();
 				break;
-			case 2://spin up shooter
-				spinShooter();
+			case 2:
+				faceGoal();
 				break;
 			case 3:
+				bothUp();
+				break;
+			case 4:
+				spinShooter();
+				break;
+			case 5:
 				andWait(1000);
 				break;
-			case 4://fire
+			case 6: 
 				fire();
 				break;
-			case 5://retract
+			case 7:
 				bothDown();
 				break;
-			case 6:
+			case 8:
 				andWait(1000);
 				break;
-			case 7: 
-				backUp();
+			case 9:
+				turnAround();
 				break;
-			case 8:
-				spin();
+			case 10:
+				driveToCenterLine();
 				break;
 			default:
 				hasFinished = true;
 				break;
+	
 		}
-		
 	}
-	public void liftUp(){
+	
+	public void bothUp(){
 		ReferenceData.getInstance().getUserInputData().setBothUp(true);
 		nextState();
 	}
 	
 	public void spinShooter() {
-		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > -0.85){
+		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > -0.8){
 			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(true);
 //			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}else{
@@ -100,13 +105,13 @@ public class AutoFireAll implements AutoTask{
 			nextState();	
 		}
 	}
-
 	
-	public void backUp(){
-		if((System.currentTimeMillis() - startTime) < 1000){
+	
+	public void driveToFront(){
+		if((System.currentTimeMillis() - startTime) < 1250){
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
-			ReferenceData.getInstance().getUserInputData().setJoystickX(0.8);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.8);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
 		}else{
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
@@ -117,12 +122,42 @@ public class AutoFireAll implements AutoTask{
 		}
 	}
 	
-	public void spin() {
-		if((System.currentTimeMillis() - startTime) < 1700){
+	public void driveToCenterLine(){
+		if((System.currentTimeMillis() - startTime) < 2000){
+//			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
+//			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.8);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+		}else{
+//			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
+//			ReferenceData.getInstance().getUserInputData().setJoystickRight(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+			nextState();
+		}
+	}
+	
+	public void faceGoal() {
+		if((System.currentTimeMillis() - startTime) < 300){
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0.8);
+		}else{
+//			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
+//			ReferenceData.getInstance().getUserInputData().setJoystickRight(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+			nextState();
+		}
+	}
+	
+	public void turnAround() {
+		if((System.currentTimeMillis() - startTime) < 1700){
+//			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
+//			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.8);
 		}else{
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(0);

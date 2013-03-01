@@ -56,7 +56,7 @@ public class DipSwitchReader extends RobotComponentBase{
 	public void teleopPeriodic(){
 		for(int i = 0; i < dipSwitches.length; i++){
 			if(dipSwitches[i] != null){
-				System.out.println("dip switch " + (i + 1) + " is set to " + dipSwitches[i].get());
+//				System.out.println("dip switch " + (i + 1) + " is set to " + dipSwitches[i].get());
 				ReferenceData.getInstance().getDipSwitchData().setDipSwitch((i + 1), dipSwitches[i].get());
 			}
 		}

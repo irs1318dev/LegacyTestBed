@@ -56,10 +56,10 @@ public class Joystick1Reader extends RobotComponentBase {
 		shooterSpeedUp = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
 		shooterSpeedDown = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
 		shooterFire = (joystickL.getRawButton(Joystick1Ref.SHOOTER_FIRE));
-		autoTranslateLeft = joystickR.getRawButton(Joystick1Ref.AUTO_TRANSLATE_LEFT);
-		autoFireAll = joystickR.getRawButton(Joystick1Ref.AUTO_FIREALL);
-		autoLift = joystickR.getRawButton(Joystick1Ref.AUTO_LIFT);
-		autoTranslateRight = (joystickR.getRawButton(Joystick1Ref.AUTO_TRANSLATE_RIGHT));
+//		autoTranslateLeft = joystickR.getRawButton(Joystick1Ref.AUTO_TRANSLATE_LEFT);
+//		autoFireAll = joystickR.getRawButton(Joystick1Ref.AUTO_FIREALL);
+//		autoLift = joystickR.getRawButton(Joystick1Ref.AUTO_LIFT);
+//		autoTranslateRight = (joystickR.getRawButton(Joystick1Ref.AUTO_TRANSLATE_RIGHT));
 		shooterLifterUp = (joystickL.getRawButton(Joystick1Ref.SHOOTER_LIFTER_UP));
 		shooterLifterDown = (joystickL.getRawButton(Joystick1Ref.SHOOTER_lIFTER_DOWN));
 		
@@ -88,13 +88,13 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
 		ReferenceData.getInstance().getUserInputData().setBothUp(shooterLifterUp);
 		ReferenceData.getInstance().getUserInputData().setBothDown(shooterLifterDown);
-
 		
+	
 		//Auto Tasks
-		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(autoTranslateLeft);
-		ReferenceData.getInstance().getUserInputData().setAutoFireAll(autoFireAll);
-		ReferenceData.getInstance().getUserInputData().setAutoLift(autoLift);
-		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(autoTranslateRight);
+//		ReferenceData.getInstance().getUserInputData().setAutoTranslateLeft(autoTranslateLeft);
+//		ReferenceData.getInstance().getUserInputData().setAutoFireAll(autoFireAll);
+//		ReferenceData.getInstance().getUserInputData().setAutoLift(autoLift);
+//		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(autoTranslateRight);
 		
 		
 		anyUIArr[0] = liftUp;
