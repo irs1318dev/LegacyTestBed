@@ -1,26 +1,17 @@
 package org.usfirst.frc1318.autonomous.macros;
 
 import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
-import org.usfirst.frc1318.autonomous.AutoTask;
+import org.usfirst.frc1318.autonomous.*;
 
-public class AutonomousRight implements AutoTask {
+public class AutonomousRight extends AutonomousMode implements AutoTask {
 
-	private boolean hasFinished = false;
-	private boolean hasInitialized = false;
+	private static final double SHOOTER_SPEED = -0.78;
+	private static final double DRIVE_FORWARD_TICKS = 1300;
+	private static final double FACE_GOAL_TICKS = -7;
+	private static final double TURN_AROUND_TICKS = 7;
+	private static final double TO_LINE_TICKS = -2700;
 	
-	private int currentState;
-	private int  discsFired;
-	private long startTime;
-	private int count = 0;
-
-
-	public void init() {
-		hasInitialized = true;
-		discsFired = 0;
-		System.out.println("*******************************************AutonomousRight init");
-		startTime = System.currentTimeMillis();
-	}
-
+	
 	public void run() {
 		System.out.println("*******************************************AutotonomousRight currentState: " + currentState);
 		switch(currentState){
@@ -28,53 +19,46 @@ public class AutonomousRight implements AutoTask {
 				andWait(1000);
 				break;
 			case 1:
-				driveToFront();
+//				driveToFront();
+				driveForward(DRIVE_FORWARD_TICKS);
 				break;
 			case 2:
-				faceGoal();
+				andWait(500);
 				break;
 			case 3:
-				bothUp();
+//				faceGoal();
+				rotateLeft(FACE_GOAL_TICKS);
 				break;
 			case 4:
-				spinShooter();
+				bothUp();
 				break;
 			case 5:
+				spinShooter(SHOOTER_SPEED);
+				break;
+			case 6:
 				andWait(1000);
 				break;
-			case 6: 
+			case 7: 
 				fire();
 				break;
-			case 7:
+			case 8:
 				bothDown();
 				break;
-			case 8:
+			case 9:
 				andWait(1000);
 				break;
-			case 9:
-				turnAround();
-				break;
 			case 10:
-				driveToCenterLine();
+//				turnAround();
+				rotateRight(TURN_AROUND_TICKS);
+				break;
+			case 11:
+//				driveToCenterLine();
+				driveBackward(TO_LINE_TICKS);
 				break;
 			default:
 				hasFinished = true;
 				break;
 	
-		}
-	}
-	
-	public void bothUp(){
-		ReferenceData.getInstance().getUserInputData().setBothUp(true);
-		nextState();
-	}
-	
-	public void spinShooter() {
-		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > -0.8){
-			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(true);
-//			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}else{
-			nextState();
 		}
 	}
 	
@@ -94,25 +78,12 @@ public class AutonomousRight implements AutoTask {
 		}
 	}
 	
-	public void bothDown(){
-		ReferenceData.getInstance().getUserInputData().setBothDown(true);
-		nextState();
-	}
-	
-	public void andWait(long delay){
-//		System.out.println("*******************CurrentTimeIs:"+(System.currentTimeMillis()-startTime));
-		if((System.currentTimeMillis() - startTime) >= delay){
-			nextState();	
-		}
-	}
-	
-	
 	public void driveToFront(){
 		if((System.currentTimeMillis() - startTime) < 1250){
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(-1);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(-1);
 			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.8);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.2);
 		}else{
 //			ReferenceData.getInstance().getUserInputData().setJoystickLeft(0);
 //			ReferenceData.getInstance().getUserInputData().setJoystickRight(0);
@@ -167,22 +138,7 @@ public class AutonomousRight implements AutoTask {
 		}
 	}
 	
-	public void nextState() {
-		currentState++;
-		count = 0;
-		startTime = System.currentTimeMillis();
-	}
-	
 	public void cancel() {
 		ReferenceData.getInstance().getUserInputData().setShooterFire(false);
 	}
-
-	public boolean hasFinished() {
-		return hasFinished;
-	}
-
-	public boolean hasInitalized() {
-		return hasInitialized;
-	}
-
 }

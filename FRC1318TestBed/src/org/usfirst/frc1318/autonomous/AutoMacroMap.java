@@ -45,10 +45,6 @@ public class AutoMacroMap
 				{
 					autoRunner.setTask(new AutoDriveShootMacro());
 				}
-				else if(ReferenceData.getInstance().getUserInputData().getAutoFireAll())
-				{
-					autoRunner.setTask(new AutoFireAll());
-				}
 			}
 		}
 	}
