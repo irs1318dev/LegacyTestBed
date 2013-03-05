@@ -127,6 +127,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		b.add(new ShooterPIDCalculator());
 		b.add(new ShooterCalculator());
 		b.add(new ShooterMotorRunner());
+		b.add(new NetworkTableRunner());
 		return b;
 	}
 	

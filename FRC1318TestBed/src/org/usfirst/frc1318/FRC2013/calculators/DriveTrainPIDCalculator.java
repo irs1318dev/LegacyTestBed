@@ -34,14 +34,14 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rset =ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint();
 		double rencv = ReferenceData.getInstance().getDriveTrainData().getRightEncoder();
 		double rkf = 0.1;
-		double rkd = 0.0001;
+		double rkd = 0.0004;
 		double rkscale = 2800;
 		double rightPIDVal = rkf * rset + rkd*(rkscale * rset - rencv);
 
 		double lset = - ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint();
 		double lencv = ReferenceData.getInstance().getDriveTrainData().getLeftEncoder();
 		double lkf = 0.1;
-		double lkd = 0.0001;
+		double lkd = 0.0005;		// attempting to fix veer left on practice robot
 		double lkscale = 2800;
 
 		double leftPIDVal = lkf * lset + lkd*(lkscale * lset - lencv);
@@ -51,7 +51,7 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		motorSpeed.speedR = rightPIDVal;
 //		JoystickFilter.Speed clampedSpeed = JoystickFilter.applyClamp(motorSpeed, 1.0);
 		
-		if (count%100000==0) {
+		if (count%1000==0) {
 			System.out.println("lset="+lset+" , rset="+rset);
 			System.out.println("lencv="+lencv+" , rencv="+rencv);
 			System.out.println("LPID="+ReferenceData.getInstance().getDriveTrainData().getLeftPIDSpeed()
