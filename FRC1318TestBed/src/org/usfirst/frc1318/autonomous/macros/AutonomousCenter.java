@@ -10,7 +10,7 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 	private static final double SHOOTER_SPEED = -0.810;
 	private static final double DRIVE_FORWARD_TICKS = 400;
 	private static final double BACK_UP_TICKS = -1700;
-	private static final double TURN_AROUND_TICKS = 100;
+	private static final double TURN_AROUND_TICKS = 250;
 
 	public void run() {
 		System.out.println("*******************************************AutoFireAll currentState: " + currentState);
@@ -20,7 +20,7 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 				driveForward(DRIVE_FORWARD_TICKS);
 				break;
 			case 1:
-				andWait(1000);
+				andWait(3500);
 				break;
 			case 2:
 				bothUp();
@@ -38,7 +38,7 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 				bothDown();
 				break;
 			case 7:
-				andWait(1000);
+				andWait(500);
 				break;
 			case 8: 
 //				backUp();

@@ -57,8 +57,8 @@ public abstract class AutonomousMode implements AutoTask {
 	// Drive forward the given number of ticks
 	public void driveForward(double encTicks) {
 		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
-			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.8);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.2);			
+			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.3);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.01);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
@@ -69,8 +69,8 @@ public abstract class AutonomousMode implements AutoTask {
 	// Drive backward the given number of ticks
 	public void driveBackward(double encTicks) {
 		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
-			ReferenceData.getInstance().getUserInputData().setJoystickX(0.8);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(0);			
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0.3);
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.02);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
@@ -96,7 +96,7 @@ public abstract class AutonomousMode implements AutoTask {
 		System.out.println("Moved " + (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks) + " of " + encTicks);
 		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.8);			
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-1.0);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);

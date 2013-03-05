@@ -21,17 +21,23 @@ public class ShooterCalculator extends RobotComponentBase {
 	{
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
 			ReferenceData.getInstance().getLookUpTable().upSpeed();
+//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+//					ReferenceData.getInstance().getLookUpTable().getValue()
+//					);
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-					ReferenceData.getInstance().getLookUpTable().getValue()
-					);
+					ReferenceData.getInstance().getShooterData().getMotorSetPoint() - .005
+				);
 //			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
 		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown() &&
 		   ReferenceData.getInstance().getShooterData().getMotorSetPoint() < 0) {
 			ReferenceData.getInstance().getLookUpTable().downSpeed();
+//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+//			ReferenceData.getInstance().getLookUpTable().getValue()
+//					);
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-			ReferenceData.getInstance().getLookUpTable().getValue()
-					);
+					ReferenceData.getInstance().getShooterData().getMotorSetPoint() + .005
+				);
 //			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
 //		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > 0) {

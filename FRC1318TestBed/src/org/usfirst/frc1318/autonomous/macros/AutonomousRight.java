@@ -7,8 +7,8 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
 	private static final double DRIVE_FORWARD_TICKS = 1300;
-	private static final double FACE_GOAL_TICKS = -7;
-	private static final double TURN_AROUND_TICKS = 7;
+	private static final double FACE_GOAL_TICKS = -50;
+	private static final double TURN_AROUND_TICKS = 50;
 	private static final double TO_LINE_TICKS = -2700;
 	
 	
@@ -16,7 +16,7 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 		System.out.println("*******************************************AutotonomousRight currentState: " + currentState);
 		switch(currentState){
 			case 0:
-				andWait(1000);
+				andWait(3500);
 				break;
 			case 1:
 //				driveToFront();
@@ -36,7 +36,7 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 				spinShooter(SHOOTER_SPEED);
 				break;
 			case 6:
-				andWait(1000);
+				andWait(500);
 				break;
 			case 7: 
 				fire();

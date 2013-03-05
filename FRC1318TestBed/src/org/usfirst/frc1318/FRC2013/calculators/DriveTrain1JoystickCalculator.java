@@ -29,11 +29,11 @@ public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 	public void teleopPeriodic(){
 		
 		//ReferenceData.getInstance().getDriveTrainData().setLeftSpeedSetPoint()
-		System.out.println("***********Left Encoder: " + ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
-		System.out.println("***********Left Encoder ticks: " + ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks());
-		System.out.println("***********Right Encoder: " + ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
-		System.out.println("***********Right Encoder ticks: " + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks());
-
+//		System.out.println("***********Left Encoder: " + ReferenceData.getInstance().getDriveTrainData().getLeftEncoder());
+//		System.out.println("***********Left Encoder ticks: " + ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks());
+//		System.out.println("***********Right Encoder: " + ReferenceData.getInstance().getDriveTrainData().getRightEncoder());
+//		System.out.println("***********Right Encoder ticks: " + ReferenceData.getInstance().getDriveTrainData().getRightEncoderTicks());
+//
 		
 		double y = ReferenceData.getInstance().getUserInputData().getJoystickY();
 		double x = ReferenceData.getInstance().getUserInputData().getJoystickX();
