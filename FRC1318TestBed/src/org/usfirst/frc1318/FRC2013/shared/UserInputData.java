@@ -23,6 +23,7 @@ public class UserInputData {
 	
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	private double throttle;
 	
 	private boolean shooterFire;
 	
@@ -221,4 +222,13 @@ public class UserInputData {
 		this.bothUp = bothUp;
 	}
 	
+	public double getThrottle()
+	{
+		return throttle;
+	}
+	
+	public void setThrottle(double throttle)
+	{
+		this.throttle = throttle;
+	}
 }

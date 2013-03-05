@@ -12,6 +12,7 @@ public class ReferenceData {
 	private SolenoidTestData solenoidTestData;
 	private UserInputData userInputData;
 	private DipSwitchData dipSwitchData;
+	private LookupTable lookUpTable;
 	
 	private ReferenceData(){
 	}
@@ -21,6 +22,13 @@ public class ReferenceData {
 			instance = new ReferenceData();
 		}
 		return instance;
+	}
+	
+	public LookupTable getLookUpTable(){
+		if(lookUpTable == null){
+			lookUpTable = new LookupTable();
+		}
+		return lookUpTable;
 	}
 	
 	public UserInputData getUserInputData(){

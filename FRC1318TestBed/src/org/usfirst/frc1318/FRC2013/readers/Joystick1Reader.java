@@ -38,6 +38,8 @@ public class Joystick1Reader extends RobotComponentBase {
 	private boolean autoTranslateLeft;
 	private boolean autoDriveShoot;
 	
+	private double joystickThrottle;
+	
 	private boolean[] anyUIArr = new boolean[15];
 	
 	public void robotInit() {
@@ -76,6 +78,9 @@ public class Joystick1Reader extends RobotComponentBase {
 //			joystickY = -DeadBand.applylinearDeadBand(joystickL.getY(), 0.1)/4;
 //		}
 		
+		//Theoretical Throttle
+		joystickThrottle = joystickL.getThrottle();
+		
 		//TODO X and Y were switched on hardware, switched in software
 		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
 		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
@@ -88,6 +93,8 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
 		ReferenceData.getInstance().getUserInputData().setBothUp(shooterLifterUp);
 		ReferenceData.getInstance().getUserInputData().setBothDown(shooterLifterDown);
+		ReferenceData.getInstance().getUserInputData().setThrottle(joystickThrottle);
+
 		
 	
 		//Auto Tasks
