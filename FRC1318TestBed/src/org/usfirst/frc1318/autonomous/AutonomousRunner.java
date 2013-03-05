@@ -15,12 +15,18 @@ public class AutonomousRunner extends RobotComponentBase {
 	public void autonomousPeriodic() {
 		if (task == null) {
 			System.out.println("No task - Checking dipswitch...");
-			if (ReferenceData.getInstance().getDipSwitchData().getDipSwitch(8)) {
-				System.out.println("Switch 8 on - center");
+			if (ReferenceData.getInstance().getDipSwitchData().getDipSwitch(7) && ReferenceData.getInstance().getDipSwitchData().getDipSwitch(8)) {
+				System.out.println("Switch 7 on && switch 8 on - center");
 				this.task = new AutonomousCenter();
-			} else {
-				System.out.println("Switch 8 off - right");
+			} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitch(7)) {
+				System.out.println("Switch 7 on && switch 8 off - right");
 				this.task = new AutonomousRight();
+			} else if (ReferenceData.getInstance().getDipSwitchData().getDipSwitch(8)) {
+				System.out.println("Switch 7 off && switch 8 on - left");
+				this.task = new AutonomousLeft();
+			} else {
+				System.out.println("Switch 7 off && switch 8 off - no autonomous");
+				this.task = null;
 			}
 		}
 
