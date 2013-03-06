@@ -13,6 +13,7 @@ public class ReferenceData {
 	private UserInputData userInputData;
 	private DipSwitchData dipSwitchData;
 	private LookupTable lookUpTable;
+	private ServoData servoData;
 	
 	private ReferenceData(){
 	}
@@ -22,6 +23,13 @@ public class ReferenceData {
 			instance = new ReferenceData();
 		}
 		return instance;
+	}
+	
+	public ServoData getServoData(){
+		if(servoData == null) {
+			servoData = new ServoData();
+		}
+		return servoData;
 	}
 	
 	public LookupTable getLookUpTable(){
