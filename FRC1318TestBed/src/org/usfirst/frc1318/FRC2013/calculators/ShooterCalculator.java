@@ -17,13 +17,37 @@ public class ShooterCalculator extends RobotComponentBase {
 				);
 	}
 	
+	boolean lastUpCommand = false;
+	boolean lastDownCommand = false;
+	
 	public void teleopPeriodic()
 	{
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
+		boolean currentUpCommand = ReferenceData.getInstance().getUserInputData().getShooterSpeedUp();
+		if (currentUpCommand && !lastUpCommand) { // do once every change
+			lastUpCommand = currentUpCommand;
 			ReferenceData.getInstance().getLookUpTable().upSpeed();
-//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-//					ReferenceData.getInstance().getLookUpTable().getValue()
-//					);
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+					ReferenceData.getInstance().getLookUpTable().getValue()
+					);
+//			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		} else if (!currentUpCommand && lastUpCommand){
+			lastUpCommand = currentUpCommand;
+		}
+		boolean currentDownCommand = ReferenceData.getInstance().getUserInputData().getShooterSpeedDown();
+		if (currentDownCommand && !lastDownCommand) { // do once every change
+			lastDownCommand = currentDownCommand;
+			ReferenceData.getInstance().getLookUpTable().downSpeed();
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+					ReferenceData.getInstance().getLookUpTable().getValue()
+					);
+//			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		} else if (!currentDownCommand && lastDownCommand){
+			lastDownCommand = currentDownCommand;
+		}
+		
+		
+/*		
+		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
 					ReferenceData.getInstance().getShooterData().getMotorSetPoint() - .005
 				);
@@ -40,15 +64,7 @@ public class ShooterCalculator extends RobotComponentBase {
 				);
 //			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		}
-//		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > 0) {
-//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
-////			System.out.println("ShooterCalc: Clipping to 0, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-//		}
-//
-//		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() < -1) {
-//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(-1);
-////			System.out.println("ShooterCalc: Clipping to -1, actual"+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-//		}
+		*/
 	}
 		
 }

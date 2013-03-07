@@ -11,12 +11,12 @@ public class DipSwitchReader extends RobotComponentBase{
 	
 	public void robotInit(){
 		
-//		dipSwitches[0] = DipSwitchRef.DIP_SWITCH_1 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_1);
-//		dipSwitches[1] = DipSwitchRef.DIP_SWITCH_2 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_2);
-//		dipSwitches[2] = DipSwitchRef.DIP_SWITCH_3 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_3);
-//		dipSwitches[3] = DipSwitchRef.DIP_SWITCH_4 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_4);
-//		dipSwitches[4] = DipSwitchRef.DIP_SWITCH_5 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_5);
-//		dipSwitches[5] = DipSwitchRef.DIP_SWITCH_6 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_6);
+		dipSwitches[0] = DipSwitchRef.DIP_SWITCH_1 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_1);
+		dipSwitches[1] = DipSwitchRef.DIP_SWITCH_2 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_2);
+		dipSwitches[2] = DipSwitchRef.DIP_SWITCH_3 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_3);
+		dipSwitches[3] = DipSwitchRef.DIP_SWITCH_4 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_4);
+		dipSwitches[4] = DipSwitchRef.DIP_SWITCH_5 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_5);
+		dipSwitches[5] = DipSwitchRef.DIP_SWITCH_6 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_6);
 		dipSwitches[6] = DipSwitchRef.DIP_SWITCH_7 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_7);
 		dipSwitches[7] = DipSwitchRef.DIP_SWITCH_8 == -1? null : new DigitalInput(DipSwitchRef.DIP_SWITCH_8);
 		
