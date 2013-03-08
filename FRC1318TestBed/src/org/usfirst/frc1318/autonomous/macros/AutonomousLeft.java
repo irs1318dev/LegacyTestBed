@@ -7,7 +7,7 @@ public class AutonomousLeft extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
 	private static final double DRIVE_FORWARD_TICKS = -1400;
-	private static final double FACE_GOAL_TICKS = -80;
+	private static final double FACE_GOAL_TICKS = -140;
 	private static final double TURN_AROUND_TICKS = 50;
 	private static final double TO_LINE_TICKS = 2700;
 	

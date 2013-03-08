@@ -57,11 +57,11 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 //				andWait(250);
 //				System.out.println("*******************7");
 //				break;
-			case 10:
-//				spin();
-				rotateRight(TURN_AROUND_TICKS);
-				System.out.println("*******************9");
-				break;
+//			case 10:
+////				spin();
+//				rotateRight(TURN_AROUND_TICKS);
+//				System.out.println("*******************9");
+//				break;
 			default:
 				hasFinished = true;
 				break;
