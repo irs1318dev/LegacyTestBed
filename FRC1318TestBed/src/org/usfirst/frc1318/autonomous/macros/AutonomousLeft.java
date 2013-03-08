@@ -6,8 +6,8 @@ import org.usfirst.frc1318.autonomous.*;
 public class AutonomousLeft extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
-	private static final double DRIVE_FORWARD_TICKS = -1400;
-	private static final double FACE_GOAL_TICKS = -140;
+	private static final double DRIVE_FORWARD_TICKS = -1300;
+	private static final double FACE_GOAL_TICKS = -0;			// -130 for 2 point goal
 	private static final double TURN_AROUND_TICKS = 50;
 	private static final double TO_LINE_TICKS = 2700;
 	
@@ -33,28 +33,31 @@ public class AutonomousLeft extends AutonomousMode implements AutoTask {
 				bothUp();
 				break;
 			case 5:
-				spinShooter(SHOOTER_SPEED);
+				andWait(1000);
 				break;
 			case 6:
+				spinShooter(SHOOTER_SPEED);
+				break;
+			case 7:
 				andWait(500);
 				break;
-			case 7: 
+			case 8: 
 				fire();
 				break;
-			case 8:
-				bothDown();
-				break;
 //			case 9:
+//				bothDown();
+//				break;
+//			case 10s:
 //				andWait(500);
 //				break;
-//			case 10:
+//			case 11:
 ////				turnAround();
 //				rotateLeft(TURN_AROUND_TICKS);
 //				break;
-//			case 11:
+//			case 12:
 //				andWait(250);
 //				break;
-//			case 12:
+//			case 13:
 ////				driveToCenterLine();
 //				driveBackward(TO_LINE_TICKS);
 //				break;

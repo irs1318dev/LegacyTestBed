@@ -71,10 +71,10 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 
 	public void fire(){
 		if(discsFired<3){
-			if(System.currentTimeMillis() - startTime > 1500 && System.currentTimeMillis() - startTime < 1750) {
+			if(System.currentTimeMillis() - startTime > 1250 && System.currentTimeMillis() - startTime < 1500) {
 				System.out.println("*******Firing");
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
-			} else if (System.currentTimeMillis() - startTime > 1250) {
+			} else if (System.currentTimeMillis() - startTime > 1500) {
 				System.out.println("*******Waiting for next fire");
 				startTime = System.currentTimeMillis();
 				discsFired++;

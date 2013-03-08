@@ -7,7 +7,7 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
 	private static final double DRIVE_FORWARD_TICKS = -1400;
-	private static final double FACE_GOAL_TICKS = 25;
+	private static final double FACE_GOAL_TICKS = 0;		// 12?
 	private static final double TURN_AROUND_TICKS = -50;
 	private static final double TO_LINE_TICKS = 2700;
 	
@@ -41,9 +41,9 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 			case 7: 
 				fire();
 				break;
-			case 8:
-				bothDown();
-				break;
+//			case 8:
+//				bothDown();
+//				break;
 //			case 9:
 //				andWait(500);
 //				break;
