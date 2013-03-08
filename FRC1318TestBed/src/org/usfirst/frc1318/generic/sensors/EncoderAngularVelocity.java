@@ -63,15 +63,16 @@ public class EncoderAngularVelocity extends Encoder
     	double omega = (currentTicks - previousTicks) / (dt);
     	if(Double.isNaN(omega)) {
     		//dt could be zero, so you could get some sketchy stuff
-//    		System.err.println(getName()+": omega is NaN. returning previouse omega" +
-//    				", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
+    		System.err.println(getName()+": omega is NaN. returning previouse omega" +
+    				", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
     		return previousOmega;
     	}else {
     		previousOmega = omega;
 	    	previousTicks = currentTicks;
 	    	previousTime = currentTime;
-//    		System.err.println(getName()+": encoder rate " +omega
+//    		System.err.println(getName()+": encoder rate " +omega + ", ticks= " + currentTicks
 //    				+", prevTime="+previousTime+", curTime="+currentTime+", dt="+dt);
+//	    	System.err.println("******" + getName() + " ticks = " + currentTicks);
 	    	return omega;
     	}
     }

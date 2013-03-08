@@ -22,6 +22,7 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void teleopPeriodic()
 	{
+		System.out.println("***Shooter speed: " + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		boolean currentUpCommand = ReferenceData.getInstance().getUserInputData().getShooterSpeedUp();
 		if (currentUpCommand && !lastUpCommand) { // do once every change
 			lastUpCommand = currentUpCommand;
@@ -29,7 +30,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
 					ReferenceData.getInstance().getLookUpTable().getValue()
 					);
-//			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		} else if (!currentUpCommand && lastUpCommand){
 			lastUpCommand = currentUpCommand;
 		}
@@ -40,7 +41,7 @@ public class ShooterCalculator extends RobotComponentBase {
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
 					ReferenceData.getInstance().getLookUpTable().getValue()
 					);
-//			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		} else if (!currentDownCommand && lastDownCommand){
 			lastDownCommand = currentDownCommand;
 		}

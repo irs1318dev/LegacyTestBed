@@ -6,10 +6,10 @@ import org.usfirst.frc1318.autonomous.*;
 public class AutonomousRight extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
-	private static final double DRIVE_FORWARD_TICKS = 1300;
-	private static final double FACE_GOAL_TICKS = -50;
-	private static final double TURN_AROUND_TICKS = 50;
-	private static final double TO_LINE_TICKS = -2700;
+	private static final double DRIVE_FORWARD_TICKS = -1300;
+	private static final double FACE_GOAL_TICKS = 50;
+	private static final double TURN_AROUND_TICKS = -50;
+	private static final double TO_LINE_TICKS = 2700;
 	
 	
 	public void run() {
@@ -44,17 +44,20 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 			case 8:
 				bothDown();
 				break;
-			case 9:
-				andWait(1000);
-				break;
-			case 10:
-//				turnAround();
-				rotateRight(TURN_AROUND_TICKS);
-				break;
-			case 11:
-//				driveToCenterLine();
-				driveBackward(TO_LINE_TICKS);
-				break;
+//			case 9:
+//				andWait(500);
+//				break;
+//			case 10:
+////				turnAround();
+//				rotateRight(TURN_AROUND_TICKS);
+//				break;
+//			case 11:
+//				andWait(250);
+//				break;
+//			case 12:
+////				driveToCenterLine();
+//				driveBackward(TO_LINE_TICKS);
+//				break;
 			default:
 				hasFinished = true;
 				break;
@@ -64,7 +67,7 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 	
 	public void fire(){
 		if(discsFired<3){
-			if(System.currentTimeMillis() - startTime > 750 && System.currentTimeMillis() - startTime < 1000) {
+			if(System.currentTimeMillis() - startTime > 1500 && System.currentTimeMillis() - startTime < 1750) {
 				System.out.println("*******Firing");
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
 			} else if (System.currentTimeMillis() - startTime > 1000) {

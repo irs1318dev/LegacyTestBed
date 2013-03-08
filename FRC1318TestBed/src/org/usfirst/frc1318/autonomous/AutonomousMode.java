@@ -12,6 +12,8 @@ public abstract class AutonomousMode implements AutoTask {
 	protected long startTime;
 	protected double driveEncTicks = 0;		// left side used to track drive train ticks
 	
+	private boolean buttonDown = false;
+	
 	public void init() {
 		currentState = 0;
 		discsFired = 0;
@@ -47,8 +49,12 @@ public abstract class AutonomousMode implements AutoTask {
 	
 	// Spin the shooter wheel up to the given speed
 	public void spinShooter(double speed) {
-		if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > speed){
+		if (buttonDown && ReferenceData.getInstance().getShooterData().getMotorSetPoint() > speed) { 
+			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(false);
+			buttonDown = false;
+		} else if(ReferenceData.getInstance().getShooterData().getMotorSetPoint() > speed){
 			ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(true);
+			buttonDown = true;
 		}else{
 			nextState();
 		}
@@ -56,9 +62,16 @@ public abstract class AutonomousMode implements AutoTask {
 	
 	// Drive forward the given number of ticks
 	public void driveForward(double encTicks) {
-		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
+//		ReferenceData.getInstance().getUserInputData().setJoystickX(-0.3);
+//		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoder() < ReferenceData.getInstance().getDriveTrainData().getRightEncoder()	) {
+//			ReferenceData.getInstance().getUserInputData().setJoystickY(ReferenceData.getInstance().getUserInputData().getJoystickY() + .01);
+//		} else if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoder() > ReferenceData.getInstance().getDriveTrainData().getRightEncoder()	) {
+//			ReferenceData.getInstance().getUserInputData().setJoystickY(ReferenceData.getInstance().getUserInputData().getJoystickY() - .01);
+//		}
+		System.out.println("*********Driven " + (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks) + " of " + encTicks);
+		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.3);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.01);			
+			ReferenceData.getInstance().getUserInputData().setJoystickY(0.01);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
@@ -68,9 +81,15 @@ public abstract class AutonomousMode implements AutoTask {
 	
 	// Drive backward the given number of ticks
 	public void driveBackward(double encTicks) {
-		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
+//		ReferenceData.getInstance().getUserInputData().setJoystickX(0.3);
+//		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoder() < ReferenceData.getInstance().getDriveTrainData().getRightEncoder()	) {
+//			ReferenceData.getInstance().getUserInputData().setJoystickY(ReferenceData.getInstance().getUserInputData().getJoystickY() + .01);
+//		} else if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoder() > ReferenceData.getInstance().getDriveTrainData().getRightEncoder()	) {
+//			ReferenceData.getInstance().getUserInputData().setJoystickY(ReferenceData.getInstance().getUserInputData().getJoystickY() - .01);
+//		}
+				if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0.3);
-			ReferenceData.getInstance().getUserInputData().setJoystickY(-0.02);			
+			ReferenceData.getInstance().getUserInputData().setJoystickY(-.01);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0);
@@ -81,7 +100,7 @@ public abstract class AutonomousMode implements AutoTask {
 	// Rotate left (counter-clockwise) the given number of ticks
 	public void rotateLeft(double encTicks) {
 		System.out.println("Moved " + (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks) + " of " + encTicks);
-		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
+		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(1.0);			
 		} else {
@@ -94,7 +113,7 @@ public abstract class AutonomousMode implements AutoTask {
 	// Rotate right (clockwise) the given number of ticks
 	public void rotateRight(double encTicks) {
 		System.out.println("Moved " + (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks) + " of " + encTicks);
-		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
+		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(-1.0);			
 		} else {

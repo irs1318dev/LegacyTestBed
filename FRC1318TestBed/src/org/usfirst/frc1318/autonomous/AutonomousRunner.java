@@ -26,8 +26,8 @@ public class AutonomousRunner extends RobotComponentBase {
 				System.out.println("Switch 2 off && switch 1 on - left");
 				this.task = new AutonomousLeft();
 			} else {
-				System.out.println("Switch 2 off && switch 1 off - center");
-				this.task = new AutonomousCenter();
+				System.out.println("Switch 2 off && switch 1 off - nothing");
+				this.task = null;
 			}
 		}
 
