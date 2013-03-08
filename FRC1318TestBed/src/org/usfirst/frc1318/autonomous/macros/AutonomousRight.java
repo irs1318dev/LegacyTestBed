@@ -6,8 +6,8 @@ import org.usfirst.frc1318.autonomous.*;
 public class AutonomousRight extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
-	private static final double DRIVE_FORWARD_TICKS = -1000;
-	private static final double FACE_GOAL_TICKS = 50;
+	private static final double DRIVE_FORWARD_TICKS = -1400;
+	private static final double FACE_GOAL_TICKS = 25;
 	private static final double TURN_AROUND_TICKS = -50;
 	private static final double TO_LINE_TICKS = 2700;
 	
@@ -67,10 +67,10 @@ public class AutonomousRight extends AutonomousMode implements AutoTask {
 	
 	public void fire(){
 		if(discsFired<3){
-			if(System.currentTimeMillis() - startTime > 1500 && System.currentTimeMillis() - startTime < 1750) {
+			if(System.currentTimeMillis() - startTime > 1250 && System.currentTimeMillis() - startTime < 1500) {
 				System.out.println("*******Firing");
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
-			} else if (System.currentTimeMillis() - startTime > 1000) {
+			} else if (System.currentTimeMillis() - startTime > 1500) {
 				System.out.println("*******Waiting for next fire");
 				startTime = System.currentTimeMillis();
 				discsFired++;
