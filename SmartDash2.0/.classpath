@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/networktables-desktop.jar" sourcepath="lib/networktables-desktop.src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/Neko/AppData/Roaming/Eclipse/workspace/SmartDash2.0/lib/networktables-desktop.javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
