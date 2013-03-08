@@ -70,7 +70,7 @@ public abstract class AutonomousMode implements AutoTask {
 //		}
 		System.out.println("*********Driven " + (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks) + " of " + encTicks);
 		if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks > encTicks) {
-			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.3);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(-0.2);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(0.01);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);
@@ -88,7 +88,7 @@ public abstract class AutonomousMode implements AutoTask {
 //			ReferenceData.getInstance().getUserInputData().setJoystickY(ReferenceData.getInstance().getUserInputData().getJoystickY() - .01);
 //		}
 				if (ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks() - driveEncTicks < encTicks) {
-			ReferenceData.getInstance().getUserInputData().setJoystickX(0.3);
+			ReferenceData.getInstance().getUserInputData().setJoystickX(0.2);
 			ReferenceData.getInstance().getUserInputData().setJoystickY(-.01);			
 		} else {
 			ReferenceData.getInstance().getUserInputData().setJoystickX(0);

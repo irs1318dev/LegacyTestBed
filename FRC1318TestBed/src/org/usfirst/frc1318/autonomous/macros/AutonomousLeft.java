@@ -6,14 +6,14 @@ import org.usfirst.frc1318.autonomous.*;
 public class AutonomousLeft extends AutonomousMode implements AutoTask {
 
 	private static final double SHOOTER_SPEED = -0.78;
-	private static final double DRIVE_FORWARD_TICKS = -1300;
-	private static final double FACE_GOAL_TICKS = -50;
+	private static final double DRIVE_FORWARD_TICKS = -1000;
+	private static final double FACE_GOAL_TICKS = -80;
 	private static final double TURN_AROUND_TICKS = 50;
 	private static final double TO_LINE_TICKS = 2700;
 	
 	
 	public void run() {
-		System.out.println("*******************************************AutotonomousRight currentState: " + currentState);
+		System.out.println("*******************************************AutotonomousLeft currentState: " + currentState);
 		switch(currentState){
 			case 0:
 				andWait(3500);

@@ -38,8 +38,8 @@ public class DriveTrain1JoystickCalculator extends RobotComponentBase {
 		double y = ReferenceData.getInstance().getUserInputData().getJoystickY();
 		double x = ReferenceData.getInstance().getUserInputData().getJoystickX();
 		
-		System.out.println("*****Joystick X: " + ReferenceData.getInstance().getUserInputData().getJoystickX());
-		System.out.println("*****Joystick Y: " + ReferenceData.getInstance().getUserInputData().getJoystickY());
+//		System.out.println("*****Joystick X: " + ReferenceData.getInstance().getUserInputData().getJoystickX());
+//		System.out.println("*****Joystick Y: " + ReferenceData.getInstance().getUserInputData().getJoystickY());
 		
 		double speedL = (K1 * x) + (K2 * y);
 		double speedR = (K3 * x) + (K4 * y);
