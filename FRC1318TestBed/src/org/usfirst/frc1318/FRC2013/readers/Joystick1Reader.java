@@ -82,8 +82,12 @@ public class Joystick1Reader extends RobotComponentBase {
 		joystickThrottle = joystickL.getThrottle();
 		
 		//TODO X and Y were switched on hardware, switched in software
-		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
-		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
+//		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
+//		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
+		
+		//TODO X and Y were switched on hardware, switched in software
+		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
 		
 		// activate solenoids on first action.
 		if (liftUp || liftDown || shooterUp || shooterDown || shooterLifterUp || shooterLifterDown || shooterFire) {
