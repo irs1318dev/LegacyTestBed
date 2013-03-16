@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.smartDashBoard;
+package org.usfirst.frc1318.smartDashBoard.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import org.usfirst.frc1318.smartDashBoard.Updatable;
 
 @SuppressWarnings("serial")
 public class UI extends javax.swing.JFrame implements Updatable {

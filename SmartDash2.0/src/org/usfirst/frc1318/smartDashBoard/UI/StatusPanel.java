@@ -1,4 +1,4 @@
-package org.usfirst.frc1318.smartDashBoard;
+package org.usfirst.frc1318.smartDashBoard.UI;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
+
+import org.usfirst.frc1318.smartDashBoard.KeyHandeler;
+import org.usfirst.frc1318.smartDashBoard.TableManager;
+import org.usfirst.frc1318.smartDashBoard.Updatable;
 
 @SuppressWarnings("serial")
 public class StatusPanel extends JTextArea implements Updatable {
@@ -77,7 +81,6 @@ public class StatusPanel extends JTextArea implements Updatable {
 		}//for
 		
 		this.setText(this.builder.toString());
-		this.invalidate();
 		
 	}//printhashmap
 	
