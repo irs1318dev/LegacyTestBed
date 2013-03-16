@@ -21,6 +21,7 @@ public class NTRef
 	public static final String Shooter_ShouldFire = "s.sf";
 	public static final String Shooter_Current = "s.c";
 	//Solenoid=====================================================================
+	public static final String Solenoid_ShouldWeRunSolenoids = "so.sbrun";
 	public static final String Solenoid_ShouldShooterBeUp = "so.sbu";
 	public static final String Solenoid_ShouldLifterBeUp = "so.lbu";
 	public static final String Solenoid_ShouldFrisbeeBeExtended = "so.fbe";

@@ -19,6 +19,7 @@ public abstract class AutonomousMode implements AutoTask {
 		discsFired = 0;
 		startTime = System.currentTimeMillis();
 		driveEncTicks = ReferenceData.getInstance().getDriveTrainData().getLeftEncoderTicks();
+		ReferenceData.getInstance().getSolenoidData().setShouldWeRunSolenoids(true);
 		hasInitialized = true;
 	}
 

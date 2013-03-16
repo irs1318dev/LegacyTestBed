@@ -17,22 +17,26 @@ public class SolenoidCalculator extends RobotComponentBase
 
 	public void autonomousInit() 
 	{
-		ReferenceData.getInstance().getSolenoidData().setShouldFrisbeeBeExtended(false);
-		ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
-		ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
-		ReferenceData.getInstance().getSolenoidData().setFrisbeeExtended(true);
-		ReferenceData.getInstance().getSolenoidData().setLifterUp(true);
-		ReferenceData.getInstance().getSolenoidData().setShooterUp(true);
+
+		ReferenceData.getInstance().getSolenoidData().setShouldWeRunSolenoids(false);
+//		ReferenceData.getInstance().getSolenoidData().setShouldFrisbeeBeExtended(false);
+//		ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
+//		ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
+//		ReferenceData.getInstance().getSolenoidData().setFrisbeeExtended(true);
+//		ReferenceData.getInstance().getSolenoidData().setLifterUp(true);
+//		ReferenceData.getInstance().getSolenoidData().setShooterUp(true);
 	}
 
 	public void teleopInit() 
 	{
-		ReferenceData.getInstance().getSolenoidData().setShouldFrisbeeBeExtended(false);
-		ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
-		ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
-		ReferenceData.getInstance().getSolenoidData().setFrisbeeExtended(true);
-		ReferenceData.getInstance().getSolenoidData().setLifterUp(true);
-		ReferenceData.getInstance().getSolenoidData().setShooterUp(true);
+		ReferenceData.getInstance().getSolenoidData().setShouldWeRunSolenoids(false);
+
+//		ReferenceData.getInstance().getSolenoidData().setShouldFrisbeeBeExtended(false);
+//		ReferenceData.getInstance().getSolenoidData().setShouldLifterBeUp(false);
+//		ReferenceData.getInstance().getSolenoidData().setShouldShooterBeUp(false);
+//		ReferenceData.getInstance().getSolenoidData().setFrisbeeExtended(true);
+//		ReferenceData.getInstance().getSolenoidData().setLifterUp(true);
+//		ReferenceData.getInstance().getSolenoidData().setShooterUp(true);
 	}
 
 	public void disabledPeriodic() 

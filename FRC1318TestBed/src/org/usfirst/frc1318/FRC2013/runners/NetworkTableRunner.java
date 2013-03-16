@@ -68,6 +68,7 @@ public class NetworkTableRunner extends RobotComponentBase
  	
  	private void solenoidData()
  	{
+ 		IRSTable.putBoolean(NTRef.Solenoid_ShouldWeRunSolenoids, ReferenceData.getInstance().getSolenoidData().getShouldWeRunSolenoids());
  		IRSTable.putBoolean(NTRef.Solenoid_ShouldShooterBeUp, ReferenceData.getInstance().getSolenoidData().getShouldShooterBeUp());
  		IRSTable.putBoolean(NTRef.Solenoid_ShouldLifterBeUp, ReferenceData.getInstance().getSolenoidData().getShouldLifterBeUp());
  		IRSTable.putBoolean(NTRef.Solenoid_ShouldFrisbeeBeExtended, ReferenceData.getInstance().getSolenoidData().getShouldFrisbeeBeExtended());

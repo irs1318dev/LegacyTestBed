@@ -20,6 +20,11 @@ public class SolenoidRunner extends RobotComponentBase
 	
 	public void teleopPeriodic()
 	{
+		
+		if (!ReferenceData.getInstance().getSolenoidData().getShouldWeRunSolenoids()) {
+			return; // do nothing if no commands have been issued.
+		}
+ 		
 		if(ReferenceData.getInstance().getSolenoidData().getShouldShooterBeUp() && 
 				!ReferenceData.getInstance().getSolenoidData().getShooterUp())
 		{

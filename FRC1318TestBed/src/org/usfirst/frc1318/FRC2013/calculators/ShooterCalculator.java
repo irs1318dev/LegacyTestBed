@@ -11,10 +11,10 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void robotInit()
 	{
-		ReferenceData.getInstance().getLookUpTable().setCurrentState(0);
-		ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-				ReferenceData.getInstance().getLookUpTable().getValue()
-				);
+//		ReferenceData.getInstance().getLookUpTable().setCurrentState(0);
+//		ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+//				ReferenceData.getInstance().getLookUpTable().getValue()
+//				);
 	}
 	
 	boolean lastUpCommand = false;

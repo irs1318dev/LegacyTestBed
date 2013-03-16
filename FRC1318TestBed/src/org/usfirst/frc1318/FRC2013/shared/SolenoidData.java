@@ -2,6 +2,8 @@ package org.usfirst.frc1318.FRC2013.shared;
 
 public class SolenoidData 
 {
+	
+	private boolean shouldWeRunSolenoids;
 	private boolean shouldShooterBeUp;
 	private boolean shouldLifterBeUp;
 	private boolean shouldFrisbeeBeExtended;
@@ -56,5 +58,11 @@ public class SolenoidData
 	public void setFrisbeeExtended(boolean isFrisbeeExtended)
 	{
 		this.isFrisbeeExtended = isFrisbeeExtended;
+	}
+	public boolean getShouldWeRunSolenoids() {
+		return shouldWeRunSolenoids;
+	}
+	public void setShouldWeRunSolenoids(boolean shouldWeRunSolenoids) {
+		this.shouldWeRunSolenoids = shouldWeRunSolenoids;
 	}
 }
