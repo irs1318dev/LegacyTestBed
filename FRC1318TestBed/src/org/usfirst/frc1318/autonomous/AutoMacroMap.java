@@ -45,6 +45,14 @@ public class AutoMacroMap
 				{
 					autoRunner.setTask(new AutoDriveShootMacro());
 				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoSpinToAim())
+				{
+					autoRunner.setTask(new AutoSpinToAimMacro());
+				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoSpinToLoad())
+				{
+					autoRunner.setTask(new AutoSpinToLoadMacro());
+				}
 			}
 		}
 	}
