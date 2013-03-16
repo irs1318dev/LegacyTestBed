@@ -34,16 +34,16 @@ public class DriveTrainPIDCalculator extends RobotComponentBase{
 		double rset =ReferenceData.getInstance().getDriveTrainData().getRightSpeedSetPoint();
 		double rencv = ReferenceData.getInstance().getDriveTrainData().getRightEncoder();
 		double rkf = 0.1;
-//		double rkd = 0.0004; // practice bot
-		double rkd = 0.00020; // competition bot
+		double rkd = 0.0004; // practice bot
+//		double rkd = 0.00020; // competition bot
 		double rkscale = 2800;
 		double rightPIDVal = rkf * rset + rkd*(rkscale * rset - rencv);
 
 		double lset = - ReferenceData.getInstance().getDriveTrainData().getLeftSpeedSetPoint();
 		double lencv = ReferenceData.getInstance().getDriveTrainData().getLeftEncoder();
 		double lkf = 0.1;
-//		double lkd = 0.0005*0;		// practice bot
-		double lkd = 0.00022;		// competition bot
+		double lkd = 0.0005;		// practice bot
+//		double lkd = 0.00022;		// competition bot
 		double lkscale = 2800;
 
 		double leftPIDVal = lkf * lset + lkd*(lkscale * lset - lencv);
