@@ -4,4 +4,8 @@ import javax.swing.JPanel;
 
 public class ShooterSetpointPanel extends JPanel {
 	
+	public ShooterSetpointPanel() {
+		
+	}
+	
 }

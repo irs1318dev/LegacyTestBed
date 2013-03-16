@@ -3,6 +3,8 @@ package org.usfirst.frc1318.smartDashBoard.constants;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import edu.wpi.first.wpilibj.tables.ITable;
+
 public class ReferenceData {
 	static ReferenceData instance;
 	static Object lock = new Object();
@@ -15,11 +17,11 @@ public class ReferenceData {
 	public final Color disabledColor = Color.DARK_GRAY;
 	
 	public boolean NTPanelEnabled = true;
+	public boolean StatusPanelEnabled = true;
 	public boolean cameraPanelEnabled = false;
 	public boolean shooterSetpointPanelEnabled = false;
 	
 	public String log_file_location = "";
-	
 	
 	private ReferenceData() {
 		//SINGELTON
@@ -33,9 +35,7 @@ public class ReferenceData {
 				instance = new ReferenceData();
 			}
 		}
-		
 		return instance;
 	}
-	
 	
 }

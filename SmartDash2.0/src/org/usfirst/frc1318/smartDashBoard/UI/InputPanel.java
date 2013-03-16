@@ -8,9 +8,12 @@ import java.util.HashMap;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import org.usfirst.frc1318.smartDashBoard.ConnectionListener;
+import org.usfirst.frc1318.smartDashBoard.TableManager;
+
 import edu.wpi.first.wpilibj.tables.ITable;
 
-public class InputPanel extends JPanel implements ActionListener {
+public class InputPanel extends JPanel implements ActionListener, ConnectionListener {
 	/**
 	 * 
 	 */
@@ -27,16 +30,15 @@ public class InputPanel extends JPanel implements ActionListener {
 	 * user input into text fields
 	 * 
 	 * 
-	 * @param table
-	 * 		The ITable that is connected to the robot and contains values to be
-	 * 		modified
 	 * @param fieldNames
 	 * 		a hashmap with keys being keys from the ITable, and values being 
 	 * 		the name of the field to show up in the gui
 	 */
-	public InputPanel(ITable table, HashMap<String, String> fieldNames) {
-		this.table = table;
+	public InputPanel(HashMap<String, String> fieldNames) {
+		this.table = TableManager.getInstance().getTable();
 		this.fieldNames = fieldNames;
+		this.fields = new HashMap<String, InputField>();
+		
 		
 		//make panels show up in correct layout
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -53,6 +55,8 @@ public class InputPanel extends JPanel implements ActionListener {
 		submitButton.addActionListener( this );
 		
 		this.add(submitButton);
+		
+		TableManager.getInstance().addListener(this);
 	}
 	/**
 	 * called on click of submitButton
@@ -95,5 +99,15 @@ public class InputPanel extends JPanel implements ActionListener {
 		System.out.println("Table updated from InputPanel");
 		
 	}//m
+	@Override
+	public void onConnect() {
+		this.submitButton.setEnabled(true);
+		
+	}
+	@Override
+	public void onDisconnect() {
+		this.submitButton.setEnabled(false);
+		
+	}
 
 }//c
