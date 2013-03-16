@@ -1,6 +1,7 @@
 package org.usfirst.frc1318.smartDashBoard.UI;
 
 import java.awt.Button;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -73,7 +74,15 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 			//Make sure type is correct and put into itable
 			
 			//Number
-			if(table.getValue(s).getClass().equals( Double.class)) {
+			if (table == null) {
+				
+				System.out.println("Table has not been initialized");
+				
+			} else if (table.getValue(s) == (null)) {
+				
+				System.out.println("value at " + s + " does not exist!");
+				
+			}else if(table.getValue(s).getClass().equals( Double.class)) {
 				
 				table.putNumber(s, Double.parseDouble(fields.get(s).getText()));
 				
@@ -90,7 +99,7 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 			//Other
 			}else{
 				
-				System.out.println("error: Type control in class InputPanel");
+				System.out.println("error: Type control in class InputPanel or nonexistant key");
 				
 			}//i/e
 				
@@ -102,11 +111,12 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	@Override
 	public void onConnect() {
 		this.submitButton.setEnabled(true);
+		this.table = TableManager.getInstance().getTable();
 		
 	}
 	@Override
 	public void onDisconnect() {
-		this.submitButton.setEnabled(false);
+		//this.submitButton.setEnabled(false);
 		
 	}
 
