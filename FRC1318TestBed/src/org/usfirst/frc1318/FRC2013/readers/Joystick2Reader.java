@@ -36,8 +36,10 @@ public class Joystick2Reader extends RobotComponentBase{
 	private boolean autoFireAll;
 	private boolean autoTranslateLeft;
 	private boolean autoDriveShoot;
+	private boolean autoSpinToAim;
+	private boolean autoSpinToLoad;
 	
-	private boolean[] anyUIArr = new boolean[14];
+	private boolean[] anyUIArr = new boolean[16];
 	
 	public void robotInit(){
 		joystickL = new Joystick(PortRef.JOYSTICK_L);
@@ -63,6 +65,8 @@ public class Joystick2Reader extends RobotComponentBase{
 		autoFireAll = joystickL.getRawButton(Joystick2Ref.AUTO_FIREALL);
 		autoLift = joystickL.getRawButton(Joystick2Ref.AUTO_LIFT);
 		autoTranslateRight = (joystickL.getRawButton(Joystick2Ref.AUTO_TRANSLATE_RIGHT));
+		autoSpinToAim = (joystickR.getRawButton(Joystick2Ref.AUTO_SPIN_TO_AIM));
+		autoSpinToLoad = (joystickR.getRawButton(Joystick2Ref.AUTO_SPIN_TO_LOAD));
 		
 		
 		ReferenceData.getInstance().getUserInputData().setJoystickLeft(-joystickLeft);
@@ -78,6 +82,8 @@ public class Joystick2Reader extends RobotComponentBase{
 		ReferenceData.getInstance().getUserInputData().setAutoFireAll(autoFireAll);
 		ReferenceData.getInstance().getUserInputData().setAutoLift(autoLift);
 		ReferenceData.getInstance().getUserInputData().setAutoTranslateRight(autoTranslateRight);
+		ReferenceData.getInstance().getUserInputData().setAutoSpinToAim(autoSpinToAim);
+		ReferenceData.getInstance().getUserInputData().setAutoSpinToLoad(autoSpinToLoad);
 		
 		anyUIArr[0] = liftUp;
 		anyUIArr[1] = liftDown;
@@ -90,8 +96,10 @@ public class Joystick2Reader extends RobotComponentBase{
 		anyUIArr[8] = autoFireAll;
 		anyUIArr[9] = autoLift;
 		anyUIArr[10] = autoTranslateRight;
-		anyUIArr[11] = joystickLeft > 0;
-		anyUIArr[12] = joystickRight > 0;
+		anyUIArr[11] = autoSpinToAim;
+		anyUIArr[12] = autoSpinToLoad;
+		anyUIArr[13] = joystickLeft > 0;
+		anyUIArr[14] = joystickRight > 0;
 		ReferenceData.getInstance().getUserInputData().setAnyUI(false);
 		for(int i = 0; i<anyUIArr.length; i++){
 			if(anyUIArr[i])

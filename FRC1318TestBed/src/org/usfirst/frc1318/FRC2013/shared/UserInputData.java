@@ -32,6 +32,8 @@ public class UserInputData {
 	private boolean autoFireAll;
 	private boolean autoTranslateLeft;
 	private boolean autoDriveShoot; // 15 second routine
+	private boolean autoSpinToAim;
+	private boolean autoSpinToLoad;
 	
 	
 	public void setAnyUI(boolean val){
@@ -95,6 +97,22 @@ public class UserInputData {
 	public void setShooterFire(boolean shooterFire) {
 		this.shooterFire = shooterFire;
 //		System.out.println("shooter fire: " + shooterFire);
+	}
+	
+	public void setAutoSpinToAim(boolean autoSpinToAim){
+		this.autoSpinToAim = autoSpinToAim;
+	}
+	
+	public boolean getAutoSpinToAim(){
+		return autoSpinToAim;
+	}
+	
+	public void setAutoSpinToLoad(boolean autoSpinToLoad){
+		this.autoSpinToLoad = autoSpinToLoad;
+	}
+	
+	public boolean getAutoSpinToLoad(){
+		return autoSpinToLoad;
 	}
 
 	//use these to set interface type
