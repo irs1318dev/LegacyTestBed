@@ -26,6 +26,7 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	HashMap<String, String> fieldNames;
 	HashMap<String, InputField> fields;
 	Button submitButton;
+	String overrideKey;
 	
 	/**
 	 * This is a semi-generic class that updates values in an ITable based on 
@@ -36,17 +37,18 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	 * 		a hashmap with keys being keys from the ITable, and values being 
 	 * 		the name of the field to show up in the gui
 	 */
-	public InputPanel(HashMap<String, String> fieldNames) {
+	public InputPanel(HashMap<String, String> fieldNames, String overrideKey) {
 		this.table = TableManager.getInstance().getTable();
 		this.fieldNames = fieldNames;
 		this.fields = new HashMap<String, InputField>();
+		this.overrideKey = overrideKey;
 		
 		
 		//make panels show up in correct layout
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		override = new Checkbox("Override");
-		override.setState(true);
+		override.setState(false);
 		this.add(override);
 		
 		//create input fields for all values
@@ -72,9 +74,8 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	 * @Override
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (override.getState() == true) {
-			return;
-		}
+		
+		table.putBoolean(overrideKey, override.getState());
 		
 		//loop through all fields
 		for( String s : fields.keySet()) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.usfirst.frc1318.smartDashBoard.UI.tests.MockTable;
+import org.usfirst.frc1318.smartDashBoard.constants.ReferenceData;
 
 import edu.wpi.first.smartdashboard.robot.Robot;
 import edu.wpi.first.wpilibj.tables.IRemote;
@@ -84,6 +85,10 @@ public class TableManager implements ITableListener{
 			keys.add(key);
 		}
 		
+		//required for display
+		if(ReferenceData.getInstance().statusPanel != null) {
+			ReferenceData.getInstance().statusPanel.printHashMap();
+		}
 	}
 	
 	

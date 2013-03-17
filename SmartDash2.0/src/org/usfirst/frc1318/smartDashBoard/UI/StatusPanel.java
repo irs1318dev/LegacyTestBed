@@ -21,6 +21,9 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 	
 	public StatusPanel(JFrame frame){
 		super();
+		
+		ReferenceData.getInstance().statusPanel = this;
+		
 		this.setEditable(false);
 		
 		this.setAutoscrolls(false);
@@ -28,14 +31,18 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 		this.setPreferredSize(new Dimension(frame.getWidth() * 2 / 7, 
 				frame.getHeight()));
 		
+		this.setForeground(frame.getForeground());
+		
 		keyHandeler = KeyHandeler.getInstance();
 		builder = new StringBuilder();
 		tableManager = TableManager.getInstance();
 		tableManager.addListener(this);
 		
+		this.printHashMap();
+		
 	}
 	
-	private void printHashMap(){
+	public void printHashMap(){
 		
 		this.builder.setLength(0);
 		this.builder.append("VALUES FROM BOT \n \n");
@@ -51,7 +58,12 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 			if(message == null) {
 				continue;
 			}else {
-				stored = tableManager.getTable().getValue(key);
+				stored = null;
+				
+				if(tableManager.getTable() != null){
+					
+					stored = tableManager.getTable().getValue(key);
+				}
 				if (null != stored) {
 					value = stored.toString();
 				}else{
@@ -64,6 +76,7 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 		}//for
 		
 		this.setText(this.builder.toString());
+		this.invalidate();
 		
 	}//printhashmap
 
