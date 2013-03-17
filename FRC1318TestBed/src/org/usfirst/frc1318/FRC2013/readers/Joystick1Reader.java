@@ -26,6 +26,9 @@ public class Joystick1Reader extends RobotComponentBase {
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
 	
+	private boolean shooterSpeed0;
+	private boolean shooterSpeedFull;
+	
 	private boolean shooterFire;
 	
 	private boolean shooterLifterDown;
@@ -57,6 +60,9 @@ public class Joystick1Reader extends RobotComponentBase {
 		shooterDown = (joystickL.getRawButton(Joystick1Ref.SHOOTER_DOWN));
 		shooterSpeedUp = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_UP));
 		shooterSpeedDown = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_DOWN));
+		shooterSpeed0 = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_0));
+		shooterSpeedFull = (joystickL.getRawButton(Joystick1Ref.SHOOTER_SPEED_FULL));
+		
 		shooterFire = (joystickL.getRawButton(Joystick1Ref.SHOOTER_FIRE));
 //		autoTranslateLeft = joystickR.getRawButton(Joystick1Ref.AUTO_TRANSLATE_LEFT);
 //		autoFireAll = joystickR.getRawButton(Joystick1Ref.AUTO_FIREALL);
@@ -82,11 +88,15 @@ public class Joystick1Reader extends RobotComponentBase {
 		joystickThrottle = joystickL.getThrottle();
 		
 		//TODO X and Y were switched on hardware, switched in software
-		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
-		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
+//		ReferenceData.getInstance().getUserInputData().setJoystickY(-joystickX);
+//		ReferenceData.getInstance().getUserInputData().setJoystickX(-joystickY);
+		
+		//TODO X and Y were switched on hardware, switched in software
+		ReferenceData.getInstance().getUserInputData().setJoystickY(joystickX);
+		ReferenceData.getInstance().getUserInputData().setJoystickX(joystickY);
 		
 		// activate solenoids on first action.
-		if (liftUp || liftDown || shooterUp || shooterDown || shooterLifterUp || shooterLifterDown || shooterFire) {
+		if (liftUp || liftDown || shooterUp || shooterDown || shooterLifterUp || shooterLifterDown || shooterFire || shooterSpeed0 || shooterSpeedFull) {
 			ReferenceData.getInstance().getSolenoidData().setShouldWeRunSolenoids(true);
 		}
 		
@@ -96,6 +106,11 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterDown(shooterDown);
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(shooterSpeedUp);
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(shooterSpeedDown);
+		
+		//TODO write setters and getters for shooterSpeed0 and shooterSpeedFull 
+		//ReferenceData.getInstance().getUserInputData().setShooterSpeeed0(shooterSpeed0);
+		//ReferenceData.getInstance().getUserInputData().setShooterSpeedFull(shooterSpeedFull);
+		
 		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
 		ReferenceData.getInstance().getUserInputData().setBothUp(shooterLifterUp);
 		ReferenceData.getInstance().getUserInputData().setBothDown(shooterLifterDown);

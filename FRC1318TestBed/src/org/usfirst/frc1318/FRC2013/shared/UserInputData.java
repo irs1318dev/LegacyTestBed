@@ -26,6 +26,10 @@ public class UserInputData {
 	
 	private boolean shooterSpeedUp;
 	private boolean shooterSpeedDown;
+	
+	private boolean shooterSpeed0;
+	private boolean shooterSpeedFull;
+	
 	private double throttle;
 	
 	private boolean shooterFire;
