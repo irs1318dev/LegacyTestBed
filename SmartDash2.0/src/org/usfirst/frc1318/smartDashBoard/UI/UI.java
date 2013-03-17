@@ -3,6 +3,12 @@ package org.usfirst.frc1318.smartDashBoard.UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -24,6 +30,7 @@ public class UI extends javax.swing.JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		UI.init();
 		UI ui = new UI();
 	}
 
@@ -63,4 +70,44 @@ public class UI extends javax.swing.JFrame {
 		this.ntpanel.add(new InputPanel(panel1Names));
 	}
 	
+	private static FileWriter fw;
+	private static BufferedWriter bw;
+	private static boolean writeOutput = false;
+	static final SimpleDateFormat sdfFile = new SimpleDateFormat("yyyy_MMdd_HH_mm_ss");
+	
+	public static void init() {
+		if (fw == null) {
+			try {
+				fw = new FileWriter("c:/dashboard/recording_"+sdfFile.format(new Date())+".csv");
+				bw = new BufferedWriter(fw);
+				writeOutput = true;
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+	private static int  count = 0;
+	private static final Object monitor = new Object();
+	
+	public static void writeLog(long timestamp, String output) {
+		synchronized(monitor) {
+		if (writeOutput) {
+			try {
+				bw.write(sdf.format(new Date(timestamp))+", "+output+"\n");
+				if (count%100==0) {
+					bw.flush();
+					count = 0;
+				}
+				count++;
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		}
+	}
 }

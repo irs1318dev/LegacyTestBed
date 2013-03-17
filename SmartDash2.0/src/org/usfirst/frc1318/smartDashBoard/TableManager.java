@@ -3,6 +3,7 @@ package org.usfirst.frc1318.smartDashBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.usfirst.frc1318.smartDashBoard.UI.UI;
 import org.usfirst.frc1318.smartDashBoard.UI.tests.MockTable;
 
 import edu.wpi.first.smartdashboard.robot.Robot;
@@ -83,7 +84,9 @@ public class TableManager implements ITableListener{
 		if(table.getValue(key) == null) {
 			keys.add(key);
 		}
-		
+		if(key != null && value != null){
+			UI.writeLog(System.currentTimeMillis(), key + ", " + value.toString());
+		}
 	}
 	
 	
