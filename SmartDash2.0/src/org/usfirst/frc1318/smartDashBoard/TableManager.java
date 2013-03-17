@@ -3,6 +3,8 @@ package org.usfirst.frc1318.smartDashBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.usfirst.frc1318.smartDashBoard.UI.tests.MockTable;
+
 import edu.wpi.first.smartdashboard.robot.Robot;
 import edu.wpi.first.wpilibj.tables.IRemote;
 import edu.wpi.first.wpilibj.tables.IRemoteConnectionListener;
@@ -34,11 +36,17 @@ public class TableManager implements ITableListener{
 	
 	HashMap<String, Object> map;
 	ArrayList<String> keys;
+	ArrayList<ConnectionListener> listeners;
 	boolean connected;
+	ITable table;
 	
 	private TableManager() {
 		map = new HashMap<String, Object>();
 		keys = new ArrayList<String>();
+		
+		//this.table = new MockTable();
+		
+		this.listeners = new ArrayList<ConnectionListener>();
 		
 		Robot.setTeam(1318);
 		Robot.addConnectionListener(new IRemoteConnectionListener()
@@ -72,10 +80,9 @@ public class TableManager implements ITableListener{
 	public void valueChanged(ITable source, String key, Object value,
 			boolean isNew) {
 		
-		if(map.get(key) == null) {
+		if(table.getValue(key) == null) {
 			keys.add(key);
 		}
-		map.put(key, value);
 		
 	}
 	
@@ -84,20 +91,31 @@ public class TableManager implements ITableListener{
 	private void table_disconnected() {
 		this.connected = false;
 		
+		//tell listeners
+			for(ConnectionListener listener : listeners) {
+			
+				listener.onDisconnect();
+			}
 	}
 	
 	private void table_connected() {
 		this.connected = true;
 		
+		this.table = Robot.getTable();
+		
+		//tell listeners
+			for(ConnectionListener listener : listeners) {
+				listener.onConnect();
+		}
 	}
 	
 //Getters and setters
-	public Object get(String key) {
-		return map.get(key);
-	}
-	
 	public ArrayList<String> getKeys() {
 		return keys;
+	}
+	
+	public ITable getTable() {
+		return table;
 	}
 	
 	public boolean isConnected() {
@@ -106,5 +124,16 @@ public class TableManager implements ITableListener{
 	
 	public HashMap<String, Object> getHashMap() {
 		return map;
+	}
+	
+//listener stuff
+	public void addListener(ConnectionListener listener) {
+		this.listeners.add(listener);
+		
+		if(this.isConnected()) {
+			listener.onConnect();
+		} else {
+			listener.onDisconnect();
+		}
 	}
 }

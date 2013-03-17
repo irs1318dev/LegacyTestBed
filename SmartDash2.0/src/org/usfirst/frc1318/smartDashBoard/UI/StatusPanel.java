@@ -1,15 +1,18 @@
-package org.usfirst.frc1318.smartDashBoard;
+package org.usfirst.frc1318.smartDashBoard.UI;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.Timer;
+
+import org.usfirst.frc1318.smartDashBoard.ConnectionListener;
+import org.usfirst.frc1318.smartDashBoard.KeyHandeler;
+import org.usfirst.frc1318.smartDashBoard.TableManager;
+import org.usfirst.frc1318.smartDashBoard.constants.ReferenceData;
 
 @SuppressWarnings("serial")
-public class StatusPanel extends JTextArea implements Updatable {
+public class StatusPanel extends JTextArea implements ConnectionListener {
 	StringBuilder builder;
 	TableManager tableManager;
 	KeyHandeler keyHandeler;
@@ -20,9 +23,6 @@ public class StatusPanel extends JTextArea implements Updatable {
 		super();
 		this.setEditable(false);
 		
-		this.setForeground(frame.getForeground());
-		this.setBackground(frame.getBackground());
-		
 		this.setAutoscrolls(false);
 		
 		this.setPreferredSize(new Dimension(frame.getWidth() * 2 / 7, 
@@ -31,21 +31,8 @@ public class StatusPanel extends JTextArea implements Updatable {
 		keyHandeler = KeyHandeler.getInstance();
 		builder = new StringBuilder();
 		tableManager = TableManager.getInstance();
+		tableManager.addListener(this);
 		
-		//timer.start();
-		
-	}
-
-	@Override
-	public void update() {
-		
-		if(tableManager.isConnected() == true) {
-			this.setBackground(new Color(0, 128, 64));
-		}else {
-			this.setBackground(new Color(128, 0, 64));
-		}
-		
-		this.printHashMap();
 	}
 	
 	private void printHashMap(){
@@ -64,7 +51,7 @@ public class StatusPanel extends JTextArea implements Updatable {
 			if(message == null) {
 				continue;
 			}else {
-				stored = tableManager.get(key);
+				stored = tableManager.getTable().getValue(key);
 				if (null != stored) {
 					value = stored.toString();
 				}else{
@@ -77,9 +64,18 @@ public class StatusPanel extends JTextArea implements Updatable {
 		}//for
 		
 		this.setText(this.builder.toString());
-		this.invalidate();
 		
 	}//printhashmap
+
+	@Override
+	public void onConnect() {
+		this.setBackground(ReferenceData.getInstance().activeColor);
+	}
+
+	@Override
+	public void onDisconnect() {
+		this.setBackground(ReferenceData.getInstance().inactiveColor);
+	}
 	
 	
 

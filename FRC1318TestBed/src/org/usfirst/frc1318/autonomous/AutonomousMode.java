@@ -33,6 +33,10 @@ public abstract class AutonomousMode implements AutoTask {
 		nextState();
 	}
 	
+	public void shooterUp(){
+		ReferenceData.getInstance().getUserInputData().setShooterUp(true);
+	}
+	
 	
 	// Lower both the lifter arm and the shooter tray
 	public void bothDown(){
