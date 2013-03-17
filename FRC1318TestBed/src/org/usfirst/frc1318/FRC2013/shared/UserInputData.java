@@ -18,6 +18,9 @@ public class UserInputData {
 	private boolean shooterDown;
 	private boolean shooterUp;
 	
+	private boolean shooterSpeed0;
+	private boolean shooterSpeedFull;
+	
 	private boolean bothDown;
 	private boolean bothUp;
 	
@@ -176,6 +179,28 @@ public class UserInputData {
 	public void setShooterSpeedDown(boolean shooterSpeedDown) {
 		this.shooterSpeedDown = shooterSpeedDown;
 //		System.out.println("shooter speed down: " + shooterSpeedDown);
+	}
+	
+	public void setShooterSpeed0(boolean shooterSpeed0){
+		this.shooterSpeed0 = shooterSpeed0;
+		if(shooterSpeed0){
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
+		}
+	}
+	
+	public boolean getShooterSpeed0(){
+		return shooterSpeed0;
+	}
+	
+	public void setShooterSpeedFull(boolean shooterSpeedFull){
+		this.shooterSpeedFull = shooterSpeedFull;
+		if(shooterSpeedFull){
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(3);
+		}
+	}
+	
+	public boolean getShooterSpeedFull(){
+		return shooterSpeedFull;
 	}
 	
 	public int getUserInputType() {
