@@ -53,6 +53,10 @@ public class AutoMacroMap
 				{
 					autoRunner.setTask(new AutoSpinToLoadMacro());
 				}
+				else if(ReferenceData.getInstance().getUserInputData().getAutoFireAll())
+				{
+					autoRunner.setTask(new AutoFireAllMacro());
+				}
 			}
 		}
 	}
