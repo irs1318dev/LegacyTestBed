@@ -18,9 +18,6 @@ public class UserInputData {
 	private boolean shooterDown;
 	private boolean shooterUp;
 	
-	private boolean shooterSpeed0;
-	private boolean shooterSpeedFull;
-	
 	private boolean bothDown;
 	private boolean bothUp;
 	
