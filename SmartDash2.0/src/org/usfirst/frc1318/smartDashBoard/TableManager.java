@@ -81,6 +81,7 @@ public class TableManager implements ITableListener{
 	public void valueChanged(ITable source, String key, Object value,
 			boolean isNew) {
 		
+		if(table != null)
 		if(table.getValue(key) == null) {
 			keys.add(key);
 		}

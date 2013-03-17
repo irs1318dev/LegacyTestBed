@@ -11,6 +11,8 @@ import org.usfirst.frc1318.smartDashBoard.KeyHandeler;
 import org.usfirst.frc1318.smartDashBoard.TableManager;
 import org.usfirst.frc1318.smartDashBoard.constants.ReferenceData;
 
+import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
+
 @SuppressWarnings("serial")
 public class StatusPanel extends JTextArea implements ConnectionListener {
 	StringBuilder builder;
@@ -61,8 +63,11 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 				stored = null;
 				
 				if(tableManager.getTable() != null){
-					
-					stored = tableManager.getTable().getValue(key);
+					try {
+						stored = tableManager.getTable().getValue(key);
+					} catch (TableKeyNotDefinedException  ex) {
+						ex.printStackTrace();
+					}
 				}
 				if (null != stored) {
 					value = stored.toString();

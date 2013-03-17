@@ -7,27 +7,37 @@ public class IRSTable
 {
 	public static void putBoolean(String key, boolean value)
 	{
+		putBoolean(key, new Boolean(value));
+	}
+	public static void putBoolean(String key, Boolean value)
+	{
+		if (value==null) return;
 		try
 		{
-			if(SmartDashboard.getBoolean(key) != value)
-				SmartDashboard.putBoolean(key, value);
+			if(SmartDashboard.getBoolean(key) != value.booleanValue())
+				SmartDashboard.putBoolean(key, value.booleanValue());
 		}
 		catch (NetworkTableKeyNotDefined ex)
 		{
-			SmartDashboard.putBoolean(key, value);
+			SmartDashboard.putBoolean(key, value.booleanValue());
 		}
 	}
 	
 	public static void putNumber(String key, double value)
 	{
+		putNumber(key, new Double(value));
+	}
+	public static void putNumber(String key, Double value)
+	{
+		if (value==null) return;
 		try
 		{
-			if(SmartDashboard.getNumber(key) != value)
-				SmartDashboard.putNumber(key, value);
+			if(SmartDashboard.getNumber(key) != value.doubleValue())
+				SmartDashboard.putNumber(key, value.doubleValue());
 		}
 		catch (NetworkTableKeyNotDefined ex)
 		{
-			SmartDashboard.putNumber(key, value);
+			SmartDashboard.putNumber(key, value.doubleValue());
 		}
 	}
 
