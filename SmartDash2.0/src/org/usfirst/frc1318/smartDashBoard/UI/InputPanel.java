@@ -1,6 +1,7 @@
 package org.usfirst.frc1318.smartDashBoard.UI;
 
 import java.awt.Button;
+import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +21,7 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	 */
 	private static final long serialVersionUID = 3456407891290547726L;
 	
-	
+	Checkbox override;
 	ITable table;
 	HashMap<String, String> fieldNames;
 	HashMap<String, InputField> fields;
@@ -43,6 +44,10 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 		
 		//make panels show up in correct layout
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		override = new Checkbox("Override");
+		override.setState(true);
+		this.add(override);
 		
 		//create input fields for all values
 		for(String s : fieldNames.keySet()) {
@@ -67,6 +72,9 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	 * @Override
 	 */
 	public void actionPerformed(ActionEvent e) {
+		if (override.getState() == true) {
+			return;
+		}
 		
 		//loop through all fields
 		for( String s : fields.keySet()) {
@@ -116,7 +124,7 @@ public class InputPanel extends JPanel implements ActionListener, ConnectionList
 	}
 	@Override
 	public void onDisconnect() {
-		//this.submitButton.setEnabled(false);
+		this.submitButton.setEnabled(false);
 		
 	}
 

@@ -3,6 +3,8 @@ package org.usfirst.frc1318.smartDashBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.usfirst.frc1318.smartDashBoard.UI.tests.MockTable;
+
 import edu.wpi.first.smartdashboard.robot.Robot;
 import edu.wpi.first.wpilibj.tables.IRemote;
 import edu.wpi.first.wpilibj.tables.IRemoteConnectionListener;
@@ -41,6 +43,8 @@ public class TableManager implements ITableListener{
 	private TableManager() {
 		map = new HashMap<String, Object>();
 		keys = new ArrayList<String>();
+		
+		//this.table = new MockTable();
 		
 		this.listeners = new ArrayList<ConnectionListener>();
 		
