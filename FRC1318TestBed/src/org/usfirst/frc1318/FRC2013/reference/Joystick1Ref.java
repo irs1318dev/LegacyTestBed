@@ -27,6 +27,9 @@ public interface Joystick1Ref {
 	static final int SHOOTER_SPEED_UP = 3;//R
 	static final int SHOOTER_SPEED_DOWN = 2;//R
 	
+	static final int SHOOTER_SPEED_0 = 8;
+	static final int SHOOTER_SPEED_FULL = 9;
+	
 	static final int SHOOTER_LIFTER_UP = 6; // not needed
 	static final int SHOOTER_lIFTER_DOWN = 7; // not needed
 	
