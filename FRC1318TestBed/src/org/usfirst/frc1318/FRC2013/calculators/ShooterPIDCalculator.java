@@ -4,10 +4,17 @@ import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.controllers.PID;
+import org.usfirst.frc1318.generic.networktable.IRSTable;
 
 public class ShooterPIDCalculator extends RobotComponentBase {
 	PID shooterPID;
 	long count;
+	
+	final String keyRoot = "spid.";
+	final String setponitKey = "vsp";
+	final String ntOverrideKey = "nto";
+	
+	boolean ntOverride = false;
 	
 	public void robotInit()
 	{	
@@ -15,6 +22,9 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 		shooterPID.setKFade(0.75);
 		shooterPID.setClampRange(-1, 1);
 		shooterPID.setKScale(25000);
+		
+		IRSTable.putNumber(keyRoot + setponitKey, 
+				new Double(ReferenceData.getInstance().getShooterData().getMotorSetPoint()));
 	}
 	
 	double shooterKf = 1.0;
@@ -24,7 +34,13 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 
 	public void teleopPeriodic()
 	{
-		double shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
+		double shooterSet;
+		
+		if(! ntOverride) {
+			shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
+		} else {
+			shooterSet = IRSTable.getNumber(this.keyRoot + ntOverrideKey);
+		}
 		double shooterEncV = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();		
 //		if (Math.abs(shooterEncV - lastShooterAngVel) > 500) {
 //			System.out.println("*********BAD***********");
