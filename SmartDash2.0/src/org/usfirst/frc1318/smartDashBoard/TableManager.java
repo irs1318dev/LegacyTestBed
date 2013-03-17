@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.usfirst.frc1318.smartDashBoard.UI.UI;
 import org.usfirst.frc1318.smartDashBoard.UI.tests.MockTable;
+import org.usfirst.frc1318.smartDashBoard.constants.ReferenceData;
 
 import edu.wpi.first.smartdashboard.robot.Robot;
 import edu.wpi.first.wpilibj.tables.IRemote;
@@ -81,11 +82,17 @@ public class TableManager implements ITableListener{
 	public void valueChanged(ITable source, String key, Object value,
 			boolean isNew) {
 		
+		if(table != null)
 		if(table.getValue(key) == null) {
 			keys.add(key);
 		}
 		if(key != null && value != null){
 			UI.writeLog(System.currentTimeMillis(), key + ", " + value.toString());
+		}
+		
+		//required for display
+		if(ReferenceData.getInstance().statusPanel != null) {
+			ReferenceData.getInstance().statusPanel.printHashMap();
 		}
 	}
 	

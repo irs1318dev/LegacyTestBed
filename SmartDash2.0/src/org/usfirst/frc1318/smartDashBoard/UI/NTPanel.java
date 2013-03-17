@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.tables.ITableListener;
 public class NTPanel  extends JPanel  {
 
 	private ArrayList<InputPanel> enabledPanels;
-	
 	public NTPanel(JFrame frame) {
 		this.setPreferredSize(new Dimension(frame.getWidth() *2 / 7, frame.getHeight()));
 		this.setBackground(ReferenceData.getInstance().disabledColor);

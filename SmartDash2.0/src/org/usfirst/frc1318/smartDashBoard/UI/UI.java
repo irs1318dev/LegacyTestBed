@@ -60,6 +60,11 @@ public class UI extends javax.swing.JFrame {
 		
 		this.pack();
 		this.setVisible(true);
+		
+		//required for display
+		if(ReferenceData.getInstance().statusPanel != null) {
+			ReferenceData.getInstance().statusPanel.printHashMap();
+		}
 	}
 	
 	public void addInputPanels() {
@@ -67,7 +72,7 @@ public class UI extends javax.swing.JFrame {
 		
 		panel1Names.put("s.sp", "Shooter Setpoint");
 		
-		this.ntpanel.add(new InputPanel(panel1Names));
+		this.ntpanel.add(new InputPanel(panel1Names, "spid.nto"));
 	}
 	
 	private static FileWriter fw;

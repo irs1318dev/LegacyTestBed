@@ -3,6 +3,8 @@ package org.usfirst.frc1318.smartDashBoard.constants;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import org.usfirst.frc1318.smartDashBoard.UI.StatusPanel;
+
 import edu.wpi.first.wpilibj.tables.ITable;
 
 public class ReferenceData {
@@ -20,6 +22,8 @@ public class ReferenceData {
 	public boolean StatusPanelEnabled = true;
 	public boolean cameraPanelEnabled = false;
 	public boolean shooterSetpointPanelEnabled = false;
+	
+	public StatusPanel statusPanel;
 	
 	public String log_file_location = "";
 	
