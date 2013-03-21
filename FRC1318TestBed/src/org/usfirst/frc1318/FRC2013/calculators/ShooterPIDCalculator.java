@@ -23,8 +23,8 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	}
 	
 	double shooterKf = 1.0;
-//	double shooterKd = -0.0004;
-	double shooterKd = -0.0006;
+	double shooterKd = -0.0004;
+//	double shooterKd = -0.0006;
 	
 	double lastShooterAngVel = 0.0;
 

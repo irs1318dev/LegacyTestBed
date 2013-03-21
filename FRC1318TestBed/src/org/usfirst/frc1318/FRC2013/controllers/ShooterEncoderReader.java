@@ -18,7 +18,9 @@ public class ShooterEncoderReader extends RobotComponentBase{
 	public void teleopPeriodic(){
 
 		double shooterEncv = encoderShooter.getRate();
+		System.out.println("Encoder value: " + shooterEncv);
 		ReferenceData.getInstance().getShooterData().setEncoderAngularVelocity(shooterEncv);
+		ReferenceData.getInstance().getShooterData().setEncoderTicks(encoderShooter.getValue());
 //		if (count%100000==0) {
 //			System.out.println("shooterEncv="+shooterEncv);
 //		}

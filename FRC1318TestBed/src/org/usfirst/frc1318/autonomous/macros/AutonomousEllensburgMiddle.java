@@ -7,7 +7,7 @@ import org.usfirst.frc1318.autonomous.*;
 
 public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTask{
 	
-	private static final double SHOOTER_SPEED = -0.950;
+	private static final double SHOOTER_SPEED = -0.920;
 
 	public void run() {
 		System.out.println("*******************************************AutonomousEllensburgCenter currentState: " + currentState);
@@ -26,7 +26,7 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 				System.out.println("*******************2");
 				break;
 			case 3:
-				andWait(500);
+				andWait(2000);
 				System.out.println("*******************3");
 				break;
 			case 4://fire

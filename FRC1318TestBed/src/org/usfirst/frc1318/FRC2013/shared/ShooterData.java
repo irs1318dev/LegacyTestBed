@@ -13,6 +13,16 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 	
 	private boolean shouldFire = false;
 	
+	private double encoderTicks;
+	
+	public double getEncoderTicks() {
+		return encoderTicks;
+	}
+
+	public void setEncoderTicks(double encoderTicks) {
+		this.encoderTicks = encoderTicks;
+	}
+
 	private SettingsLookup speedSettings;
 	
 	 public void setEncoderAngularVelocity(double velocity)

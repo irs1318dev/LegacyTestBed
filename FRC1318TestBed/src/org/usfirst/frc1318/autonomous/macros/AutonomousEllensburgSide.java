@@ -5,7 +5,7 @@ import org.usfirst.frc1318.autonomous.*;
 
 public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask {
 
-	private static final double SHOOTER_SPEED = -0.900;
+	private static final double SHOOTER_SPEED = -0.920;
 	
 	public void run() {
 		System.out.println("*******************************************AutotonomousEllensburgSide currentState: " + currentState);
@@ -20,7 +20,7 @@ public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask
 				spinShooterDirectly(SHOOTER_SPEED);
 				break;
 			case 3:
-				andWait(500);
+				andWait(2000);
 				break;
 			case 4: 
 				fire();

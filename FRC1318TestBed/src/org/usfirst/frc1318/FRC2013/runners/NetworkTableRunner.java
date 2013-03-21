@@ -61,6 +61,7 @@ public class NetworkTableRunner extends RobotComponentBase
  	{
  		IRSTable.putNumber(NTRef.Shooter_SetPoint, ReferenceData.getInstance().getShooterData().getMotorSetPoint());
  		IRSTable.putNumber(NTRef.Shooter_AngularEncoderSpeed, ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity());
+ 		IRSTable.putNumber(NTRef.Shooter_EncoderTicks, ReferenceData.getInstance().getShooterData().getEncoderTicks());
  		IRSTable.putNumber(NTRef.Shooter_motor, ReferenceData.getInstance().getShooterData().getMotorSpeed());
  		IRSTable.putBoolean(NTRef.Shooter_HasFrisbee, ReferenceData.getInstance().getShooterData().getHasFrisbees());
  		IRSTable.putBoolean(NTRef.Shooter_ShouldFire, ReferenceData.getInstance().getShooterData().getShouldFire());
