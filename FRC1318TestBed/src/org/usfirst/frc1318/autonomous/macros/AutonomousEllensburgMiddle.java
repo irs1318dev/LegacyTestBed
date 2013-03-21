@@ -10,32 +10,32 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 	private static final double SHOOTER_SPEED = -0.920;
 
 	public void run() {
-		System.out.println("*******************************************AutonomousEllensburgCenter currentState: " + currentState);
+//		System.out.println("*******************************************AutonomousEllensburgCenter currentState: " + currentState);
 //		System.out.println("***********DriveTrain ticks: " + driveEncTicks); 
 		switch(currentState){
 			case 0:
 				andWait(3500);
-				System.out.println("*******************0");
+				//System.out.println("*******************0");
 				break;
 			case 1:
-				shooterUp();
-				System.out.println("*******************1");
+				spinShooterDirectly(SHOOTER_SPEED);
+				//System.out.println("*******************1");
 				break;
 			case 2://spin up shooter
-				spinShooterDirectly(SHOOTER_SPEED);
-				System.out.println("*******************2");
+				shooterUp();
+				//System.out.println("*******************2");
 				break;
 			case 3:
-				andWait(2000);
-				System.out.println("*******************3");
+				andWait(3000);
+				//System.out.println("*******************3");
 				break;
 			case 4://fire
 				fire();
-				System.out.println("*******************4");
+				//System.out.println("*******************4");
 				break;
 			case 5:
 				bothDown();
-				System.out.println("*******************5");
+				//System.out.println("*******************5");
 				break;
 			default:
 				hasFinished = true;
