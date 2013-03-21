@@ -35,15 +35,14 @@ public class AutonomousRunner extends RobotComponentBase {
 				this.task = null;
 			}
 
-
-			if (task != null) {
-				if (!task.hasInitalized()) {
-					System.out.println("Autonomous init");
-					task.init();
-				} else if (!task.hasFinished()) {
-					System.out.println("Running Autonomous...");
-					task.run();
-				}
+		}
+		if (task != null) {
+			if (!task.hasInitalized()) {
+//				System.out.println("Autonomous init");
+				task.init();
+			} else if (!task.hasFinished()) {
+//				System.out.println("Running Autonomous...");
+				task.run();
 			}
 		}
 	}

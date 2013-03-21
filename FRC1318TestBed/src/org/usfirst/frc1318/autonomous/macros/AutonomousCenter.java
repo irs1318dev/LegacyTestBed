@@ -13,41 +13,41 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 	private static final double TURN_AROUND_TICKS = -250;
 
 	public void run() {
-		System.out.println("*******************************************AutoFireAll currentState: " + currentState);
+		System.out.println("******************************* AutonomousCenter currentState: " + currentState);
 //		System.out.println("***********DriveTrain ticks: " + driveEncTicks); 
 		switch(currentState){
+//			case 0:
+//				driveForward(DRIVE_FORWARD_TICKS);
+//				System.out.println("*******************" + currentState + "__" + DRIVE_FORWARD_TICKS);
+//				break;
 			case 0:
-				driveForward(DRIVE_FORWARD_TICKS);
-				System.out.println("*******************" + currentState + "__" + DRIVE_FORWARD_TICKS);
-				break;
-			case 1:
 				andWait(3500);
 				System.out.println("*******************1");
 				break;
-			case 2:
-				bothUp();
+			case 1:
+				shooterUp();
 				System.out.println("*******************2");
 				break;
-			case 3://spin up shooter
-				spinShooter(SHOOTER_SPEED);
+			case 2://spin up shooter
+				spinShooterDirectly(SHOOTER_SPEED);
 				System.out.println("*******************3");
 				break;
-			case 4:
+			case 3:
 				andWait(500);
 				System.out.println("*******************4");
 				break;
-			case 5://fire
+			case 4://fire
 				fire();
 				System.out.println("*******************5");
 				break;
-			case 6://retract
-				bothDown();
-				System.out.println("*******************6");
-				break;
-			case 7:
-				andWait(500);
-				System.out.println("*******************7");
-				break;
+//			case 6://retract
+//				bothDown();
+//				System.out.println("*******************6");
+//				break;
+//			case 7:
+//				andWait(500);
+//				System.out.println("*******************7");
+//				break;
 //			case 8: 
 ////				backUp();
 //				driveBackward(BACK_UP_TICKS);
@@ -64,9 +64,14 @@ public class AutonomousCenter extends AutonomousMode implements AutoTask{
 //				break;
 			default:
 				hasFinished = true;
+				System.out.println("Auto has finished");
 				break;
 		}
 		
+	}
+	
+	public void init(){
+		System.out.println("Auto Center init");
 	}
 
 	public void fire(){

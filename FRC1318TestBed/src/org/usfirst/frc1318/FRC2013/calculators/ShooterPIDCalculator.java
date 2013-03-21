@@ -49,8 +49,8 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 		double shooterPIDVal = shooterKf * shooterSet + shooterKd*(shooterKscale * shooterSet - shooterEncV);
 		ReferenceData.getInstance().getShooterData().setMotorSpeed(shooterPIDVal);
 		
-		System.out.println("Shooter speed: " + ReferenceData.getInstance().getShooterData().getMotorSpeed());
-		System.out.println("Shooter set point: " + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
+		//System.out.println("Shooter speed: " + ReferenceData.getInstance().getShooterData().getMotorSpeed());
+		//System.out.println("Shooter set point: " + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 
 
 //		if (count%5==0) { 			

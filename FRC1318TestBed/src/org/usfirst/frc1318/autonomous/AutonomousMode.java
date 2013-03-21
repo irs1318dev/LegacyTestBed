@@ -35,6 +35,7 @@ public abstract class AutonomousMode implements AutoTask {
 	
 	public void shooterUp(){
 		ReferenceData.getInstance().getUserInputData().setShooterUp(true);
+		nextState();
 	}
 	
 	

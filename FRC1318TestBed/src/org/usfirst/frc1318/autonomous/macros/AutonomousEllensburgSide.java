@@ -17,15 +17,12 @@ public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask
 				shooterUp();
 				break;
 			case 2:
-				andWait(1000);
-				break;
-			case 3:
 				spinShooterDirectly(SHOOTER_SPEED);
 				break;
-			case 4:
+			case 3:
 				andWait(500);
 				break;
-			case 5: 
+			case 4: 
 				fire();
 				break;
 			default:

@@ -24,9 +24,9 @@ public class ShooterCalculator extends RobotComponentBase {
 	final String ntOverrideKey = "nto";
 
 
-	public void autonomousPeriodic() {
-	  // do nothing here... autonomous sets the motor speed directly.
-	}
+//	public void autonomousPeriodic() {
+//	  // do nothing here... autonomous sets the motor speed directly.
+//	}
 	
 	public void teleopPeriodic()
 	{
@@ -50,6 +50,9 @@ public class ShooterCalculator extends RobotComponentBase {
 		if (currentUpCommand && !lastUpCommand) { // do once every change
 			lastUpCommand = currentUpCommand;
 			ReferenceData.getInstance().getLookUpTable().upSpeed();
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+					ReferenceData.getInstance().getLookUpTable().getValue()
+					);
 		} else if (!currentUpCommand && lastUpCommand){
 			lastUpCommand = currentUpCommand;
 		}
@@ -57,13 +60,13 @@ public class ShooterCalculator extends RobotComponentBase {
 		if (currentDownCommand && !lastDownCommand) { // do once every change
 			lastDownCommand = currentDownCommand;
 			ReferenceData.getInstance().getLookUpTable().downSpeed();
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+					ReferenceData.getInstance().getLookUpTable().getValue()
+					);
 		} else if (!currentDownCommand && lastDownCommand){
 			lastDownCommand = currentDownCommand;
 		}
 		
-		ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-				ReferenceData.getInstance().getLookUpTable().getValue()
-				);
 		
 	}
 		
