@@ -43,7 +43,7 @@ public class KeyHandeler {
 //		this.keyMappings.put("so.sbd", "LFT SU");
 		this.keyMappings.put("so.su", "SHTR UP ");
 		this.keyMappings.put("so.lu", "LIFT UP");
-//		this.keyMappings.put("", "");
+		this.keyMappings.put("s.aest", "SHTR ENC TIC");
 //		this.keyMappings.put("", "");
 //		this.keyMappings.put("", "");
 //		this.keyMappings.put("", "");
@@ -58,6 +58,7 @@ public class KeyHandeler {
 //this keeps the output in the right order
 		this.keyOrder.add("s.sp");
 		this.keyOrder.add("s.aes");
+		this.keyOrder.add("s.aest");
 		this.keyOrder.add("dt.re");
 		this.keyOrder.add("dt.le");
 		this.keyOrder.add("dt.rsp");
