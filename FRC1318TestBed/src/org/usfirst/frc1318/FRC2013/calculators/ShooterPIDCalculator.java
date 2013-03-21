@@ -10,9 +10,6 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	PID shooterPID;
 	long count;
 	
-	final String keyRoot = "spid.";
-	final String setponitKey = "vsp";
-	final String ntOverrideKey = "nto";
 	
 	boolean ntOverride = false;
 	
@@ -23,8 +20,6 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 		shooterPID.setClampRange(-1, 1);
 		shooterPID.setKScale(25000);
 		
-		IRSTable.putNumber(keyRoot + setponitKey, 
-				new Double(ReferenceData.getInstance().getShooterData().getMotorSetPoint()));
 	}
 	
 	double shooterKf = 1.0;
@@ -36,12 +31,7 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	public void teleopPeriodic()
 	{
 		double shooterSet;
-		
-		if(! ntOverride) {
-			shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
-		} else {
-			shooterSet = IRSTable.getNumber(this.keyRoot + ntOverrideKey);
-		}
+		shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
 		double shooterEncV = ReferenceData.getInstance().getShooterData().getEncoderAngularVelocity();		
 //		if (Math.abs(shooterEncV - lastShooterAngVel) > 500) {
 //			System.out.println("*********BAD***********");

@@ -70,7 +70,7 @@ public class UI extends javax.swing.JFrame {
 	public void addInputPanels() {
 		HashMap <String, String> panel1Names = new HashMap<String, String>();
 		
-		panel1Names.put("s.sp", "Shooter Setpoint");
+		panel1Names.put("spid.vsp", "Shooter Setpoint");
 		
 		this.ntpanel.add(new InputPanel(panel1Names, "spid.nto"));
 	}

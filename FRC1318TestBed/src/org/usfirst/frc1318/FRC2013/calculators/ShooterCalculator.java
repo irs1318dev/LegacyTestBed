@@ -4,6 +4,7 @@ import org.usfirst.frc1318.FRC2013.shared.ReferenceData;
 import org.usfirst.frc1318.FRC2013.shared.ShooterData;
 import org.usfirst.frc1318.components.RobotComponentBase;
 
+import org.usfirst.frc1318.generic.networktable.IRSTable;
 import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
 
@@ -11,26 +12,41 @@ public class ShooterCalculator extends RobotComponentBase {
 	
 	public void robotInit()
 	{
-//		ReferenceData.getInstance().getLookUpTable().setCurrentState(0);
-//		ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-//				ReferenceData.getInstance().getLookUpTable().getValue()
-//				);
+		IRSTable.putNumber(keyRoot + setponitKey, 
+				new Double(ReferenceData.getInstance().getShooterData().getMotorSetPoint()));
 	}
 	
 	boolean lastUpCommand = false;
 	boolean lastDownCommand = false;
+
+	final String keyRoot = "spid.";
+	final String setponitKey = "vsp";
+	final String ntOverrideKey = "nto";
+
+	
 	
 	public void teleopPeriodic()
 	{
+		try {
+			if(IRSTable.getBoolean(this.keyRoot + ntOverrideKey)) {
+				double shooterSet = IRSTable.getNumber(this.keyRoot + setponitKey);
+				ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+						shooterSet
+						);
+				System.out.println("ShooterCalc: overriding shooter setpoint to "+ shooterSet);
+				return;
+			}
+		} catch (Exception ex) {
+			System.out.println("Exception reading shooter override, using lookup table.");
+		}
+
+		
+		
 //		System.out.println("***Shooter speed: " + ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		boolean currentUpCommand = ReferenceData.getInstance().getUserInputData().getShooterSpeedUp();
 		if (currentUpCommand && !lastUpCommand) { // do once every change
 			lastUpCommand = currentUpCommand;
 			ReferenceData.getInstance().getLookUpTable().upSpeed();
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-					ReferenceData.getInstance().getLookUpTable().getValue()
-					);
-			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		} else if (!currentUpCommand && lastUpCommand){
 			lastUpCommand = currentUpCommand;
 		}
@@ -38,34 +54,14 @@ public class ShooterCalculator extends RobotComponentBase {
 		if (currentDownCommand && !lastDownCommand) { // do once every change
 			lastDownCommand = currentDownCommand;
 			ReferenceData.getInstance().getLookUpTable().downSpeed();
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-					ReferenceData.getInstance().getLookUpTable().getValue()
-					);
-//			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
 		} else if (!currentDownCommand && lastDownCommand){
 			lastDownCommand = currentDownCommand;
 		}
 		
+		ReferenceData.getInstance().getShooterData().setMotorSetPoint(
+				ReferenceData.getInstance().getLookUpTable().getValue()
+				);
 		
-/*		
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedUp()) {
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-					ReferenceData.getInstance().getShooterData().getMotorSetPoint() - .005
-				);
-//			System.out.println("ShooterCalc: Going up to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}
-		if(ReferenceData.getInstance().getUserInputData().getShooterSpeedDown() &&
-		   ReferenceData.getInstance().getShooterData().getMotorSetPoint() < 0) {
-			ReferenceData.getInstance().getLookUpTable().downSpeed();
-//			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-//			ReferenceData.getInstance().getLookUpTable().getValue()
-//					);
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(
-					ReferenceData.getInstance().getShooterData().getMotorSetPoint() + .005
-				);
-//			System.out.println("ShooterCalc: Going down to "+ ReferenceData.getInstance().getShooterData().getMotorSetPoint());
-		}
-		*/
 	}
 		
 }
