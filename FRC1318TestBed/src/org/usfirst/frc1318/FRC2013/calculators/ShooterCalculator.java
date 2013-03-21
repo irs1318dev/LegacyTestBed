@@ -23,7 +23,10 @@ public class ShooterCalculator extends RobotComponentBase {
 	final String setponitKey = "vsp";
 	final String ntOverrideKey = "nto";
 
-	
+
+	public void autonomousPeriodic() {
+	  // do nothing here... autonomous sets the motor speed directly.
+	}
 	
 	public void teleopPeriodic()
 	{
@@ -37,7 +40,7 @@ public class ShooterCalculator extends RobotComponentBase {
 				return;
 			}
 		} catch (Exception ex) {
-			System.out.println("Exception reading shooter override, using lookup table.");
+//			System.out.println("Exception reading shooter override, using lookup table.");
 		}
 
 		

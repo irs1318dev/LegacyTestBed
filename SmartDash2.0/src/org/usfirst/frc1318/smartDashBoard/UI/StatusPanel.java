@@ -66,7 +66,7 @@ public class StatusPanel extends JTextArea implements ConnectionListener {
 					try {
 						stored = tableManager.getTable().getValue(key);
 					} catch (TableKeyNotDefinedException  ex) {
-						ex.printStackTrace();
+//						ex.printStackTrace();
 					}
 				}
 				if (null != stored) {

@@ -22,7 +22,7 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 				System.out.println("*******************2");
 				break;
 			case 2://spin up shooter
-				spinShooter(SHOOTER_SPEED);
+				spinShooterDirectly(SHOOTER_SPEED);
 				System.out.println("*******************3");
 				break;
 			case 3:

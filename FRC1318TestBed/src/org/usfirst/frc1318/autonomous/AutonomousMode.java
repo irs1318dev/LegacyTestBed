@@ -65,6 +65,11 @@ public abstract class AutonomousMode implements AutoTask {
 		}
 	}
 	
+	public void spinShooterDirectly(double speed) {
+		ReferenceData.getInstance().getShooterData().setMotorSetPoint(speed);
+		nextState();
+	}
+	
 	// Drive forward the given number of ticks
 	public void driveForward(double encTicks) {
 //		ReferenceData.getInstance().getUserInputData().setJoystickX(-0.3);
