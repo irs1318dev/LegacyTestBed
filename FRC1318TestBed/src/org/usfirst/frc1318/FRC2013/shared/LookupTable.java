@@ -3,7 +3,7 @@ package org.usfirst.frc1318.FRC2013.shared;
 import edu.wpi.first.wpilibj.networktables2.util.Set;
 
 public class LookupTable {
-	private final double[] SHOOTERVALUES = {0, -0.25, -0.50, -0.75, -0.80, -0.82, -0.85, -0.87, -0.90, -0.92, -0.95, -0.97, -1.00, -1.25, -1.50, -1.75, -2.00, -2.25, -2.5, -2.75, -3};
+	private final double[] SHOOTERVALUES = {0, -0.25, -0.50, -0.75, -0.80, -0.82, -0.85, -0.87, -0.90, -0.92, -0.94, -0.95, -0.97, -1.00, -1.25, -1.50, -1.75, -2.00, -2.25, -2.5, -2.75, -3};
 	public static int currentState;
 	
 	public double getValue()

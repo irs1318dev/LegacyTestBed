@@ -196,7 +196,7 @@ public class UserInputData {
 	public void setShooterSpeedFull(boolean shooterSpeedFull){
 		this.shooterSpeedFull = shooterSpeedFull;
 		if(shooterSpeedFull){
-			ReferenceData.getInstance().getShooterData().setMotorSetPoint(3);
+			ReferenceData.getInstance().getShooterData().setMotorSetPoint(-3);
 		}
 	}
 	

@@ -14,7 +14,7 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 //		System.out.println("***********DriveTrain ticks: " + driveEncTicks); 
 		switch(currentState){
 			case 0:
-				andWait(3500);
+				andWait(1500);
 				//System.out.println("*******************0");
 				break;
 			case 1:
@@ -26,7 +26,7 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 				//System.out.println("*******************2");
 				break;
 			case 3:
-				andWait(3000);
+				andWait(2000);
 				//System.out.println("*******************3");
 				break;
 			case 4://fire
@@ -46,10 +46,10 @@ public class AutonomousEllensburgMiddle extends AutonomousMode implements AutoTa
 
 	public void fire(){
 		if(discsFired<3){
-			if(System.currentTimeMillis() - startTime > 1250 && System.currentTimeMillis() - startTime < 1500) {
+			if(System.currentTimeMillis() - startTime > 2000 && System.currentTimeMillis() - startTime < 2250) {
 				System.out.println("*******Firing");
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
-			} else if (System.currentTimeMillis() - startTime > 1500) {
+			} else if (System.currentTimeMillis() - startTime > 2250) {
 				System.out.println("*******Waiting for next fire");
 				startTime = System.currentTimeMillis();
 				discsFired++;

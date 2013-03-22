@@ -11,7 +11,7 @@ public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask
 		System.out.println("*******************************************AutotonomousEllensburgSide currentState: " + currentState);
 		switch(currentState){
 			case 0:
-				andWait(3500);
+				andWait(1500);
 				break;
 			case 1:
 				spinShooterDirectly(SHOOTER_SPEED);
@@ -20,7 +20,7 @@ public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask
 				shooterUp();
 				break;
 			case 3:
-				andWait(3000);
+				andWait(2000);
 				break;
 			case 4: 
 				fire();
@@ -33,10 +33,10 @@ public class AutonomousEllensburgSide extends AutonomousMode implements AutoTask
 	
 	public void fire(){
 		if(discsFired<3){
-			if(System.currentTimeMillis() - startTime > 1250 && System.currentTimeMillis() - startTime < 1500) {
+			if(System.currentTimeMillis() - startTime > 2000 && System.currentTimeMillis() - startTime < 2250) {
 				System.out.println("*******Firing");
 				ReferenceData.getInstance().getUserInputData().setShooterFire(true);
-			} else if (System.currentTimeMillis() - startTime > 1500) {
+			} else if (System.currentTimeMillis() - startTime > 2250) {
 				System.out.println("*******Waiting for next fire");
 				startTime = System.currentTimeMillis();
 				discsFired++;
