@@ -115,8 +115,8 @@ public class Joystick1Reader extends RobotComponentBase {
 //		ReferenceData.getInstance().getUserInputData().setAutoFireAll(shooterFire);
 
 		// test with shooter speed full
-		ReferenceData.getInstance().getUserInputData().setAutoFireAll(shooterSpeedFull);
-//		ReferenceData.getInstance().getUserInputData().setShooterSpeedFull(shooterSpeedFull);		
+//		ReferenceData.getInstance().getUserInputData().setAutoFireAll(shooterSpeedFull);
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedFull(shooterSpeedFull);		
 		
 	
 		//Auto Tasks
