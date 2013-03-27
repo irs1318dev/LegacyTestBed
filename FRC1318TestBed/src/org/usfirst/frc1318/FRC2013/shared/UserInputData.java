@@ -39,6 +39,9 @@ public class UserInputData {
 	private boolean autoSpinToAim;
 	private boolean autoSpinToLoad;
 	
+	private boolean servoUp;
+	private boolean servoDown;
+	
 	
 	public void setAnyUI(boolean val){
 		anyUI = val;
@@ -275,4 +278,21 @@ public class UserInputData {
 	{
 		this.throttle = throttle;
 	}
+	
+	public void setServoUp(boolean value) {
+		this.servoUp = value;
+	}
+	
+	public void setServoDown(boolean value) {
+		this.shooterDown = value;
+	}
+	
+	public boolean getServoUp() {
+		return this.servoUp;
+	}
+	
+	public boolean getServoDown() {
+		return this.servoDown;
+	}
+	
 }
