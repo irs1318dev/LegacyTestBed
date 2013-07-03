@@ -22,6 +22,9 @@ public interface PortRef {
 	
 	int LIFTER_EXTENDER_SOLENOID_PORT = 6;
 	int LIFTER_RETRACTOR_SOLENOID_PORT = 1;
+
+	int ANALOG_MODULE = SensorBase.getDefaultAnalogModule();
+	int TACH_PORT = 2;
 	
 	int SIDECAR_PORT = SensorBase.getDefaultDigitalModule();
 	int SOLENOID_MODULE_PORT = SensorBase.getDefaultSolenoidModule();//3
