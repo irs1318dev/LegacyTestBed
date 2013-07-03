@@ -34,7 +34,7 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 		shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
 		double tachVoltage = ReferenceData.getInstance().getShooterData().getTachometerVoltage();		
 		
-		double shooterKscale = 25000;
+		double shooterKscale = 3; // convert set point to voltage range (0..3)
 		double shooterKf = 0.25;
 		double shooterKd = 0.0005;
 	
