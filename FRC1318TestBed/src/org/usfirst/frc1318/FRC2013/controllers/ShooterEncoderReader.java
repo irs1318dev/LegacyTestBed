@@ -16,14 +16,16 @@ public class ShooterEncoderReader extends RobotComponentBase{
 	public void robotInit(){
 		tachometer = new AnalogChannel(PortRef.ANALOG_MODULE, PortRef.TACH_PORT);
 //		encoderShooter = new EncoderAngularVelocity(PortRef.SHOOTER_ENCODER_A, PortRef.SHOOTER_ENCODER_B);
-		encoderShooter.setName("ShooterMotor");
+//		encoderShooter.setName("ShooterMotor");
 	}
 	
 	public void teleopPeriodic(){
 
-		double shooterEncv = encoderShooter.getRate();
+//		double shooterEncv = encoderShooter.getRate();
 		//System.out.println("Encoder value: " + shooterEncv);
-		ReferenceData.getInstance().getShooterData().setTachometerVoltage(tachometer.getVoltage());
+		double tachVoltage = tachometer.getVoltage();
+		System.out.println("tachVoltage reading: " + tachVoltage);
+		ReferenceData.getInstance().getShooterData().setTachometerVoltage(tachVoltage);
 //		ReferenceData.getInstance().getShooterData().setEncoderAngularVelocity(shooterEncv);
 //		ReferenceData.getInstance().getShooterData().setEncoderTicks(encoderShooter.getValue());
 //		if (count%100000==0) {
@@ -33,9 +35,9 @@ public class ShooterEncoderReader extends RobotComponentBase{
 
 	}
 	
-	public void setEncoders(EncoderAngularVelocity eShooter){
-		encoderShooter = eShooter;
-	}
+//	public void setEncoders(EncoderAngularVelocity eShooter){
+//		encoderShooter = eShooter;
+//	}
 
 }
  
