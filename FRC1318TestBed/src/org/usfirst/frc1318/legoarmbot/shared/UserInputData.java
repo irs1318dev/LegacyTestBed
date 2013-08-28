@@ -6,6 +6,7 @@ public class UserInputData {
 	double deltaY;
 	double closedFormX;
 	double closedFormY;
+	boolean rightJoyStickActive; //when false, left joystick is active
 	
 	public double getDeltaX() {
 		return deltaX;
@@ -30,6 +31,12 @@ public class UserInputData {
 	}
 	public void setClosedFormY(double closedFormY) {
 		this.closedFormY = closedFormY;
+	}
+	public boolean isRightJoyStickActive() {
+		return rightJoyStickActive;
+	}
+	public void setRightJoyStickActive(boolean joyStickMode) {
+		this.rightJoyStickActive = joyStickMode;
 	}
 
 }

@@ -21,20 +21,31 @@ public class GamePadReader extends RobotComponentBase{
 	private double deltaY;
 	private double closedFormX;
 	private double closedFormY;
-	private boolean joyStickMode;
+	private boolean rightJoyStickActive;
+	private boolean rightJoyStickActiveLastPressed;
 
 	public void teleopPeriodic()
 	{
-		
-		deltaX = (gamePad.getXRight());
-		deltaY = (gamePad.getYRight());
-		closedFormX = (gamePad.getXLeft());
-		closedFormY = (gamePad.getYLeft());
+
+		if(gamePad.getRawButton(GamePadRef.CHANGE_JOYSTICK_MODE)) { //if the button is pressed
+			if(!rightJoyStickActiveLastPressed) { //if the button was not pressed last time this was run
+				rightJoyStickActive = !rightJoyStickActive; //toggle the state
+			}
+			rightJoyStickActiveLastPressed = gamePad.getRawButton(GamePadRef.CHANGE_JOYSTICK_MODE);
+		}
+		if(rightJoyStickActive) {
+			deltaX = (gamePad.getXRight());
+			deltaY = (gamePad.getYRight());
+		} else {
+			closedFormX = (gamePad.getXLeft());
+			closedFormY = (gamePad.getYLeft());
+		}
 		
 		ReferenceData.getInstance().getUserInputData().setDeltaX(deltaX);
 		ReferenceData.getInstance().getUserInputData().setDeltaY(deltaY);
 		ReferenceData.getInstance().getUserInputData().setClosedFormX(closedFormX);
 		ReferenceData.getInstance().getUserInputData().setClosedFormY(closedFormY);
+		ReferenceData.getInstance().getUserInputData().setRightJoyStickActive(rightJoyStickActive);
 		
 	}
 	
@@ -43,3 +54,8 @@ public class GamePadReader extends RobotComponentBase{
 //		joystick = new Joystick(PortRef.JOYSTICK_L);
 	}
 }
+
+
+
+
+

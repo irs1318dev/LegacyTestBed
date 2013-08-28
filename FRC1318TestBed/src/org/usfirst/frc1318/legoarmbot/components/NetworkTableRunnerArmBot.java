@@ -46,7 +46,10 @@ public class NetworkTableRunnerArmBot extends RobotComponentBase
  	
  	private void userInputData()
  	{
- 		IRSTable.putNumber(NTRef.Input_JoystickX, ReferenceData.getInstance().getUserInputData().getDeltaX());
- 		IRSTable.putNumber(NTRef.Input_JoystickY, ReferenceData.getInstance().getUserInputData().getDeltaY());
+ 		IRSTable.putNumber(NTRef.Input_RightJoystickX, ReferenceData.getInstance().getUserInputData().getDeltaX());
+ 		IRSTable.putNumber(NTRef.Input_RightJoystickY, ReferenceData.getInstance().getUserInputData().getDeltaY());
+ 		IRSTable.putNumber(NTRef.Input_LeftJoystickX, ReferenceData.getInstance().getUserInputData().getClosedFormX());
+ 		IRSTable.putNumber(NTRef.Input_LeftJoystickY, ReferenceData.getInstance().getUserInputData().getClosedFormY());
+ 		IRSTable.putBoolean(NTRef.Input_JoystickMode, ReferenceData.getInstance().getUserInputData().isRightJoyStickActive());
  	}
 }

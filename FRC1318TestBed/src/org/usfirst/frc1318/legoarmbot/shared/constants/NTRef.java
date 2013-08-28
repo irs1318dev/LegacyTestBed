@@ -10,10 +10,10 @@ public interface NTRef
 	String Arm_Theta1PIDSpeed = "dt.1ps";
 	String Arm_Theta2PIDSpeed = "dt.2ps";
 	//UserInput====================================================================
-	String Input_LeftJoystick = "i.ljs";
-	String Input_RightJoystick = "i.rjs";
-	String Input_JoystickX = "i.jx";
-	String Input_JoystickY = "i.jy";
+	String Input_LeftJoystickX = "i.ljs";
+	String Input_RightJoystickX = "i.rjs";
+	String Input_LeftJoystickY = "i.jx";
+	String Input_RightJoystickY = "i.jy";
 	String Input_LiftDown = "i.ld";
 	String Input_LiftUp = "i.lu";
 	String Input_ShooterDown = "i.sd";
@@ -24,4 +24,5 @@ public interface NTRef
 	//RobotGeneral=================================================================
 	String Robot_State = "r.s";
 	//=============================================================================
+	String Input_JoystickMode = null;
 }
