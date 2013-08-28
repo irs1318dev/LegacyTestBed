@@ -44,4 +44,6 @@ public interface PortRef {
 	int AIR_PRESSURE_SWITCH_CHANNEL = 10;
 	int AIR_RELAY_CHANNEL = 1;
 
+	int SERVO = 0; //TODO
+
 }

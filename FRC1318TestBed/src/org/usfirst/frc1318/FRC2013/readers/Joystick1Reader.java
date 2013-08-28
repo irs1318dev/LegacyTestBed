@@ -106,12 +106,17 @@ public class Joystick1Reader extends RobotComponentBase {
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedUp(shooterSpeedUp);
 		ReferenceData.getInstance().getUserInputData().setShooterSpeedDown(shooterSpeedDown);
 		ReferenceData.getInstance().getUserInputData().setShooterSpeed0(shooterSpeed0);
-		ReferenceData.getInstance().getUserInputData().setShooterSpeedFull(shooterSpeedFull);		
-		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
 		ReferenceData.getInstance().getUserInputData().setBothUp(shooterLifterUp);
 		ReferenceData.getInstance().getUserInputData().setBothDown(shooterLifterDown);
 		ReferenceData.getInstance().getUserInputData().setThrottle(joystickThrottle);
 
+		// trigger button can shoot when ready.
+		ReferenceData.getInstance().getUserInputData().setShooterFire(shooterFire);
+//		ReferenceData.getInstance().getUserInputData().setAutoFireAll(shooterFire);
+
+		// test with shooter speed full
+//		ReferenceData.getInstance().getUserInputData().setAutoFireAll(shooterSpeedFull);
+		ReferenceData.getInstance().getUserInputData().setShooterSpeedFull(shooterSpeedFull);		
 		
 	
 		//Auto Tasks
