@@ -30,6 +30,7 @@ public class UI extends javax.swing.JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		ReferenceData rd = ReferenceData.getInstance();
 		UI.init();
 		UI ui = new UI();
 	}
