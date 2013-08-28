@@ -2,6 +2,7 @@ package org.usfirst.frc1318;
 
 import org.usfirst.frc1318.autonomous.AutoRunner;
 import org.usfirst.frc1318.autonomous.AutonomousRunner;
+import org.usfirst.frc1318.legoarmbot.components.*;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
@@ -23,6 +24,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 //		return shooterPIDBot();
 		return gameBot1();
 //		return helloBot();
+//		return legoArmBot();
 	}
 	
 	protected static BotVector PIDTest()
@@ -75,6 +77,17 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterMotorRunner());
 		botVector.add(new SolenoidRunner());
 		botVector.add(new NetworkTableRunner());
+		return botVector;
+	}
+	
+	protected static BotVector legoArmBot() {
+		BotVector botVector = new BotVector();
+		botVector.add(new GamePadReader());
+		botVector.add(new ArmEncoderReader());
+		botVector.add(new ArmCalculator());
+		botVector.add(new ArmPIDRunner());
+		botVector.add(new ArmMotorRunner());
+		botVector.add(new NetworkTableRunnerArmBot());
 		return botVector;
 	}
 
