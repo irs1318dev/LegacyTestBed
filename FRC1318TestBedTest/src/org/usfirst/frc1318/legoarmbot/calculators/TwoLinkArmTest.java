@@ -25,7 +25,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void forwardKinematicsTest() {
+	public void jacobianForwardKinematicsTest() {
 		Configuration input = new Configuration(0, Math.PI/2, 3, 3);
 		DeltaConfiguration movement = new DeltaConfiguration(Math.PI/180, -Math.PI/180, 0, 0);
 		Point expected = new Point(3, 3 + Math.PI/60);
@@ -33,7 +33,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void inverseKinematicsTest() {
+	public void jacobianInverseKinematicsTest() {
 		Configuration input = new Configuration(0, Math.PI/2, 3, 3);
 		DeltaPoint movement = new DeltaPoint(-.005, -.005);
 		Configuration expected = new Configuration(-.005/3, Math.PI/2 + .01/3, 3, 3);
@@ -68,5 +68,37 @@ public class TwoLinkArmTest {
 			step += stepIncrement;
 		}
 		System.out.println("Maximum step at (1, 1) is " + step + ".");
+	}
+	
+	@Test
+	public void closedFormTestQuadrant1(){
+		Point start = new Point(1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
+	}
+	
+	@Test
+	public void closedFormTestQuadrant4(){
+		Point start = new Point(1, -1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
+	}
+	
+	@Test
+	public void closedFormTestQuadrant3(){
+		Point start = new Point(-1, -1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
+	}
+	
+	@Test
+	public void closedFormTestQuadrant2(){
+		Point start = new Point(-1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
 	}
 }

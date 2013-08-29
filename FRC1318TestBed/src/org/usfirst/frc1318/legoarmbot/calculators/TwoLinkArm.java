@@ -61,17 +61,12 @@ public class TwoLinkArm {
 				/ (2 * current.getLength1() * current.getLength2());
 			//closed form for negative cosine theta2
 		double s2 = Math.sqrt(1 - (c2 * c2));
-			if(desired.getY() < 0) {
-				s2 *= -1; // to put it in the right quadrant
-			}
 		double theta2 = MathUtils.atan2(s2,c2);
-		double theta1FirstTerm = MathUtils.atan2(desired.getX(),desired.getY());
-		double theta1SecondTerm = - MathUtils.atan2((current.getLength2() * s2) , (current.getLength1() + current.getLength2() * c2));
-		if(Math.abs(theta1SecondTerm) > Math.abs(theta1FirstTerm)) {
-			theta1SecondTerm *= -1;
-			theta2 *= -1;
-		}
-		double theta1 = theta1FirstTerm + theta1SecondTerm;
+		double theta1FirstTerm = MathUtils.atan2(desired.getY(),desired.getX());
+		double k1 = (current.getLength1() + current.getLength2() * c2);
+		double k2 = (current.getLength2() * s2);
+		double theta1SecondTerm = MathUtils.atan2( k2, k1);
+		double theta1 = theta1FirstTerm - theta1SecondTerm;
 		return new Configuration(theta1, theta2, current.getLength1(), current.getLength2());
 	}
 
