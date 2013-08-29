@@ -101,4 +101,24 @@ public class TwoLinkArmTest {
 		Configuration testValue = test.closedFormInverseKinematics(current, start);
 		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
 	}
+	
+	@Test
+	public void closedFormTestUpQuadrant1(){
+		Point start = new Point(1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start, TwoLinkArm.UP);
+		assertTrue(testValue.getTheta2() > 0);
+		assertTrue(testValue.getTheta1() > 0);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
+	}
+	
+	@Test
+	public void closedFormTestDownQuadrant1(){
+		Point start = new Point(1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.closedFormInverseKinematics(current, start, TwoLinkArm.DOWN);
+		assertTrue(testValue.getTheta2() < 0);
+		assertTrue(testValue.getTheta1() > 0);
+		assertTrue(start.equals(test.closedFormForwardKinematics(testValue)));
+	}
 }
