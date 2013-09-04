@@ -3,7 +3,7 @@ package org.usfirst.frc1318.simpleRIAB;
 import org.usfirst.frc1318.components.RobotComponentBase;
 import org.usfirst.frc1318.generic.reference.GamePad;
 
-public class GamePadReader extends RobotComponentBase{
+public class GamePadReaderRIAB extends RobotComponentBase{
 	
 	GamePad gamePad;
 	
