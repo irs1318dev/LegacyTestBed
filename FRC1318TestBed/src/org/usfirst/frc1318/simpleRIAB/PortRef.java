@@ -6,6 +6,6 @@ public interface PortRef {
 	
 	int SIDECAR_SLOT = SensorBase.getDefaultDigitalModule();
 	
-	int TALON = 4;
+	int TALON = 1;
 	int GAME_PAD = 1;
 }
