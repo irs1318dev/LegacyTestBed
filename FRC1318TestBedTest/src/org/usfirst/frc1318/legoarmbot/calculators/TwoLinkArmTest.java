@@ -72,7 +72,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestQuadrant1(){
+	public void positionTestQuadrant1(){
 		Point start = new Point(1, 1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start);
@@ -80,7 +80,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestQuadrant2(){
+	public void positionTestQuadrant2(){
 		Point start = new Point(-1, 1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start);
@@ -88,7 +88,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestQuadrant3(){
+	public void positionTestQuadrant3(){
 		Point start = new Point(-1, -1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start);
@@ -96,7 +96,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestQuadrant4(){
+	public void positionTestQuadrant4(){
 		Point start = new Point(1, -1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start);
@@ -114,7 +114,7 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestUpQuadrant1(){
+	public void positionTestUpQuadrant1(){
 		Point start = new Point(1, 1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start, TwoLinkArm.UP);
@@ -124,12 +124,44 @@ public class TwoLinkArmTest {
 	}
 	
 	@Test
-	public void closedFormTestDownQuadrant1(){
+	public void positionTestDownQuadrant1(){
 		Point start = new Point(1, 1);
 		Configuration current = new Configuration(0, 0, .9, .9);
 		Configuration testValue = test.positionIK(current, start, TwoLinkArm.DOWN);
 		assertTrue(testValue.getTheta2() < 0);
 		assertTrue(testValue.getTheta1() > 0);
+		assertTrue(start.equals(test.positionFK(testValue)));
+	}
+	
+	@Test
+	public void positionTestUp(){
+		Point start = new Point(0, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start);
+		assertTrue(start.equals(test.positionFK(testValue)));
+	}
+	
+	@Test
+	public void positionTestDown(){
+		Point start = new Point(0, -1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start);
+		assertTrue(start.equals(test.positionFK(testValue)));
+	}
+	
+	@Test
+	public void positionTestRight(){
+		Point start = new Point(1, 0);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start);
+		assertTrue(start.equals(test.positionFK(testValue)));
+	}
+	
+	@Test
+	public void positionTestLeft(){
+		Point start = new Point(-1, 0);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start);
 		assertTrue(start.equals(test.positionFK(testValue)));
 	}
 }
