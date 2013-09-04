@@ -9,6 +9,9 @@ import org.usfirst.frc1318.legoarmbot.shared.constants.RobotValues;
 import com.sun.squawk.util.MathUtils;
 
 public class TwoLinkArm {
+	public static final boolean UP = Boolean.TRUE;
+	public static final boolean DOWN = Boolean.FALSE;
+	
 
 	public Point configToPoint(Configuration config) {
 		double x = config.getLength1() * Math.cos(config.getTheta1()) + config.getLength2() * Math.cos(config.getTheta2());
@@ -57,11 +60,15 @@ public class TwoLinkArm {
 	}
 	
 	public Configuration positionIK(Configuration current, Point desired) {
+		return positionIK(current, desired, this.UP);
+	}
+
+	public Configuration positionIK(Configuration current, Point desired, boolean direction) {
 		double c2 = ((desired.getX() * desired.getX()) + (desired.getY() * desired.getY()) 
 				- (current.getLength1() * current.getLength1()) - (current.getLength2() * current.getLength2())) 
 				/ (2 * current.getLength1() * current.getLength2());
 			//closed form for negative cosine theta2
-		double s2 = Math.sqrt(1 - (c2 * c2));
+		double s2 =(direction==UP?1.0:-1.0)* Math.sqrt(1 - (c2 * c2));
 		double theta2 = MathUtils.atan2(s2,c2);
 		double theta1FirstTerm = MathUtils.atan2(desired.getY(),desired.getX());
 		double k1 = (current.getLength1() + current.getLength2() * c2);

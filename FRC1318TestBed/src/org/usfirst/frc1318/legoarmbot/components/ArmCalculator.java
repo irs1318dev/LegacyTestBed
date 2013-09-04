@@ -6,13 +6,19 @@ import org.usfirst.frc1318.legoarmbot.shared.*;
 
 public class ArmCalculator extends RobotComponentBase{
 
-	TwoLinkArm jCalculator;
+	private TwoLinkArm jCalculator;
+
 	
 	public void robotInIt() {
 		jCalculator = new TwoLinkArm();
 	}
 	
 	public void teleopPeriodic() {
+		
+		//right joystick is rate control, left joystick is position control 
+		//TODO: change to one joystick with a button
+		//TODO: get rid of news in teleopPeriodic 
+		
 		if(ReferenceData.getInstance().getUserInputData().isRightJoyStickActive()) {
 			DeltaPoint movement = new DeltaPoint(ReferenceData.getInstance().getUserInputData().getDeltaX(), ReferenceData.getInstance().getUserInputData().getDeltaY());
 			Configuration nextConfiguration = jCalculator.rateIK(ReferenceData.getInstance().getArmData().getCurrentConfiguration(), movement);

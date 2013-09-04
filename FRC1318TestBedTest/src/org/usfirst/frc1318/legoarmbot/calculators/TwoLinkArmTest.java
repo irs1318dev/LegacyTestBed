@@ -23,7 +23,6 @@ public class TwoLinkArmTest {
 		Configuration input = new Configuration(0, Math.PI/2, 3, 4);
 		Point expected = new Point(3, 4);
 		assertTrue(expected.equals(test.configToPoint(input)));
-		assertTrue(false);
 	}
 	
 	@Test
@@ -112,5 +111,25 @@ public class TwoLinkArmTest {
 		Configuration up = new Configuration(Math.PI/2, -Math.PI/2, 1, 1);
 		Configuration down = new Configuration(0, Math.PI/2, 1, 1);
 		assertTrue(up.equals(solutions[RobotValues.UP]) && down.equals(solutions[RobotValues.DOWN]));
+	}
+	
+	@Test
+	public void closedFormTestUpQuadrant1(){
+		Point start = new Point(1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start, TwoLinkArm.UP);
+		assertTrue(testValue.getTheta2() > 0);
+		assertTrue(testValue.getTheta1() > 0);
+		assertTrue(start.equals(test.positionFK(testValue)));
+	}
+	
+	@Test
+	public void closedFormTestDownQuadrant1(){
+		Point start = new Point(1, 1);
+		Configuration current = new Configuration(0, 0, .9, .9);
+		Configuration testValue = test.positionIK(current, start, TwoLinkArm.DOWN);
+		assertTrue(testValue.getTheta2() < 0);
+		assertTrue(testValue.getTheta1() > 0);
+		assertTrue(start.equals(test.positionFK(testValue)));
 	}
 }
