@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.usfirst.frc1318.legoarmbot.shared.*;
+import org.usfirst.frc1318.legoarmbot.shared.constants.RobotValues;
 import org.usfirst.frc1318.legoarmbot.calculators.TwoLinkArm;
 
 public class TwoLinkArmTest {
@@ -108,6 +109,8 @@ public class TwoLinkArmTest {
 		Point start = new Point(1, 1);
 		Configuration current = new Configuration(0, 0, 1, 1);
 		Configuration[] solutions = test.multipleSolutionPositionIK(current, start);
-		assertTrue(start.equals(test.positionFK(testValue)));
+		Configuration up = new Configuration(Math.PI/2, -Math.PI/2, 1, 1);
+		Configuration down = new Configuration(0, Math.PI/2, 1, 1);
+		assertTrue(up.equals(solutions[RobotValues.UP]) && down.equals(solutions[RobotValues.DOWN]));
 	}
 }

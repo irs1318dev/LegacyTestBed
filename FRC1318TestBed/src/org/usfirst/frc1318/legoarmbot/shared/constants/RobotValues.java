@@ -10,6 +10,9 @@ public class RobotValues {
 
 	public static final double THETA1_KP = 0;
 	public static final double THETA2_KP = 0;
+	
+	public static final int UP = 0;
+	public static final int DOWN = 1;
 
 	
 	

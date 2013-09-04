@@ -4,6 +4,7 @@ import org.usfirst.frc1318.legoarmbot.shared.Configuration;
 import org.usfirst.frc1318.legoarmbot.shared.DeltaConfiguration;
 import org.usfirst.frc1318.legoarmbot.shared.DeltaPoint;
 import org.usfirst.frc1318.legoarmbot.shared.Point;
+import org.usfirst.frc1318.legoarmbot.shared.constants.RobotValues;
 
 import com.sun.squawk.util.MathUtils;
 
@@ -68,6 +69,42 @@ public class TwoLinkArm {
 		double theta1SecondTerm = MathUtils.atan2( k2, k1);
 		double theta1 = theta1FirstTerm - theta1SecondTerm;
 		return new Configuration(theta1, theta2, current.getLength1(), current.getLength2());
+	}
+
+	public Configuration[] multipleSolutionPositionIK(Configuration current,
+			Point desired) {
+		//solution UP
+		double c2 = ((desired.getX() * desired.getX()) + (desired.getY() * desired.getY()) 
+				- (current.getLength1() * current.getLength1()) - (current.getLength2() * current.getLength2())) 
+				/ (2 * current.getLength1() * current.getLength2());
+			//closed form for negative cosine theta2
+		double s2 = Math.sqrt(1 - (c2 * c2));
+		double theta2 = MathUtils.atan2(s2,c2);
+		double theta1FirstTerm = MathUtils.atan2(desired.getY(),desired.getX());
+		double k1 = (current.getLength1() + current.getLength2() * c2);
+		double k2 = (current.getLength2() * s2);
+		double theta1SecondTerm = MathUtils.atan2( k2, k1);
+		double theta1 = theta1FirstTerm - theta1SecondTerm;
+		Configuration up = new Configuration(theta1, theta2, current.getLength1(), current.getLength2());
+		
+		//solution DOWN
+
+		c2 = ((desired.getX() * desired.getX()) + (desired.getY() * desired.getY()) 
+				- (current.getLength1() * current.getLength1()) - (current.getLength2() * current.getLength2())) 
+				/ (2 * current.getLength1() * current.getLength2());
+			//closed form for negative cosine theta2
+		s2 = - Math.sqrt(1 - (c2 * c2));
+		theta2 = MathUtils.atan2(s2,c2);
+		theta1FirstTerm = MathUtils.atan2(desired.getY(),desired.getX());
+		k1 = (current.getLength1() + current.getLength2() * c2);
+		k2 = (current.getLength2() * s2);
+		theta1SecondTerm = MathUtils.atan2( k2, k1);
+		theta1 = theta1FirstTerm - theta1SecondTerm;
+		Configuration down = new Configuration(theta1, theta2, current.getLength1(), current.getLength2());
+		Configuration[] toReturn = new Configuration[2];
+		toReturn[RobotValues.UP] = up;
+		toReturn[RobotValues.DOWN] = down;
+		return toReturn;
 	}
 
 	
