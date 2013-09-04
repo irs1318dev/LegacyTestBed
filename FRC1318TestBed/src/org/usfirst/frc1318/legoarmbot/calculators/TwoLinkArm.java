@@ -16,7 +16,7 @@ public class TwoLinkArm {
 		return product;
 	}
 
-	public Point numericalForwardKinematics(Configuration current, DeltaConfiguration change) {
+	public Point rateFK(Configuration current, DeltaConfiguration change) {
 		double jacobianA = -current.getLength1() * Math.sin(current.getTheta1()) - current.getLength2() * Math.sin(current.getTheta1() + current.getTheta2());
 		double jacobianB = -current.getLength2() * Math.sin(current.getTheta1() + current.getTheta2());
 		double jacobianC = current.getLength1() * Math.cos(current.getTheta1()) + current.getLength2() * Math.cos(current.getTheta1() + current.getTheta2());
@@ -27,7 +27,7 @@ public class TwoLinkArm {
 		return new Point(xNew, yNew);
 	}
 	
-	public Point closedFormForwardKinematics(Configuration desired) {
+	public Point positionFK(Configuration desired) {
 		double link1X = desired.getLength1() * Math.cos(desired.getTheta1());
 		double link1Y = desired.getLength1() * Math.sin(desired.getTheta1());
 		double link2X = desired.getLength2() * Math.cos(desired.getTheta1() + desired.getTheta2());
@@ -35,7 +35,7 @@ public class TwoLinkArm {
 		return new Point(link1X + link2X, link1Y + link2Y);
 	}
 
-	public Configuration numericalInverseKinematics(Configuration current, DeltaPoint change) {
+	public Configuration rateIK(Configuration current, DeltaPoint change) {
 		double jacobianA = -current.getLength1() * Math.sin(current.getTheta1()) - current.getLength2() * Math.sin(current.getTheta1() + current.getTheta2());
 		double jacobianB = -current.getLength2() * Math.sin(current.getTheta1() + current.getTheta2());
 		double jacobianC = current.getLength1() * Math.cos(current.getTheta1()) + current.getLength2() * Math.cos(current.getTheta1() + current.getTheta2());
@@ -55,7 +55,7 @@ public class TwoLinkArm {
 		//TODO: Check for boundaries and singularities
 	}
 	
-	public Configuration closedFormInverseKinematics(Configuration current, Point desired) {
+	public Configuration positionIK(Configuration current, Point desired) {
 		double c2 = ((desired.getX() * desired.getX()) + (desired.getY() * desired.getY()) 
 				- (current.getLength1() * current.getLength1()) - (current.getLength2() * current.getLength2())) 
 				/ (2 * current.getLength1() * current.getLength2());
