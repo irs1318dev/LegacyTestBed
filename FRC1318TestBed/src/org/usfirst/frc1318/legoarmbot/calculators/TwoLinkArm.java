@@ -9,8 +9,8 @@ import org.usfirst.frc1318.legoarmbot.shared.constants.RobotValues;
 import com.sun.squawk.util.MathUtils;
 
 public class TwoLinkArm {
-	public static final boolean UP = Boolean.TRUE;
-	public static final boolean DOWN = Boolean.FALSE;
+	public static final boolean UP = false;
+	public static final boolean DOWN = false;
 	
 
 	public Point configToPoint(Configuration config) {

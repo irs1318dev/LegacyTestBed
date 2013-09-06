@@ -11,8 +11,14 @@ public class GamePadReaderRIAB extends RobotComponentBase{
 		gamePad = GamePad.create(PortRef.GAME_PAD);
 	}
 	
+	int debugCount=0;
+	
 	public void teleopPeriodic(){
-		GamePadData.getInstance().setYValue(gamePad.getYLeft());
+		double yleft=gamePad.getYLeft();
+		if (debugCount%100==0) {
+	    	System.out.println("GamePadReaderRIAB.teleopPeriodic() yleft="+yleft);
+		}
+		GamePadData.getInstance().setYValue(yleft);
 	}
 
 }
