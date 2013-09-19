@@ -2,14 +2,11 @@ package org.usfirst.frc1318;
 
 import org.usfirst.frc1318.autonomous.AutoRunner;
 import org.usfirst.frc1318.autonomous.AutonomousRunner;
-import org.usfirst.frc1318.legoarmbot.components.*;
 import org.usfirst.frc1318.minimike.calculators.MMCalculator;
 import org.usfirst.frc1318.minimike.components.MMGamePadReader;
 import org.usfirst.frc1318.minimike.components.MMLimitSwitchReader;
 import org.usfirst.frc1318.minimike.components.MMNetworkTableRunner;
 import org.usfirst.frc1318.minimike.components.MMTurretRunner;
-import org.usfirst.frc1318.simpleRIAB.GamePadReaderRIAB;
-import org.usfirst.frc1318.simpleRIAB.TalonRunner;
 import org.usfirst.frc1318.testbed.calculators.TBKickerCalculator;
 import org.usfirst.frc1318.testbed.components.TBGamePadReader;
 import org.usfirst.frc1318.testbed.components.TBHelloWorldRunner;
@@ -24,10 +21,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 
 	public BotVector currentRobotComponents() {
 //		return shooterPIDBot();
-//		return gameBot1();
+		return gameBot1();
 //		return helloBot();
-//		return legoArmBot();
-		return simpleRIABVector();
 	}
 	
 	protected static BotVector PIDTest()
@@ -80,17 +75,6 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ShooterMotorRunner());
 		botVector.add(new SolenoidRunner());
 		botVector.add(new NetworkTableRunner());
-		return botVector;
-	}
-	
-	protected static BotVector legoArmBot() {
-		BotVector botVector = new BotVector();
-		botVector.add(new GamePadReader());
-		botVector.add(new ArmEncoderReader());
-		botVector.add(new ArmCalculator());
-		botVector.add(new ArmPIDRunner());
-		botVector.add(new ArmMotorRunner());
-		botVector.add(new NetworkTableRunnerArmBot());
 		return botVector;
 	}
 
@@ -259,12 +243,5 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
         botVector.add(new MMTurretRunner());
 		botVector.add(new MMNetworkTableRunner());
 		return botVector;
-	}
-	protected static BotVector simpleRIABVector()
-	{
-		BotVector b = new BotVector();
-		b.add(new GamePadReaderRIAB());
-		b.add(new TalonRunner());
-		return b;
 	}
 }

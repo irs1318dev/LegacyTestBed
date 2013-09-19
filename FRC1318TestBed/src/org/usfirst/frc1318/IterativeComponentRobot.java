@@ -19,7 +19,6 @@ public abstract class IterativeComponentRobot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	System.out.println("IRS1318 IterativeRobot.robotInit()");
     	components = currentRobotComponents();
     	for(iterator = 0; iterator < components.size(); iterator++) {
     		components.get(iterator).robotInit();
@@ -30,7 +29,6 @@ public abstract class IterativeComponentRobot extends IterativeRobot {
 
 	
 	public void disabledInit() {
-    	System.out.println("IRS1318 IterativeRobot.disabledInit()");
     	for(iterator = 0; iterator < components.size(); iterator++) {
     		components.get(iterator).disabledInit();
     	}
@@ -38,7 +36,6 @@ public abstract class IterativeComponentRobot extends IterativeRobot {
 
 	
 	public void autonomousInit() {
-    	System.out.println("IRS1318 IterativeRobot.autonomousInit()");
     	for(iterator = 0; iterator < components.size(); iterator++) {
     		components.get(iterator).autonomousInit();
     	}
@@ -46,7 +43,6 @@ public abstract class IterativeComponentRobot extends IterativeRobot {
 
 	
 	public void teleopInit() {
-    	System.out.println("IRS1318 IterativeRobot.teleopInit()");
     	for(iterator = 0; iterator < components.size(); iterator++) {
     		components.get(iterator).teleopInit();
     	}
