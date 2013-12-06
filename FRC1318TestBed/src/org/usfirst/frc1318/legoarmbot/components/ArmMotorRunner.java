@@ -24,6 +24,8 @@ public class ArmMotorRunner extends RobotComponentBase {
 	public Talon getLeftTalon() {
 		return theta2Talon;
 	}
+
+	int count=0;
 	
 	public void teleopPeriodic(){
 		double rightVal = ReferenceData.getInstance().getArmData().getTheta1PIDSpeed();
@@ -36,9 +38,11 @@ public class ArmMotorRunner extends RobotComponentBase {
 		leftVal = Math.max(leftVal, -1);
 		getLeftTalon().set(leftVal);
 
-//		System.out.println("LM="+leftVal
-//				+", RM="+rightVal+"\n"
-//				);
+		count++;
+		if (count%500==0) {
+			System.out.println("leftTalon="+getLeftTalon().get()+", rightTalon="+getRightTalon().get());
+			count=0;
+		}
 
 	}
 }	

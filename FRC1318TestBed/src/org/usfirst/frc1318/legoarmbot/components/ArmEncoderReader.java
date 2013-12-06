@@ -16,10 +16,10 @@ public class ArmEncoderReader extends RobotComponentBase{
 	
 	public void robotInit(){
 		encoder1 = new Encoder(PortRef.ENCODER_1_A, PortRef.ENCODER_1_B);
-		encoder2 = new EncoderAngularVelocity(PortRef.ENCODER_2_A, PortRef.ENCODER_2_B);
+		encoder2 = new Encoder(PortRef.ENCODER_2_A, PortRef.ENCODER_2_B);
 	}
 	
-	double count;
+	int count;
 	
 	public void teleopPeriodic(){
 		
@@ -29,16 +29,27 @@ public class ArmEncoderReader extends RobotComponentBase{
 		double encoder1Distance = encoder1.getDistance();
 		double encoder2Distance = encoder2.getDistance();
 		
-		ReferenceData.getInstance().getArmData().setCurrentConfiguration(new Configuration(encoderDistanceToTheta(encoder1Distance), encoderDistanceToTheta(encoder2Distance), RobotValues.LENGTH_LINK1, RobotValues.LENGTH_LINK2));
+		ReferenceData.getInstance().getArmData().setCurrentConfiguration(new Configuration(
+				encoderDistanceToTheta(encoder1Distance), 
+				encoderDistanceToTheta(encoder2Distance), 
+				RobotValues.LENGTH_LINK1, 
+				RobotValues.LENGTH_LINK2));
+		
 		ReferenceData.getInstance().getArmData().setTheta1Encoder(encoder1.getRaw());
 		ReferenceData.getInstance().getArmData().setTheta2Encoder(encoder2.getRaw());
 		ReferenceData.getInstance().getArmData().setTheta1EncoderTicks(encoder1Distance);
 		ReferenceData.getInstance().getArmData().setTheta2EncoderTicks(encoder2Distance);
 		
-//		System.out.println("LEV="+ReferenceData.getInstance().getArmData().getLeftEncoder()
-//				+", REV="+ReferenceData.getInstance().getArmData().getRightEncoder()
-//				);
-		//TODO check encoder call
+		count++;
+		if (count%500==0) {
+			System.out.println("encoder1Raw="+
+					ReferenceData.getInstance().getArmData().getTheta1Encoder()
+					+", encoder2Raw="+
+					ReferenceData.getInstance().getArmData().getTheta2Encoder()
+					);
+			System.out.println("encoder1Dist="+encoder1Distance+", encoder2Dist="+encoder2Distance);
+			count=0;
+		}
 	}
 	
 	public void setEncoders(Encoder eR, Encoder eL){

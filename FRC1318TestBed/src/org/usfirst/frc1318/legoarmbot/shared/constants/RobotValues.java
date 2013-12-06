@@ -8,8 +8,8 @@ public class RobotValues {
 	public static double EQUALS_METHOD_EPSILON_POINT = .0001;
 	
 
-	public static final double THETA1_KP = 0;
-	public static final double THETA2_KP = 0;
+	public static final double THETA1_KP = 0.05;
+	public static final double THETA2_KP = 0.05;
 	
 	public static final int UP = 0;
 	public static final int DOWN = 1;

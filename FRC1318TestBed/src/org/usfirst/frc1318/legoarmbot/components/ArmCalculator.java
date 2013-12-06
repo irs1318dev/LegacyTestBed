@@ -9,9 +9,11 @@ public class ArmCalculator extends RobotComponentBase{
 	private TwoLinkArm jCalculator;
 
 	
-	public void robotInIt() {
+	public void robotInit() {
 		jCalculator = new TwoLinkArm();
 	}
+	
+	int count =0;
 	
 	public void teleopPeriodic() {
 		
@@ -25,10 +27,28 @@ public class ArmCalculator extends RobotComponentBase{
 			ReferenceData.getInstance().getArmData().setTheta1PositionSetPoint(nextConfiguration.getTheta1());
 			ReferenceData.getInstance().getArmData().setTheta2PositionSetPoint(nextConfiguration.getTheta2());
 		} else {
-			Point desiredPoint = new Point(ReferenceData.getInstance().getUserInputData().getClosedFormX(), ReferenceData.getInstance().getUserInputData().getClosedFormY());
-			Configuration nextConfiguration = jCalculator.positionIK(ReferenceData.getInstance().getArmData().getCurrentConfiguration(), desiredPoint);
+			Point desiredPoint = new Point(
+					ReferenceData.getInstance().getUserInputData().getClosedFormX(), 
+					ReferenceData.getInstance().getUserInputData().getClosedFormY());
+			
+			
+			if (jCalculator==null) {
+				throw new RuntimeException("jCalculator is null");
+			}
+			Configuration nextConfiguration = jCalculator.positionIK(
+					ReferenceData.getInstance()
+					          .getArmData()
+					          .getCurrentConfiguration()
+					          , desiredPoint);
 			ReferenceData.getInstance().getArmData().setTheta1PositionSetPoint(nextConfiguration.getTheta1());
 			ReferenceData.getInstance().getArmData().setTheta2PositionSetPoint(nextConfiguration.getTheta2());
+
+			count++;
+			if (count%500==0) {
+				System.out.println("closedFormX="+desiredPoint.getX()+", closedFormY="+desiredPoint.getY());
+				System.out.println("theta1="+nextConfiguration.getTheta1()+", theta2Y="+nextConfiguration.getTheta2());
+				count=0;
+			}
 		}
 	}
 	

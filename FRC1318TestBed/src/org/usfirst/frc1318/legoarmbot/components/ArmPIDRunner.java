@@ -45,7 +45,7 @@ public class ArmPIDRunner extends RobotComponentBase{
 		motorSpeed.speedR = theta1PIDVal;
 //		JoystickFilter.Speed clampedSpeed = JoystickFilter.applyClamp(motorSpeed, 1.0);
 		
-		if (count%1000==0) {
+		if (count%500==0) {
 			System.out.println("theta2SetPoint="+theta2SetPoint+" , theta1SetPoint="+theta1SetPoint);
 			System.out.println("theta2EncV="+theta2EncV+" , theta1EncV="+theta1EncV);
 			System.out.println("Theta2PID="+ReferenceData.getInstance().getArmData().getTheta2PIDSpeed()

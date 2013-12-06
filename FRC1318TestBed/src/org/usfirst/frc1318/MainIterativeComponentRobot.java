@@ -26,8 +26,8 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 //		return shooterPIDBot();
 //		return gameBot1();
 //		return helloBot();
-//		return legoArmBot();
-		return simpleRIABVector();
+        return legoArmBot();
+//		return simpleRIABVector();
 	}
 	
 	protected static BotVector PIDTest()
@@ -90,7 +90,7 @@ public class MainIterativeComponentRobot extends IterativeComponentRobot {
 		botVector.add(new ArmCalculator());
 		botVector.add(new ArmPIDRunner());
 		botVector.add(new ArmMotorRunner());
-		botVector.add(new NetworkTableRunnerArmBot());
+//		botVector.add(new NetworkTableRunnerArmBot());
 		return botVector;
 	}
 
