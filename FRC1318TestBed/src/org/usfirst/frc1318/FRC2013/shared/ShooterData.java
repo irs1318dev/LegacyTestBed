@@ -4,11 +4,11 @@ import org.usfirst.frc1318.generic.utils.SettingsLookup;
 
 public class ShooterData {
 
-	private double tachometerVoltage = 0;
+	private double tachometerVoltage = 0.0;
 
-	private double motorSetPoint = 0;
-	private double encoderAngularVelocity = 0;
-	private double motorSpeed = 0;
+	private double motorSetPoint = 0.0;
+	private double encoderAngularVelocity = 0.0;
+	private double motorSpeed = 0.0;
 
 	private boolean hasFrisbees = false;
 

@@ -189,6 +189,7 @@ public class UserInputData {
 		this.shooterSpeed0 = shooterSpeed0;
 		if(shooterSpeed0){
 			ReferenceData.getInstance().getShooterData().setMotorSetPoint(0);
+			ReferenceData.getInstance().getLookUpTable().setCurrentState(0);
 		}
 	}
 	

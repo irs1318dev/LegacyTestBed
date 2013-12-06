@@ -28,13 +28,14 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 	
 	double lastShooterAngVel = 0.0;
 
-	public void teleopPeriodic()
+	//public void teleopPeriodic() //switching this for test 10/5/13 (Caroline)
+	public void teleopPeriodicTachometer()
 	{
 		double shooterSet;
 		shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
 		double tachVoltage = ReferenceData.getInstance().getShooterData().getTachometerVoltage();		
 		
-		double shooterKscale = 3; // convert set point to voltage range (0..3)
+		double shooterKscale = 3.0; // convert set point to voltage range (0..3)
 		double shooterKf = 0.25;
 		double shooterKd = 0.0005;
 	
@@ -53,8 +54,9 @@ public class ShooterPIDCalculator extends RobotComponentBase {
 
 	
 	}
-
-	public void teleopPeriodicEncoderVel()
+	
+	//public void teleopPeriodicEncoderVel() //switching this for test 10/5/13 (Caroline)
+	public void teleopPeriodic()
 	{
 		double shooterSet;
 		shooterSet =ReferenceData.getInstance().getShooterData().getMotorSetPoint();
